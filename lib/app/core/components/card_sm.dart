@@ -38,7 +38,7 @@ class CardSm extends StatelessWidget {
                 Text(subtitle, style: AppTheme.text.normal.sm(const Color(0xFF474747))),
               ],
             )),
-            const W(8),
+            const W(12),
             Container(
               transform: Matrix4.translationValues(1, 0, 0),
               padding: const EdgeInsets.fromLTRB(9, 9, 4, 9),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/components/app_shimmer.dart';
 import 'package:svr/app/core/components/stream_out.dart';
 
@@ -11,7 +12,7 @@ class AppScaffold extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final bool resizeAvoidBottom;
   final bool? active;
-  final BehaviorSubject<BannerAd?>? behavior;
+  final List<String>? behavior;
 
   const AppScaffold(
       {Key? key,
@@ -47,11 +48,24 @@ class AppScaffold extends StatelessWidget {
   Widget getBody() {
     if (active ?? false) {
       if (behavior != null) {
-        return StreamOutNull<BannerAd?>(
-          stream: behavior!.stream,
-          loading: AppShimmer(child: body),
-          child: (_, ad) => body,
-        );
+        if (behavior!.isNotEmpty) {
+          List<BehaviorSubject<BannerAd?>>? streams =
+              behavior!.map((e) => AdBannerStorage.get(e)).toList();
+
+          return StreamOutNull<BannerAd?>(
+            stream: streams[0].stream,
+            loading: AppShimmer(child: body),
+            child: (_, ad) => streams.length >= 2
+                ? (StreamOutNull<BannerAd?>(
+                    stream: streams[1].stream,
+                    loading: AppShimmer(child: body),
+                    child: (_, ad) => body,
+                  ))
+                : body,
+          );
+        } else {
+          return body;
+        }
       } else {
         return body;
       }
@@ -60,18 +74,18 @@ class AppScaffold extends StatelessWidget {
     }
   }
 
-  Widget streamBuilder() => StreamBuilder<BannerAd?>(
-        stream: behavior!.stream,
-        builder: (_, snapshot) {
-          if (snapshot.connectionState == ConnectionState.active) {
-            if (snapshot.data != null) {
-              return body;
-            } else {
-              return AppShimmer(child: body);
-            }
-          } else {
-            return AppShimmer(child: body);
-          }
-        },
-      );
+  // Widget streamBuilder() => StreamBuilder<BannerAd?>(
+  //       stream: behavior!.stream,
+  //       builder: (_, snapshot) {
+  //         if (snapshot.connectionState == ConnectionState.active) {
+  //           if (snapshot.data != null) {
+  //             return body;
+  //           } else {
+  //             return AppShimmer(child: body);
+  //           }
+  //         } else {
+  //           return AppShimmer(child: body);
+  //         }
+  //       },
+  //     );
 }

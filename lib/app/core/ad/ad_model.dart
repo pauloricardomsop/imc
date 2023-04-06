@@ -1,3 +1,5 @@
+import 'package:svr/app/core/services/remote_config_service.dart';
+
 import '../enums/ad_type_enum.dart';
 
 class AdConfig {
@@ -10,7 +12,8 @@ class AdConfig {
 
   static bool checkWaterFallErrorCode(int code) => code == 3 || code == 9;
 
-  bool get canShowRewardedAd => rewarded.active || intersticialRewarded.active;
+  bool get canShowRewardedAd =>
+      (rewarded.active || intersticialRewarded.active) && !RemoteConfigService.useDefaultValues;
 
   AdConfig.fromJson(Map<String, dynamic> json) {
     activeAll = json['activeAll'];
@@ -96,7 +99,7 @@ class AdObjConfig {
     high = AdFallConfig.fromJson(json['high']);
   }
 
-  bool get active => activeAll && activeObj;
+  bool get active => activeAll && activeObj && !RemoteConfigService.useDefaultValues;
 
   List<String> get id {
     if (waterfall) {

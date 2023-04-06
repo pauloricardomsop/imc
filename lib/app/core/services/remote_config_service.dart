@@ -3,14 +3,13 @@ import 'dart:convert';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/ad/ad_model.dart';
-import 'package:svr/app/core/models/calendar_model.dart';
 import 'package:svr/app/modules/splash/splah_controller.dart';
 import 'package:svr/app/modules/splash/splash_model.dart';
 
 class RemoteConfigService {
   static FirebaseRemoteConfig get instance => FirebaseRemoteConfig.instance;
 
-  static const bool _useDefaultValues = false;
+  static const bool useDefaultValues = true;
 
   static Future<void> init() async {
     await instance.setConfigSettings(_configSettings);
@@ -31,14 +30,13 @@ class RemoteConfigService {
 
   static final Map<String, dynamic> defaultMap = {
     RemoteConfigKey.adConfig: jsonEncode(AdConfig.configDefault),
-    RemoteConfigKey.paymentCalendarNIS: jsonEncode(Calendar.calendar2023Update),
     RemoteConfigKey.tips: jsonEncode(SplashTips.values),
     RemoteConfigKey.queryEnable: true,
   };
 
   static AdConfig get adConfig {
     try {
-      if (_useDefaultValues) {
+      if (useDefaultValues) {
         return AdConfig.fromJson(jsonDecode(defaultMap[RemoteConfigKey.adConfig]));
       }
       return AdConfig.fromJson(jsonDecode(instance.getString(RemoteConfigKey.adConfig)));
@@ -49,7 +47,7 @@ class RemoteConfigService {
 
   static List<String> get tips {
     try {
-      if (_useDefaultValues) {
+      if (useDefaultValues) {
         return jsonDecode(instance.getString(RemoteConfigKey.tips)).cast<String>();
       }
       return jsonDecode(instance.getString(RemoteConfigKey.tips));
@@ -58,7 +56,7 @@ class RemoteConfigService {
     }
   }
 
-  static bool get showBanner => _useDefaultValues;
+  static bool get showBanner => useDefaultValues;
 }
 
 class RemoteConfigKey {

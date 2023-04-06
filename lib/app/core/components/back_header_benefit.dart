@@ -1,32 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
-import 'package:svr/app/core/components/card_xs.dart';
-import 'package:svr/app/core/enums/benefit_enum.dart';
+import 'package:svr/app/core/components/divisor.dart';
 
-class BackHeaderBenefit extends StatelessWidget {
-  final Benefit? benefit;
+class BackHeader extends StatelessWidget {
+  final EdgeInsets? margin;
+  final Widget? button;
 
-  const BackHeaderBenefit({this.benefit, super.key});
+  const BackHeader({this.margin, this.button, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InkWell(
-          onTap: () => AdController.showInterstitialAd(context),
-          child: Container(
-            margin: benefit != null ? const EdgeInsets.only(top: 12) : null,
-            padding: const EdgeInsets.all(6),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                border: Border.all(color: const Color(0xFF1C44F9))),
-            child: const Icon(Icons.arrow_back, color: Color(0xFF1C44F9)),
-          ),
+        Row(
+          children: [
+            InkWell(
+              onTap: () => AdController.showInterstitialAd(context),
+              child: Container(
+                margin: margin ?? const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFDDE0FF),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(Icons.arrow_back, color: Color(0xFF000C61)),
+              ),
+            ),
+            const Spacer(),
+            if (button != null)
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: button!,
+              )
+          ],
         ),
-        const Spacer(),
-        if (benefit != null) CardXs(benefit: benefit!)
+        const Divisor()
       ],
     );
   }
