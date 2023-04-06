@@ -1,10 +1,10 @@
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/modules/splash/ui/splash_page.dart';
-import 'package:benefits_brazil/app/core/enums/module_enum.dart';
-import 'package:benefits_brazil/app/core/models/app_stream.dart';
-import 'package:benefits_brazil/app/core/utils/global_resource.dart';
-import 'package:benefits_brazil/app/core/utils/utils_controller.dart';
 import 'package:flutter_fgbg/flutter_fgbg.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/enums/module_enum.dart';
+import 'package:svr/app/core/models/app_stream.dart';
+import 'package:svr/app/core/utils/global_resource.dart';
+import 'package:svr/app/core/utils/utils_controller.dart';
+import 'package:svr/app/modules/splash/ui/splash_page.dart';
 
 class ForegroundService {
   static AppStream<bool> foregroundStream = AppStream.seed(true);

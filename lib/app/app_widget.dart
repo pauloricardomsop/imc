@@ -1,13 +1,5 @@
 import 'dart:ui';
 
-import 'package:benefits_brazil/app/app_controller.dart';
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/core/services/foreground_service.dart';
-import 'package:benefits_brazil/app/core/services/notification_service.dart';
-import 'package:benefits_brazil/app/core/services/remote_config_service.dart';
-import 'package:benefits_brazil/app/core/services/route_service.dart';
-import 'package:benefits_brazil/app/core/theme/app_theme.dart';
-import 'package:benefits_brazil/app/modules/bf/news/bf_news_controller.dart';
 // import 'package:facebook_app_events/facebook_app_events.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -16,6 +8,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:svr/app/app_controller.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/services/foreground_service.dart';
+import 'package:svr/app/core/services/notification_service.dart';
+import 'package:svr/app/core/services/remote_config_service.dart';
+import 'package:svr/app/core/services/route_service.dart';
+import 'package:svr/app/core/theme/app_theme.dart';
 
 Future<void> initializeServices() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +59,7 @@ class _AppState extends State<App> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: _appController.key,
-      title: 'Benefícios Brasil',
+      title: 'Valores a Receber',
       theme: AppTheme.theme,
       initialRoute: RouteService.initial,
       routes: RouteService.routes,

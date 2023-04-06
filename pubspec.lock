@@ -141,13 +141,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.1"
-  facebook_app_events:
-    dependency: "direct main"
-    description:
-      name: facebook_app_events
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.18.3"
   fake_async:
     dependency: transitive
     description:
@@ -796,13 +789,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.3"
-  webfeed_plus:
-    dependency: "direct main"
-    description:
-      name: webfeed_plus
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   win32:
     dependency: transitive
     description:

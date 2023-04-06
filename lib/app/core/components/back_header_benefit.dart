@@ -1,7 +1,7 @@
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/core/components/card_xs.dart';
-import 'package:benefits_brazil/app/core/enums/benefit_enum.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/components/card_xs.dart';
+import 'package:svr/app/core/enums/benefit_enum.dart';
 
 class BackHeaderBenefit extends StatelessWidget {
   final Benefit? benefit;

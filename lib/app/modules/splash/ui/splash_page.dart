@@ -1,14 +1,14 @@
-import 'package:benefits_brazil/app/core/components/app_scaffold.dart';
-import 'package:benefits_brazil/app/core/components/card_xs.dart';
-import 'package:benefits_brazil/app/core/components/h.dart';
-import 'package:benefits_brazil/app/core/components/stream_out.dart';
-import 'package:benefits_brazil/app/core/components/w.dart';
-import 'package:benefits_brazil/app/core/enums/benefit_enum.dart';
-import 'package:benefits_brazil/app/core/theme/app_theme.dart';
-import 'package:benefits_brazil/app/core/utils/global_resource.dart';
-import 'package:benefits_brazil/app/modules/splash/splah_controller.dart';
-import 'package:benefits_brazil/app/modules/splash/splash_model.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/app_scaffold.dart';
+import 'package:svr/app/core/components/card_xs.dart';
+import 'package:svr/app/core/components/h.dart';
+import 'package:svr/app/core/components/stream_out.dart';
+import 'package:svr/app/core/components/w.dart';
+import 'package:svr/app/core/enums/benefit_enum.dart';
+import 'package:svr/app/core/theme/app_theme.dart';
+import 'package:svr/app/core/utils/global_resource.dart';
+import 'package:svr/app/modules/splash/splah_controller.dart';
+import 'package:svr/app/modules/splash/splash_model.dart';
 
 class SplashPage extends JourneyStatefulWidget {
   const SplashPage({Key? key}) : super(key: key, name: 'SplashPage');

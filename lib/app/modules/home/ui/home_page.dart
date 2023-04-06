@@ -1,13 +1,10 @@
-import 'package:benefits_brazil/app/core/ad/ad_banner_storage.dart';
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/core/components/app_banner_ad.dart';
-import 'package:benefits_brazil/app/core/components/app_scaffold.dart';
-import 'package:benefits_brazil/app/core/components/card_base.dart';
-import 'package:benefits_brazil/app/core/components/h.dart';
-import 'package:benefits_brazil/app/core/utils/global_resource.dart';
-import 'package:benefits_brazil/app/modules/home/home_model.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/ad/ad_banner_storage.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/components/app_banner_ad.dart';
+import 'package:svr/app/core/components/app_scaffold.dart';
+import 'package:svr/app/core/components/h.dart';
+import 'package:svr/app/core/utils/global_resource.dart';
 
 import '../../../core/components/label_double_column.dart';
 
@@ -49,26 +46,27 @@ class _HomePageState extends State<HomePage> {
         const H(32),
         const LabelDoubleColumn('Consulte seus', 'Benefícios'),
         const H(8),
-        ...HomeItem.values
-            .map((e) => CardBase(
-                  onTap: () => push(context, e.page),
-                  title: 'Benefícios',
-                  subtitle: e.label,
-                  image: Container(
-                    margin: const EdgeInsets.all(8),
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[800]!,
-                      image: DecorationImage(image: CachedNetworkImageProvider(e.url), fit: BoxFit.cover),
-                      boxShadow: [
-                        BoxShadow(color: Colors.grey[300]!, blurRadius: 2, spreadRadius: 1.5)
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ))
-            .toList()
+        // ...HomeItem.values
+        //     .map((e) => CardBase(
+        //           onTap: () => push(context, e.page),
+        //           title: 'Benefícios',
+        //           subtitle: e.label,
+        //           image: Container(
+        //             margin: const EdgeInsets.all(8),
+        //             width: 60,
+        //             height: 60,
+        //             decoration: BoxDecoration(
+        //               color: Colors.grey[800]!,
+        //               image: DecorationImage(
+        //                   image: CachedNetworkImageProvider(e.url), fit: BoxFit.cover),
+        //               boxShadow: [
+        //                 BoxShadow(color: Colors.grey[300]!, blurRadius: 2, spreadRadius: 1.5)
+        //               ],
+        //               borderRadius: BorderRadius.circular(10),
+        //             ),
+        //           ),
+        //         ))
+        //     .toList()
       ],
     );
   }

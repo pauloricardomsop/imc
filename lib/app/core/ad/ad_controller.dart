@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:benefits_brazil/app/core/services/remote_config_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:svr/app/core/services/remote_config_service.dart';
 
 import '../../modules/splash/splah_controller.dart';
 import '../../modules/splash/ui/splash_page.dart';

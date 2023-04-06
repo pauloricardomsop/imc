@@ -1,5 +1,5 @@
-import 'package:benefits_brazil/app/core/components/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/loading.dart';
 
 class LoadingDialog extends StatelessWidget {
   const LoadingDialog({Key? key}) : super(key: key);

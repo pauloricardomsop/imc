@@ -1,8 +1,8 @@
-import 'package:benefits_brazil/app/core/components/h.dart';
-import 'package:benefits_brazil/app/core/components/w.dart';
-import 'package:benefits_brazil/app/core/models/check_list_model.dart';
-import 'package:benefits_brazil/app/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:svr/app/core/components/h.dart';
+import 'package:svr/app/core/components/w.dart';
+import 'package:svr/app/core/models/check_list_model.dart';
+import 'package:svr/app/core/theme/app_theme.dart';
 
 class CheckList extends StatelessWidget {
   final List<CheckListModel> itens;

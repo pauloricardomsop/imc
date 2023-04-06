@@ -1,6 +1,6 @@
-import 'package:benefits_brazil/app/core/components/h.dart';
-import 'package:benefits_brazil/app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/h.dart';
+import 'package:svr/app/core/theme/app_theme.dart';
 
 class SectionHeaderSm extends StatelessWidget {
   final String title;

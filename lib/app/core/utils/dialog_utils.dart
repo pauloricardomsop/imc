@@ -1,6 +1,6 @@
-import 'package:benefits_brazil/app/core/dialogs/loading_dialog.dart';
-import 'package:benefits_brazil/app/core/utils/global_resource.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/dialogs/loading_dialog.dart';
+import 'package:svr/app/core/utils/global_resource.dart';
 
 class DialogUtils {
   static showLoadingDialog([BuildContext? context]) {

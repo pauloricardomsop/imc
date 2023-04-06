@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/core/ad/ad_model.dart';
-import 'package:benefits_brazil/app/core/models/calendar_model.dart';
-import 'package:benefits_brazil/app/modules/bf/calendar/bf_calendar_controller.dart';
-import 'package:benefits_brazil/app/modules/splash/splah_controller.dart';
-import 'package:benefits_brazil/app/modules/splash/splash_model.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/ad/ad_model.dart';
+import 'package:svr/app/core/models/calendar_model.dart';
+import 'package:svr/app/modules/splash/splah_controller.dart';
+import 'package:svr/app/modules/splash/splash_model.dart';
 
 class RemoteConfigService {
   static FirebaseRemoteConfig get instance => FirebaseRemoteConfig.instance;
@@ -22,9 +21,7 @@ class RemoteConfigService {
 
   static void _setValues() {
     AdController.adConfigStream.add(adConfig);
-    BfCalendarController().calendar = paymentCalendarNIS;
     SplashController().tips = tips;
-    AdController.queryEnableStream.add(queryEnable);
   }
 
   static final RemoteConfigSettings _configSettings = RemoteConfigSettings(
@@ -50,17 +47,6 @@ class RemoteConfigService {
     }
   }
 
-  static List<List<String>> get paymentCalendarNIS {
-    try {
-      if (_useDefaultValues) {
-        return Calendar.parse(jsonDecode(defaultMap[RemoteConfigKey.paymentCalendarNIS]));
-      }
-      return Calendar.parse(jsonDecode(instance.getString(RemoteConfigKey.paymentCalendarNIS)));
-    } catch (e) {
-      return Calendar.parse(jsonDecode(defaultMap[RemoteConfigKey.paymentCalendarNIS]));
-    }
-  }
-
   static List<String> get tips {
     try {
       if (_useDefaultValues) {
@@ -69,17 +55,6 @@ class RemoteConfigService {
       return jsonDecode(instance.getString(RemoteConfigKey.tips));
     } catch (e) {
       return jsonDecode(defaultMap[RemoteConfigKey.tips]).cast<String>();
-    }
-  }
-
-  static bool get queryEnable {
-    try {
-      if (_useDefaultValues) {
-        return defaultMap[RemoteConfigKey.queryEnable];
-      }
-      return instance.getBool(RemoteConfigKey.queryEnable);
-    } catch (e) {
-      return defaultMap[RemoteConfigKey.queryEnable];
     }
   }
 

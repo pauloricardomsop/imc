@@ -1,10 +1,10 @@
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/core/components/app_shimmer.dart';
-import 'package:benefits_brazil/app/core/components/banner_transparent.dart';
-import 'package:benefits_brazil/app/core/services/remote_config_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/components/app_shimmer.dart';
+import 'package:svr/app/core/components/banner_transparent.dart';
+import 'package:svr/app/core/services/remote_config_service.dart';
 
 class AppBannerAd extends StatefulWidget {
   final BehaviorSubject<BannerAd?> behavior;

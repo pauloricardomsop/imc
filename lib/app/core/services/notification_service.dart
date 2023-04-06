@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/core/services/foreground_service.dart';
-import 'package:benefits_brazil/app/core/utils/global_resource.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/services/foreground_service.dart';
+import 'package:svr/app/core/utils/global_resource.dart';
 
 class NotificationService {
   static void negative(

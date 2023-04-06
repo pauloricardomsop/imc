@@ -1,8 +1,8 @@
-import 'package:benefits_brazil/app/core/components/app_shimmer.dart';
-import 'package:benefits_brazil/app/core/components/stream_out.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:svr/app/core/components/app_shimmer.dart';
+import 'package:svr/app/core/components/stream_out.dart';
 
 class AppScaffold extends StatelessWidget {
   final Future<bool> Function()? onWillPop;

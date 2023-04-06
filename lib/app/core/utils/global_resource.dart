@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
-import 'package:benefits_brazil/app/app_controller.dart';
-import 'package:benefits_brazil/app/core/services/foreground_service.dart';
-import 'package:benefits_brazil/app/core/services/notification_service.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:svr/app/app_controller.dart';
+import 'package:svr/app/core/services/foreground_service.dart';
+import 'package:svr/app/core/services/notification_service.dart';
 // import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 

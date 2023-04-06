@@ -1,7 +1,7 @@
-import 'package:benefits_brazil/app/core/components/app_item_carroussel.dart';
-import 'package:benefits_brazil/app/core/components/h.dart';
-import 'package:benefits_brazil/app/core/models/carroussel_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:svr/app/core/components/app_item_carroussel.dart';
+import 'package:svr/app/core/components/h.dart';
+import 'package:svr/app/core/models/carroussel_model.dart';
 
 class AppCarroussel extends StatefulWidget {
   final List<CarrousselModel> itens;

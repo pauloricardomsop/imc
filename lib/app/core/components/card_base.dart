@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:benefits_brazil/app/core/components/label_double_column.dart';
-import 'package:benefits_brazil/app/core/components/w.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/label_double_column.dart';
+import 'package:svr/app/core/components/w.dart';
 
 class CardBase extends StatelessWidget {
   final String title;

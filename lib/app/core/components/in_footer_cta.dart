@@ -1,5 +1,5 @@
-import 'package:benefits_brazil/app/core/components/button_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/button_icon.dart';
 
 class InFooterCta extends StatelessWidget {
   final void Function() onTap;

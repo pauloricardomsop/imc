@@ -1,4 +1,4 @@
-package com.ldcapps.benefits_brazil
+package com.ldcapps.svr
 
 import io.flutter.embedding.android.FlutterActivity
 

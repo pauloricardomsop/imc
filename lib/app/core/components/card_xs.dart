@@ -1,9 +1,9 @@
-import 'package:benefits_brazil/app/core/components/h.dart';
-import 'package:benefits_brazil/app/core/components/w.dart';
-import 'package:benefits_brazil/app/core/enums/benefit_enum.dart';
-import 'package:benefits_brazil/app/core/theme/app_theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/h.dart';
+import 'package:svr/app/core/components/w.dart';
+import 'package:svr/app/core/enums/benefit_enum.dart';
+import 'package:svr/app/core/theme/app_theme.dart';
 
 class CardXs extends StatelessWidget {
   final Benefit benefit;
@@ -31,7 +31,8 @@ class CardXs extends StatelessWidget {
             height: 36,
             decoration: BoxDecoration(
               color: Colors.grey[800]!,
-              image: DecorationImage(image: CachedNetworkImageProvider(benefit.url), fit: BoxFit.cover),
+              image: DecorationImage(
+                  image: CachedNetworkImageProvider(benefit.url), fit: BoxFit.cover),
               boxShadow: [BoxShadow(color: Colors.grey[300]!, blurRadius: 2, spreadRadius: 1.5)],
               borderRadius: BorderRadius.circular(8),
             ),

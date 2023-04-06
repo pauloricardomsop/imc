@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
-import 'package:benefits_brazil/app/core/models/app_stream.dart';
-import 'package:benefits_brazil/app/core/services/remote_config_service.dart';
-import 'package:benefits_brazil/app/core/utils/utils_controller.dart';
-import 'package:benefits_brazil/app/modules/splash/splash_model.dart';
-import 'package:benefits_brazil/app/modules/splash/splash_repository.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/models/app_stream.dart';
+import 'package:svr/app/core/services/remote_config_service.dart';
+import 'package:svr/app/core/utils/utils_controller.dart';
+import 'package:svr/app/modules/splash/splash_model.dart';
+import 'package:svr/app/modules/splash/splash_repository.dart';
 
 import '../../core/enums/module_enum.dart';
 
@@ -46,10 +46,10 @@ class SplashController {
     }
   }
 
-  Future<void> dispose() async {   
+  Future<void> dispose() async {
     splash.value.label = 'App Iniciado';
-      splash.value.progress = 100;
-      splash.add(splash.value);
+    splash.value.progress = 100;
+    splash.add(splash.value);
     late int tipValue;
     if (splash.value.tip + 1 == tips.length) {
       tipValue = 0;

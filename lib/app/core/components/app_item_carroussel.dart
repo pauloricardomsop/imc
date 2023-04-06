@@ -1,6 +1,6 @@
-import 'package:benefits_brazil/app/core/models/carroussel_model.dart';
-import 'package:benefits_brazil/app/core/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:svr/app/core/models/carroussel_model.dart';
+import 'package:svr/app/core/theme/app_theme.dart';
 
 class AppItemCarroussel extends StatelessWidget {
   final CarrousselModel item;

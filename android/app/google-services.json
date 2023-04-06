@@ -1,46 +1,39 @@
 {
   "project_info": {
-    "project_number": "614662444224",
-    "project_id": "ldc-benefits-brazil",
-    "storage_bucket": "ldc-benefits-brazil.appspot.com"
+    "project_number": "502689250513",
+    "project_id": "ldv-svr",
+    "storage_bucket": "ldv-svr.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:614662444224:android:a7c5cdfd3867a062104925",
+        "mobilesdk_app_id": "1:502689250513:android:70df4e4e2ccbc4dd8119f0",
         "android_client_info": {
-          "package_name": "com.ldcapps.benefits_brazil"
+          "package_name": "com.ldcapps.svr"
         }
       },
       "oauth_client": [
         {
-          "client_id": "614662444224-th4kaklfplf0c7ldbgk9hnao8aboa5dt.apps.googleusercontent.com",
+          "client_id": "502689250513-kf3fipfti8u2rccehvj9cibn2mdf25g6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDYDMJ9SEZ6F-7vIzRW8Db9k50pDEu8rqk"
+          "current_key": "AIzaSyDILXgl_pFNqDGLrRHgxbomxTTHu5TXqII"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "614662444224-th4kaklfplf0c7ldbgk9hnao8aboa5dt.apps.googleusercontent.com",
+              "client_id": "502689250513-kf3fipfti8u2rccehvj9cibn2mdf25g6.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "614662444224-1op32v7rno4q78jbsusgn4jjhrhs64q4.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.benefitsBrazil"
-              }
             }
           ]
         }
       },
-      "admob_app_id": "ca-app-pub-8419654969814276~6641563804"
+      "admob_app_id": "ca-app-pub-8419654969814276~6369933191"
     }
   ],
   "configuration_version": "1"

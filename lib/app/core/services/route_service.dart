@@ -1,5 +1,5 @@
-import 'package:benefits_brazil/app/core/components/module_page.dart';
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/module_page.dart';
 
 class RouteService {
   static String initial = '/';

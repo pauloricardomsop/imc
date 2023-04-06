@@ -33,46 +33,46 @@ class AdConfig {
       };
 
   static final Map<String, dynamic> configDefault = {
-    "activeAll": false,
+    "activeAll": true,
     "appOpen": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/7463690886",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/7463690886"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/7131700158"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/2402935890"}
+      "default": "ca-app-pub-8419654969814276/5179306302",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/5179306302"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/7656198350"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/4869133355"}
     },
     "banner": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/8361021340",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/8361021340"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/1795612997"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/6317581432"}
+      "default": "ca-app-pub-8419654969814276/1971523182",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/1971523182"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/3727457981"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/3284604853"}
     },
     "intersticial": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/5168151293",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/5168151293"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/3847061262"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/2019792511"}
+      "default": "ca-app-pub-8419654969814276/7512728125",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/7512728125"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/7033930567"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/8405069592"}
     },
     "rewarded": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/1612049663",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/1612049663"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/7786306271"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/9490539682"}
+      "default": "ca-app-pub-8419654969814276/5252292645",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/5252292645"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/4846750927"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/9256769221"}
     },
     "intersticialRewarded": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/1228906289",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/1228906289"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/6289661278"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/7594734588"}
+      "default": "ca-app-pub-8419654969814276/8594424243",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/8594424243"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/9943164935"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/9907505917"}
     }
   };
 }
