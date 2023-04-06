@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "614662444224",
+    "project_id": "ldc-benefits-brazil",
+    "storage_bucket": "ldc-benefits-brazil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614662444224:android:a7c5cdfd3867a062104925",
+        "android_client_info": {
+          "package_name": "com.ldcapps.benefits_brazil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614662444224-th4kaklfplf0c7ldbgk9hnao8aboa5dt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYDMJ9SEZ6F-7vIzRW8Db9k50pDEu8rqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614662444224-th4kaklfplf0c7ldbgk9hnao8aboa5dt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "614662444224-1op32v7rno4q78jbsusgn4jjhrhs64q4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.benefitsBrazil"
+              }
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-8419654969814276~6641563804"
+    }
+  ],
+  "configuration_version": "1"
+}

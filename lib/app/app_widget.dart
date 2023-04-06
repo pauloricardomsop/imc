@@ -1,0 +1,69 @@
+import 'dart:ui';
+
+import 'package:benefits_brazil/app/app_controller.dart';
+import 'package:benefits_brazil/app/core/ad/ad_controller.dart';
+import 'package:benefits_brazil/app/core/services/foreground_service.dart';
+import 'package:benefits_brazil/app/core/services/notification_service.dart';
+import 'package:benefits_brazil/app/core/services/remote_config_service.dart';
+import 'package:benefits_brazil/app/core/services/route_service.dart';
+import 'package:benefits_brazil/app/core/theme/app_theme.dart';
+import 'package:benefits_brazil/app/modules/bf/news/bf_news_controller.dart';
+// import 'package:facebook_app_events/facebook_app_events.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
+Future<void> initializeServices() async {
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  await Firebase.initializeApp();
+  await RemoteConfigService.init();
+  initFirebaseMessaging();
+  await setupFlutterNotifications();
+  await ForegroundService.listen();
+  await initializeDateFormatting('pt_BR');
+  //TODO
+  // await FacebookAppEvents().setAutoLogAppEventsEnabled(true);
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+}
+
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  final AppController _appController = AppController();
+
+  @override
+  void initState() {
+    super.initState();
+    MobileAds.instance.initialize();
+    AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      navigatorKey: _appController.key,
+      title: 'Benefícios Brasil',
+      theme: AppTheme.theme,
+      initialRoute: RouteService.initial,
+      routes: RouteService.routes,
+    );
+  }
+}
