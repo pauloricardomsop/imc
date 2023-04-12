@@ -2,27 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
+import 'package:svr/app/core/components/app_card_purple.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/button_icon.dart';
 import 'package:svr/app/core/components/card_sm.dart';
-import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
-import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_it_for_svr_page.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_know_receive_page.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_news_page.dart';
 
-class WhatIsSvrPage extends JourneyStatefulWidget {
-  const WhatIsSvrPage({Key? key}) : super(key: key, name: 'WhatIsSvrPage');
+class WhatIsItForSvrPage extends JourneyStatefulWidget {
+  const WhatIsItForSvrPage({Key? key}) : super(key: key, name: 'WhatIsItForSvrPage');
 
   @override
-  State<WhatIsSvrPage> createState() => WhatIsSvrPageState();
+  State<WhatIsItForSvrPage> createState() => WhatIsItForSvrPageState();
 }
 
-class WhatIsSvrPageState extends State<WhatIsSvrPage> {
+class WhatIsItForSvrPageState extends State<WhatIsItForSvrPage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -39,19 +35,11 @@ class WhatIsSvrPageState extends State<WhatIsSvrPage> {
 
   List<CardSm> get itens => [
         CardSm(
-          title: 'Para que serve o SVR?',
-          subtitle: 'Entenda para que serve o SVR e tire suas dúvidas.',
-          onTap: () {
-            Navigator.pop(context);
-            push(context, const WhatIsItForSvrPage());
-          },
-        ),
-        CardSm(
           title: 'Quais as novidades do SVR para 2023?',
           subtitle: 'Fique por dentro do que hà de novo no SVR.',
           onTap: () {
             Navigator.pop(context);
-            push(context, const WhatIsNewsPage());
+            // push(context, const WhatIsNewsPage());
           },
         ),
         CardSm(
@@ -59,37 +47,10 @@ class WhatIsSvrPageState extends State<WhatIsSvrPage> {
           subtitle: 'Aprenda como o sistema funciona e saiba se tem valores pra receber.',
           onTap: () {
             Navigator.pop(context);
-            push(context, WhatIsKnowReceivePage());
+            // push(context, WhatIsKnowReceivePage());
           },
         ),
       ];
-
-  List<CheckListModel> checkList = [
-    CheckListModel(
-        icon: Icons.done, label: 'Contas corrente ou poupança encerradas com saldo disponível;'),
-    CheckListModel(
-        icon: Icons.done,
-        label:
-            'Cotas de capital e rateio de sobras líquidas de ex-participantes de cooperativas de crédito;'),
-    CheckListModel(
-        icon: Icons.done, label: 'Recursos não procurados de grupos de consórcio encerrados;'),
-    CheckListModel(icon: Icons.done, label: 'Tarifas cobradas indevidamente;'),
-    CheckListModel(
-        icon: Icons.done,
-        label: 'Parcelas ou despesas de operações de crédito cobradas indevidamente;'),
-    CheckListModel(
-        icon: Icons.done,
-        label: 'Parcelas ou despesas de operações de crédito cobradas indevidamente;'),
-    CheckListModel(
-        icon: Icons.done,
-        label: 'Contas de pagamento pré ou pós-paga encerradas com saldo disponível;'),
-    CheckListModel(
-        icon: Icons.done,
-        label:
-            'Contas de registro mantidas por corretoras e distribuidoras encerradas com saldo disponível;'),
-    CheckListModel(
-        icon: Icons.done, label: 'Outros recursos disponíveis nas instituições para devolução.'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -111,7 +72,7 @@ class WhatIsSvrPageState extends State<WhatIsSvrPage> {
           button: ButtonIconSmall(
             onTap: () {
               Navigator.pop(context);
-              push(context, const WhatIsItForSvrPage());
+              // push(context, const WhatIsNewsPage());
             },
             icon: Icons.arrow_forward_ios,
             label: 'Próximo',
@@ -128,18 +89,19 @@ class WhatIsSvrPageState extends State<WhatIsSvrPage> {
               const HeaderHero(
                 title: 'O que é o Sistema de Valores a Receber ou SVR?',
                 desc:
-                    'O Sistema de Valores a Receber (SVR) é um serviço do Banco Central no qual você pode consultar se você, sua empresa ou pessoa falecida tem dinheiro esquecido em algum banco, consórcio ou outra instituição e, caso tenha, saber como solicitar o valor.',
+                    'O serviço serve para que pessoas físicas e jurídicas verificarem se têm valores a receber.',
               ),
               const H(16),
               const HeaderHero(
                 desc:
-                    'O Sistema de Valores a Receber (SVR) é um serviço do Banco Central no qual você pode consultar se você, sua empresa ou pessoa falecida tem dinheiro esquecido em algum banco, consórcio ou outra instituição e, caso tenha, saber como solicitar o valor.',
+                    'No sistema, você encontra informações de saldo credor de contas encerradas, parcelas de empréstimo e tarifas cobradas indevidamente, recursos não procurados após encerramento de grupos de consórcio, cotas de capital a devolver em cooperativas de crédito, entre outros, de entidades supervisionadas pelo Banco Central. Em caso positivo, a devolução destes recursos poderá ser requisitada.',
                 image: 'https://ldcapps.com/wp-content/uploads/2023/03/documentos-necessarios.jpg',
               ),
-              const H(16),
-              CheckList(checkList),
-              const H(16),
+              const H(32),
               AppBannerAd(AdBannerStorage.get('${widget.name}2')),
+              const H(32),
+              const AppCardPurple(
+                  'Atenção: O Banco Central informou que não solicita confirmação de dados posteriormente e que somente a instituição ou banco que aparece na consulta do SVR pode entrar em contato com o cliente.'),
               const H(16),
               ...itens,
               const H(24),

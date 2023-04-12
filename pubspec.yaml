@@ -39,6 +39,7 @@ dependencies:
   # webfeed_plus: ^1.0.0
   html: ^0.15.2
   flutter_launcher_icons: ^0.12.0
+  youtube_player_flutter: ^8.1.2
 
 dev_dependencies:
   flutter_test:

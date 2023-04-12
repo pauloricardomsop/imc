@@ -6,7 +6,6 @@ import 'package:svr/app/core/components/app_carroussel.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/button_icon.dart';
-import 'package:svr/app/core/components/card_sm.dart';
 import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
@@ -15,16 +14,15 @@ import 'package:svr/app/core/models/carroussel_model.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_home_page.dart';
 
-class WhatIsHowWorkHomePage extends JourneyStatefulWidget {
-  const WhatIsHowWorkHomePage({Key? key}) : super(key: key, name: 'WhatIsHowWorkHomePage');
+class KnowReceivePage extends JourneyStatefulWidget {
+  const KnowReceivePage({Key? key}) : super(key: key, name: 'KnowReceivePage');
 
   @override
-  State<WhatIsHowWorkHomePage> createState() => WhatIsHowWorkHomePageState();
+  State<KnowReceivePage> createState() => KnowReceivePageState();
 }
 
-class WhatIsHowWorkHomePageState extends State<WhatIsHowWorkHomePage> {
+class KnowReceivePageState extends State<KnowReceivePage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -39,49 +37,39 @@ class WhatIsHowWorkHomePageState extends State<WhatIsHowWorkHomePage> {
     super.initState();
   }
 
-  List<CardSm> get itens => [
-        CardSm(
-          title: 'O que é o Sistema Valores a Receber',
-          subtitle: 'Saiba o que é e como funciona.',
-          onTap: () => push(context, const WhatIsHomePage()),
-        ),
-        CardSm(
-          title: 'Como acessar meus valores?',
-          subtitle: 'Saiba acessar o sistema para recuperar seu dinheiro.',
-          onTap: () => push(context, Container()),
-        ),
-        CardSm(
-          title: 'Como acesso valores de falecidos?',
-          subtitle: 'Aprenda como acessar o sistema para receber dinheiro de falecidos.',
-          onTap: () => push(context, Container()),
-        ),
-      ];
-
   List<CheckListModel> checkList = [
     CheckListModel(
-        icon: Icons.done, label: 'Contas corrente ou poupança encerradas com saldo disponível;'),
+      icon: Icons.check,
+      label: 'Acesse o site e clique no botão ”Consulte se tem valores a receber”;',
+    ),
     CheckListModel(
-        icon: Icons.done,
-        label:
-            'Cotas de capital e rateio de sobras líquidas de ex-participantes de cooperativas de crédito;'),
+      icon: Icons.check,
+      label:
+          'Em seguida, será necessário informar os dados solicitados:\nCPF e data de nascimento, caso se trate de pessoa física.\nCNPJ e a data de abertura da empresa, em caso de pessoa jurídica;',
+    ),
     CheckListModel(
-        icon: Icons.done, label: 'Recursos não procurados de grupos de consórcio encerrados;'),
-    CheckListModel(icon: Icons.done, label: 'Tarifas cobradas indevidamente;'),
+      icon: Icons.check,
+      label:
+          'Faça o login com seu CPF e senha no Gov.br. Caso ainda não tenha uma conta, basta fazer seu cadastro;',
+    ),
     CheckListModel(
-        icon: Icons.done,
-        label: 'Parcelas ou despesas de operações de crédito cobradas indevidamente;'),
+      icon: Icons.check,
+      label: 'Se tiver algum valor a receber, selecione a opção “Acessar o SVR”;',
+    ),
     CheckListModel(
-        icon: Icons.done,
-        label: 'Parcelas ou despesas de operações de crédito cobradas indevidamente;'),
+      icon: Icons.check,
+      label:
+          'Depois disso, é necessário fazer o login com a conta gov.br.\nPara valores de pessoa física, é preciso que a conta gov.br seja de nível prata ou ouro.\nPara valores de pessoa jurídica, precisa ter conta gov.br com qualquer tipo de vínculo ao CNPJ, exceto de colaborador;',
+    ),
     CheckListModel(
-        icon: Icons.done,
-        label: 'Contas de pagamento pré ou pós-paga encerradas com saldo disponível;'),
+      icon: Icons.check,
+      label: 'Após realizar o login com sua conta gov.br, acesse a opção “Meus Valores a Receber”;',
+    ),
     CheckListModel(
-        icon: Icons.done,
-        label:
-            'Contas de registro mantidas por corretoras e distribuidoras encerradas com saldo disponível;'),
-    CheckListModel(
-        icon: Icons.done, label: 'Outros recursos disponíveis nas instituições para devolução.'),
+      icon: Icons.check,
+      label:
+          'Por fim, caso tenha valores a receber, para solicitar o valor é preciso seguir as orientações indicadas pela plataforma.',
+    ),
   ];
 
   final List<CarrousselModel> _questions = [
@@ -123,37 +111,40 @@ class WhatIsHowWorkHomePageState extends State<WhatIsHowWorkHomePage> {
     return ListView(
       padding: EdgeInsets.zero,
       children: [
-        const BackHeader(),
+        BackHeader(
+          button: ButtonIconSmall(
+            onTap: () {
+              Navigator.pop(context);
+              push(context, Container());
+            },
+            icon: Icons.open_in_new,
+            label: 'Consultar Agora',
+            invert: true,
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const HeaderHero(
-                title: 'O que é e como funciona o Sistema de Valores a Receber ou SVR.',
-                desc:
-                    'Descubra o que é, como funcione e como acessar seus valores e até mesmo de pessoas falecidas.,',
-                image: 'https://ldcapps.com/wp-content/uploads/2023/03/documentos-necessarios.jpg',
-              ),
-              const H(24),
-              ButtonIcon(
-                onTap: () {},
-                icon: Icons.navigate_next,
-                invert: true,
-                label: 'Consultar Valores',
-              ),
-              const H(24),
-              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
               const H(16),
-              ...itens,
+              const HeaderHero(
+                title: 'Como saber se tenho valores a receber?',
+                desc:
+                    'Para saber se tem valores a receber, é preciso consultar o Serviço Valores a Receber (SVR), que é uma plataforma online criada para auxiliar o interessado a verificar se tem valores esquecidos para receber.',
+                image: 'https://ldcapps.com/wp-content/uploads/2023/04/Como-saber-se-tenho-valores-a-receber.png',
+              ),
+              const H(16),
+              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
               const H(24),
               Text(
-                'Caso tenha direito, o sistema também permite solicitar o valor. As quantias são referentes a:',
+                'Para realizar essa consulta, basta seguir o passo a passo:',
                 style: AppTheme.text.normal.base(const Color(0xFF474747)),
               ),
-              const H(24),
+              const H(16),
               CheckList(checkList),
-              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
+              const H(32),
+              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
               const H(24),
               const LabelDoubleColumn('Perguntas', 'Frequentes'),
             ],

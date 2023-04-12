@@ -10,9 +10,13 @@ import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/w.dart';
 import 'package:svr/app/core/models/card_grid_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is_how_work_home_page.dart';
+import 'package:svr/app/modules/home/topics/account_silver_gold.dart';
+import 'package:svr/app/modules/home/topics/how_receive_page.dart';
+import 'package:svr/app/modules/home/topics/know_receive_page.dart';
+import 'package:svr/app/modules/home/topics/what_is_page.dart';
+import 'package:svr/app/modules/query/query_page.dart';
 
-import '../../../core/components/label_double_column.dart';
+import '../../core/components/label_double_column.dart';
 
 class HomePage extends JourneyStatefulWidget {
   const HomePage({Key? key}) : super(key: key, name: 'HomePage');
@@ -29,17 +33,18 @@ class _HomePageState extends State<HomePage> {
       AdController.adConfig.banner.id,
       AdBannerStorage.get(widget.name),
     );
+    AdController.fetchRewardAd();
     super.initState();
   }
 
   List<CardGridModel> get gridItens => [
         CardGridModel(
           title: 'Consulta\nValores a \nReceber',
-          icon: Icons.payment,
-          onTap: () {},
+          icon: Icons.payments_outlined,
+          onTap: () => push(context, const QueryPage()),
         ),
         CardGridModel(
-          title: 'Consulta\nValores a \nReceber',
+          title: 'Consulta\nValores de\nFalecidos',
           icon: Icons.account_balance,
           onTap: () {},
         )
@@ -47,19 +52,24 @@ class _HomePageState extends State<HomePage> {
 
   List<CardSm> get itens => [
         CardSm(
-          title: 'O que é e como funciona o  SVR.',
-          subtitle: 'Entenda como funciona o Sistema de Valores a Receber.',
-          onTap: () => push(context, const WhatIsHowWorkHomePage()),
+          title: 'O que é o Sistema Valores a Receber',
+          subtitle: 'Saiba o que é e como funciona.',
+          onTap: () => push(context, const WhatIsPage()),
         ),
         CardSm(
-          title: 'Como aumentar o nível da minha conta Gov',
+          title: 'O que é conta Prata e Ouro do GOV.BR',
+          subtitle: 'Veja como aumentar o nível da sua conta .GOV',
+          onTap: () => push(context, const AccountSilverGoldPage()),
+        ),
+        CardSm(
+          title: 'Como saber se tenho valores a receber?',
           subtitle: 'Saiba como consultar seu saldo.',
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, const KnowReceivePage()),
         ),
         CardSm(
-          title: 'Resolvendo problemas no SVR',
-          subtitle: 'Saiba como resolver os problemas frequentes do SVR.',
-          onTap: () => push(context, Container()),
+          title: 'Como vou receber meus valores?',
+          subtitle: 'Aprenda quais as opções de recebimento.',
+          onTap: () => push(context, const HowReceivePage()),
         ),
       ];
 
@@ -82,7 +92,7 @@ class _HomePageState extends State<HomePage> {
         AppBannerAd(AdBannerStorage.get(widget.name)),
         const H(32),
         const HeaderHero(
-          image: 'https://ldcapps.com/wp-content/uploads/2023/03/documentos-necessarios.jpg',
+          image: 'https://ldcapps.com/wp-content/uploads/2023/04/homeBanner.png',
         ),
         Row(
           children: [

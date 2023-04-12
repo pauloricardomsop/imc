@@ -234,22 +234,30 @@ class AdController {
   //* QUERY
 
   static Future<void> fetchRewardAd({Function? onComplete}) async {
+    if (!adConfig.activeAll) {
+      onComplete?.call();
+      return;
+    }
     if (adConfig.rewarded.active) {
       _fetchRewardAd(adConfig.rewarded.id, onComplete: onComplete);
     } else if (adConfig.intersticialRewarded.active) {
       _fetchIntersticialRewardAd(adConfig.intersticialRewarded.id, onComplete: onComplete);
     } else {
-      _fetchRewardAd(adConfig.intersticialRewarded.id, onComplete: onComplete);
+      onComplete?.call();
     }
   }
 
   static Future<void> showRewardAd({Function? onComplete}) async {
+    if (!adConfig.activeAll) {
+      onComplete?.call();
+      return;
+    }
     if (adConfig.rewarded.active) {
       _showRewardAd(onComplete: onComplete);
     } else if (adConfig.intersticialRewarded.active) {
       _showRewardedIntersticialAd(onComplete: onComplete);
     } else {
-      _showRewardAd(onComplete: onComplete);
+      onComplete?.call();
     }
   }
 

@@ -12,19 +12,15 @@ import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/label_double_column.dart';
 import 'package:svr/app/core/models/carroussel_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_it_for_svr_page.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_know_receive_page.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_news_page.dart';
-import 'package:svr/app/modules/what_is_how_work/what_is/what_is_svr_page.dart';
 
-class WhatIsHomePage extends JourneyStatefulWidget {
-  const WhatIsHomePage({Key? key}) : super(key: key, name: 'WhatIsHomePage');
+class WhatIsPage extends JourneyStatefulWidget {
+  const WhatIsPage({Key? key}) : super(key: key, name: 'WhatIsPage');
 
   @override
-  State<WhatIsHomePage> createState() => WhatIsPageState();
+  State<WhatIsPage> createState() => WhatIsPageState();
 }
 
-class WhatIsPageState extends State<WhatIsHomePage> {
+class WhatIsPageState extends State<WhatIsPage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -43,22 +39,26 @@ class WhatIsPageState extends State<WhatIsHomePage> {
         CardSm(
           title: 'O que é o SVR?',
           subtitle: 'Aprenda de uma vez por todas o que é o SRV.',
-          onTap: () => push(context, const WhatIsSvrPage()),
+          onTap: () {},
+          // onTap: () => push(context, const WhatIsSvrPage()),
         ),
         CardSm(
           title: 'Para que serve o SVR?',
           subtitle: 'Entenda para que serve o SVR e tire suas dúvidas.',
-          onTap: () => push(context, const WhatIsItForSvrPage()),
+          onTap: () {},
+          // onTap: () => push(context, const WhatIsItForSvrPage()),
         ),
         CardSm(
           title: 'Quais as novidades do SVR para 2023?',
           subtitle: 'Fique por dentro do que hà de novo no SVR.',
-          onTap: () => push(context, const WhatIsNewsPage()),
+          onTap: () {},
+          // onTap: () => push(context, const WhatIsNewsPage()),
         ),
         CardSm(
           title: 'Como sei se tenho valores a receber?',
           subtitle: 'Aprenda como o sistema funciona e saiba se tem valores pra receber.',
-          onTap: () => push(context, WhatIsKnowReceivePage()),
+          onTap: () {},
+          // onTap: () => push(context, WhatIsKnowReceivePage()),
         ),
       ];
 
