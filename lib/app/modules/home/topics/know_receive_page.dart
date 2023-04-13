@@ -97,13 +97,10 @@ class KnowReceivePageState extends State<KnowReceivePage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: AppScaffold(
-        active: AdController.adConfig.banner.active,
-        behavior: ['${widget.name}1', '${widget.name}2'],
-        body: body(context),
-      ),
+    return AppScaffold(
+      active: AdController.adConfig.banner.active,
+      behavior: ['${widget.name}1', '${widget.name}2'],
+      body: body(context),
     );
   }
 
@@ -135,7 +132,7 @@ class KnowReceivePageState extends State<KnowReceivePage> {
                 image: 'https://ldcapps.com/wp-content/uploads/2023/04/Como-saber-se-tenho-valores-a-receber.png',
               ),
               const H(16),
-              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
+              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
               const H(24),
               Text(
                 'Para realizar essa consulta, basta seguir o passo a passo:',
@@ -144,7 +141,7 @@ class KnowReceivePageState extends State<KnowReceivePage> {
               const H(16),
               CheckList(checkList),
               const H(32),
-              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
+              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
               const H(24),
               const LabelDoubleColumn('Perguntas', 'Frequentes'),
             ],

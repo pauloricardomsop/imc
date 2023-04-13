@@ -97,13 +97,10 @@ class HowReceivePageState extends State<HowReceivePage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: AppScaffold(
-        active: AdController.adConfig.banner.active,
-        behavior: ['${widget.name}1', '${widget.name}2'],
-        body: body(context),
-      ),
+    return AppScaffold(
+      active: AdController.adConfig.banner.active,
+      behavior: ['${widget.name}1', '${widget.name}2'],
+      body: body(context),
     );
   }
 
@@ -125,7 +122,7 @@ class HowReceivePageState extends State<HowReceivePage> {
                 image: 'https://ldcapps.com/wp-content/uploads/2023/04/Como-vou-receber-meus-valores.png',
               ),
               const H(24),
-              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
+              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
               const H(24),
               const AppCardPurple(
                   'Atenção: O Banco Central informou que não solicita confirmação de dados posteriormente e que somente a instituição ou banco que aparece na consulta do SVR pode entrar em contato com o cliente.'),
@@ -166,7 +163,7 @@ class HowReceivePageState extends State<HowReceivePage> {
                 style: AppTheme.text.normal.base(const Color(0xFF474747)),
               ),
               const H(24),
-              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
+              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
               const H(24),
               const LabelDoubleColumn('Perguntas', 'Frequentes'),
             ],

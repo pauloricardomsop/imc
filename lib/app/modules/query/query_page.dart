@@ -31,13 +31,10 @@ class _QueryPageState extends State<QueryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: AppScaffold(
-        active: AdController.adConfig.banner.active,
-        behavior: [widget.name],
-        body: body(context),
-      ),
+    return AppScaffold(
+      active: AdController.adConfig.banner.active,
+      behavior: [widget.name],
+      body: body(context),
     );
   }
 
@@ -64,7 +61,7 @@ class _QueryPageState extends State<QueryPage> {
           child: ButtonIcon(
             label: 'Ver passo a passo',
             invert: true,
-            icon: const AdIcon(),
+            widget: const AdIcon(),
             onTap: () => AdController.showRewardAd(
                 onComplete: () => push(context, const QueryDetailedPage())),
           ),

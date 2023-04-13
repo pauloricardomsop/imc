@@ -10,15 +10,17 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:svr/app/app_controller.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/services/foreground_service.dart';
 import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/services/remote_config_service.dart';
 import 'package:svr/app/core/services/route_service.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
+import 'package:svr/app/core/utils/utils_controller.dart';
 
 Future<void> initializeServices() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   await Firebase.initializeApp();
   await RemoteConfigService.init();
@@ -50,7 +52,14 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    MobileAds.instance.initialize();
+    MobileAds.instance.initialize().then((value) {
+      if (AdController.adConfig.appOpen.active) {
+        AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
+      } else {
+        UtilsController().moduleStream.add(Module.home);
+      }
+    });
+    // MobileAds.instance.initialize();
     AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
   }
 

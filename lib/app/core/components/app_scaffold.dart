@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:svr/app/core/ad/ad_banner_storage.dart';
+import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_shimmer.dart';
 import 'package:svr/app/core/components/stream_out.dart';
 
@@ -33,7 +34,10 @@ class AppScaffold extends StatelessWidget {
         top: true,
         bottom: true,
         child: WillPopScope(
-          onWillPop: onWillPop,
+          onWillPop: onWillPop ?? () async {
+            AdController.showInterstitialAd(context);
+            return false;
+          },
           child: Scaffold(
             resizeToAvoidBottomInset: resizeAvoidBottom,
             appBar: appBar,

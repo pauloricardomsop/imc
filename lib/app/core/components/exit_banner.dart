@@ -10,19 +10,24 @@ import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
 class ExitBanner extends JourneyStatefulWidget {
+  final String pageId;
   final String title;
-  final String url;
+  final String? url;
   final String buttonLabel;
   final String buttonSubLabel;
   final String buttonSubLabelBold;
+  final void Function()? onClick;
 
-  const ExitBanner({
+  const ExitBanner(
+    this.pageId,
+    {
     Key? key,
     required this.title,
-    required this.url,
     required this.buttonLabel,
     required this.buttonSubLabel,
     required this.buttonSubLabelBold,
+    this.url,
+    this.onClick,
   }) : super(key: key, name: 'ExitBanner');
 
   @override
@@ -34,64 +39,74 @@ class _ExitBannerState extends State<ExitBanner> {
   void initState() {
     AdController.fetchBanner(
       AdController.adConfig.banner.id,
-      AdBannerStorage.get(widget.name),
+      AdBannerStorage.get(widget.pageId + widget.name + widget.title),
     );
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: AppScaffold(
-        active: AdController.adConfig.banner.active,
-        behavior: [widget.name],
-        body: body(context),
-      ),
+    return AppScaffold(
+      active: AdController.adConfig.banner.active,
+      behavior: [widget.pageId + widget.name + widget.title],
+      body: body(context),
     );
   }
 
   Widget body(_) {
-    return ListView(
+    return Stack(
       children: [
-        const BackHeader(),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppBannerAd(AdBannerStorage.get(widget.name)),
-              const H(32),
-              Text(
-                widget.title,
-                style: AppTheme.text.extra.xl3(const Color(0xFF1B1C1C)),
+        ListView(
+          children: [
+            const BackHeader(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppBannerAd(AdBannerStorage.get(widget.pageId + widget.name + widget.title)),
+                  const H(32),
+                  Text(
+                    widget.title,
+                    style: AppTheme.text.extra.xl3(const Color(0xFF1B1C1C)),
+                  ),
+                  const H(8),
+                  Text(
+                    'Clique no botão abaixo para continuar.',
+                    style: AppTheme.text.normal.base(const Color(0xFF474747)),
+                  ),
+                ],
               ),
-              const H(8),
-              Text(
-                'Clique no botão abaixo para continuar.',
-                style: AppTheme.text.normal.base(const Color(0xFF474747)),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
         InFooterCta(
-          onTap: () => execUrl(widget.url),
+          onTap: () {
+            if (widget.url != null) {
+              execUrl(widget.url!);
+            }
+            if (widget.onClick != null) {
+              widget.onClick!.call();
+            }
+          },
           icon: Icons.open_in_new,
           label: widget.buttonLabel,
           invert: true,
-          subtitle: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(children: [
-              TextSpan(
-                  text: widget.buttonSubLabel,
-                  style: AppTheme.text.normal.sm(const Color(0xFF474747))),
-              TextSpan(
-                  text: widget.buttonSubLabelBold,
-                  style: AppTheme.text.normal
-                      .sm(const Color(0xFF474747))
-                      .copyWith(fontWeight: FontWeight.bold)),
-            ]),
-          ),
+          subtitle: widget.buttonSubLabel.isNotEmpty || widget.buttonSubLabelBold.isNotEmpty
+              ? RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(children: [
+                    TextSpan(
+                        text: widget.buttonSubLabel,
+                        style: AppTheme.text.normal.sm(const Color(0xFF474747))),
+                    TextSpan(
+                        text: widget.buttonSubLabelBold,
+                        style: AppTheme.text.normal
+                            .sm(const Color(0xFF474747))
+                            .copyWith(fontWeight: FontWeight.bold)),
+                  ]),
+                )
+              : null,
         )
       ],
     );

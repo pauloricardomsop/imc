@@ -93,13 +93,10 @@ class WhatIsSvrPageState extends State<WhatIsSvrPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: AppScaffold(
-        active: AdController.adConfig.banner.active,
-        behavior: ['${widget.name}1', '${widget.name}2'],
-        body: body(context),
-      ),
+    return AppScaffold(
+      active: AdController.adConfig.banner.active,
+      behavior: ['${widget.name}1', '${widget.name}2'],
+      body: body(context),
     );
   }
 

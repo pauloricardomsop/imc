@@ -5,6 +5,8 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:svr/app/core/components/splash_old_page.dart';
+import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/services/remote_config_service.dart';
 
 import '../../modules/splash/splah_controller.dart';
@@ -104,7 +106,7 @@ class AdController {
   static Future<void> showInsterticialAdNotification(List<String> ids, String url) async {
     ForegroundService.showForegroundBack = false;
     if (AdController.adConfig.intersticial.active) {
-      push(contextGlobal, const SplashPage());
+      push(contextGlobal, const SplashOldPage());
     }
     AdController.fetchInterstitialAd(ids,
         fromNotification: AdController.adConfig.intersticial.active);
@@ -136,10 +138,10 @@ class AdController {
       request: const AdRequest(),
       adLoadCallback: AppOpenAdLoadCallback(
         onAdLoaded: (ad) {
-          final splashController = SplashController();
-          splashController.splash.value.label = 'App Iniciado';
-          splashController.splash.value.progress = 100;
-          splashController.splash.add(splashController.splash.value);
+          // final splashController = SplashController();
+          // splashController.splash.value.label = 'App Iniciado';
+          // splashController.splash.value.progress = 100;
+          // splashController.splash.add(splashController.splash.value);
           showToastLoaded('OPENEDEDAPP - ${ids.length}');
           ad.fullScreenContentCallback = _openedApFullScreenCallback(fromBackground);
           ad.show();
@@ -185,7 +187,8 @@ class AdController {
       handleInitialMessage(await FirebaseMessaging.instance.getInitialMessage());
       ForegroundService.showForegroundBack = true;
     }
-    SplashController().dispose();
+    // SplashController().dispose();
+    UtilsController().moduleStream.add(Module.home);
   }
 
   static BehaviorSubject<BannerAd?> adBannerStorage = BehaviorSubject<BannerAd?>.seeded(null);

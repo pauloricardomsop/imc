@@ -96,90 +96,92 @@ class QueryDetailedPageState extends State<QueryDetailedPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: AppScaffold(
-        active: AdController.adConfig.banner.active,
-        behavior: ['${widget.name}1', '${widget.name}2'],
-        body: body(context),
-      ),
+    return AppScaffold(
+      active: AdController.adConfig.banner.active,
+      behavior: ['${widget.name}1', '${widget.name}2'],
+      body: body(context),
     );
   }
 
   Widget body(_) {
-    return ListView(
-      padding: EdgeInsets.zero,
+    return Stack(
       children: [
-        const BackHeader(
-            // button: ButtonIconSmall(
-            //   onTap: () {},
-            //   icon: Icons.arrow_forward_ios_outlined,
-            //   label: 'Próximo',
-            //   invert: true,
-            // ),
+        ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const BackHeader(
+                // button: ButtonIconSmall(
+                //   onTap: () {},
+                //   icon: Icons.arrow_forward_ios_outlined,
+                //   label: 'Próximo',
+                //   invert: true,
+                // ),
+                ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppBannerAd(AdBannerStorage.get('${widget.name}1')),
+                  const H(16),
+                  const HeaderHero(
+                    title: 'Passo a passo para consultar e resgatar valores a receber.',
+                    desc:
+                        'O sistema de valores a receber começou a sua segunda fase em 7 de Março de 2023.\n\nNesta segunda fase, é possível consultar novos valores, para você ou para falecidos.\n\nO SVR está com um novo sistema de consulta. Veja o passo a passo de como consultar e dicas importantes.',
+                  ),
+                  const H(24),
+                  const AppVideo('vDmpo4d8Gw4'),
+                  const H(24),
+                  const AppCardPurple(
+                      'Atenção: O vídeo acima é do canal oficial do Banco Central no Youtube. Nosso app não tem nenhum relacionamento formal com o Banco Centra. Somente facilitamos o acesso a informações baseadas nos sites oficiais.'),
+                  const H(16),
+                  Text(
+                    'Como consultar valores a receber?',
+                    style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
+                  ),
+                  const H(8),
+                  Text(
+                    'Para consultar valores a receber, tanto para você como para falecidos, basta acessar o site: valoresareceber.bcb.gov.br e o CPF e data de nascimento.\n\nNo caso de empresa, informar o CNPJ e a data de abertura da empresa.',
+                    style: AppTheme.text.normal.base(const Color(0xFF474747)),
+                  ),
+                  const H(16),
+                  const AppImage(
+                      url:
+                          'https://ldcapps.com/wp-content/uploads/2023/04/Como-acessar-a-consulta-do-SVR.png',
+                      height: 600),
+                  const H(16),
+                  AppBannerAd(AdBannerStorage.get('${widget.name}2')),
+                  const H(16),
+                  Text(
+                    '6 Novidades importantes sobre o SVR.',
+                    style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
+                  ),
+                  const H(16),
+                  CheckList(_checkList),
+                  const H(160),
+                ],
+              ),
             ),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
-              const H(16),
-              const HeaderHero(
-                title: 'Passo a passo para consultar e resgatar valores a receber.',
-                desc:
-                    'O sistema de valores a receber começou a sua segunda fase em 7 de Março de 2023.\n\nNesta segunda fase, é possível consultar novos valores, para você ou para falecidos.\n\nO SVR está com um novo sistema de consulta. Veja o passo a passo de como consultar e dicas importantes.',
-              ),
-              const H(24),
-              const AppVideo('vDmpo4d8Gw4'),
-              const H(24),
-              const AppCardPurple(
-                  'Atenção: O vídeo acima é do canal oficial do Banco Central no Youtube. Nosso app não tem nenhum relacionamento formal com o Banco Centra. Somente facilitamos o acesso a informações baseadas nos sites oficiais.'),
-              const H(16),
-              Text(
-                'Como consultar valores a receber?',
-                style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
-              ),
-              const H(8),
-              Text(
-                'Para consultar valores a receber, tanto para você como para falecidos, basta acessar o site: valoresareceber.bcb.gov.br e o CPF e data de nascimento.\n\nNo caso de empresa, informar o CNPJ e a data de abertura da empresa.',
-                style: AppTheme.text.normal.base(const Color(0xFF474747)),
-              ),
-              const H(16),
-              const AppImage(
-                  url:
-                      'https://ldcapps.com/wp-content/uploads/2023/04/Como-acessar-a-consulta-do-SVR.png',
-                  height: 600),
-              const H(16),
-              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
-              const H(16),
-              Text(
-                '6 Novidades importantes sobre o SVR.',
-                style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
-              ),
-              const H(16),
-              CheckList(_checkList),
-            ],
-          ),
+          ],
         ),
         InFooterCta(
           onTap: () => push(
               context,
-              const ExitBanner(
+               ExitBanner(
+            widget.name,
                 title: 'Você será encaminhado para um site oficial do governo.',
-                url: 'https://valoresareceber.bcb.com.br',
-                buttonLabel: 'Consultar Valores a Receber',
+                url: 'https://valoresareceber.bcb.gov.br/publico',
+                buttonLabel: 'Ir para site externo',
                 buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
                 buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
               )),
-          icon: Icons.open_in_new,
           label: 'Consultar Valores a Receber',
           invert: true,
           subtitle: RichText(
             textAlign: TextAlign.center,
             text: TextSpan(children: [
               TextSpan(
-                  text: 'Você será\nredirecionado para\no site oficial do\nBanco Central:  ',
+                  text: 'Você será redirecionado para o site oficial do Banco Central:  ',
                   style: AppTheme.text.normal.sm(const Color(0xFF474747))),
               TextSpan(
                   text: 'valoresareceber.bcb.gov.br',

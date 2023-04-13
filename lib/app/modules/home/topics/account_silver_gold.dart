@@ -8,6 +8,7 @@ import 'package:svr/app/core/components/app_image.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/check_list.dart';
+import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/in_footer_cta.dart';
@@ -35,6 +36,10 @@ class AccountSilverGoldPageState extends State<AccountSilverGoldPage> {
     AdController.fetchBanner(
       AdController.adConfig.banner.id,
       AdBannerStorage.get('${widget.name}2'),
+    );
+    AdController.fetchBanner(
+      AdController.adConfig.banner.id,
+      AdBannerStorage.get('${widget.name}3'),
     );
     super.initState();
   }
@@ -99,130 +104,147 @@ class AccountSilverGoldPageState extends State<AccountSilverGoldPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: AppScaffold(
-        active: AdController.adConfig.banner.active,
-        behavior: ['${widget.name}1', '${widget.name}2'],
-        body: body(context),
-      ),
+    return AppScaffold(
+      active: AdController.adConfig.banner.active,
+      behavior: ['${widget.name}1', '${widget.name}2', '${widget.name}3'],
+      body: body(context),
     );
   }
 
   Widget body(_) {
-    return ListView(
-      padding: EdgeInsets.zero,
+    return Stack(
       children: [
-        const BackHeader(),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const H(16),
-              const HeaderHero(
-                title: 'Conta gov.br: como aumentar o nível para "prata" ou "ouro"',
-                desc:
-                    'Para resgatar seus valores, é preciso ter uma conta Gov.br, com nível de segurança prata ou ouro. \n\nA conta gov.br dá acesso aos serviços digitais do governo como, por exemplo, INSS, carteira de trabalho digital, Receita Federal, eSocial, entre outros.',
-                image:
-                    'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro.png',
-              ),
-              const H(24),
-              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
-              const H(24),
-              const AppCardPurple(
-                  'Estas contas são divididas em "ouro", "prata" e "bronze". O padrão ao entrar no serviço é ter o acesso "bronze". O login nível "prata" ou "ouro" exige maior nível de segurança, como reconhecimento facial, permitindo o acesso a bancos credenciados e a serviços mais sensíveis - como o resgate de valores esquecidos nos bancos.'),
-              const H(16),
-              Text(
-                'Passo a passo',
-                style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
-              ),
-              const H(8),
-              Text(
-                'A criação da conta gov.br é gratuita. Quem ainda não possui, pode fazer o cadastro pelos seguintes caminhos:',
-                style: AppTheme.text.normal.base(const Color(0xFF474747)),
-              ),
-              const H(16),
-              CheckList([
-                CheckListModel(
-                    icon: Icons.done,
-                    label: 'Acesse o site sso.acesso.gov.br ou baixe o app gov.br',
+        ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const BackHeader(),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const H(16),
+                  const HeaderHero(
+                    title: 'Conta gov.br: como aumentar o nível para "prata" ou "ouro"',
+                    desc:
+                        'Para resgatar seus valores, é preciso ter uma conta Gov.br, com nível de segurança prata ou ouro. \n\nA conta gov.br dá acesso aos serviços digitais do governo como, por exemplo, INSS, carteira de trabalho digital, Receita Federal, eSocial, entre outros.',
                     image:
-                        'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro-2.png'),
-              ]),
-              const AppCardPurple(
-                  'A conta gov.br tem três níveis de segurança e acesso: bronze, prata e ouro.'),
-              const H(16),
-              Text(
-                'Ao ser criada via formulário online do INSS ou da Receita Federal, por exemplo, a conta gov.br costuma iniciar no nível bronze, que dá acesso apenas parcial aos serviços digitais do governo e cujo grau de segurança é considerado apenas básico.\n\nAo fazer o login no gov.br, o cidadão já é informado do nível da conta. Para aumentar o nível, basta seguir as instruções ou entrar em "Privacidade/Selos de Confiabilidade".',
-                style: AppTheme.text.normal.base(const Color(0xFF474747)),
+                        'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro.png',
+                  ),
+                  const H(24),
+                  AppBannerAd(AdBannerStorage.get('${widget.name}1')),
+                  const H(24),
+                  const AppCardPurple(
+                      'Estas contas são divididas em "ouro", "prata" e "bronze". O padrão ao entrar no serviço é ter o acesso "bronze". O login nível "prata" ou "ouro" exige maior nível de segurança, como reconhecimento facial, permitindo o acesso a bancos credenciados e a serviços mais sensíveis - como o resgate de valores esquecidos nos bancos.'),
+                  const H(16),
+                  Text(
+                    'Passo a passo',
+                    style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
+                  ),
+                  const H(8),
+                  Text(
+                    'A criação da conta gov.br é gratuita. Quem ainda não possui, pode fazer o cadastro pelos seguintes caminhos:',
+                    style: AppTheme.text.normal.base(const Color(0xFF474747)),
+                  ),
+                  const H(16),
+                  CheckList([
+                    CheckListModel(
+                        icon: Icons.done,
+                        label: 'Acesse o site sso.acesso.gov.br ou baixe o app gov.br',
+                        image: const AppImage(
+                          url:
+                              'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro-2.png',
+                          height: 500,
+                        )),
+                  ]),
+                  const AppCardPurple(
+                      'A conta gov.br tem três níveis de segurança e acesso: bronze, prata e ouro.'),
+                  const H(16),
+                  Text(
+                    'Ao ser criada via formulário online do INSS ou da Receita Federal, por exemplo, a conta gov.br costuma iniciar no nível bronze, que dá acesso apenas parcial aos serviços digitais do governo e cujo grau de segurança é considerado apenas básico.\n\nAo fazer o login no gov.br, o cidadão já é informado do nível da conta. Para aumentar o nível, basta seguir as instruções ou entrar em "Privacidade/Selos de Confiabilidade".',
+                    style: AppTheme.text.normal.base(const Color(0xFF474747)),
+                  ),
+                  const H(16),
+                  const AppImage(
+                    url:
+                        'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro-3.png',
+                    height: 500,
+                  ),
+                  const H(16),
+                  Text(
+                    'Como obter nível prata?',
+                    style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
+                  ),
+                  const H(8),
+                  Text(
+                    'O nível prata é obtido por meio de:',
+                    style: AppTheme.text.normal.base(const Color(0xFF474747)),
+                  ),
+                  const H(16),
+                  CheckList([
+                    CheckListModel(
+                        icon: Icons.done,
+                        label:
+                            'Validação facial pelo aplicativo gov.br para conferência da sua foto nas bases da Carteira de Habilitação (CNH)'),
+                    CheckListModel(
+                        icon: Icons.done,
+                        label:
+                            'Validação dos dados pessoais via internet banking de um banco credenciado'),
+                    CheckListModel(
+                        icon: Icons.done,
+                        label:
+                            'Validação dos dados com usuário e senha do SIGEPE, se o cidadão for servidor público federal')
+                  ]),
+                  const H(8),
+                  AppBannerAd(AdBannerStorage.get('${widget.name}2')),
+                  const H(16),
+                  Text(
+                    'Como obter nível ouro?',
+                    style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
+                  ),
+                  const H(8),
+                  Text(
+                    'O nível máximo de segurança pode ser através de:',
+                    style: AppTheme.text.normal.base(const Color(0xFF474747)),
+                  ),
+                  const H(16),
+                  CheckList([
+                    CheckListModel(
+                        icon: Icons.done,
+                        label:
+                            'Validação facial pelo aplicativo gov.br para conferência da sua foto nas bases da Justiça Eleitoral'),
+                    CheckListModel(
+                        icon: Icons.done,
+                        label:
+                            'Validação dos seus dados com Certificado Digital compatível com ICP-Brasil',
+                        image: const AppImage(
+                          url:
+                              'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro-4.png',
+                          height: 500,
+                        )),
+                  ]),
+                  const H(24),
+                  AppBannerAd(AdBannerStorage.get('${widget.name}3')),
+                  const H(24),
+                  const LabelDoubleColumn('Perguntas', 'Frequentes'),
+                ],
               ),
-              const H(16),
-              const AppImage(
-                  url:
-                      'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro-3.png'),
-              const H(16),
-              Text(
-                'Como obter nível prata?',
-                style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
-              ),
-              const H(8),
-              Text(
-                'O nível prata é obtido por meio de:',
-                style: AppTheme.text.normal.base(const Color(0xFF474747)),
-              ),
-              const H(16),
-              CheckList([
-                CheckListModel(
-                    icon: Icons.done,
-                    label:
-                        'Validação facial pelo aplicativo gov.br para conferência da sua foto nas bases da Carteira de Habilitação (CNH)'),
-                CheckListModel(
-                    icon: Icons.done,
-                    label:
-                        'Validação dos dados pessoais via internet banking de um banco credenciado'),
-                CheckListModel(
-                    icon: Icons.done,
-                    label:
-                        'Validação dos dados com usuário e senha do SIGEPE, se o cidadão for servidor público federal')
-              ]),
-              const H(8),
-              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
-              const H(16),
-              Text(
-                'Como obter nível ouro?',
-                style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
-              ),
-              const H(8),
-              Text(
-                'O nível máximo de segurança pode ser através de:',
-                style: AppTheme.text.normal.base(const Color(0xFF474747)),
-              ),
-              const H(16),
-              CheckList([
-                CheckListModel(
-                    icon: Icons.done,
-                    label:
-                        'Validação facial pelo aplicativo gov.br para conferência da sua foto nas bases da Justiça Eleitoral'),
-                CheckListModel(
-                    icon: Icons.done,
-                    label:
-                        'Validação dos seus dados com Certificado Digital compatível com ICP-Brasil',
-                    image:
-                        'https://ldcapps.com/wp-content/uploads/2023/04/Conta-gov-como-aumentar-o-nivel-para-prata-ou-ouro-4.png'),
-              ]),
-              const H(24),
-              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
-              const H(24),
-              const LabelDoubleColumn('Perguntas', 'Frequentes'),
-            ],
-          ),
+            ),
+            AppCarroussel(_questions),
+            const H(160),
+          ],
         ),
-        AppCarroussel(_questions),
-        const H(16),
         InFooterCta(
-          onTap: () => execUrl(''),
-          icon: Icons.open_in_new,
+          onTap: () => push(
+              context,
+              ExitBanner(
+                widget.name,
+                title: 'Você será encaminhado para um site oficial do governo.',
+                url: 'https://valoresareceber.bcb.gov.br/publico',
+                buttonLabel: 'Ir para site externo',
+                buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
+                buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
+              )),
           label: 'Acessar GOV.BR',
           invert: true,
           subtitle: RichText(

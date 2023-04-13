@@ -39,11 +39,14 @@ class CheckList extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      width: double.maxFinite,
-                      height: 1,
-                      color: const Color(0xFFCCCCCC),
-                    ),
+                    if (e.image != null) e.image!,
+                    if (e.image != null) const H(12),
+                    if (e != itens.last)
+                      Container(
+                        width: double.maxFinite,
+                        height: 1,
+                        color: const Color(0xFFCCCCCC),
+                      ),
                   ],
                 ))
             .toList(),

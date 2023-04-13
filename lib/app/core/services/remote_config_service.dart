@@ -9,7 +9,7 @@ import 'package:svr/app/modules/splash/splash_model.dart';
 class RemoteConfigService {
   static FirebaseRemoteConfig get instance => FirebaseRemoteConfig.instance;
 
-  static const bool useDefaultValues = true;
+  static const bool useDefaultValues = false;
 
   static Future<void> init() async {
     await instance.setConfigSettings(_configSettings);

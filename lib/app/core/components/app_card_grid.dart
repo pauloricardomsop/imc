@@ -13,7 +13,7 @@ class AppCardGrid extends StatelessWidget {
     return InkWell(
       onTap: model.onTap,
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+        padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: const Color(0xFFE3E2E2)),
@@ -29,7 +29,7 @@ class AppCardGrid extends StatelessWidget {
             Text(
               model.title,
               textAlign: TextAlign.center,
-              style: AppTheme.text.semi.lg(const Color(0xFF1B1C1C)).copyWith(fontSize: 24),
+              style: AppTheme.text.semi.lg(const Color(0xFF1B1C1C)).copyWith(fontSize: 16),
             ),
           ],
         ),
