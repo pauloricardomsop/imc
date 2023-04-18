@@ -192,6 +192,7 @@ class AdController {
   }
 
   static BehaviorSubject<BannerAd?> adBannerStorage = BehaviorSubject<BannerAd?>.seeded(null);
+  static BehaviorSubject<BannerAd?> adBannerAccordeonStorage = BehaviorSubject<BannerAd?>.seeded(null);
 
   //* BANNER
 
@@ -222,6 +223,45 @@ class AdController {
               if (ids.isNotEmpty) ids.removeAt(0);
               if (ids.isNotEmpty) {
                 await fetchBanner(ids, behavior, fromStorage: fromStorage);
+              } else {
+                behavior.sink.add(ad as BannerAd);
+              }
+            } else {
+              behavior.sink.add(ad as BannerAd);
+            }
+          },
+        ),
+      ).load();
+    }
+  }
+
+  static Future<void> fetchBannerAccordeon(List<String> ids, BehaviorSubject<BannerAd?> behavior,
+      {bool fromStorage = false}) async {
+    if (AdController.adConfig.bannerAccordeon.active) {
+      if (!fromStorage && adBannerAccordeonStorage.value != null) {
+        behavior.sink.add(adBannerAccordeonStorage.value);
+        adBannerAccordeonStorage.add(null);
+        fetchBanner(ids, adBannerAccordeonStorage, fromStorage: true);
+        return;
+      }
+      showToast('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+      await BannerAd(
+        adUnitId: ids.first,
+        request: const AdRequest(),
+        size: AdSize.banner,
+        listener: BannerAdListener(
+          onAdLoaded: (ad) {
+            behavior.sink.add(ad as BannerAd);
+            if (!fromStorage && adBannerAccordeonStorage.value == null) {
+              fetchBanner(ids, adBannerAccordeonStorage, fromStorage: true);
+            }
+            showToastLoaded('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+          },
+          onAdFailedToLoad: (ad, error) async {
+            if (AdConfig.checkWaterFallErrorCode(error.code)) {
+              if (ids.isNotEmpty) ids.removeAt(0);
+              if (ids.isNotEmpty) {
+                await fetchBannerAccordeon(ids, behavior, fromStorage: fromStorage);
               } else {
                 behavior.sink.add(ad as BannerAd);
               }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:svr/app/core/components/app_shimmer.dart';
 
 class BannerTransparent extends StatelessWidget {
   const BannerTransparent({Key? key}) : super(key: key);
@@ -10,6 +11,23 @@ class BannerTransparent extends StatelessWidget {
       height: 250,
       width: 300,
       color: Colors.grey,
+    );
+  }
+}
+
+class BannerSmallTransparent extends StatelessWidget {
+  const BannerSmallTransparent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppShimmer(
+      child: Center(
+        child: Container(
+          height: 50,
+          width: 320,
+          color: Colors.grey,
+        ),
+      ),
     );
   }
 }

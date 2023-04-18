@@ -71,23 +71,23 @@ class QueryDetailedPageState extends State<QueryDetailedPage> {
     ),
   ];
 
-  final List<CarrousselModel> _questions = [
-    CarrousselModel(
+  final List<AccordeonModel> _questions = [
+    AccordeonModel(
       title: 'Qual o prazo para receber o dinheiro esquecido?',
       desc:
           'O prazo para receber depende da forma de solicitação. Se for solicitado no sistema com chave PIX o valor será recebido em até 12 dias úteis. Se for solicitado diretamente em contato com a instituição, ou pelo sistema sem PIX, o prazo pode passar de 12 dias úteis.',
     ),
-    CarrousselModel(
+    AccordeonModel(
       title: 'Quais são as formas de receber o dinheiro esquecido?',
       desc:
           'O dinheiro esquecido pode ser solicitado pelo SRV ou direto com a instituição financeira ou banco, e pode ser enviado ao cliente por PIX, TED ou DOC.',
     ),
-    CarrousselModel(
+    AccordeonModel(
       title: 'Como saber se tenho valores a receber do Banco Central?',
       desc:
           'Basta entrar no site Valores a Receber, do Banco Central, inserir o número do seu CPF, data de nascimento e conferir se tem direito.',
     ),
-    CarrousselModel(
+    AccordeonModel(
       title: 'Quais as recomendações para evitar golpes no SVR?',
       desc:
           'O Banco Central recomenda que as pessoas desconfiem de toda informação recebida por WhatsApp e não acessem nenhum link nas mensagens, pois podem roubar senhas, instalar vírus e programas maliciosos. A única fonte oficial de informações sobre o SVR é o site oficial do Banco Central.',
@@ -167,8 +167,8 @@ class QueryDetailedPageState extends State<QueryDetailedPage> {
         InFooterCta(
           onTap: () => push(
               context,
-               ExitBanner(
-            widget.name,
+              ExitBanner(
+                widget.name,
                 title: 'Você será encaminhado para um site oficial do governo.',
                 url: 'https://valoresareceber.bcb.gov.br/publico',
                 buttonLabel: 'Ir para site externo',

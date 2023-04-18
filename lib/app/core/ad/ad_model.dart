@@ -6,6 +6,8 @@ class AdConfig {
   late bool activeAll;
   late AdObjConfig appOpen;
   late AdObjConfig banner;
+  late AdObjConfig bannerSmart;
+  late AdObjConfig bannerAccordeon;
   late AdObjConfig intersticial;
   late AdObjConfig rewarded;
   late AdObjConfig intersticialRewarded;
@@ -19,6 +21,8 @@ class AdConfig {
     activeAll = json['activeAll'];
     appOpen = json['appOpen'] = AdObjConfig.fromJson(this, json['appOpen']);
     banner = json['banner'] = AdObjConfig.fromJson(this, json['banner']);
+    bannerSmart = json['bannerSmart'] = AdObjConfig.fromJson(this, json['bannerSmart']);
+    bannerAccordeon = json['bannerAccordeon'] = AdObjConfig.fromJson(this, json['bannerAccordeon']);
     intersticial = AdObjConfig.fromJson(this, json['intersticial']);
     rewarded = AdObjConfig.fromJson(this, json['rewarded']);
     intersticialRewarded = AdObjConfig.fromJson(this, json['intersticialRewarded']);
@@ -38,7 +42,7 @@ class AdConfig {
   static final Map<String, dynamic> configDefault = {
     "activeAll": true,
     "appOpen": {
-      "active": true,
+      "active": false,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5179306302",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5179306302"},
@@ -46,15 +50,31 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/4869133355"}
     },
     "banner": {
-      "active": true,
+      "active": false,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/1971523182",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/1971523182"},
       "medium": {"active": true, "id": "ca-app-pub-8419654969814276/3727457981"},
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/3284604853"}
     },
-    "intersticial": {
+    "bannerSmart": {
+      "active": false,
+      "waterfall": true,
+      "default": "ca-app-pub-8419654969814276/3182563853",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/3182563853"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/5514596619"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/7121808864"}
+    },
+    "bannerAccordeon": {
       "active": true,
+      "waterfall": true,
+      "default": "ca-app-pub-8419654969814276/5131453237",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/5131453237"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/5126200911"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/5788507908"}
+    },
+    "intersticial": {
+      "active": false,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/7512728125",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/7512728125"},
@@ -62,7 +82,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/8405069592"}
     },
     "rewarded": {
-      "active": true,
+      "active": false,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5252292645",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5252292645"},
@@ -70,12 +90,20 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/9256769221"}
     },
     "intersticialRewarded": {
-      "active": true,
+      "active": false,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/8594424243",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/8594424243"},
       "medium": {"active": true, "id": "ca-app-pub-8419654969814276/9943164935"},
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/9907505917"}
+    },
+    "intersticialRewardedTransition": {
+      "active": false,
+      "waterfall": true,
+      "default": "ca-app-pub-8419654969814276/7949188265",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/7949188265"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/3601328263"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/2691609263"}
     }
   };
 }
@@ -99,7 +127,9 @@ class AdObjConfig {
     high = AdFallConfig.fromJson(json['high']);
   }
 
-  bool get active => activeAll && activeObj && !RemoteConfigService.useDefaultValues;
+  //TODO:
+  // bool get active => activeAll && activeObj && !RemoteConfigService.useDefaultValues;
+  bool get active => activeAll && activeObj && RemoteConfigService.useDefaultValues;
 
   List<String> get id {
     if (waterfall) {

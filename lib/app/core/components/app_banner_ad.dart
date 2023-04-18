@@ -51,3 +51,43 @@ class _AppBannerAdState extends State<AppBannerAd> {
         : const SizedBox();
   }
 }
+
+class AppSmallBannerAd extends StatefulWidget {
+  final BehaviorSubject<BannerAd?> behavior;
+
+  const AppSmallBannerAd(
+    this.behavior, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<AppSmallBannerAd> createState() => _AppSmallBannerAdState();
+}
+
+class _AppSmallBannerAdState extends State<AppSmallBannerAd> {
+  @override
+  Widget build(BuildContext context) {
+    if (RemoteConfigService.showBannerAccordeon) return const BannerSmallTransparent();
+    return AdController.adConfig.bannerAccordeon.active
+        ? Center(
+          child: StreamBuilder<BannerAd?>(
+            stream: widget.behavior.stream,
+            builder: (_, snapshot) {
+              if (snapshot.connectionState == ConnectionState.active) {
+                if (snapshot.data != null) {
+                  return SizedBox(
+                      width: snapshot.data!.size.width.toDouble(),
+                      height: snapshot.data!.size.height.toDouble(),
+                      child: AdWidget(ad: snapshot.data!));
+                } else {
+                  return const BannerSmallTransparent();
+                }
+              } else {
+                return const AppShimmer(child: BannerSmallTransparent());
+              }
+            },
+          ),
+        )
+        : const SizedBox();
+  }
+}
