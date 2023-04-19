@@ -49,7 +49,7 @@ class WhatIsNewsPageState extends State<WhatIsNewsPage> {
     return AppScaffold(
       active: AdController.adConfig.banner.active,
       behavior: ['${widget.name}1', '${widget.name}2'],
-      body: body(context),
+      child: body(context),
     );
   }
 

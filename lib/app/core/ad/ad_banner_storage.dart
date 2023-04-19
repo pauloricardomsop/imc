@@ -18,4 +18,7 @@ class AdBannerStorage {
       return streamsByType.last.stream;
     }
   }
+
+  static List<BehaviorSubject<BannerAd?>> getList(List<String>? behavior) =>
+      behavior!.map((e) => AdBannerStorage.get(e)).toList();
 }

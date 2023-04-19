@@ -19,9 +19,9 @@ class AdConfig {
 
   AdConfig.fromJson(Map<String, dynamic> json) {
     activeAll = json['activeAll'];
-    appOpen = json['appOpen'] = AdObjConfig.fromJson(this, json['appOpen']);
-    banner = json['banner'] = AdObjConfig.fromJson(this, json['banner']);
-    bannerSmart = json['bannerSmart'] = AdObjConfig.fromJson(this, json['bannerSmart']);
+    appOpen = AdObjConfig.fromJson(this, json['appOpen']);
+    banner = AdObjConfig.fromJson(this, json['banner']);
+    bannerSmart = AdObjConfig.fromJson(this, json['bannerSmart']);
     bannerAccordeon = json['bannerAccordeon'] = AdObjConfig.fromJson(this, json['bannerAccordeon']);
     intersticial = AdObjConfig.fromJson(this, json['intersticial']);
     rewarded = AdObjConfig.fromJson(this, json['rewarded']);
@@ -50,7 +50,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/4869133355"}
     },
     "banner": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/1971523182",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/1971523182"},
@@ -58,7 +58,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/3284604853"}
     },
     "bannerSmart": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/3182563853",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/3182563853"},
@@ -66,7 +66,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/7121808864"}
     },
     "bannerAccordeon": {
-      "active": true,
+      "active": false,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5131453237",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5131453237"},
@@ -127,9 +127,8 @@ class AdObjConfig {
     high = AdFallConfig.fromJson(json['high']);
   }
 
-  //TODO:
+  bool get active => activeAll && activeObj;
   // bool get active => activeAll && activeObj && !RemoteConfigService.useDefaultValues;
-  bool get active => activeAll && activeObj && RemoteConfigService.useDefaultValues;
 
   List<String> get id {
     if (waterfall) {

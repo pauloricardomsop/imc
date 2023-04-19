@@ -9,8 +9,6 @@ import 'package:svr/app/core/components/splash_old_page.dart';
 import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/services/remote_config_service.dart';
 
-import '../../modules/splash/splah_controller.dart';
-import '../../modules/splash/ui/splash_page.dart';
 import '../models/app_stream.dart';
 import '../services/foreground_service.dart';
 import '../services/notification_service.dart';
@@ -192,7 +190,9 @@ class AdController {
   }
 
   static BehaviorSubject<BannerAd?> adBannerStorage = BehaviorSubject<BannerAd?>.seeded(null);
-  static BehaviorSubject<BannerAd?> adBannerAccordeonStorage = BehaviorSubject<BannerAd?>.seeded(null);
+  static BehaviorSubject<BannerAd?> adBannerAccordeonStorage =
+      BehaviorSubject<BannerAd?>.seeded(null);
+  static BehaviorSubject<BannerAd?> adBannerSmartStorage = BehaviorSubject<BannerAd?>.seeded(null);
 
   //* BANNER
 
@@ -241,7 +241,7 @@ class AdController {
       if (!fromStorage && adBannerAccordeonStorage.value != null) {
         behavior.sink.add(adBannerAccordeonStorage.value);
         adBannerAccordeonStorage.add(null);
-        fetchBanner(ids, adBannerAccordeonStorage, fromStorage: true);
+        fetchBannerAccordeon(ids, adBannerAccordeonStorage, fromStorage: true);
         return;
       }
       showToast('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
@@ -253,7 +253,7 @@ class AdController {
           onAdLoaded: (ad) {
             behavior.sink.add(ad as BannerAd);
             if (!fromStorage && adBannerAccordeonStorage.value == null) {
-              fetchBanner(ids, adBannerAccordeonStorage, fromStorage: true);
+              fetchBannerAccordeon(ids, adBannerAccordeonStorage, fromStorage: true);
             }
             showToastLoaded('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
           },
@@ -262,6 +262,50 @@ class AdController {
               if (ids.isNotEmpty) ids.removeAt(0);
               if (ids.isNotEmpty) {
                 await fetchBannerAccordeon(ids, behavior, fromStorage: fromStorage);
+              } else {
+                behavior.sink.add(ad as BannerAd);
+              }
+            } else {
+              behavior.sink.add(ad as BannerAd);
+            }
+          },
+        ),
+      ).load();
+    }
+  }
+
+  static Future<void> fetchBannerSmart(List<String> ids, BehaviorSubject<BannerAd?> behavior,
+      {bool fromStorage = false}) async {
+    final AnchoredAdaptiveBannerAdSize? size =
+        await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
+            MediaQuery.of(contextGlobal).size.width.truncate());
+
+    if (AdController.adConfig.bannerSmart.active && size != null) {
+      if (!fromStorage && adBannerSmartStorage.value != null) {
+        behavior.sink.add(adBannerSmartStorage.value);
+        adBannerSmartStorage.add(null);
+        fetchBannerSmart(ids, adBannerSmartStorage, fromStorage: true);
+        return;
+      }
+
+      showToast('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+      await BannerAd(
+        adUnitId: ids.first,
+        request: const AdRequest(),
+        size: size,
+        listener: BannerAdListener(
+          onAdLoaded: (ad) {
+            behavior.sink.add(ad as BannerAd);
+            if (!fromStorage && adBannerSmartStorage.value == null) {
+              fetchBannerSmart(ids, adBannerSmartStorage, fromStorage: true);
+            }
+            showToastLoaded('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+          },
+          onAdFailedToLoad: (ad, error) async {
+            if (AdConfig.checkWaterFallErrorCode(error.code)) {
+              if (ids.isNotEmpty) ids.removeAt(0);
+              if (ids.isNotEmpty) {
+                await fetchBannerSmart(ids, behavior, fromStorage: fromStorage);
               } else {
                 behavior.sink.add(ad as BannerAd);
               }

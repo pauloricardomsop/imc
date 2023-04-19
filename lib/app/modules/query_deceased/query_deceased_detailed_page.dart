@@ -71,10 +71,10 @@ class QueryDeceasedDetailedPageState extends State<QueryDeceasedDetailedPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      active: AdController.adConfig.banner.active,
-      behavior: [widget.name],
-      body: body(context),
-    );
+        active: AdController.adConfig.banner.active,
+        behavior: [widget.name],
+        bottom: _inFooterCta(),
+        child: body(context));
   }
 
   Widget body(_) {
@@ -121,34 +121,37 @@ class QueryDeceasedDetailedPageState extends State<QueryDeceasedDetailedPage> {
             const H(160),
           ],
         ),
-        InFooterCta(
-          onTap: () => push(
-              context,
-              ExitBanner(
-                widget.name,
-                title: 'Você será encaminhado para um site oficial do governo.',
-                url: 'https://valoresareceber.bcb.gov.br/publico',
-                buttonLabel: 'Ir para site externo',
-                buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
-                buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
-              )),
-          label: 'Consultar Valores a Receber',
-          invert: true,
-          subtitle: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(children: [
-              TextSpan(
-                  text: 'Você será redirecionado para o site oficial do Banco Central:  ',
-                  style: AppTheme.text.normal.sm(const Color(0xFF474747))),
-              TextSpan(
-                  text: 'valoresareceber.bcb.gov.br',
-                  style: AppTheme.text.normal
-                      .sm(const Color(0xFF474747))
-                      .copyWith(fontWeight: FontWeight.bold)),
-            ]),
-          ),
-        )
       ],
+    );
+  }
+
+  InFooterCta _inFooterCta() {
+    return InFooterCta(
+      onTap: () => push(
+          context,
+          ExitBanner(
+            widget.name,
+            title: 'Você será encaminhado para um site oficial do governo.',
+            url: 'https://valoresareceber.bcb.gov.br/publico',
+            buttonLabel: 'Ir para site externo',
+            buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
+            buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
+          )),
+      label: 'Consultar Valores a Receber',
+      invert: true,
+      subtitle: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(children: [
+          TextSpan(
+              text: 'Você será redirecionado para o site oficial do Banco Central:  ',
+              style: AppTheme.text.normal.sm(const Color(0xFF474747))),
+          TextSpan(
+              text: 'valoresareceber.bcb.gov.br',
+              style: AppTheme.text.normal
+                  .sm(const Color(0xFF474747))
+                  .copyWith(fontWeight: FontWeight.bold)),
+        ]),
+      ),
     );
   }
 }

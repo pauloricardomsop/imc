@@ -31,3 +31,18 @@ class BannerSmallTransparent extends StatelessWidget {
     );
   }
 }
+
+class BannerSmartTransparent extends StatelessWidget {
+  const BannerSmartTransparent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppShimmer(
+      child: Container(
+        height: 100,
+        width: double.maxFinite,
+        color: Colors.grey,
+      ),
+    );
+  }
+}

@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> {
           )),
       active: AdController.adConfig.banner.active,
       behavior: [widget.name],
-      body: body(context),
+      child: body(context),
     );
   }
 

@@ -107,7 +107,8 @@ class AccountSilverGoldPageState extends State<AccountSilverGoldPage> {
     return AppScaffold(
       active: AdController.adConfig.banner.active,
       behavior: ['${widget.name}1', '${widget.name}2', '${widget.name}3'],
-      body: body(context),
+      bottom: _inFooterCta(),
+      child: body(context),
     );
   }
 
@@ -234,34 +235,37 @@ class AccountSilverGoldPageState extends State<AccountSilverGoldPage> {
             const H(160),
           ],
         ),
-        InFooterCta(
-          onTap: () => push(
-              context,
-              ExitBanner(
-                widget.name,
-                title: 'Você será encaminhado para um site oficial do governo.',
-                url: 'https://valoresareceber.bcb.gov.br/publico',
-                buttonLabel: 'Ir para site externo',
-                buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
-                buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
-              )),
-          label: 'Acessar GOV.BR',
-          invert: true,
-          subtitle: RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(children: [
-              TextSpan(
-                  text: 'Você será redirecionado para o site oficial do GOV.BR:  ',
-                  style: AppTheme.text.normal.sm(const Color(0xFF474747))),
-              TextSpan(
-                  text: 'sso.acesso.gov.br',
-                  style: AppTheme.text.normal
-                      .sm(const Color(0xFF474747))
-                      .copyWith(fontWeight: FontWeight.bold)),
-            ]),
-          ),
-        )
       ],
+    );
+  }
+
+  InFooterCta _inFooterCta() {
+    return InFooterCta(
+      onTap: () => push(
+          context,
+          ExitBanner(
+            widget.name,
+            title: 'Você será encaminhado para um site oficial do governo.',
+            url: 'https://valoresareceber.bcb.gov.br/publico',
+            buttonLabel: 'Ir para site externo',
+            buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
+            buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
+          )),
+      label: 'Acessar GOV.BR',
+      invert: true,
+      subtitle: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(children: [
+          TextSpan(
+              text: 'Você será redirecionado para o site oficial do GOV.BR:  ',
+              style: AppTheme.text.normal.sm(const Color(0xFF474747))),
+          TextSpan(
+              text: 'sso.acesso.gov.br',
+              style: AppTheme.text.normal
+                  .sm(const Color(0xFF474747))
+                  .copyWith(fontWeight: FontWeight.bold)),
+        ]),
+      ),
     );
   }
 }

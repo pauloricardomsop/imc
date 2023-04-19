@@ -29,7 +29,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: StreamOut<SplashItem>(
+      child: StreamOut<SplashItem>(
         stream: _splashController.splash.listen,
         child: (_, splash) => Padding(
           padding: const EdgeInsets.all(16),

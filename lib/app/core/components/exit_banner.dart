@@ -19,8 +19,7 @@ class ExitBanner extends JourneyStatefulWidget {
   final void Function()? onClick;
 
   const ExitBanner(
-    this.pageId,
-    {
+    this.pageId, {
     Key? key,
     required this.title,
     required this.buttonLabel,
@@ -49,7 +48,8 @@ class _ExitBannerState extends State<ExitBanner> {
     return AppScaffold(
       active: AdController.adConfig.banner.active,
       behavior: [widget.pageId + widget.name + widget.title],
-      body: body(context),
+      bottom: _inFooterCta(),
+      child: body(context),
     );
   }
 
@@ -80,35 +80,38 @@ class _ExitBannerState extends State<ExitBanner> {
             ),
           ],
         ),
-        InFooterCta(
-          onTap: () {
-            if (widget.url != null) {
-              execUrl(widget.url!);
-            }
-            if (widget.onClick != null) {
-              widget.onClick!.call();
-            }
-          },
-          icon: Icons.open_in_new,
-          label: widget.buttonLabel,
-          invert: true,
-          subtitle: widget.buttonSubLabel.isNotEmpty || widget.buttonSubLabelBold.isNotEmpty
-              ? RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(children: [
-                    TextSpan(
-                        text: widget.buttonSubLabel,
-                        style: AppTheme.text.normal.sm(const Color(0xFF474747))),
-                    TextSpan(
-                        text: widget.buttonSubLabelBold,
-                        style: AppTheme.text.normal
-                            .sm(const Color(0xFF474747))
-                            .copyWith(fontWeight: FontWeight.bold)),
-                  ]),
-                )
-              : null,
-        )
       ],
     );
+  }
+
+  InFooterCta _inFooterCta() {
+    return InFooterCta(
+        onTap: () {
+          if (widget.url != null) {
+            execUrl(widget.url!);
+          }
+          if (widget.onClick != null) {
+            widget.onClick!.call();
+          }
+        },
+        icon: Icons.open_in_new,
+        label: widget.buttonLabel,
+        invert: true,
+        subtitle: widget.buttonSubLabel.isNotEmpty || widget.buttonSubLabelBold.isNotEmpty
+            ? RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(children: [
+                  TextSpan(
+                      text: widget.buttonSubLabel,
+                      style: AppTheme.text.normal.sm(const Color(0xFF474747))),
+                  TextSpan(
+                      text: widget.buttonSubLabelBold,
+                      style: AppTheme.text.normal
+                          .sm(const Color(0xFF474747))
+                          .copyWith(fontWeight: FontWeight.bold)),
+                ]),
+              )
+            : null,
+      );
   }
 }

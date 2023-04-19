@@ -34,7 +34,7 @@ class _QueryPageState extends State<QueryPage> {
     return AppScaffold(
       active: AdController.adConfig.banner.active,
       behavior: [widget.name],
-      body: body(context),
+      child: body(context),
     );
   }
 

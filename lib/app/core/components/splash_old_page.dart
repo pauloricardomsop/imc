@@ -12,7 +12,7 @@ class _SplashOldPageState extends State<SplashOldPage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: Container(
+      child: Container(
         width: double.maxFinite,
         height: double.maxFinite,
         color: Colors.white,
@@ -25,10 +25,7 @@ class _SplashOldPageState extends State<SplashOldPage> {
               height: 246,
               child: Image.asset('assets/images/loading.gif'),
             )),
-            SizedBox(
-                width: 200,
-                height: 200,
-                child: Image.asset('assets/images/logo.png')),
+            SizedBox(width: 200, height: 200, child: Image.asset('assets/images/logo.png')),
           ],
         ),
       ),
