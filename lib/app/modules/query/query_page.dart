@@ -3,6 +3,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/ad_icon.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/button_icon.dart';
@@ -42,19 +43,17 @@ class _QueryPageState extends State<QueryPage> {
     return Column(
       children: [
         const BackHeader(),
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
-              AppBannerAd(AdBannerStorage.get(widget.name)),
-              const H(32),
-              const HeaderHero(
-                title: 'Consulta de Valores a Receber',
-                desc:
-                    'Veja o passo a passo de como consultar e como resgatar valores a receber, seja para sua pessoa física ou pessoa jurídica.',
-              ),
-            ],
-          ),
+        AppListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            AppBannerAd(AdBannerStorage.get(widget.name)),
+            const H(32),
+            const HeaderHero(
+              title: 'Consulta de Valores a Receber',
+              desc:
+                  'Veja o passo a passo de como consultar e como resgatar valores a receber, seja para sua pessoa física ou pessoa jurídica.',
+            ),
+          ],
         ),
         Padding(
           padding: const EdgeInsets.all(16),

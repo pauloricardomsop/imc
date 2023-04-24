@@ -74,10 +74,12 @@ class _AppSmallBannerAdState extends State<AppSmallBannerAd> {
 }
 
 class AppSmartBannerAd extends StatefulWidget {
+  final bool inBottom;
   final BehaviorSubject<BannerAd?> behavior;
 
   const AppSmartBannerAd(
     this.behavior, {
+    this.inBottom = false,
     Key? key,
   }) : super(key: key);
 
@@ -93,12 +95,13 @@ class _AppSmartBannerAdState extends State<AppSmartBannerAd> {
       stream: widget.behavior.stream,
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.active && snapshot.data != null) {
-          return SizedBox(
+          return Container(
+              color: widget.inBottom ? const Color(0xFFDDE0FF) : Colors.grey[300],
               width: snapshot.data!.size.width.toDouble(),
               height: snapshot.data!.size.height.toDouble(),
               child: AdWidget(ad: snapshot.data!));
         } else {
-          return const SizedBox();
+          return const BannerSmartTransparent();
         }
       },
     );

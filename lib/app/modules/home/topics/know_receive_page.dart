@@ -10,6 +10,7 @@ import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/label_double_column.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/models/carroussel_model.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
@@ -105,7 +106,7 @@ class KnowReceivePageState extends State<KnowReceivePage> {
   }
 
   Widget body(_) {
-    return ListView(
+    return AppListView(
       padding: EdgeInsets.zero,
       children: [
         BackHeader(

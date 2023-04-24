@@ -9,6 +9,7 @@ import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/card_sm.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/w.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/models/card_grid_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/home/topics/account_silver_gold.dart';
@@ -96,7 +97,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget body(_) {
-    return ListView(
+    return AppListView(
       padding: const EdgeInsets.all(16),
       children: [
         const LabelDoubleColumn('Opções de', 'Consulta'),

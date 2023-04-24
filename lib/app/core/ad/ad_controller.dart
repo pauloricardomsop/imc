@@ -8,6 +8,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:svr/app/core/components/splash_old_page.dart';
 import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/services/remote_config_service.dart';
+import 'package:svr/app/core/utils/dialog_utils.dart';
 
 import '../models/app_stream.dart';
 import '../services/foreground_service.dart';
@@ -136,10 +137,6 @@ class AdController {
       request: const AdRequest(),
       adLoadCallback: AppOpenAdLoadCallback(
         onAdLoaded: (ad) {
-          // final splashController = SplashController();
-          // splashController.splash.value.label = 'App Iniciado';
-          // splashController.splash.value.progress = 100;
-          // splashController.splash.add(splashController.splash.value);
           showToastLoaded('OPENEDEDAPP - ${ids.length}');
           ad.fullScreenContentCallback = _openedApFullScreenCallback(fromBackground);
           ad.show();
@@ -185,7 +182,6 @@ class AdController {
       handleInitialMessage(await FirebaseMessaging.instance.getInitialMessage());
       ForegroundService.showForegroundBack = true;
     }
-    // SplashController().dispose();
     UtilsController().moduleStream.add(Module.home);
   }
 
@@ -276,9 +272,10 @@ class AdController {
 
   static Future<void> fetchBannerSmart(List<String> ids, BehaviorSubject<BannerAd?> behavior,
       {bool fromStorage = false}) async {
-    final AnchoredAdaptiveBannerAdSize? size =
-        await AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(
-            MediaQuery.of(contextGlobal).size.width.truncate());
+    AnchoredAdaptiveBannerAdSize? size = await AdSize.getAnchoredAdaptiveBannerAdSize(
+      Orientation.portrait,
+      MediaQuery.of(contextGlobal).size.width.toInt(),
+    );
 
     if (AdController.adConfig.bannerSmart.active && size != null) {
       if (!fromStorage && adBannerSmartStorage.value != null) {
@@ -492,7 +489,7 @@ class AdController {
       );
     } else {
       rewardedLoadingStream.add(true);
-      _fetchRewardAd(adConfig.rewarded.id,
+      _fetchIntersticialRewardAd(adConfig.rewarded.id,
           onComplete: () => _showRewardedIntersticialAd(onComplete: onComplete));
     }
   }
@@ -502,6 +499,104 @@ class AdController {
       Navigator.of(context).popUntil((route) => route.isFirst);
       push(context, page);
     });
+  }
+
+  // INTERSTICIAL REWARD TRANSITION
+
+  static final rewardedIntersticialTransitionLoadingStream = AppStream<bool>.seed(true);
+  static final rewardedIntersticialTransitionStream = AppStream<RewardedInterstitialAd?>();
+
+  static Future<void> fetchIntersticialRewardTransitionAd(List<String> ids,
+      {Function? onComplete}) async {
+        if (!adConfig.intersticialRewardedTransition.active) {
+      onComplete?.call();
+      return;
+    }
+    ForegroundService.showForegroundBack = false;
+    showToast("INTERSTICIAL REWARD TRANSITION - ${ids.length}");
+    if (rewardedIntersticialTransitionStream.controller.hasValue &&
+        rewardedIntersticialTransitionStream.controller.value != null) {
+      if (onComplete != null) onComplete.call();
+      return;
+    }
+    await RewardedInterstitialAd.load(
+      adUnitId: ids.first,
+      request: const AdRequest(),
+      rewardedInterstitialAdLoadCallback: RewardedInterstitialAdLoadCallback(
+        onAdLoaded: (RewardedInterstitialAd ad) {
+          showToastLoaded('INTERSTICIAL REWARDED TRANSITION - ${ids.length}');
+          ad.fullScreenContentCallback = _rewardIntersticialTransitionFullScreenCallback;
+          rewardedIntersticialTransitionLoadingStream.add(false);
+          rewardedIntersticialTransitionStream.add(ad);
+          if (onComplete != null) onComplete.call();
+        },
+        onAdFailedToLoad: (LoadAdError error) async {
+          if (AdConfig.checkWaterFallErrorCode(error.code)) {
+            if (ids.isNotEmpty) ids.removeAt(0);
+            if (ids.isNotEmpty) {
+              await fetchIntersticialRewardTransitionAd(ids, onComplete: onComplete);
+            } else {
+              _disposeRewardedIntersticialTransitionAd(true);
+              if (onComplete != null) onComplete.call();
+            }
+          } else {
+            _disposeRewardedIntersticialTransitionAd(true);
+            if (onComplete != null) onComplete.call();
+          }
+        },
+      ),
+    );
+  }
+
+  static final FullScreenContentCallback<RewardedInterstitialAd>
+      _rewardIntersticialTransitionFullScreenCallback = FullScreenContentCallback(
+    onAdDismissedFullScreenContent: (RewardedInterstitialAd ad) =>
+        _disposeRewardedIntersticialTransitionAd(true, ad),
+    onAdFailedToShowFullScreenContent: (RewardedInterstitialAd ad, AdError error) =>
+        _disposeRewardedIntersticialTransitionAd(true, ad),
+  );
+
+  static void _disposeRewardedIntersticialTransitionAd(data, [RewardedInterstitialAd? ad]) {
+    if (ad != null) {
+      ad.dispose();
+    }
+    rewardedIntersticialTransitionStream.add(null);
+    rewardedIntersticialTransitionLoadingStream.add(false);
+    ForegroundService.showForegroundBack = true;
+    if (!_userEarned) {
+      Navigator.pop(contextGlobal);
+      _userEarned = true;
+    }
+    fetchIntersticialRewardTransitionAd(adConfig.intersticialRewardedTransition.id);
+  }
+
+  static bool _userEarned = false;
+  static void showRewardedIntersticialTransitionAd({Function? onComplete}) async {
+    if (!adConfig.intersticialRewardedTransition.active) {
+      onComplete?.call();
+      return;
+    }
+    _userEarned = false;
+    DialogUtils.showTransitionLoadingDialog();
+    await Future.delayed(const Duration(seconds: 2));
+    fetchIntersticialRewardTransitionAd(adConfig.intersticialRewardedTransition.id);
+    if (rewardedIntersticialTransitionStream.controller.hasValue &&
+        rewardedIntersticialTransitionStream.value != null) {
+      rewardedIntersticialTransitionStream.value!.show(
+        onUserEarnedReward: (ad, reward) {
+          ForegroundService.showForegroundBack = true;
+          Navigator.pop(contextGlobal);
+          _userEarned = true;
+          onComplete?.call();
+          fetchIntersticialRewardTransitionAd(adConfig.intersticialRewardedTransition.id);
+        },
+      );
+    } else {
+      rewardedLoadingStream.add(true);
+      fetchIntersticialRewardTransitionAd(adConfig.intersticialRewardedTransition.id);
+      Navigator.pop(contextGlobal);
+      onComplete?.call();
+    }
   }
 
   static void showToast(String text) {

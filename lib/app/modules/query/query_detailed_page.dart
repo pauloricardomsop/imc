@@ -9,6 +9,7 @@ import 'package:svr/app/core/components/app_video.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/exit_banner.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/in_footer_cta.dart';
@@ -106,7 +107,7 @@ class QueryDetailedPageState extends State<QueryDetailedPage> {
   Widget body(_) {
     return Stack(
       children: [
-        ListView(
+        AppListView(
           padding: EdgeInsets.zero,
           children: [
             const BackHeader(

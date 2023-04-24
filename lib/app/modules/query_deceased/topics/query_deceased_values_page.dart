@@ -3,6 +3,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_image.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/button_icon.dart';
@@ -54,7 +55,7 @@ class QueryDeceasedValuesPageState extends State<QueryDeceasedValuesPage> {
   Widget body(_) {
     return Stack(
       children: [
-        ListView(
+        AppListView(
           padding: EdgeInsets.zero,
           children: [
             BackHeader(
@@ -104,16 +105,17 @@ class QueryDeceasedValuesPageState extends State<QueryDeceasedValuesPage> {
 
   InFooterCta _inFooterCta() {
     return InFooterCta(
-      onTap: () => push(
-          context,
-          ExitBanner(
-            widget.name,
+      onTap: () => AdController.showRewardedIntersticialTransitionAd(
+          onComplete: () => push(
+              context,
+              ExitBanner(
+                widget.name,
             title: 'Você será encaminhado para um site oficial do governo.',
             url: 'https://valoresareceber.bcb.gov.br/publico',
             buttonLabel: 'Ir para site externo',
             buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
             buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
-          )),
+              ))),
       label: 'Consultar Valores a Receber',
       invert: true,
       subtitle: RichText(

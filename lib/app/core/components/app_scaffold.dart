@@ -4,6 +4,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_shimmer.dart';
+import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
@@ -93,13 +94,8 @@ class _AppScaffoldState extends State<AppScaffold> {
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [
-        Column(
-          children: [
-            Expanded(child: child),
-            const SizedBox(
-                // height: 90,
-                )
-          ],
+        ListView(
+          children: [widget.child, const H(60)],
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -110,17 +106,13 @@ class _AppScaffoldState extends State<AppScaffold> {
   }
 
   Widget _bottom() {
-    final banner = AppSmartBannerAd(AdBannerStorage.get(bannerSmartKey));
-    if (widget.bottom == null) return banner;
+    final banner = AppSmartBannerAd(AdBannerStorage.get(bannerSmartKey), inBottom: widget.bottom != null,);
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Container(
-          color: const Color(0xFFDDE0FF),
-          width: double.maxFinite,
-          child: banner,
-        ),
-        widget.bottom!
+        banner,
+        if (widget.bottom != null) widget.bottom!
       ],
     );
   }

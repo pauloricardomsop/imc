@@ -1,5 +1,3 @@
-import 'package:svr/app/core/services/remote_config_service.dart';
-
 import '../enums/ad_type_enum.dart';
 
 class AdConfig {
@@ -11,11 +9,12 @@ class AdConfig {
   late AdObjConfig intersticial;
   late AdObjConfig rewarded;
   late AdObjConfig intersticialRewarded;
+  late AdObjConfig intersticialRewardedTransition;
 
   static bool checkWaterFallErrorCode(int code) => code == 3 || code == 9;
 
   bool get canShowRewardedAd =>
-      (rewarded.active || intersticialRewarded.active) && !RemoteConfigService.useDefaultValues;
+      (rewarded.active || intersticialRewarded.active || intersticialRewardedTransition.active);
 
   AdConfig.fromJson(Map<String, dynamic> json) {
     activeAll = json['activeAll'];
@@ -26,6 +25,8 @@ class AdConfig {
     intersticial = AdObjConfig.fromJson(this, json['intersticial']);
     rewarded = AdObjConfig.fromJson(this, json['rewarded']);
     intersticialRewarded = AdObjConfig.fromJson(this, json['intersticialRewarded']);
+    intersticialRewardedTransition =
+        AdObjConfig.fromJson(this, json['intersticialRewardedTransition']);
   }
 
   static AdConfig getDefault() => AdConfig.fromJson(configDefault);
@@ -37,12 +38,13 @@ class AdConfig {
         "intersticial": intersticial.toJson(),
         "rewarded": rewarded.toJson(),
         "intersticialRewarded": intersticialRewarded.toJson(),
+        "intersticialRewardedTransition": intersticialRewardedTransition.toJson(),
       };
 
   static final Map<String, dynamic> configDefault = {
     "activeAll": true,
     "appOpen": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5179306302",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5179306302"},
@@ -66,7 +68,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/7121808864"}
     },
     "bannerAccordeon": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5131453237",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5131453237"},
@@ -74,7 +76,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/5788507908"}
     },
     "intersticial": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/7512728125",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/7512728125"},
@@ -82,7 +84,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/8405069592"}
     },
     "rewarded": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5252292645",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5252292645"},
@@ -90,7 +92,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/9256769221"}
     },
     "intersticialRewarded": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/8594424243",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/8594424243"},
@@ -98,7 +100,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/9907505917"}
     },
     "intersticialRewardedTransition": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/7949188265",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/7949188265"},

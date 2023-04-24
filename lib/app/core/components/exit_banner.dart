@@ -3,6 +3,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/in_footer_cta.dart';
@@ -56,7 +57,7 @@ class _ExitBannerState extends State<ExitBanner> {
   Widget body(_) {
     return Stack(
       children: [
-        ListView(
+        AppListView(
           children: [
             const BackHeader(),
             Padding(
@@ -86,32 +87,32 @@ class _ExitBannerState extends State<ExitBanner> {
 
   InFooterCta _inFooterCta() {
     return InFooterCta(
-        onTap: () {
-          if (widget.url != null) {
-            execUrl(widget.url!);
-          }
-          if (widget.onClick != null) {
-            widget.onClick!.call();
-          }
-        },
-        icon: Icons.open_in_new,
-        label: widget.buttonLabel,
-        invert: true,
-        subtitle: widget.buttonSubLabel.isNotEmpty || widget.buttonSubLabelBold.isNotEmpty
-            ? RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: widget.buttonSubLabel,
-                      style: AppTheme.text.normal.sm(const Color(0xFF474747))),
-                  TextSpan(
-                      text: widget.buttonSubLabelBold,
-                      style: AppTheme.text.normal
-                          .sm(const Color(0xFF474747))
-                          .copyWith(fontWeight: FontWeight.bold)),
-                ]),
-              )
-            : null,
-      );
+      onTap: () {
+        if (widget.url != null) {
+          execUrl(widget.url!);
+        }
+        if (widget.onClick != null) {
+          widget.onClick!.call();
+        }
+      },
+      icon: Icons.open_in_new,
+      label: widget.buttonLabel,
+      invert: true,
+      subtitle: widget.buttonSubLabel.isNotEmpty || widget.buttonSubLabelBold.isNotEmpty
+          ? RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(children: [
+                TextSpan(
+                    text: widget.buttonSubLabel,
+                    style: AppTheme.text.normal.sm(const Color(0xFF474747))),
+                TextSpan(
+                    text: widget.buttonSubLabelBold,
+                    style: AppTheme.text.normal
+                        .sm(const Color(0xFF474747))
+                        .copyWith(fontWeight: FontWeight.bold)),
+              ]),
+            )
+          : null,
+    );
   }
 }

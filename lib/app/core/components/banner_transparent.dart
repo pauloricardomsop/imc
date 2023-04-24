@@ -39,7 +39,7 @@ class BannerSmartTransparent extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppShimmer(
       child: Container(
-        height: 100,
+        height: 64,
         width: double.maxFinite,
         color: Colors.grey,
       ),

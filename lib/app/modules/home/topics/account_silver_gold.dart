@@ -5,6 +5,7 @@ import 'package:svr/app/core/components/app_accordeon.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_card_purple.dart';
 import 'package:svr/app/core/components/app_image.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/check_list.dart';
@@ -115,7 +116,7 @@ class AccountSilverGoldPageState extends State<AccountSilverGoldPage> {
   Widget body(_) {
     return Stack(
       children: [
-        ListView(
+        AppListView(
           padding: EdgeInsets.zero,
           children: [
             const BackHeader(),

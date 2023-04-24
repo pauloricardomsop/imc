@@ -56,7 +56,6 @@ class RemoteConfigService {
     }
   }
 
- //TODO:
   static bool get showBanner => AdController.adConfig.banner.active;
   static bool get showBannerAccordeon => AdController.adConfig.bannerAccordeon.active;
   static bool get showBannerSmart => AdController.adConfig.bannerSmart.active;

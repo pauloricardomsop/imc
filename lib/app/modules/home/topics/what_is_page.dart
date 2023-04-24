@@ -6,6 +6,7 @@ import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/card_sm.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
@@ -115,7 +116,7 @@ class WhatIsPageState extends State<WhatIsPage> {
   }
 
   Widget body(_) {
-    return ListView(
+    return AppListView(
       padding: EdgeInsets.zero,
       children: [
         const BackHeader(),

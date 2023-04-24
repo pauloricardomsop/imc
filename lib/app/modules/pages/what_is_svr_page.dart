@@ -11,6 +11,7 @@ import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/modules/what_is/what_is/what_is_it_for_svr_page.dart';
 // import 'package:svr/app/modules/what_is/what_is/what_is_know_receive_page.dart';
 // import 'package:svr/app/modules/what_is/what_is/what_is_news_page.dart';
@@ -101,7 +102,7 @@ class WhatIsSvrPageState extends State<WhatIsSvrPage> {
   }
 
   Widget body(_) {
-    return ListView(
+    return AppListView(
       padding: EdgeInsets.zero,
       children: [
         BackHeader(

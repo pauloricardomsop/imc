@@ -3,6 +3,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_card_purple.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/app_video.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
@@ -80,7 +81,7 @@ class QueryDeceasedDetailedPageState extends State<QueryDeceasedDetailedPage> {
   Widget body(_) {
     return Stack(
       children: [
-        ListView(
+        AppListView(
           padding: EdgeInsets.zero,
           children: [
             BackHeader(
@@ -115,6 +116,17 @@ class QueryDeceasedDetailedPageState extends State<QueryDeceasedDetailedPage> {
                     style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
                   ),
                   ...itens
+                      .map((e) => InkWell(
+                            onTap: () {
+                              if (e.title == 'Acessar a consulta do SVR') {
+                                e.onTap.call();
+                              } else {
+                                AdController.showRewardedIntersticialTransitionAd(onComplete: () => e.onTap.call());
+                              }
+                            },
+                            child: IgnorePointer(child: e),
+                          ))
+                      .toList()
                 ],
               ),
             ),

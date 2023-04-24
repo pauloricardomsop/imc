@@ -11,8 +11,8 @@ class SplashOldPage extends StatefulWidget {
 class _SplashOldPageState extends State<SplashOldPage> {
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      child: Container(
+    return Scaffold(
+      body: Container(
         width: double.maxFinite,
         height: double.maxFinite,
         color: Colors.white,

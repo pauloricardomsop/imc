@@ -3,6 +3,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_card_purple.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/button_icon.dart';
@@ -62,7 +63,7 @@ class WhatIsItForSvrPageState extends State<WhatIsItForSvrPage> {
   }
 
   Widget body(_) {
-    return ListView(
+    return AppListView(
       padding: EdgeInsets.zero,
       children: [
         BackHeader(
