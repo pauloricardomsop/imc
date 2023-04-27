@@ -3,8 +3,8 @@ import 'package:svr/app/core/components/splash_old_page.dart';
 import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/utils/utils_controller.dart';
-import 'package:svr/app/modules/home/home_page.dart';
-import 'package:svr/app/modules/splash/ui/splash_page.dart';
+
+import '../../modules/home/home_page.dart';
 
 class ModulePage extends StatelessWidget {
   ModulePage({Key? key}) : super(key: key);
