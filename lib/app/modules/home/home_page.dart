@@ -1,15 +1,13 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_card_grid.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/card_sm.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/w.dart';
-import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/models/card_grid_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/home/topics/account_silver_gold.dart';
@@ -80,16 +78,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      onWillPop: () async => push(
-          context,
-          ExitBanner(
-            widget.name,
-            title: 'Volte em breve para\n ver novidades',
-            onClick: () => exit(0),
-            buttonLabel: 'Sair do app',
-            buttonSubLabel: empty,
-            buttonSubLabelBold: empty,
-          )),
+      onWillPop: () async => push(context, const HomeExitBanner()),
       active: AdController.adConfig.banner.active,
       behavior: [widget.name],
       child: body(context),

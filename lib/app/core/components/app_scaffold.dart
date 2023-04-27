@@ -14,15 +14,17 @@ class AppScaffold extends StatefulWidget {
   final bool active;
   final Widget child;
   final Widget? bottom;
+  final bool removeSmartBanner;
 
-  const AppScaffold({
-    Key? key,
-    required this.child,
-    this.active = false,
-    this.behavior,
-    this.onWillPop,
-    this.bottom,
-  }) : super(key: key);
+  const AppScaffold(
+      {Key? key,
+      required this.child,
+      this.active = false,
+      this.behavior,
+      this.onWillPop,
+      this.bottom,
+      this.removeSmartBanner = false})
+      : super(key: key);
 
   @override
   State<AppScaffold> createState() => _AppScaffoldState();
@@ -95,25 +97,26 @@ class _AppScaffoldState extends State<AppScaffold> {
       alignment: Alignment.bottomCenter,
       children: [
         ListView(
-          children: [widget.child, const H(60)],
+          children: [widget.child, if (!widget.removeSmartBanner) const H(60)],
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: _bottom(),
-        )
+        if (!widget.removeSmartBanner)
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: _bottom(),
+          )
       ],
     );
   }
 
   Widget _bottom() {
-    final banner = AppSmartBannerAd(AdBannerStorage.get(bannerSmartKey), inBottom: widget.bottom != null,);
+    final banner = AppSmartBannerAd(
+      AdBannerStorage.get(bannerSmartKey),
+      inBottom: widget.bottom != null,
+    );
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        banner,
-        if (widget.bottom != null) widget.bottom!
-      ],
+      children: [banner, if (widget.bottom != null) widget.bottom!],
     );
   }
 }

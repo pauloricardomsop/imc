@@ -11,7 +11,7 @@ import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/label_double_column.dart';
 import 'package:svr/app/core/components/app_list_view.dart';
-import 'package:svr/app/core/models/carroussel_model.dart';
+import 'package:svr/app/core/models/accordeon_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
 class WhatIsPage extends JourneyStatefulWidget {

@@ -5,7 +5,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/h.dart';
-import 'package:svr/app/core/models/carroussel_model.dart';
+import 'package:svr/app/core/models/accordeon_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 
 class AppAccordeon extends StatefulWidget {

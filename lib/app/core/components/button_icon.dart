@@ -8,6 +8,8 @@ class ButtonIcon extends StatelessWidget {
   final Widget? widget;
   final String label;
   final bool invert;
+  final Color? textColor;
+  final Color? backgroundColor;
 
   const ButtonIcon(
       {required this.onTap,
@@ -15,6 +17,8 @@ class ButtonIcon extends StatelessWidget {
       required this.label,
       this.invert = false,
       this.widget,
+      this.textColor,
+      this.backgroundColor,
       super.key});
 
   @override
@@ -24,7 +28,7 @@ class ButtonIcon extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-          color: const Color(0xFF1C44F9),
+          color: backgroundColor ?? const Color(0xFF1C44F9),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
@@ -48,7 +52,7 @@ class ButtonIcon extends StatelessWidget {
       Icon(
         icon ?? Icons.open_in_new,
         size: 28,
-        color: const Color(0xFFFFFFFF),
+        color: textColor ?? const Color(0xFFFFFFFF),
       );
 
   bool get hasIcon => widget != null || icon != null;
@@ -58,7 +62,7 @@ class ButtonIcon extends StatelessWidget {
         child: Text(
           label,
           textAlign: TextAlign.center,
-          style: AppTheme.text.semi.lg(const Color(0xFFFFFFFF)),
+          style: AppTheme.text.semi.lg(textColor ?? const Color(0xFFFFFFFF)),
         ),
       );
 }

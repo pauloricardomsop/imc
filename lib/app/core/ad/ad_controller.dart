@@ -240,7 +240,7 @@ class AdController {
         fetchBannerAccordeon(ids, adBannerAccordeonStorage, fromStorage: true);
         return;
       }
-      showToast('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+      showToast('BANNER ACCORDEON | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
       await BannerAd(
         adUnitId: ids.first,
         request: const AdRequest(),
@@ -251,7 +251,7 @@ class AdController {
             if (!fromStorage && adBannerAccordeonStorage.value == null) {
               fetchBannerAccordeon(ids, adBannerAccordeonStorage, fromStorage: true);
             }
-            showToastLoaded('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+            showToastLoaded('BANNER ACCORDEON | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
           },
           onAdFailedToLoad: (ad, error) async {
             if (AdConfig.checkWaterFallErrorCode(error.code)) {
@@ -285,7 +285,7 @@ class AdController {
         return;
       }
 
-      showToast('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+      showToast('BANNER SMART | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
       await BannerAd(
         adUnitId: ids.first,
         request: const AdRequest(),
@@ -296,7 +296,7 @@ class AdController {
             if (!fromStorage && adBannerSmartStorage.value == null) {
               fetchBannerSmart(ids, adBannerSmartStorage, fromStorage: true);
             }
-            showToastLoaded('BANNER | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+            showToastLoaded('BANNER SMART | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
           },
           onAdFailedToLoad: (ad, error) async {
             if (AdConfig.checkWaterFallErrorCode(error.code)) {

@@ -5,8 +5,9 @@ import 'package:svr/app/core/components/divisor.dart';
 class BackHeader extends StatelessWidget {
   final EdgeInsets? margin;
   final Widget? button;
+  final void Function()? onTap;
 
-  const BackHeader({this.margin, this.button, super.key});
+  const BackHeader({this.margin, this.button, this.onTap, super.key});
 
   @override
   Widget build(BuildContext context) {
