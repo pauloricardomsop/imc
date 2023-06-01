@@ -30,16 +30,16 @@ class SplashController {
     await Future.delayed(const Duration(seconds: 1));
     splash.value.label = 'Atualizando Informações';
     splash.value.progress = 45;
-    splash.add(splash.value);
+    splash.update();
     await Future.delayed(const Duration(seconds: 1));
     splash.value.label = 'Consultando Base de Dados';
     splash.value.progress = 75;
-    splash.add(splash.value);
+    splash.update();
     if (AdController.adConfig.appOpen.active) {
       await Future.delayed(const Duration(seconds: 1));
       splash.value.label = 'Iniciando o App';
       splash.value.progress = 95;
-      splash.add(splash.value);
+      splash.update();
       AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
     } else {
       SplashController().dispose();
@@ -49,7 +49,7 @@ class SplashController {
   Future<void> dispose() async {
     splash.value.label = 'App Iniciado';
     splash.value.progress = 100;
-    splash.add(splash.value);
+    splash.update();
     late int tipValue;
     if (splash.value.tip + 1 == tips.length) {
       tipValue = 0;
@@ -58,5 +58,11 @@ class SplashController {
     }
     await SplashRepository.setTip(tipValue);
     _utilsController.moduleStream.add(Module.home);
+  }
+
+  void onEntrar() {
+    splash.value.label = 'entrando no app';
+    splash.value.progress = 99;
+    splash.update();
   }
 }
