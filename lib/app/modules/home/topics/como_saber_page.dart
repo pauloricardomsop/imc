@@ -3,6 +3,7 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_accordeon.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/button_icon.dart';
@@ -10,20 +11,20 @@ import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/label_double_column.dart';
-import 'package:svr/app/core/components/app_list_view.dart';
+import 'package:svr/app/core/components/rate_app.dart';
 import 'package:svr/app/core/models/accordeon_model.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
-class KnowReceivePage extends JourneyStatefulWidget {
-  const KnowReceivePage({Key? key}) : super(key: key, name: 'KnowReceivePage');
+class ComoSaberPage extends JourneyStatefulWidget {
+  const ComoSaberPage({Key? key}) : super(key: key, name: 'ComoSaberPage');
 
   @override
-  State<KnowReceivePage> createState() => KnowReceivePageState();
+  State<ComoSaberPage> createState() => KnowReceivePageState();
 }
 
-class KnowReceivePageState extends State<KnowReceivePage> {
+class KnowReceivePageState extends State<ComoSaberPage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -142,6 +143,7 @@ class KnowReceivePageState extends State<KnowReceivePage> {
               ),
               const H(16),
               CheckList(checkList),
+              const AppRate(),
               const H(32),
               AppBannerAd(AdBannerStorage.get('${widget.name}2')),
               const H(24),

@@ -4,8 +4,7 @@ import 'package:svr/app/core/theme/app_theme.dart';
 
 class ButtonIcon extends StatelessWidget {
   final void Function() onTap;
-  final IconData? icon;
-  final Widget? widget;
+  final dynamic icon;
   final String label;
   final bool invert;
   final Color? textColor;
@@ -16,7 +15,6 @@ class ButtonIcon extends StatelessWidget {
       this.icon,
       required this.label,
       this.invert = false,
-      this.widget,
       this.textColor,
       this.backgroundColor,
       super.key});
@@ -32,38 +30,31 @@ class ButtonIcon extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
-          child: hasIcon
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    invert ? text : iconWidget,
-                    const W(12),
-                    invert ? iconWidget : text,
-                  ],
-                )
-              : text,
-        ),
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            invert ? text : iconWidget,
+            const W(12),
+            invert ? iconWidget : text,
+          ],
+        )),
       ),
     );
   }
 
-  Widget get iconWidget =>
-      widget ??
-      Icon(
-        icon ?? Icons.open_in_new,
-        size: 28,
-        color: textColor ?? const Color(0xFFFFFFFF),
-      );
+  Widget get iconWidget => icon is IconData
+      ? Icon(
+          icon ?? Icons.open_in_new,
+          size: 28,
+          color: textColor ?? const Color(0xFFFFFFFF),
+        )
+      : icon;
 
-  bool get hasIcon => widget != null || icon != null;
-
-  Widget get text => Container(
-        margin: const EdgeInsets.only(bottom: 6),
-        child: Text(
-          label,
-          textAlign: TextAlign.center,
-          style: AppTheme.text.semi.lg(textColor ?? const Color(0xFFFFFFFF)),
-        ),
+  Widget get text => Text(
+        label,
+        textAlign: TextAlign.center,
+        style: AppTheme.text.semi.lg(textColor ?? const Color(0xFFFFFFFF)),
       );
 }
 

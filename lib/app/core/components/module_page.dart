@@ -19,8 +19,8 @@ class ModulePage extends StatelessWidget {
         ignoring: ignoring,
         child: StreamOut(
           stream: _utilsController.moduleStream.listen,
-          child: (_, module) => const SplashOldPage(),
-          // child: (_, module) => module == Module.home ? const HomePage() : const SplashOldPage(),
+          // child: (_, module) => const SplashOldPage(),
+          child: (_, module) => module == Module.home ? const HomePage() : const SplashOldPage(),
         ),
       ),
     );

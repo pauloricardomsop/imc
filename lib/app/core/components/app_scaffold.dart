@@ -62,8 +62,8 @@ class _AppScaffoldState extends State<AppScaffold> {
         child: WillPopScope(
           onWillPop: widget.onWillPop ??
               () async {
-                AdController.showInterstitialAd(context);
-                return false;
+                // AdController.showInterstitialAd(context);
+                return true;
               },
           child: Scaffold(
             backgroundColor: const Color(0xFFFFFFFF),

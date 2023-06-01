@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/components/ad_icon.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
-import 'package:svr/app/core/components/app_card_purple.dart';
 import 'package:svr/app/core/components/app_image.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
-import 'package:svr/app/core/components/app_video.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/check_list.dart';
-import 'package:svr/app/core/components/exit_banner.dart';
-import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/in_footer_cta.dart';
+import 'package:svr/app/core/components/rate_app.dart';
+import 'package:svr/app/core/components/web_view_page.dart';
 import 'package:svr/app/core/models/accordeon_model.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
-class QueryDetailedPage extends JourneyStatefulWidget {
-  const QueryDetailedPage({Key? key}) : super(key: key, name: 'QueryDetailedPage');
+class ConsultaValoresPage extends JourneyStatefulWidget {
+  const ConsultaValoresPage({Key? key}) : super(key: key, name: 'ConsultaValoresPage');
 
   @override
-  State<QueryDetailedPage> createState() => QueryDetailedPageState();
+  State<ConsultaValoresPage> createState() => ConsultaValoresPageState();
 }
 
-class QueryDetailedPageState extends State<QueryDetailedPage> {
+class ConsultaValoresPageState extends State<ConsultaValoresPage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -131,11 +131,6 @@ class QueryDetailedPageState extends State<QueryDetailedPage> {
                         'O sistema de valores a receber começou a sua segunda fase em 7 de Março de 2023.\n\nNesta segunda fase, é possível consultar novos valores, para você ou para falecidos.\n\nO SVR está com um novo sistema de consulta. Veja o passo a passo de como consultar e dicas importantes.',
                   ),
                   const H(24),
-                  const AppVideo('vDmpo4d8Gw4'),
-                  const H(24),
-                  const AppCardPurple(
-                      'Atenção: O vídeo acima é do canal oficial do Banco Central no Youtube. Nosso app não tem nenhum relacionamento formal com o Banco Centra. Somente facilitamos o acesso a informações baseadas nos sites oficiais.'),
-                  const H(16),
                   Text(
                     'Como consultar valores a receber?',
                     style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),
@@ -152,6 +147,8 @@ class QueryDetailedPageState extends State<QueryDetailedPage> {
                       height: 600),
                   const H(16),
                   AppBannerAd(AdBannerStorage.get('${widget.name}2')),
+                  const H(16),
+                  const AppRate(),
                   const H(16),
                   Text(
                     '6 Novidades importantes sobre o SVR.',
@@ -171,31 +168,12 @@ class QueryDetailedPageState extends State<QueryDetailedPage> {
 
   InFooterCta _inFooterCta() {
     return InFooterCta(
-      onTap: () => push(
-          context,
-          ExitBanner(
-            widget.name,
-            title: 'Você será encaminhado para um site oficial do governo.',
-            url: 'https://valoresareceber.bcb.gov.br/publico',
-            buttonLabel: 'Ir para site externo',
-            buttonSubLabel: 'Você será redirecionado para o site oficial do Banco Central:  ',
-            buttonSubLabelBold: 'valoresareceber.bcb.gov.br',
-          )),
-      label: 'Consultar Valores a Receber',
+      onTap: () => AdController.showRewardTransitionAd(
+          onComplete: () =>
+              push(context, const WebViewPage('https://valoresareceber.bcb.gov.br/publico'))),
+      label: 'CONSULTAR VALORES',
       invert: true,
-      subtitle: RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(children: [
-          TextSpan(
-              text: 'Você será redirecionado para o site oficial do Banco Central:  ',
-              style: AppTheme.text.normal.sm(const Color(0xFF474747))),
-          TextSpan(
-              text: 'valoresareceber.bcb.gov.br',
-              style: AppTheme.text.normal
-                  .sm(const Color(0xFF474747))
-                  .copyWith(fontWeight: FontWeight.bold)),
-        ]),
-      ),
+      icon: const AdIcon(),
     );
   }
 }

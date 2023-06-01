@@ -3,27 +3,28 @@ import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_accordeon.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/card_sm.dart';
-import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/label_double_column.dart';
+import 'package:svr/app/core/components/rate_app.dart';
 import 'package:svr/app/core/models/accordeon_model.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
-class WhatIsPage extends JourneyStatefulWidget {
-  const WhatIsPage({Key? key}) : super(key: key, name: 'WhatIsPage');
+class OqueEPage extends JourneyStatefulWidget {
+  const OqueEPage({Key? key}) : super(key: key, name: 'OqueEPage');
 
   @override
-  State<WhatIsPage> createState() => WhatIsPageState();
+  State<OqueEPage> createState() => OqueEState();
 }
 
-class WhatIsPageState extends State<WhatIsPage> {
+class OqueEState extends State<OqueEPage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -42,7 +43,7 @@ class WhatIsPageState extends State<WhatIsPage> {
         CardSm(
           title: 'O que é o Sistema Valores a Receber',
           subtitle: 'Saiba o que é e como funciona.',
-          onTap: () => push(context, const WhatIsPage()),
+          onTap: () => push(context, const OqueEPage()),
         ),
         CardSm(
           title: 'Como acessar meus valores?',
@@ -141,6 +142,8 @@ class WhatIsPageState extends State<WhatIsPage> {
               ),
               const H(24),
               CheckList(checkList),
+              const AppRate(),
+              const H(24),
               AppBannerAd(AdBannerStorage.get('${widget.name}2')),
               const H(24),
               const LabelDoubleColumn('Perguntas', 'Frequentes'),

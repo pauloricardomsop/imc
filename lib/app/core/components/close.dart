@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/utils/global_resource.dart';
 
 class Close extends StatelessWidget {
   const Close({super.key});
@@ -7,7 +7,8 @@ class Close extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => AdController.showInterstitialAd(context),
+      // onTap: () => AdController.showInterstitialAd(context),
+      onTap: () => pop(context),
       child: Container(
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(

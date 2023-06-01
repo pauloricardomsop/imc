@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/divisor.dart';
+import 'package:svr/app/core/utils/global_resource.dart';
 
 class BackHeader extends StatelessWidget {
   final EdgeInsets? margin;
@@ -17,7 +17,8 @@ class BackHeader extends StatelessWidget {
         Row(
           children: [
             InkWell(
-              onTap: () => AdController.showInterstitialAd(context),
+              // onTap: () => AdController.showInterstitialAd(context),
+              onTap: () => pop(context),
               child: Container(
                 margin: margin ?? const EdgeInsets.all(16),
                 padding: const EdgeInsets.all(6),

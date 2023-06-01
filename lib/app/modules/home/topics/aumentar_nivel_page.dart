@@ -14,19 +14,20 @@ import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/in_footer_cta.dart';
 import 'package:svr/app/core/components/label_double_column.dart';
+import 'package:svr/app/core/components/rate_app.dart';
 import 'package:svr/app/core/models/accordeon_model.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
-class AccountSilverGoldPage extends JourneyStatefulWidget {
-  const AccountSilverGoldPage({Key? key}) : super(key: key, name: 'AccountSilverGoldPage');
+class AumentarNivelPage extends JourneyStatefulWidget {
+  const AumentarNivelPage({Key? key}) : super(key: key, name: 'AumentarNivelPage');
 
   @override
-  State<AccountSilverGoldPage> createState() => AccountSilverGoldPageState();
+  State<AumentarNivelPage> createState() => AumentarNivelPageState();
 }
 
-class AccountSilverGoldPageState extends State<AccountSilverGoldPage> {
+class AumentarNivelPageState extends State<AumentarNivelPage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -166,6 +167,8 @@ class AccountSilverGoldPageState extends State<AccountSilverGoldPage> {
                     'Ao ser criada via formulário online do INSS ou da Receita Federal, por exemplo, a conta gov.br costuma iniciar no nível bronze, que dá acesso apenas parcial aos serviços digitais do governo e cujo grau de segurança é considerado apenas básico.\n\nAo fazer o login no gov.br, o cidadão já é informado do nível da conta. Para aumentar o nível, basta seguir as instruções ou entrar em "Privacidade/Selos de Confiabilidade".',
                     style: AppTheme.text.normal.base(const Color(0xFF474747)),
                   ),
+                  const H(16),
+                  const AppRate(),
                   const H(16),
                   const AppImage(
                     url:

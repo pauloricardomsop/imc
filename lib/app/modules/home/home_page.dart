@@ -10,12 +10,12 @@ import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/w.dart';
 import 'package:svr/app/core/models/card_grid_model.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/home/topics/account_silver_gold.dart';
-import 'package:svr/app/modules/home/topics/how_receive_page.dart';
-import 'package:svr/app/modules/home/topics/know_receive_page.dart';
-import 'package:svr/app/modules/home/topics/what_is_page.dart';
-import 'package:svr/app/modules/query/query_page.dart';
-import 'package:svr/app/modules/query_deceased/query_deceased_page.dart';
+import 'package:svr/app/modules/consulta_valores/consulta_valores_page.dart';
+import 'package:svr/app/modules/consulta_valores_falecido/consulta_valores_falecido_page.dart';
+import 'package:svr/app/modules/home/topics/aumentar_nivel_page.dart';
+import 'package:svr/app/modules/home/topics/como_receber_page.dart';
+import 'package:svr/app/modules/home/topics/como_saber_page.dart';
+import 'package:svr/app/modules/home/topics/oque_e_page.dart';
 
 import '../../core/components/exit_banner.dart';
 import '../../core/components/label_double_column.dart';
@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
+    AdController.fetchInterstitialTransitionAd(AdController.adConfig.intersticialTransition.id);
+    AdController.fetchRewardTransitionAd(AdController.adConfig.rewardedTransition.id);
     AdController.fetchBanner(
       AdController.adConfig.banner.id,
       AdBannerStorage.get(widget.name),
@@ -43,12 +45,14 @@ class _HomePageState extends State<HomePage> {
         CardGridModel(
           title: 'Consulta Valores a\nReceber',
           icon: Icons.payments_outlined,
-          onTap: () => push(context, const QueryPage()),
+          onTap: () => AdController.showInterstitialTransitionAd(context,
+              onComplete: () => push(context, const ConsultaValoresPage())),
         ),
         CardGridModel(
           title: 'Consulta Valores\nde Falecidos',
           icon: Icons.account_balance,
-          onTap: () => push(context, const QueryDeceasedPage()),
+          onTap: () => AdController.showInterstitialTransitionAd(context,
+              onComplete: () => push(context, const ConsultaValoresFalecidoPage())),
         )
       ];
 
@@ -56,22 +60,26 @@ class _HomePageState extends State<HomePage> {
         CardSm(
           title: 'O que é o Sistema Valores a Receber',
           subtitle: 'Saiba o que é e como funciona.',
-          onTap: () => push(context, const WhatIsPage()),
+          onTap: () => AdController.showInterstitialTransitionAd(context,
+              onComplete: () => push(context, const OqueEPage())),
         ),
         CardSm(
           title: 'O que é conta Prata e Ouro do GOV.BR',
           subtitle: 'Veja como aumentar o nível da sua conta .GOV',
-          onTap: () => push(context, const AccountSilverGoldPage()),
+          onTap: () => AdController.showInterstitialTransitionAd(context,
+              onComplete: () => push(context, const AumentarNivelPage())),
         ),
         CardSm(
           title: 'Como saber se tenho valores a receber?',
           subtitle: 'Saiba como consultar seu saldo.',
-          onTap: () => push(context, const KnowReceivePage()),
+          onTap: () => AdController.showInterstitialTransitionAd(context,
+              onComplete: () => push(context, const ComoSaberPage())),
         ),
         CardSm(
           title: 'Como vou receber meus valores?',
           subtitle: 'Aprenda quais as opções de recebimento.',
-          onTap: () => push(context, const HowReceivePage()),
+          onTap: () => AdController.showInterstitialTransitionAd(context,
+              onComplete: () => push(context, const ComoReceberPage())),
         ),
       ];
 

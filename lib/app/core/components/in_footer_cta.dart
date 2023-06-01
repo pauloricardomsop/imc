@@ -4,7 +4,7 @@ import 'package:svr/app/core/components/h.dart';
 
 class InFooterCta extends StatelessWidget {
   final void Function() onTap;
-  final IconData? icon;
+  final dynamic icon;
   final String label;
   final bool invert;
   final Widget? subtitle;

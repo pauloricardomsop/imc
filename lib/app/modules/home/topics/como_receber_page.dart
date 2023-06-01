@@ -4,26 +4,27 @@ import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_accordeon.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_card_purple.dart';
+import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/label_double_column.dart';
+import 'package:svr/app/core/components/rate_app.dart';
 import 'package:svr/app/core/models/accordeon_model.dart';
-import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/models/check_list_model.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
-class HowReceivePage extends JourneyStatefulWidget {
-  const HowReceivePage({Key? key}) : super(key: key, name: 'HowReceivePage');
+class ComoReceberPage extends JourneyStatefulWidget {
+  const ComoReceberPage({Key? key}) : super(key: key, name: 'ComoReceberPage');
 
   @override
-  State<HowReceivePage> createState() => HowReceivePageState();
+  State<ComoReceberPage> createState() => ComoReceberPageState();
 }
 
-class HowReceivePageState extends State<HowReceivePage> {
+class ComoReceberPageState extends State<ComoReceberPage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
@@ -155,6 +156,8 @@ class HowReceivePageState extends State<HowReceivePage> {
                         'Caso o sistema ofereça a opção “Solicitar por aqui”, mas não apresentar chave Pix disponível para seleção, entre em contato diretamente com a instituição financeira ou com o banco.\n\nO contato pode ser feito pelo telefone, e-mail informado ou presencialmente, para combinar a forma de devolução do dinheiro.')
               ]),
               const H(8),
+              const AppRate(),
+              const H(16),
               Text(
                 'Com a opção: Direto com a instituição ou banco.',
                 style: AppTheme.text.extra.xl(const Color(0xFF1B1C1C)),

@@ -251,7 +251,8 @@ class AdController {
             if (!fromStorage && adBannerAccordeonStorage.value == null) {
               fetchBannerAccordeon(ids, adBannerAccordeonStorage, fromStorage: true);
             }
-            showToastLoaded('BANNER ACCORDEON | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
+            showToastLoaded(
+                'BANNER ACCORDEON | ${fromStorage ? 'PROXIMA' : 'ATUAL'} | ${ids.length}');
           },
           onAdFailedToLoad: (ad, error) async {
             if (AdConfig.checkWaterFallErrorCode(error.code)) {
@@ -418,6 +419,92 @@ class AdController {
     }
   }
 
+  //* REWARD TRANSITION
+
+  static final AppStream<bool> rewardedLoadingTransitionStream = AppStream<bool>.seed(true);
+  static final AppStream<RewardedAd?> rewardedTransitionStream = AppStream<RewardedAd?>();
+
+  static Future<void> fetchRewardTransitionAd(List<String> ids, {Function? onComplete}) async {
+    ForegroundService.showForegroundBack = false;
+    showToast('REWARDED - ${ids.length}');
+    if (rewardedTransitionStream.controller.hasValue &&
+        rewardedTransitionStream.controller.value != null) {
+      if (onComplete != null) onComplete.call();
+      return;
+    }
+    await RewardedAd.load(
+      adUnitId: ids.first,
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (RewardedAd ad) {
+          showToastLoaded('REWARDED - ${ids.length}');
+          ad.fullScreenContentCallback = _rewardTransitionFullScreenCallback;
+          rewardedLoadingTransitionStream.add(false);
+          rewardedTransitionStream.add(ad);
+          if (onComplete != null) onComplete.call();
+        },
+        onAdFailedToLoad: (LoadAdError error) async {
+          if (AdConfig.checkWaterFallErrorCode(error.code)) {
+            if (ids.isNotEmpty) ids.removeAt(0);
+            if (ids.isNotEmpty) {
+              await fetchRewardTransitionAd(ids, onComplete: onComplete);
+            } else {
+              _disposeRewardedTransitionAd();
+              if (onComplete != null) onComplete.call();
+            }
+          } else {
+            _disposeRewardedTransitionAd();
+            if (onComplete != null) onComplete.call();
+          }
+        },
+      ),
+    );
+  }
+
+  static Function? onRewardedTransitionEarned;
+
+  static void showRewardTransitionAd({Function? onComplete}) async {
+    if (rewardedTransitionStream.value != null) {
+      DialogUtils.showTransitionLoadingDialog();
+      await Future.delayed(const Duration(seconds: 2));
+      rewardedTransitionStream.value!.show(
+        onUserEarnedReward: (ad, reward) {
+          ForegroundService.showForegroundBack = true;
+          onRewardedTransitionEarned = onComplete;
+        },
+      );
+      await Future.delayed(const Duration(milliseconds: 500));
+      Navigator.pop(contextGlobal);
+      rewardedLoadingTransitionStream.add(true);
+      fetchRewardTransitionAd(adConfig.rewardedTransition.id);
+    } else {
+      rewardedLoadingTransitionStream.add(true);
+      fetchRewardTransitionAd(adConfig.rewardedTransition.id, onComplete: onComplete);
+    }
+  }
+
+  static final FullScreenContentCallback<RewardedAd> _rewardTransitionFullScreenCallback =
+      FullScreenContentCallback(
+    onAdDismissedFullScreenContent: (RewardedAd ad) => _disposeRewardedTransitionAd(ad: ad),
+    onAdFailedToShowFullScreenContent: (RewardedAd ad, AdError error) =>
+        _disposeRewardedTransitionAd(ad: ad),
+  );
+
+  static void _disposeRewardedTransitionAd({
+    ad,
+  }) {
+    if (ad != null) {
+      ad.dispose();
+    }
+    if (onRewardedTransitionEarned != null) {
+      onRewardedTransitionEarned!.call();
+      onRewardedTransitionEarned = null;
+    }
+    rewardedTransitionStream.add(null);
+    rewardedLoadingTransitionStream.add(false);
+    ForegroundService.showForegroundBack = true;
+  }
+
   //* INTERSTICIAL REWARD
 
   static final AppStream<bool> rewardedIntersticialLoadingStream = AppStream<bool>.seed(true);
@@ -501,6 +588,86 @@ class AdController {
     });
   }
 
+  //* IntersticialTransition
+
+  static final AppStream<InterstitialAd?> interstitialTransitionStream =
+      AppStream<InterstitialAd?>();
+
+  static Future<void> fetchInterstitialTransitionAd(
+    List<String> ids,
+  ) async {
+    if (ids.length == adConfig.intersticialTransition.id.length && _canShowIntersticialTransition) {
+      return;
+    }
+    showToast('INTERSTICIAL - ${ids.length}');
+    await InterstitialAd.load(
+        adUnitId: ids.first,
+        request: const AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(
+          onAdLoaded: (InterstitialAd ad) {
+            showToastLoaded('INTERSTICIAL - ${ids.length}');
+            ad.fullScreenContentCallback = _intersticialTransitionFullScreenCallback();
+            interstitialTransitionStream.add(ad);
+          },
+          onAdFailedToLoad: (LoadAdError error) {
+            if (AdConfig.checkWaterFallErrorCode(error.code)) {
+              if (ids.isNotEmpty) ids.removeAt(0);
+              if (ids.isNotEmpty) {
+                fetchInterstitialTransitionAd(ids);
+              } else {
+                interstitialTransitionStream.add(null);
+              }
+            } else {
+              interstitialTransitionStream.add(null);
+            }
+          },
+        ));
+  }
+
+  static FullScreenContentCallback<InterstitialAd> _intersticialTransitionFullScreenCallback() =>
+      FullScreenContentCallback(
+        onAdDismissedFullScreenContent: (InterstitialAd ad) => _disposeIntersticialTransition(ad),
+        onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) =>
+            _disposeIntersticialTransition(ad),
+      );
+
+  static void _disposeIntersticialTransition(InterstitialAd ad) {
+    ad.dispose();
+    interstitialTransitionStream.add(null);
+    UtilsController().ignoringStream.add(false);
+  }
+
+  static Future<bool> showInterstitialTransitionAd(BuildContext context,
+      {Function? onComplete}) async {
+    if (_canShowIntersticialTransition) {
+      DialogUtils.showTransitionLoadingDialog();
+      await Future.delayed(const Duration(seconds: 2));
+      ForegroundService.showForegroundBack = false;
+      UtilsController().ignoringStream.add(true);
+      await interstitialTransitionStream.controller.value!.show();
+      late StreamSubscription<InterstitialAd?> controller;
+      controller =
+          AdController.interstitialTransitionStream.controller.listen((InterstitialAd? data) {
+        if (data == null) {
+          controller.cancel();
+          Navigator.pop(contextGlobal);
+          if (onComplete != null) onComplete.call();
+          ForegroundService.showForegroundBack = true;
+          fetchInterstitialTransitionAd(adConfig.intersticialTransition.id);
+        }
+      });
+      return false;
+    } else {
+      if (onComplete != null) onComplete.call();
+      return false;
+    }
+  }
+
+  static bool get _canShowIntersticialTransition =>
+      AdController.adConfig.intersticialTransition.active &&
+      interstitialTransitionStream.controller.hasValue &&
+      interstitialTransitionStream.controller.value != null;
+
   // INTERSTICIAL REWARD TRANSITION
 
   static final rewardedIntersticialTransitionLoadingStream = AppStream<bool>.seed(true);
@@ -508,7 +675,7 @@ class AdController {
 
   static Future<void> fetchIntersticialRewardTransitionAd(List<String> ids,
       {Function? onComplete}) async {
-        if (!adConfig.intersticialRewardedTransition.active) {
+    if (!adConfig.intersticialRewardedTransition.active) {
       onComplete?.call();
       return;
     }
@@ -601,7 +768,7 @@ class AdController {
 
   static void showToast(String text) {
     try {
-      // ScaffoldMessenger.of(contextGlobal).showSnackBar(SnackBar(
+      // ScaffoldMessenger.of(contextGlobal).showSnackBar(Sn ackBar(
       //   content: Text(text),
       //   duration: const Duration(seconds: 1),
       // ));
