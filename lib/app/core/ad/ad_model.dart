@@ -48,7 +48,7 @@ class AdConfig {
   static final Map<String, dynamic> configDefault = {
     "activeAll": true,
     "appOpen": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5179306302",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5179306302"},
@@ -56,7 +56,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/4869133355"}
     },
     "banner": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/1971523182",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/1971523182"},
@@ -64,7 +64,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/3284604853"}
     },
     "bannerSmart": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/3182563853",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/3182563853"},
@@ -72,7 +72,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/7121808864"}
     },
     "bannerAccordeon": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5131453237",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5131453237"},
@@ -80,7 +80,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/5788507908"}
     },
     "intersticial": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/7512728125",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/7512728125"},
@@ -88,7 +88,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/8405069592"}
     },
     "rewarded": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/5252292645",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/5252292645"},
@@ -96,7 +96,7 @@ class AdConfig {
       "high": {"active": true, "id": "ca-app-pub-8419654969814276/9256769221"}
     },
     "intersticialRewarded": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/8594424243",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/8594424243"},
@@ -114,21 +114,13 @@ class AdConfig {
     "rewardedTransition": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-3940256099942544/5224354917",
-      "low": {"active": true, "id": "ca-app-pub-3940256099942544/5224354917"},
-      "medium": {"active": true, "id": "ca-app-pub-3940256099942544/5224354917"},
-      "high": {"active": true, "id": "ca-app-pub-3940256099942544/5224354917"}
+      "default": "ca-app-pub-8419654969814276/4698518985",
+      "low": {"active": true, "id": "ca-app-pub-8419654969814276/4698518985"},
+      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/6011600651"},
+      "high": {"active": true, "id": "ca-app-pub-8419654969814276/2021256896"}
     },
-    // "rewardedTransition": {
-    //   "active": true,
-    //   "waterfall": true,
-    //   "default": "ca-app-pub-8419654969814276/8594424243",
-    //   "low": {"active": true, "id": "ca-app-pub-8419654969814276/8594424243"},
-    //   "medium": {"active": true, "id": "ca-app-pub-8419654969814276/9943164935"},
-    //   "high": {"active": true, "id": "ca-app-pub-8419654969814276/9907505917"}
-    // },
     "intersticialTransition": {
-      "active": false,
+      "active": true,
       "waterfall": true,
       "default": "ca-app-pub-8419654969814276/1326535598",
       "low": {"active": true, "id": "ca-app-pub-8419654969814276/1326535598"},

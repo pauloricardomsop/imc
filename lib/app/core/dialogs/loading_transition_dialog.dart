@@ -27,7 +27,7 @@ class _LoadingTransitionDialogState extends State<LoadingTransitionDialog> {
       onWillPop: () async => false,
       child: SimpleDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        contentPadding: const EdgeInsets.all(18),
+        contentPadding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
