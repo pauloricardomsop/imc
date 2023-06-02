@@ -61,7 +61,7 @@ class _AppAccordeonState extends State<AppAccordeon> {
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(
-            item.expanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_up,
+            item.expanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
             color: const Color(0xFF000C61),
             size: 30,
           ),
