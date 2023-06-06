@@ -24,7 +24,10 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return android;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for android - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
@@ -49,21 +52,13 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDYDMJ9SEZ6F-7vIzRW8Db9k50pDEu8rqk',
-    appId: '1:614662444224:android:a7c5cdfd3867a062104925',
-    messagingSenderId: '614662444224',
-    projectId: 'ldc-benefits-brazil',
-    storageBucket: 'ldc-benefits-brazil.appspot.com',
-  );
-
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDkUgcTjcv2ySXYGModvzmnoebi6oeadjw',
-    appId: '1:614662444224:ios:88afd329a8c0be1a104925',
-    messagingSenderId: '614662444224',
-    projectId: 'ldc-benefits-brazil',
-    storageBucket: 'ldc-benefits-brazil.appspot.com',
-    iosClientId: '614662444224-1op32v7rno4q78jbsusgn4jjhrhs64q4.apps.googleusercontent.com',
-    iosBundleId: 'com.example.benefitsBrazil',
+    apiKey: 'AIzaSyC4Ao1Ct6Zo05PeiMrX_tFVGQg7dIOqF-8',
+    appId: '1:502689250513:ios:ab4dd1f214915cf98119f0',
+    messagingSenderId: '502689250513',
+    projectId: 'ldv-svr',
+    storageBucket: 'ldv-svr.appspot.com',
+    iosClientId: '502689250513-q4tac291vqt50nsnkrit5qgcq6tjbmv1.apps.googleusercontent.com',
+    iosBundleId: 'com.ldcapps.svr',
   );
 }
