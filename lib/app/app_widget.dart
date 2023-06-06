@@ -24,8 +24,8 @@ Future<void> initializeServices() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   await Firebase.initializeApp();
   await RemoteConfigService.init();
-  initFirebaseMessaging();
-  await setupFlutterNotifications();
+  // initFirebaseMessaging();
+  // await setupFlutterNotifications();
   await ForegroundService.listen();
   await initializeDateFormatting('pt_BR');
   //TODO

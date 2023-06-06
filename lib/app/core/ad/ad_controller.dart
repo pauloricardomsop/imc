@@ -174,12 +174,12 @@ class AdController {
     if (ad != null) ad.dispose();
     if (fromBackground) {
       Navigator.pop(contextGlobal);
-      if (urlToShow != null) {
-        execUrl(urlToShow!);
-        urlToShow = null;
-      }
+      // if (urlToShow != null) {
+      //   execUrl(urlToShow!);
+      //   urlToShow = null;
+      // }
     } else {
-      handleInitialMessage(await FirebaseMessaging.instance.getInitialMessage());
+      // handleInitialMessage(await FirebaseMessaging.instance.getInitialMessage());
       ForegroundService.showForegroundBack = true;
     }
     UtilsController().moduleStream.add(Module.home);
