@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../enums/ad_type_enum.dart';
 
 class AdConfig {
@@ -50,82 +52,172 @@ class AdConfig {
     "appOpen": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/5179306302",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/5179306302"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/7656198350"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/4869133355"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5179306302" : "ca-app-pub-8419654969814276/2975594962"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5179306302" : "ca-app-pub-8419654969814276/2975594962")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/7656198350" : "ca-app-pub-8419654969814276/6914839978")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/4869133355" : "ca-app-pub-8419654969814276/4260756478")
+      }
     },
     "banner": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/1971523182",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/1971523182"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/3727457981"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/3284604853"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/1971523182" : "ca-app-pub-8419654969814276/4847929892"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/1971523182" : "ca-app-pub-8419654969814276/4847929892")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/3727457981" : "ca-app-pub-8419654969814276/6620956813")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/3284604853" : "ca-app-pub-8419654969814276/7934038485")
+      }
     },
     "bannerSmart": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/3182563853",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/3182563853"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/5514596619"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/7121808864"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/3182563853" : "ca-app-pub-8419654969814276/1623781003"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/3182563853" : "ca-app-pub-8419654969814276/1623781003")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5514596619" : "ca-app-pub-8419654969814276/9270390633")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/7121808864" : "ca-app-pub-8419654969814276/3994793471")
+      }
     },
     "bannerAccordeon": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/5131453237",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/5131453237"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/5126200911"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/5788507908"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5131453237" : "ca-app-pub-8419654969814276/9247120156"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5131453237" : "ca-app-pub-8419654969814276/9247120156")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5126200911" : "ca-app-pub-8419654969814276/2873283496")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5788507908" : "ca-app-pub-8419654969814276/6161011561")
+      }
     },
     "intersticial": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/7512728125",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/7512728125"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/7033930567"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/8405069592"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/7512728125" : "ca-app-pub-8419654969814276/6700847863"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/7512728125" : "ca-app-pub-8419654969814276/6700847863")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/7033930567" : "ca-app-pub-8419654969814276/8013929534")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/8405069592" : "ca-app-pub-8419654969814276/2221766559")
+      }
     },
     "rewarded": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/5252292645",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/5252292645"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/4846750927"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/9256769221"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5252292645" : "ca-app-pub-8419654969814276/4948002240"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/5252292645" : "ca-app-pub-8419654969814276/4948002240")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/4846750927" : "ca-app-pub-8419654969814276/7574165584")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/9256769221" : "ca-app-pub-8419654969814276/6429385122")
+      }
     },
     "intersticialRewarded": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/8594424243",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/8594424243"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/9943164935"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/9907505917"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/8594424243" : "ca-app-pub-8419654969814276/7087860672"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/8594424243" : "ca-app-pub-8419654969814276/7087860672")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/9943164935" : "ca-app-pub-8419654969814276/9714024018")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/9907505917" : "ca-app-pub-8419654969814276/7882067596")
+      }
     },
     "intersticialRewardedTransition": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/7949188265",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/7949188265"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/3601328263"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/2691609263"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/7949188265" : "ca-app-pub-8419654969814276/1835533990"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/7949188265" : "ca-app-pub-8419654969814276/1835533990")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/3601328263" : "ca-app-pub-8419654969814276/7698234762")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/2691609263" : "ca-app-pub-8419654969814276/6568985921")
+      }
     },
     "rewardedTransition": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/4698518985",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/4698518985"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/6011600651"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/2021256896"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/4698518985" : "ca-app-pub-8419654969814276/8887247258"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/4698518985" : "ca-app-pub-8419654969814276/8887247258")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/6011600651" : "ca-app-pub-8419654969814276/2513410595")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/2021256896" : "ca-app-pub-8419654969814276/7765737271")
+      }
     },
     "intersticialTransition": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/1326535598",
-      "low": {"active": true, "id": "ca-app-pub-8419654969814276/1326535598"},
-      "medium": {"active": true, "id": "ca-app-pub-8419654969814276/9393508124"},
-      "high": {"active": true, "id": "ca-app-pub-8419654969814276/8579119902"}
+      "default": (Platform.isAndroid ? "ca-app-pub-8419654969814276/1326535598" : "ca-app-pub-8419654969814276/9011316430"),
+      "low": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/1326535598" : "ca-app-pub-8419654969814276/9011316430")
+      },
+      "medium": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/9393508124" : "ca-app-pub-8419654969814276/2221766559")
+      },
+      "high": {
+        "active": true,
+        "id": (Platform.isAndroid ? "ca-app-pub-8419654969814276/8579119902" : "ca-app-pub-8419654969814276/9327011208")
+      }
     }
   };
 }
