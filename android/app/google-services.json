@@ -29,6 +29,13 @@
             {
               "client_id": "502689250513-kf3fipfti8u2rccehvj9cibn2mdf25g6.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "502689250513-q4tac291vqt50nsnkrit5qgcq6tjbmv1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ldcapps.svr"
+              }
             }
           ]
         }
