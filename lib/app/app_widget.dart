@@ -17,24 +17,19 @@ import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/utils_controller.dart';
 
 Future<void> initializeServices() async {
-  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  await Firebase.initializeApp();
-  await RemoteConfigService.init();
-  // initFirebaseMessaging();
-  // await setupFlutterNotifications();
-  await ForegroundService.listen();
-  await initializeDateFormatting('pt_BR');
-  //TODO
-  // await FacebookAppEvents().setAutoLogAppEventsEnabled(true);
-  FlutterError.onError = (errorDetails) {
-    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  };
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
+  WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  // await Firebase.initializeApp();
+  // await RemoteConfigService.init();
+  // await ForegroundService.listen();
+  // await initializeDateFormatting('pt_BR');
+  // FlutterError.onError = (errorDetails) {
+  //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  // };
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
 }
 
 class App extends StatefulWidget {
@@ -50,15 +45,15 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    MobileAds.instance.initialize().then((value) {
-      if (AdController.adConfig.appOpen.active) {
-        AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
-      } else {
-        UtilsController().moduleStream.add(Module.home);
-      }
-    });
-    // MobileAds.instance.initialize();
-    AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
+    // MobileAds.instance.initialize().then((value) {
+    //   if (AdController.adConfig.appOpen.active) {
+    //     AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
+    //   } else {
+    //     UtilsController().moduleStream.add(Module.home);
+    //   }
+    // });
+    // // MobileAds.instance.initialize();
+    // AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
   }
 
   @override
@@ -69,7 +64,8 @@ class _AppState extends State<App> {
       title: 'Valores a Receber',
       theme: AppTheme.theme,
       initialRoute: RouteService.initial,
-      routes: RouteService.routes,
+      // routes: RouteService.routes,
+      home: Text('-TESTE'),
     );
   }
 }
