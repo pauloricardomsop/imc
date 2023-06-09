@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 
 // import 'package:facebook_app_events/facebook_app_events.dart';
@@ -21,7 +22,7 @@ Future<void> initializeServices() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: Platform.isAndroid? null : DefaultFirebaseOptions.currentPlatform,
   );
   await RemoteConfigService.init();
   await ForegroundService.listen();

@@ -112,12 +112,12 @@ abstract class JourneyStatefulWidget extends StatefulWidget {
 
   @override
   StatefulElement createElement() {
-    FirebaseAnalytics.instance.logEvent(
-      name: 'app_screen_view',
-      parameters: {
-        'app_screen': name,
-      },
-    );
+    // FirebaseAnalytics.instance.logEvent(
+    //   name: 'app_screen_view',
+    //   parameters: {
+    //     'app_screen': name,
+    //   },
+    // );
     return StatefulElement(this);
   }
 }
