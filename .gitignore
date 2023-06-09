@@ -44,3 +44,6 @@ app.*.map.json
 /android/app/release
 
 .fvm/
+old_ios/
+older_ios/
+testios/
