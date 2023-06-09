@@ -19,17 +19,17 @@ import 'package:svr/app/core/utils/utils_controller.dart';
 Future<void> initializeServices() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  await Firebase.initializeApp();
-  await RemoteConfigService.init();
+  // await Firebase.initializeApp();
+  // await RemoteConfigService.init();
   await ForegroundService.listen();
   await initializeDateFormatting('pt_BR');
-  FlutterError.onError = (errorDetails) {
-    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  };
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
+  // FlutterError.onError = (errorDetails) {
+  //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  // };
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
 }
 
 class App extends StatefulWidget {
