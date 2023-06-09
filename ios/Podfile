@@ -6,7 +6,7 @@ pod 'FirebaseAnalytics'
 pod 'Google-Mobile-Ads-SDK'
 pod 'FirebaseMessaging'
 pod 'FirebaseRemoteConfig'
-pod 'FirebaseCrashlytics'
+# pod 'FirebaseCrashlytics'
 
 target 'Runner' do
   # Comment the next line if you don't want to use dynamic frameworks
