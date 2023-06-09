@@ -14,19 +14,19 @@ class ForegroundService {
 
   static listen() {
     foregroundStream.add(true);
-    FGBGEvents.stream.listen((fg) async {
-      foregroundStream.add(fg == FGBGType.foreground);
-      if (fg == FGBGType.foreground) {
-        if (appReturnFromWebExec) {
-          appReturnFromWebExec = false;
-          return;
-        }
-        if (showForegroundBack) {
-          UtilsController().moduleStream.add(Module.splash);
-          push(contextGlobal, const SplashOldPage());
-          AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id, fromBackground: true);
-        }
-      }
-    });
+    // FGBGEvents.stream.listen((fg) async {
+    //   foregroundStream.add(fg == FGBGType.foreground);
+    //   if (fg == FGBGType.foreground) {
+    //     if (appReturnFromWebExec) {
+    //       appReturnFromWebExec = false;
+    //       return;
+    //     }
+    //     if (showForegroundBack) {
+    //       UtilsController().moduleStream.add(Module.splash);
+    //       push(contextGlobal, const SplashOldPage());
+    //       AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id, fromBackground: true);
+    //     }
+    //   }
+    // });
   }
 }
