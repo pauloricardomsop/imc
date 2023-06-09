@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
-import 'package:firebase_analytics/firebase_analytics.dart';
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:svr/app/app_controller.dart';
@@ -112,12 +112,12 @@ abstract class JourneyStatefulWidget extends StatefulWidget {
 
   @override
   StatefulElement createElement() {
-    FirebaseAnalytics.instance.logEvent(
-      name: 'app_screen_view',
-      parameters: {
-        'app_screen': name,
-      },
-    );
+    // FirebaseAnalytics.instance.logEvent(
+    //   name: 'app_screen_view',
+    //   parameters: {
+    //     'app_screen': name,
+    //   },
+    // );
     return StatefulElement(this);
   }
 }
