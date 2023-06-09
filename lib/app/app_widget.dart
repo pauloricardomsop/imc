@@ -18,11 +18,11 @@ import 'package:svr/app/core/utils/utils_controller.dart';
 
 Future<void> initializeServices() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   // await Firebase.initializeApp();
   // await RemoteConfigService.init();
-  await ForegroundService.listen();
-  await initializeDateFormatting('pt_BR');
+  // await ForegroundService.listen();
+  // await initializeDateFormatting('pt_BR');
   // FlutterError.onError = (errorDetails) {
   //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   // };
