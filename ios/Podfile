@@ -2,6 +2,7 @@
 platform :ios, '11.0'
 
 # pod 'FirebaseAnalytics'
+pod 'FirebaseCore'
 pod 'Google-Mobile-Ads-SDK'
 pod 'FirebaseMessaging'
 pod 'FirebaseRemoteConfig'
