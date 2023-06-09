@@ -23,16 +23,16 @@ Future<void> initializeServices() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  // await RemoteConfigService.init();
+  await RemoteConfigService.init();
   await ForegroundService.listen();
   await initializeDateFormatting('pt_BR');
-  // FlutterError.onError = (errorDetails) {
-  //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  // };
-  // PlatformDispatcher.instance.onError = (error, stack) {
-  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-  //   return true;
-  // };
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
 }
 
 class App extends StatefulWidget {
@@ -67,8 +67,7 @@ class _AppState extends State<App> {
       title: 'Valores a Receber',
       theme: AppTheme.theme,
       initialRoute: RouteService.initial,
-      // routes: RouteService.routes,
-      home: Text('-TESTE'),
+      routes: RouteService.routes,
     );
   }
 }
