@@ -15,14 +15,17 @@ import 'package:svr/app/core/services/remote_config_service.dart';
 import 'package:svr/app/core/services/route_service.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/utils_controller.dart';
+import 'package:svr/firebase_options.dart';
 
 Future<void> initializeServices() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  // await Firebase.initializeApp();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   // await RemoteConfigService.init();
-  // await ForegroundService.listen();
-  // await initializeDateFormatting('pt_BR');
+  await ForegroundService.listen();
+  await initializeDateFormatting('pt_BR');
   // FlutterError.onError = (errorDetails) {
   //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   // };
