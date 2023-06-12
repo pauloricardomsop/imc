@@ -47,353 +47,353 @@ class AdConfig {
         "intersticialRewardedTransition": intersticialRewardedTransition.toJson(),
       };
 
-  // static final Map<String, dynamic> configDefault = {
-  //   "activeAll": true,
-  //   "appOpen": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/3419835294",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/3419835294"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/3419835294"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/3419835294"
-  //     }
-  //   },
-  //   "banner": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/6300978111",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     }
-  //   },
-  //   "bannerSmart": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/6300978111",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     }
-  //   },
-  //   "bannerAccordeon": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/6300978111",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/6300978111"
-  //     }
-  //   },
-  //   "intersticial": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/1033173712",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/1033173712"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/1033173712"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/1033173712"
-  //     }
-  //   },
-  //   "rewarded": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/5224354917",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5224354917"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5224354917"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5224354917"
-  //     }
-  //   },
-  //   "intersticialRewarded": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/5354046379",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5354046379"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5354046379"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5354046379"
-  //     }
-  //   },
-  //   "intersticialRewardedTransition": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/5354046379",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5354046379"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5354046379"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5354046379"
-  //     }
-  //   },
-  //   "rewardedTransition": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/5224354917",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5224354917"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5224354917"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/5224354917"
-  //     }
-  //   },
-  //   "intersticialTransition": {
-  //     "active": true,
-  //     "waterfall": true,
-  //     "default": "ca-app-pub-3940256099942544/1033173712",
-  //     "low": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/1033173712"
-  //     },
-  //     "medium": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/1033173712"
-  //     },
-  //     "high": {
-  //       "active": true,
-  //       "id": "ca-app-pub-3940256099942544/1033173712"
-  //     }
-  //   }
-  // };
-
   static final Map<String, dynamic> configDefault = {
-    "activeAll": false,
+    "activeAll": true,
     "appOpen": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/2975594962",
+      "default": "ca-app-pub-3940256099942544/3419835294",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/2975594962"
+        "id": "ca-app-pub-3940256099942544/3419835294"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/6914839978"
+        "id": "ca-app-pub-3940256099942544/3419835294"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/4260756478"
+        "id": "ca-app-pub-3940256099942544/3419835294"
       }
     },
     "banner": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/4847929892",
+      "default": "ca-app-pub-3940256099942544/6300978111",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/4847929892"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/6620956813"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/7934038485"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       }
     },
     "bannerSmart": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/1623781003",
+      "default": "ca-app-pub-3940256099942544/6300978111",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/1623781003"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/9270390633"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/3994793471"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       }
     },
     "bannerAccordeon": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/9247120156",
+      "default": "ca-app-pub-3940256099942544/6300978111",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/9247120156"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/2873283496"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/6161011561"
+        "id": "ca-app-pub-3940256099942544/6300978111"
       }
     },
     "intersticial": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/6700847863",
+      "default": "ca-app-pub-3940256099942544/1033173712",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/6700847863"
+        "id": "ca-app-pub-3940256099942544/1033173712"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/8013929534"
+        "id": "ca-app-pub-3940256099942544/1033173712"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/2221766559"
+        "id": "ca-app-pub-3940256099942544/1033173712"
       }
     },
     "rewarded": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/4948002240",
+      "default": "ca-app-pub-3940256099942544/5224354917",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/4948002240"
+        "id": "ca-app-pub-3940256099942544/5224354917"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/7574165584"
+        "id": "ca-app-pub-3940256099942544/5224354917"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/6429385122"
+        "id": "ca-app-pub-3940256099942544/5224354917"
       }
     },
     "intersticialRewarded": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/7087860672",
+      "default": "ca-app-pub-3940256099942544/5354046379",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/7087860672"
+        "id": "ca-app-pub-3940256099942544/5354046379"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/9714024018"
+        "id": "ca-app-pub-3940256099942544/5354046379"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/7882067596"
+        "id": "ca-app-pub-3940256099942544/5354046379"
       }
     },
     "intersticialRewardedTransition": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/1835533990",
+      "default": "ca-app-pub-3940256099942544/5354046379",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/1835533990"
+        "id": "ca-app-pub-3940256099942544/5354046379"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/7698234762"
+        "id": "ca-app-pub-3940256099942544/5354046379"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/6568985921"
+        "id": "ca-app-pub-3940256099942544/5354046379"
       }
     },
     "rewardedTransition": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/8887247258",
+      "default": "ca-app-pub-3940256099942544/5224354917",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/8887247258"
+        "id": "ca-app-pub-3940256099942544/5224354917"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/2513410595"
+        "id": "ca-app-pub-3940256099942544/5224354917"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/7765737271"
+        "id": "ca-app-pub-3940256099942544/5224354917"
       }
     },
     "intersticialTransition": {
       "active": true,
       "waterfall": true,
-      "default": "ca-app-pub-8419654969814276/9011316430",
+      "default": "ca-app-pub-3940256099942544/1033173712",
       "low": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/9011316430"
+        "id": "ca-app-pub-3940256099942544/1033173712"
       },
       "medium": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/2221766559"
+        "id": "ca-app-pub-3940256099942544/1033173712"
       },
       "high": {
         "active": true,
-        "id": "ca-app-pub-8419654969814276/9327011208"
+        "id": "ca-app-pub-3940256099942544/1033173712"
       }
     }
   };
+
+  // static final Map<String, dynamic> configDefault = {
+  //   "activeAll": false,
+  //   "appOpen": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/2975594962",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/2975594962"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/6914839978"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/4260756478"
+  //     }
+  //   },
+  //   "banner": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/4847929892",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/4847929892"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/6620956813"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/7934038485"
+  //     }
+  //   },
+  //   "bannerSmart": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/1623781003",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/1623781003"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/9270390633"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/3994793471"
+  //     }
+  //   },
+  //   "bannerAccordeon": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/9247120156",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/9247120156"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/2873283496"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/6161011561"
+  //     }
+  //   },
+  //   "intersticial": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/6700847863",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/6700847863"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/8013929534"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/2221766559"
+  //     }
+  //   },
+  //   "rewarded": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/4948002240",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/4948002240"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/7574165584"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/6429385122"
+  //     }
+  //   },
+  //   "intersticialRewarded": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/7087860672",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/7087860672"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/9714024018"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/7882067596"
+  //     }
+  //   },
+  //   "intersticialRewardedTransition": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/1835533990",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/1835533990"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/7698234762"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/6568985921"
+  //     }
+  //   },
+  //   "rewardedTransition": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/8887247258",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/8887247258"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/2513410595"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/7765737271"
+  //     }
+  //   },
+  //   "intersticialTransition": {
+  //     "active": true,
+  //     "waterfall": true,
+  //     "default": "ca-app-pub-8419654969814276/9011316430",
+  //     "low": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/9011316430"
+  //     },
+  //     "medium": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/2221766559"
+  //     },
+  //     "high": {
+  //       "active": true,
+  //       "id": "ca-app-pub-8419654969814276/9327011208"
+  //     }
+  //   }
+  // };
 }
 
 class AdObjConfig {

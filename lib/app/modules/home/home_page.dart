@@ -33,10 +33,15 @@ class _HomePageState extends State<HomePage> {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
     AdController.fetchInterstitialTransitionAd(AdController.adConfig.intersticialTransition.id);
     AdController.fetchRewardTransitionAd(AdController.adConfig.rewardedTransition.id);
+
+
+
     AdController.fetchBanner(
       AdController.adConfig.banner.id,
       AdBannerStorage.get(widget.name),
     );
+
+    
     AdController.fetchRewardAd();
     super.initState();
   }
