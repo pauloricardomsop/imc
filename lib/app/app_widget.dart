@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:ui';
 
 // import 'package:facebook_app_events/facebook_app_events.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ Future<void> initializeServices() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   await Firebase.initializeApp(
-    options: Platform.isAndroid? null : DefaultFirebaseOptions.currentPlatform,
+    options: Platform.isAndroid ? null : DefaultFirebaseOptions.currentPlatform,
   );
   await RemoteConfigService.init();
   await ForegroundService.listen();
@@ -49,7 +50,8 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    MobileAds.instance.initialize().then((value) {
+    AppTrackingTransparency.requestTrackingAuthorization().then((_) {
+MobileAds.instance.initialize().then((value) {
       if (AdController.adConfig.appOpen.active) {
         AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
       } else {
@@ -57,6 +59,8 @@ class _AppState extends State<App> {
       }
     });
     AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
+    });
+    
   }
 
   @override

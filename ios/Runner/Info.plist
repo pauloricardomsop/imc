@@ -30,6 +30,8 @@
 	<string>Main</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-8419654969814276~5324085380</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Mensagem personalizada para descrever permissão de ads.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
