@@ -57,7 +57,6 @@ class _AppState extends State<App> {
         UtilsController().moduleStream.add(Module.home);
       }
     });
-    // MobileAds.instance.initialize();
     AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
   }
 
