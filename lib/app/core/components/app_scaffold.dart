@@ -116,7 +116,10 @@ class _AppScaffoldState extends State<AppScaffold> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: [banner, if (widget.bottom != null) widget.bottom!],
+      children: [
+        if (widget.bottom == null) banner,
+        if (widget.bottom != null) widget.bottom!,
+      ],
     );
   }
 }
