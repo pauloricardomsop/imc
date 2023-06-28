@@ -87,7 +87,8 @@ class AcessarConsultaStatePage extends State<AcessarConsultaPage> {
 
   InFooterCta _inFooterCta() {
     return InFooterCta(
-      onTap: () => AdController.showRewardTransitionAd(
+      onTap: () => AdController.showInterstitialTransitionAd(
+        context, 
           onComplete: () =>
               push(context, const WebViewPage('https://valoresareceber.bcb.gov.br/publico'))),
       label: 'CONSULTAR VALORES',
