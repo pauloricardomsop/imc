@@ -222,7 +222,7 @@ class AdConfig {
   // };
 
   static final Map<String, dynamic> configDefault = {
-    "activeAll": true,
+    "activeAll": false,
     "appOpen": {
       "active": true,
       "waterfall": true,
