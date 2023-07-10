@@ -12,6 +12,7 @@ class RemoteConfigService {
   static const bool useDefaultValues = false;
 
   static Future<void> init() async {
+    await instance.ensureInitialized();
     await instance.setConfigSettings(_configSettings);
     await instance.setDefaults(defaultMap);
     await instance.fetchAndActivate();
