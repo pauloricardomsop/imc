@@ -63,7 +63,7 @@ class RemoteConfigService {
 }
 
 class RemoteConfigKey {
-  static const String adConfig = 'ad_config';
+  static const String adConfig = 'ad_config_ios';
   static const String paymentCalendarNIS = 'payment_calendar_nis';
   static const String queryEnable = 'query_enable';
   static const String tips = 'tups';

@@ -224,36 +224,36 @@ class AdConfig {
   static final Map<String, dynamic> configDefault = {
     "activeAll": false,
     "appOpen": {
-      "active": true,
-      "waterfall": true,
+      "active": false,
+      "waterfall": false,
       "default": "ca-app-pub-8419654969814276/2975594962",
       "low": {
-        "active": true,
+        "active": false,
         "id": "ca-app-pub-8419654969814276/2975594962"
       },
       "medium": {
-        "active": true,
+        "active": false,
         "id": "ca-app-pub-8419654969814276/6914839978"
       },
       "high": {
-        "active": true,
+        "active": false,
         "id": "ca-app-pub-8419654969814276/4260756478"
       }
     },
     "banner": {
-      "active": true,
-      "waterfall": true,
+      "active": false,
+      "waterfall": false,
       "default": "ca-app-pub-8419654969814276/4847929892",
       "low": {
-        "active": true,
+        "active": false,
         "id": "ca-app-pub-8419654969814276/4847929892"
       },
       "medium": {
-        "active": true,
+        "active": false,
         "id": "ca-app-pub-8419654969814276/6620956813"
       },
       "high": {
-        "active": true,
+        "active": false,
         "id": "ca-app-pub-8419654969814276/7934038485"
       }
     },
