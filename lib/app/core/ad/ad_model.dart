@@ -222,38 +222,38 @@ class AdConfig {
   // };
 
   static final Map<String, dynamic> configDefault = {
-    "activeAll": false,
+    "activeAll": true,
     "appOpen": {
-      "active": false,
-      "waterfall": false,
+      "active": true,
+      "waterfall": true,
       "default": "ca-app-pub-8419654969814276/2975594962",
       "low": {
-        "active": false,
+        "active": true,
         "id": "ca-app-pub-8419654969814276/2975594962"
       },
       "medium": {
-        "active": false,
+        "active": true,
         "id": "ca-app-pub-8419654969814276/6914839978"
       },
       "high": {
-        "active": false,
+        "active": true,
         "id": "ca-app-pub-8419654969814276/4260756478"
       }
     },
     "banner": {
-      "active": false,
-      "waterfall": false,
+      "active": true,
+      "waterfall": true,
       "default": "ca-app-pub-8419654969814276/4847929892",
       "low": {
-        "active": false,
+        "active": true,
         "id": "ca-app-pub-8419654969814276/4847929892"
       },
       "medium": {
-        "active": false,
+        "active": true,
         "id": "ca-app-pub-8419654969814276/6620956813"
       },
       "high": {
-        "active": false,
+        "active": true,
         "id": "ca-app-pub-8419654969814276/7934038485"
       }
     },

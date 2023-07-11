@@ -50,8 +50,7 @@ class _AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    AppTrackingTransparency.requestTrackingAuthorization().then((_) {
-MobileAds.instance.initialize().then((value) {
+    MobileAds.instance.initialize().then((value) {
       if (AdController.adConfig.appOpen.active) {
         AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
       } else {
@@ -59,7 +58,6 @@ MobileAds.instance.initialize().then((value) {
       }
     });
     AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
-    });
     
   }
 
