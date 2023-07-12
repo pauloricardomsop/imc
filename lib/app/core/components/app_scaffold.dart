@@ -57,8 +57,6 @@ class _AppScaffoldState extends State<AppScaffold> {
     return Container(
       color: Colors.black,
       child: SafeArea(
-        top: true,
-        bottom: true,
         child: WillPopScope(
           onWillPop: widget.onWillPop ??
               () async {
@@ -66,6 +64,7 @@ class _AppScaffoldState extends State<AppScaffold> {
                 return true;
               },
           child: Scaffold(
+            extendBody: true,
             backgroundColor: const Color(0xFFFFFFFF),
             body: Builder(
               builder: (context) {
