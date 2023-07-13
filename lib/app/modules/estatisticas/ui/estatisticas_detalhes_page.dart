@@ -71,16 +71,23 @@ class EstatisticasDetalhesPageState extends State<EstatisticasDetalhesPage> {
                     desc: 'Total de valores que ainda não foram resgatados.',
                   ),
                   const H(16),
-                  const CardValor(
-                    title: 'Total de valores a receber',
-                    value: 'R\$ 7.12 Bilhões',
-                    desc: 'R\$ 7.123.443.188,39',
+                  CardValor(
+                    title: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.cardValoresReceber!.title!,
+                    value: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.cardValoresReceber!.value!,
+                    desc: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.cardValoresReceber!.desc!,
                   ),
                   const H(16),
                   TableValues(
                     left: 'DESCRIÇÃO',
                     right: 'VALOR',
-                    models: valoresReceber,
+                    models: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.valoresReceber!
+                        .map((e) => EstatisticaValorModel(
+                            label: e.descricao!, value: e.valor!, desc: e.subtitle))
+                        .toList(),
                   ),
                   const H(24),
                   const HeaderHero(
@@ -88,16 +95,23 @@ class EstatisticasDetalhesPageState extends State<EstatisticasDetalhesPage> {
                     desc: 'Total de valores que já foram resgatados.',
                   ),
                   const H(16),
-                  const CardValor(
-                    title: 'Total de valores a receber',
-                    value: 'R\$ 7.12 Bilhões',
-                    desc: 'R\$ 7.123.443.188,39',
+                  CardValor(
+                    title: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.cardValoresDevolvidos!.title!,
+                    value: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.cardValoresDevolvidos!.value!,
+                    desc: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.cardValoresDevolvidos!.desc!,
                   ),
                   const H(16),
                   TableValues(
                     left: 'DESCRIÇÃO',
                     right: 'VALOR',
-                    models: valoresReceber,
+                    models: EstatisticasValores
+                        .estatisticasValores.estatisticas!.detalhes!.valoresDevolvidos!
+                        .map((e) => EstatisticaValorModel(
+                            label: e.descricao!, value: e.valor!, desc: e.subtitle))
+                        .toList(),
                   ),
                   const H(16),
                 ],
