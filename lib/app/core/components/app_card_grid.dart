@@ -15,7 +15,7 @@ class AppCardGrid extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: const Color(0xFFFEFCFC),
             border: Border.all(color: const Color(0xFFE3E2E2)),
             borderRadius: BorderRadius.circular(10)),
         child: Column(
@@ -25,14 +25,15 @@ class AppCardGrid extends StatelessWidget {
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                  color: const Color(0xFF1C44F9), borderRadius: BorderRadius.circular(8)),
+                  color: const Color(0xFF1C44F9),
+                  borderRadius: BorderRadius.circular(8)),
               child: Icon(
                 model.icon,
                 color: const Color(0xFFFFFFFF),
                 size: 38,
               ),
             ),
-            const H(16),
+            const H(18),
             Text(
               model.title,
               textAlign: TextAlign.start,

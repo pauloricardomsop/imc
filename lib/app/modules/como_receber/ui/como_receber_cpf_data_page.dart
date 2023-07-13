@@ -16,7 +16,8 @@ import 'package:svr/app/modules/como_receber/como_receber_model.dart';
 import 'package:svr/app/modules/como_receber/ui/como_receber_conta_gov_page.dart';
 
 class ComoReceberCpfDataPage extends JourneyStatefulWidget {
-  const ComoReceberCpfDataPage({Key? key}) : super(key: key, name: 'ComoReceberCpfDataPage');
+  const ComoReceberCpfDataPage({Key? key})
+      : super(key: key, name: 'ComoReceberCpfDataPage');
 
   @override
   State<ComoReceberCpfDataPage> createState() => _ComoReceberCpfDataPageState();
@@ -63,33 +64,37 @@ class _ComoReceberCpfDataPageState extends State<ComoReceberCpfDataPage> {
   }
 
   Widget body(_, ComoReceberQuiz model) {
-    return Column(
-      children: [
-        const BackHeader(),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              AppBannerAd(AdBannerStorage.get(widget.name)),
-              const H(32),
-              const HeaderHero(
-                title: 'Está com CPF e Data de Nascimento das pessoas que você quer verificar?',
-                desc:
-                    'No sistema de Valores a Receber você pode receber para você ou para falecidos de sua família.',
-              ),
-              const H(16),
-              QuizOptionWidget(
-                options: quizOptions,
-                option: model.cpfData,
-                onChanged: (e) {
-                  model.cpfData = e;
-                  _controller.comoReceberQuizStream.update();
-                },
-              )
-            ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        children: [
+          const BackHeader(),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                AppBannerAd(AdBannerStorage.get(widget.name)),
+                const H(32),
+                const HeaderHero(
+                  title:
+                      'Está com CPF e Data de Nascimento das pessoas que você quer verificar?',
+                  desc:
+                      'No sistema de Valores a Receber você pode receber para você ou para falecidos de sua família.',
+                ),
+                const H(16),
+                QuizOptionWidget(
+                  options: quizOptions,
+                  option: model.cpfData,
+                  onChanged: (e) {
+                    model.cpfData = e;
+                    _controller.comoReceberQuizStream.update();
+                  },
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

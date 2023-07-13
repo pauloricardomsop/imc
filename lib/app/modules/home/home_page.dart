@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
@@ -37,8 +38,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
-    AdController.fetchInterstitialTransitionAd(AdController.adConfig.intersticialTransition.id);
-    AdController.fetchRewardTransitionAd(AdController.adConfig.rewardedTransition.id);
+    AdController.fetchInterstitialTransitionAd(
+        AdController.adConfig.intersticialTransition.id);
+    AdController.fetchRewardTransitionAd(
+        AdController.adConfig.rewardedTransition.id);
     AdController.fetchBanner(
       AdController.adConfig.banner.id,
       AdBannerStorage.get('${widget.name}1'),
@@ -54,27 +57,27 @@ class _HomePageState extends State<HomePage> {
   List<CardGridModel> get gridItens => [
         CardGridModel(
           title: 'Consulta Valores a\nReceber',
-          icon: Icons.payments_outlined,
+          icon: Symbols.payments,
           onTap: () => AdController.showInterstitialTransitionAd(context,
               onComplete: () => push(context, const ConsultaValoresPage())),
         ),
         CardGridModel(
           title: 'Consulta Valores\nde Falecidos',
-          // TODO: Ajustar ícone deceased
-          icon: Icons.account_balance,
+          icon: Symbols.deceased,
           onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const ConsultaValoresFalecidoPage())),
+              onComplete: () =>
+                  push(context, const ConsultaValoresFalecidoPage())),
         ),
         CardGridModel(
           title: 'Serviços do Banco\nCentral',
-          icon: Icons.account_balance,
+          icon: Symbols.account_balance,
           onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const ConsultaValoresFalecidoPage())),
+              onComplete: () =>
+                  push(context, const ConsultaValoresFalecidoPage())),
         ),
         CardGridModel(
           title: 'Estatísticas\ndo SVR',
-          // TODO: Ajustar ícone monitoring
-          icon: Icons.show_chart_sharp,
+          icon: Symbols.monitoring,
           onTap: () => AdController.showInterstitialTransitionAd(context,
               onComplete: () => push(context, const EstatisticasHomePage())),
         )
@@ -84,7 +87,8 @@ class _HomePageState extends State<HomePage> {
         AppCardModel(
           icon: Icons.contact_support_outlined,
           title: 'O que é o SVR?',
-          subtitle: 'Saiba o que é e como funciona o Sistema de Valores a Receber',
+          subtitle:
+              'Saiba o que é e como funciona o Sistema de Valores a Receber',
           onTap: () => AdController.showInterstitialTransitionAd(context,
               onComplete: () => push(context, const OqueEPage())),
         ),
@@ -130,7 +134,10 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(16),
           child: Row(
             children: [
-              SizedBox(width: 80, height: 80, child: Image.asset('assets/images/logo.png')),
+              SizedBox(
+                  width: 80,
+                  height: 80,
+                  child: Image.asset('assets/images/logo.png')),
               const W(12),
               Expanded(
                 child: Column(
@@ -161,11 +168,10 @@ class _HomePageState extends State<HomePage> {
                 title: EstatisticasValores.estatisticasValores.home!.title!,
                 value: EstatisticasValores.estatisticasValores.home!.value!,
                 desc: EstatisticasValores.estatisticasValores.home!.desc!,
-                onClick: () => AdController.showInterstitialTransitionAd(context,
+                onClick: () => AdController.showInterstitialTransitionAd(
+                    context,
                     onComplete: () => push(context, const ComoReceberHomePage())),
               ),
-              const H(16),
-              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
               const H(16),
               Row(
                 children: [
@@ -174,7 +180,9 @@ class _HomePageState extends State<HomePage> {
                   Expanded(child: AppCardGrid(gridItens[1])),
                 ],
               ),
-              const H(8),
+              const H(16),
+              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
+              const H(16),
               Row(
                 children: [
                   Expanded(child: AppCardGrid(gridItens[2])),

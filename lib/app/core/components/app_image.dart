@@ -6,8 +6,9 @@ class AppImage extends StatelessWidget {
   final double? height;
   final double? width;
   final bool isSVG;
+  final BoxFit fit;
 
-  const AppImage({required this.url, this.height, this.width, this.isSVG = false, super.key});
+  const AppImage({required this.url, this.height, this.width, this.isSVG = false, this.fit = BoxFit.fill, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +16,24 @@ class AppImage extends StatelessWidget {
       width: width ?? double.maxFinite,
       height: height ?? 300,
       child: isSVG
-          ? SvgPicture.network(
-              url,
-              fit: BoxFit.fill,
-            )
-          : Image.network(
-              url,
-              fit: BoxFit.fill,
-            ),
+          ? url.contains('http')
+              ? SvgPicture.network(
+                  url,
+                  fit: fit,
+                )
+              : SvgPicture.asset(
+                  url,
+                  fit: fit,
+                )
+          : url.contains('http')
+              ? Image.network(
+                  url,
+                  fit: fit,
+                )
+              : Image.asset(
+                  url,
+                  fit: fit,
+                ),
     );
   }
 }

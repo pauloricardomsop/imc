@@ -16,10 +16,12 @@ import 'package:svr/app/modules/como_receber/como_receber_controller.dart';
 import 'package:svr/app/modules/como_receber/como_receber_model.dart';
 
 class ComoReceberResultadoPage extends JourneyStatefulWidget {
-  const ComoReceberResultadoPage({Key? key}) : super(key: key, name: 'ComoReceberResultadoPage');
+  const ComoReceberResultadoPage({Key? key})
+      : super(key: key, name: 'ComoReceberResultadoPage');
 
   @override
-  State<ComoReceberResultadoPage> createState() => _ComoReceberResultadoPageState();
+  State<ComoReceberResultadoPage> createState() =>
+      _ComoReceberResultadoPageState();
 }
 
 class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
@@ -36,22 +38,30 @@ class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
   List<CheckListModel> checkItens(ComoReceberQuiz model) => [
         CheckListModel(
           icon: model.possuiCpfData ? Icons.done : Icons.warning_outlined,
-          color: model.possuiCpfData ? const Color(0xFF1C44F9) : const Color(0xFFC10000),
+          color: model.possuiCpfData
+              ? const Color(0xFF1C44F9)
+              : const Color(0xFFC10000),
           label: model.possuiCpfData
               ? 'CPF e Data de Nascimento'
               : 'Tenha com você CPF e Data de Nascimento.',
         ),
         CheckListModel(
           icon: model.possuiContaGov ? Icons.done : Icons.warning_outlined,
-          color: model.possuiContaGov ? const Color(0xFF1C44F9) : const Color(0xFFC10000),
+          color: model.possuiContaGov
+              ? const Color(0xFF1C44F9)
+              : const Color(0xFFC10000),
           label: model.possuiContaGov
               ? 'Conta GOV.BR Nível Ouro'
               : 'Veja como cadastrar sua conta GOV.BR nível ouro.',
         ),
         CheckListModel(
           icon: model.possuiChavePix ? Icons.done : Icons.warning_outlined,
-          color: model.possuiChavePix ? const Color(0xFF1C44F9) : const Color(0xFFC10000),
-          label: model.possuiChavePix ? 'Chave PIX Cadastrada.' : 'Cadastre sua chave PIX',
+          color: model.possuiChavePix
+              ? const Color(0xFF1C44F9)
+              : const Color(0xFFC10000),
+          label: model.possuiChavePix
+              ? 'Chave PIX Cadastrada.'
+              : 'Cadastre sua chave PIX',
         )
       ];
 
@@ -66,9 +76,8 @@ class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
             NotificationService.negative('Selecione uma das opções');
             return;
           }
-          //TODO: Chamar proxima page
           AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, Container()));
+              onComplete: () =>  _controller.comoReceberQuizStream.value.page(context));
         },
         label: _controller.comoReceberQuizStream.value.labelFooter,
         icon: Icons.arrow_forward,
@@ -103,4 +112,6 @@ class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
       ],
     );
   }
+
+ 
 }
