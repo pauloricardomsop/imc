@@ -23,10 +23,10 @@ class BackHeader extends StatelessWidget {
                 margin: margin ?? const EdgeInsets.all(16),
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFDDE0FF),
+                  color: const Color(0xFF1C44F9),
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Icon(Icons.arrow_back, color: Color(0xFF000C61)),
+                child: const Icon(Icons.arrow_back, color: Color(0xFFFFFFFF)),
               ),
             ),
             const Spacer(),

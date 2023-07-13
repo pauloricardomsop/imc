@@ -117,8 +117,8 @@ class AccesarSistemaPageState extends State<AccesarSistemaPage> {
             widget.name,
             title: 'Consulta de valores a receber do BACEN',
             buttonLabel: 'CONSULTAR VALORES',
-            buttonSubLabel: 'Após o anúncio você terá acesso ao formulário de valores a receber:  ',
-            buttonSubLabelBold: 'https://valoresareceber.bcb.gov.br/publico',
+            buttonSubLabel: 'Após o anhttps://valoresareceber.bcb.gov.br/publicoúncio você terá acesso ao formulário de valores a receber:  ',
+            buttonSubLabelBold: '',
             onClick: () => AdController.showInterstitialTransitionAd(context,
           onComplete: () =>
               push(context, const WebViewPage('https://valoresareceber.bcb.gov.br/publico'))),

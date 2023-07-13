@@ -8,7 +8,7 @@ class Divisor extends StatelessWidget {
     return Container(
       width: double.maxFinite,
       height: 0.6,
-      color: const Color(0xFFe6e6e6),
+      color: const Color(0xFFE3E2E2),
     );
   }
 }
