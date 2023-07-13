@@ -58,16 +58,17 @@ class RemoteConfigService {
     }
   }
 
-  static EstatisticasValores get estatisticasValores {
+   static EstatisticasValores get estatisticasValores {
     try {
       if (useDefaultValues) {
-        return jsonDecode(defaultMap[RemoteConfigKey.valores]);
+        return EstatisticasValores.fromJson(jsonDecode(defaultMap[RemoteConfigKey.valores]));
       }
-      return jsonDecode(instance.getString(RemoteConfigKey.valores));
+      return EstatisticasValores.fromJson(jsonDecode(instance.getString(RemoteConfigKey.valores)));
     } catch (e) {
-      return jsonDecode(defaultMap[RemoteConfigKey.valores]);
+      return EstatisticasValores.fromJson(jsonDecode(defaultMap[RemoteConfigKey.valores]));
     }
   }
+
 
   static bool get showBanner => AdController.adConfig.banner.active;
   static bool get showBannerAccordeon => AdController.adConfig.bannerAccordeon.active;
