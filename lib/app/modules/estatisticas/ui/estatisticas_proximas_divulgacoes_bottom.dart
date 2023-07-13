@@ -51,7 +51,9 @@ class EstatisticasProximasDivulgacoesBottomState
             child: TableValues(
               left: 'DATA',
               right: 'HORÁRIO',
-              models: valoresDevolvidos,
+              models: EstatisticasValores.estatisticasValores.estatisticas!.proximasDivulgacoes!
+                  .map((e) => EstatisticaValorModel(label: e.data!, value: e.horario!))
+                  .toList(),
               listable: true,
             ),
           ),

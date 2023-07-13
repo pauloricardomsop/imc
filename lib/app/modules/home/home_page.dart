@@ -16,7 +16,8 @@ import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber/ui/como_receber_home_page.dart';
 import 'package:svr/app/modules/consulta_valores/consulta_valores_page.dart';
 import 'package:svr/app/modules/consulta_valores_falecido/consulta_valores_falecido_page.dart';
-import 'package:svr/app/modules/estatisticas/ui/estatisticas_page.dart';
+import 'package:svr/app/modules/estatisticas/estatisticas_model.dart';
+import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
 import 'package:svr/app/modules/home/topics/aumentar_nivel_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_page.dart';
 import 'package:svr/app/modules/home/topics/como_saber_page.dart';
@@ -75,7 +76,7 @@ class _HomePageState extends State<HomePage> {
           // TODO: Ajustar ícone monitoring
           icon: Icons.show_chart_sharp,
           onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const EstatisticasPage())),
+              onComplete: () => push(context, const EstatisticasHomePage())),
         )
       ];
 
@@ -136,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Bom dia!',
+                      getGreeting(),
                       style: AppTheme.text.extra.xl2(const Color(0xFF1B1C1C)),
                     ),
                     const H(4),
@@ -157,9 +158,9 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CardValor(
-                title: 'Valores ainda não recebidos',
-                value: 'R\$ 7.12 Bilhões',
-                desc: 'VER COMO RECEBER',
+                title: EstatisticasValores.estatisticasValores.home!.title!,
+                value: EstatisticasValores.estatisticasValores.home!.value!,
+                desc: EstatisticasValores.estatisticasValores.home!.desc!,
                 onClick: () => AdController.showInterstitialTransitionAd(context,
                     onComplete: () => push(context, const ComoReceberHomePage())),
               ),
@@ -195,5 +196,18 @@ class _HomePageState extends State<HomePage> {
         )
       ],
     );
+  }
+
+  String getGreeting() {
+    DateTime now = DateTime.now();
+    int currentHour = now.hour;
+
+    if (currentHour >= 6 && currentHour < 12) {
+      return 'Bom dia';
+    } else if (currentHour >= 12 && currentHour < 18) {
+      return 'Boa tarde';
+    } else {
+      return 'Boa noite';
+    }
   }
 }

@@ -16,23 +16,14 @@ import 'package:svr/app/modules/estatisticas/estatisticas_model.dart';
 import 'package:svr/app/modules/estatisticas/ui/estatisticas_detalhes_page.dart';
 import 'package:svr/app/modules/estatisticas/ui/estatisticas_proximas_divulgacoes_bottom.dart';
 
-List<EstatisticaValorModel> valoresDevolvidos = [
-  EstatisticaValorModel(label: '2023 - MAIO', value: 'R\$ 176M'),
-  EstatisticaValorModel(label: '2023 - ABRIL', value: 'R\$ 176M'),
-  EstatisticaValorModel(label: '2023 - MARÇO', value: 'R\$ 176M'),
-  EstatisticaValorModel(label: '2023 - FEVEREIRO', value: 'R\$ 176M'),
-  EstatisticaValorModel(label: '2023 - JANEIRO', value: 'R\$ 176M'),
-  EstatisticaValorModel(label: '2022 - DEZEMBRO', value: 'R\$ 176M'),
-];
-
-class EstatisticasPage extends JourneyStatefulWidget {
-  const EstatisticasPage({Key? key}) : super(key: key, name: 'EstatisticasPage');
+class EstatisticasHomePage extends JourneyStatefulWidget {
+  const EstatisticasHomePage({Key? key}) : super(key: key, name: 'EstatisticasPage');
 
   @override
-  State<EstatisticasPage> createState() => EstatisticasPageState();
+  State<EstatisticasHomePage> createState() => EstatisticasPageState();
 }
 
-class EstatisticasPageState extends State<EstatisticasPage> {
+class EstatisticasPageState extends State<EstatisticasHomePage> {
   @override
   void initState() {
     AdController.fetchBanner(
@@ -78,9 +69,12 @@ class EstatisticasPageState extends State<EstatisticasPage> {
                   AppBannerAd(AdBannerStorage.get(widget.name)),
                   const H(16),
                   CardValor(
-                    title: 'Total de valores esquecidos',
-                    value: 'R\$ 7.12 Bilhões',
-                    desc: 'VER COMO RECEBER',
+                    title: EstatisticasValores
+                        .estatisticasValores.estatisticas!.home!.cardValores!.title!,
+                    value: EstatisticasValores
+                        .estatisticasValores.estatisticas!.home!.cardValores!.value!,
+                    desc: EstatisticasValores
+                        .estatisticasValores.estatisticas!.home!.cardValores!.desc!,
                     onClick: () => push(context, const EstatisticasDetalhesPage()),
                   ),
                   const H(16),
@@ -92,7 +86,11 @@ class EstatisticasPageState extends State<EstatisticasPage> {
                   TableValues(
                     left: 'ANO - MÊS',
                     right: 'VALOR DEVOLVIDO',
-                    models: valoresDevolvidos,
+                    models: EstatisticasValores
+                        .estatisticasValores.estatisticas!.home!.valoresDevolvidos!
+                        .map((e) =>
+                            EstatisticaValorModel(label: e.anoMes!, value: e.valorDevolvido!))
+                        .toList(),
                   ),
                   const H(16),
                   Center(
