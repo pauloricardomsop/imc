@@ -18,10 +18,12 @@ class ConsultaValoresPessoaJuridicaPage extends JourneyStatefulWidget {
       : super(key: key, name: 'ConsultaValoresPessoaJuridicaPage');
 
   @override
-  State<ConsultaValoresPessoaJuridicaPage> createState() => ConsultaValoresPessoaTipoPageState();
+  State<ConsultaValoresPessoaJuridicaPage> createState() =>
+      ConsultaValoresPessoaTipoPageState();
 }
 
-class ConsultaValoresPessoaTipoPageState extends State<ConsultaValoresPessoaJuridicaPage> {
+class ConsultaValoresPessoaTipoPageState
+    extends State<ConsultaValoresPessoaJuridicaPage> {
   @override
   void initState() {
     AdController.fetchBanner(
@@ -37,7 +39,8 @@ class ConsultaValoresPessoaTipoPageState extends State<ConsultaValoresPessoaJuri
         active: AdController.adConfig.banner.active,
         behavior: [widget.name],
         bottom: InFooterCta(
-          onTap: () => push(context, const WebViewPage('https://valoresareceber.bcb.gov.br/publico')),
+          onTap: () => push(context,
+              const WebViewPage('https://valoresareceber.bcb.gov.br/publico')),
           label: 'CONSULTAR VALORES',
           invert: true,
           icon: Icons.arrow_forward,
@@ -61,8 +64,10 @@ class ConsultaValoresPessoaTipoPageState extends State<ConsultaValoresPessoaJuri
                   const H(24),
                   Container(
                     decoration: BoxDecoration(
-                        color: const Color(0xFFE3E2E2), borderRadius: BorderRadius.circular(4)),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                        color: const Color(0xFFE3E2E2),
+                        borderRadius: BorderRadius.circular(4)),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                     child: Text(
                       'Pessoa Jurídica',
                       style: AppTheme.text.normal.sm(const Color(0xFF1B1C1C)),
@@ -76,8 +81,11 @@ class ConsultaValoresPessoaTipoPageState extends State<ConsultaValoresPessoaJuri
                   ),
                   const H(16),
                   const AppImage(
-                      url:
-                          'https://t4.ftcdn.net/jpg/04/33/46/65/360_F_433466592_JpXOCCvbV3kMKTWo3jZKhGBnqEafnmfw.jpg'),
+                    url:
+                        'https://ldcapps.com/wp-content/uploads/2023/07/Group-104.png',
+                    height: 600,
+                  ),
+                  const H(24),
                 ],
               ),
             ),

@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
 
   List<CardGridModel> get gridItens => [
         CardGridModel(
-          title: 'Consulta Valores a\nReceber',
+          title: 'Consulta Valores a Receber',
           icon: Symbols.payments,
           onTap: () => AdController.showInterstitialTransitionAd(context,
               onComplete: () => push(context, const ConsultaValoresPage())),
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                   push(context, const ConsultaValoresFalecidoPage())),
         ),
         CardGridModel(
-          title: 'Serviços do Banco\nCentral',
+          title: 'Serviços do Banco Central',
           icon: Symbols.account_balance,
           onTap: () => AdController.showInterstitialTransitionAd(context,
               onComplete: () =>

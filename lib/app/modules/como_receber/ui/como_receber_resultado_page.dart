@@ -14,6 +14,10 @@ import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber/como_receber_controller.dart';
 import 'package:svr/app/modules/como_receber/como_receber_model.dart';
+import 'package:svr/app/modules/consulta_valores/consulta_valores_page.dart';
+import 'package:svr/app/modules/home/home_page.dart';
+import 'package:svr/app/modules/home/topics/aumentar_nivel_page.dart';
+import 'package:svr/app/modules/home/topics/oque_e_page.dart';
 
 class ComoReceberResultadoPage extends JourneyStatefulWidget {
   const ComoReceberResultadoPage({Key? key})
@@ -76,8 +80,14 @@ class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
             NotificationService.negative('Selecione uma das opções');
             return;
           }
-          AdController.showInterstitialTransitionAd(context,
-              onComplete: () => Container());
+          AdController.showInterstitialTransitionAd(context, onComplete: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+              (route) => false,
+            );
+            push(context, nextPage());
+          });
         },
         label: _controller.comoReceberQuizStream.value.labelFooter,
         icon: Icons.arrow_forward,
@@ -111,5 +121,19 @@ class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
         ),
       ],
     );
+  }
+
+  Widget nextPage() {
+    if (_controller.comoReceberQuizStream.value.possuiCpfData &&
+        _controller.comoReceberQuizStream.value.possuiContaGov &&
+        _controller.comoReceberQuizStream.value.possuiChavePix) {
+      return const ConsultaValoresPage();
+    }
+    if (!_controller.comoReceberQuizStream.value.possuiCpfData &&
+        !_controller.comoReceberQuizStream.value.possuiContaGov &&
+        !_controller.comoReceberQuizStream.value.possuiChavePix) {
+      return const AumentarNivelPage();
+    }
+    return const OqueEPage();
   }
 }
