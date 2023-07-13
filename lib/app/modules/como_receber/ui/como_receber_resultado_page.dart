@@ -77,7 +77,7 @@ class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
             return;
           }
           AdController.showInterstitialTransitionAd(context,
-              onComplete: () =>  _controller.comoReceberQuizStream.value.page(context));
+              onComplete: () => Container());
         },
         label: _controller.comoReceberQuizStream.value.labelFooter,
         icon: Icons.arrow_forward,
@@ -112,6 +112,4 @@ class _ComoReceberResultadoPageState extends State<ComoReceberResultadoPage> {
       ],
     );
   }
-
- 
 }
