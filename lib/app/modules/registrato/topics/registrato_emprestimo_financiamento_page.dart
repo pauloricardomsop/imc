@@ -104,7 +104,7 @@ class RegistratoEmprestimoFinanciamentoPageState
               ),
             ),
             AppAccordeon(_accordeonlist),
-            const H(24),
+            const H(30),
           ],
         ),
       ],

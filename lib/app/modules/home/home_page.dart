@@ -23,6 +23,7 @@ import 'package:svr/app/modules/home/topics/aumentar_nivel_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_page.dart';
 import 'package:svr/app/modules/home/topics/como_saber_page.dart';
 import 'package:svr/app/modules/home/topics/oque_e_page.dart';
+import 'package:svr/app/modules/registrato/registrato_page.dart';
 
 import '../../core/components/exit_banner.dart';
 import '../../core/components/label_double_column.dart';
@@ -73,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           icon: Symbols.account_balance,
           onTap: () => AdController.showInterstitialTransitionAd(context,
               onComplete: () =>
-                  push(context, const ConsultaValoresFalecidoPage())),
+                  push(context, const RegistratoPage())),
         ),
         CardGridModel(
           title: 'Estatísticas\ndo SVR',

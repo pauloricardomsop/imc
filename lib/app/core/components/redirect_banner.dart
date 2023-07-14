@@ -3,7 +3,7 @@ import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
-import 'package:svr/app/core/components/divisor.dart';
+import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/in_footer_cta.dart';
@@ -55,30 +55,7 @@ class RedirectBannerState extends State<RedirectPage> {
     return AppListView(
       padding: EdgeInsets.zero,
       children: [
-        Container(
-          padding: const EdgeInsets.all(16),
-          height: 80,
-          width: double.maxFinite,
-          child: Row(
-            children: [
-              InkWell(
-                onTap: () => pop(context),
-                child: Container(
-                  height: 48,
-                  width: 48,
-                  decoration: BoxDecoration(
-                      color: const Color(0xFF1C44F9),
-                      borderRadius: BorderRadius.circular(6)),
-                  child: const Icon(
-                    Icons.arrow_back_outlined,
-                    color: Color(0xFFFFFFFF),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        const Divisor(),
+        const BackHeader(),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
