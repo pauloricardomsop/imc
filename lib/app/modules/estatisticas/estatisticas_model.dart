@@ -36,63 +36,113 @@ class EstatisticasValores {
   static late EstatisticasValores estatisticasValores;
 
   static Map<String, dynamic> defaultMap = {
+  "home": {
+    "title": "Valores ainda não recebidos",
+    "value": "R\$ 7.12 Bilhões",
+    "desc": "VER COMO RECEBER"
+  },
+  "estatisticas": {
     "home": {
-      "title": "Valores ainda não recebidos",
-      "value": "R\$ 7.12 Bilhões",
-      "desc": "VER COMO RECEBER"
-    },
-    "estatisticas": {
-      "home": {
-        "cardValores": {
-          "title": "Valores ainda não recebidos",
-          "value": "R\$ 7.12 Bilhões",
-          "desc": "VER DETALHES"
-        },
-        "valoresDevolvidos": [
-          {"anoMes": "2023 - MAIO", "valorDevolvido": "R\$ 176M"}
-        ]
+      "cardValores": {
+        "title": "Valores ainda não recebidos",
+        "value": "R\$ 7.12 Bilhões",
+        "desc": "VER DETALHES"
       },
-      "proximasDivulgacoes": [
-        {"data": "07 DE JUNHO", "horario": "14:30"}
-      ],
-      "detalhes": {
-        "cardValoresReceber": {
-          "title": "Total de valores a receber",
-          "value": "R\$ 7.12 Bilhões",
-          "desc": "R\$ 7.123.443.188,39"
+      "valoresDevolvidos": [
+        {
+          "anoMes": "2023 - MAIO",
+          "valorDevolvido": "R\$ 232 Milhões"
         },
-        "valoresReceber": [
-          {
-            "descricao": "PESSOA FÍSICA",
-            "valor": "R\$ 176M",
-            "subtitle": "Quantidade de Beneficiários: 36.592.388"
-          },
-          {
-            "descricao": "PESSOA JURÍDICA",
-            "valor": "R\$ 176M",
-            "subtitle": "Quantidade de Beneficiários: 36.592.388"
-          }
-        ],
-        "cardValoresDevolvidos": {
-          "title": "Total de valores devolvidos",
-          "value": "R\$ 7.12 Bilhões",
-          "desc": "R\$ 7.123.443.188,39"
+        {
+          "anoMes": "2023 - ABRIL",
+          "valorDevolvido": "R\$ 260 Milhões"
         },
-        "valoresDevolvidos": [
-          {
-            "descricao": "PESSOA FÍSICA",
-            "valor": "R\$ 176M",
-            "subtitle": "Quantidade de Beneficiários: 36.592.388"
-          },
-          {
-            "descricao": "PESSOA JURÍDICA",
-            "valor": "R\$ 176M",
-            "subtitle": "Quantidade de Beneficiários: 36.592.388"
-          }
-        ]
+        {
+          "anoMes": "2023 - MARÇO",
+          "valorDevolvido": "R\$ 505 Milhões"
+        },
+        {
+          "anoMes": "2023 - FEVEREIRO",
+          "valorDevolvido": "R\$ 151 Milhões"
+        },
+        {
+          "anoMes": "2023 - JANEIRO",
+          "valorDevolvido": "R\$ 176 Milhões"
+        },
+        {
+          "anoMes": "2022 - DEZEMBRO",
+          "valorDevolvido": "R\$ 150 Milhões"
+        }
+      ]
+    },
+    "proximasDivulgacoes": [
+      {
+        "data": "07 DE JUNHO",
+        "horario": "14:30"
+      },
+      {
+        "data": "07 DE JULHO",
+        "horario": "14:30"
+      },
+      {
+        "data": "07 DE AGOSTO",
+        "horario": "14:30"
+      },
+      {
+        "data": "08 DE SETEMBRO",
+        "horario": "14:30"
+      },
+      {
+        "data": "06 DE OUTUBRO",
+        "horario": "14:30"
+      },
+      {
+        "data": "08 DE NOVEMBRO",
+        "horario": "14:30"
+      },
+      {
+        "data": "07 DE DEZEMBRO",
+        "horario": "14:30"
       }
+    ],
+    "detalhes": {
+      "cardValoresReceber": {
+        "title": "Total de valores a receber",
+        "value": "R\$ 7.12 Bilhões",
+        "desc": "R\$ 7.123.443.188,39"
+      },
+      "valoresReceber": [
+        {
+          "descricao": "PESSOA FÍSICA",
+          "valor": "R\$ 5.72 Bilhões",
+          "subtitle": "Quantidade de Beneficiários: 36.592.388"
+        },
+        {
+          "descricao": "PESSOA JURÍDICA",
+          "valor": "R\$ 1.4 Bilhões",
+          "subtitle": "Quantidade de Beneficiários: 2.788.249"
+        }
+      ],
+      "cardValoresDevolvidos": {
+        "title": "Total de valores devolvidos",
+        "value": "R\$ 4.16 Bilhões",
+        "desc": "R\$ 4.168.218.597,18"
+      },
+      "valoresDevolvidos": [
+        {
+          "descricao": "PESSOA FÍSICA",
+          "valor": "R\$ 3.11 Bilhões",
+          "subtitle": "Quantidade de Beneficiários: 13.975.515"
+        },
+        {
+          "descricao": "PESSOA JURÍDICA",
+          "valor": "R\$ 1.05 Bilhões",
+          "subtitle": "Quantidade de Beneficiários: 535.961"
+        }
+      ]
     }
-  };
+  }
+};
 
   EstatisticasValores({this.home, this.estatisticas});
 
