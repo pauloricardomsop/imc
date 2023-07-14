@@ -5,7 +5,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:svr/app/app_controller.dart';
@@ -59,19 +58,22 @@ class _AppState extends State<App> {
         UtilsController().moduleStream.add(Module.home);
       }
     });
-    // MobileAds.instance.initialize();
     AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorKey: _appController.key,
-      title: 'Valores a Receber',
-      theme: AppTheme.theme,
-      initialRoute: RouteService.initial,
-      routes: RouteService.routes,
+    return Container(
+      color: const Color(0xFF1C44F9),
+      child: MaterialApp(
+        color: const Color(0xFF1C44F9),
+        debugShowCheckedModeBanner: false,
+        navigatorKey: _appController.key,
+        title: 'Valores a Receber',
+        theme: AppTheme.theme,
+        initialRoute: RouteService.initial,
+        routes: RouteService.routes,
+      ),
     );
   }
 }
