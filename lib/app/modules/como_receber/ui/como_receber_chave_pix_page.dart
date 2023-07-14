@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:svr/app/core/ad/ad_banner_storage.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:svr/app/core/components/ad_icon.dart';
 import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
@@ -49,11 +50,11 @@ class _ComoReceberChavePixPageState extends State<ComoReceberChavePixPage> {
             NotificationService.negative('Selecione uma das opções');
             return;
           }
-          AdController.showInterstitialTransitionAd(context,
+          AdController.showRewardTransitionAd(
               onComplete: () => push(context, const ComoReceberResultadoPage()));
         },
-        label: 'PRÓXIMO',
-        icon: Icons.arrow_forward,
+        label: 'VER RESULTADO',
+        icon: const AdIcon(),
         invert: true,
       ),
       child: StreamOut(

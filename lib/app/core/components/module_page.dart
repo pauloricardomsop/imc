@@ -18,7 +18,7 @@ class _ModulePageState extends State<ModulePage> {
 
   @override
   void initState() {
-    _utilsController.getShowOnboarding();
+    // _utilsController.getShowOnboarding();
     super.initState();
   }
 
@@ -30,9 +30,7 @@ class _ModulePageState extends State<ModulePage> {
               ignoring: ignoring,
               child: StreamOut(
                 stream: _utilsController.moduleStream.listen,
-                child: (_, module) => StreamOut(
-                    stream: _utilsController.showOnboarding.listen,
-                    child: (_, showOnboarding) => _buildPage(module, showOnboarding)),
+                child: (_, module) => _buildPage(module, false),
               ),
             ));
   }
@@ -41,7 +39,7 @@ class _ModulePageState extends State<ModulePage> {
     if (module == Module.splash) {
       return const SplashOldPage();
     }
-    if (showOnboarding) return const OnboardingPage();
+    // if (showOnboarding) return const OnboardingPage();
     return const HomePage();
   }
 }

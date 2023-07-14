@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 
 class LoadingTransitionDialog extends StatefulWidget {
-  const LoadingTransitionDialog({Key? key}) : super(key: key);
+  final bool description;
+
+  const LoadingTransitionDialog({this.description = false, Key? key}) : super(key: key);
 
   @override
   State<LoadingTransitionDialog> createState() => _LoadingTransitionDialogState();
@@ -22,7 +24,7 @@ class _LoadingTransitionDialogState extends State<LoadingTransitionDialog> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
-      child: Scaffold(
+      child: Scaffold(  
         body: SizedBox(
           width: double.maxFinite,
           height: double.maxFinite,
@@ -44,13 +46,15 @@ class _LoadingTransitionDialogState extends State<LoadingTransitionDialog> {
               Positioned(bottom: 480, child: Text('$percent%', style: AppTheme.text.extra.xl6())),
               Positioned(
                 bottom: 300,
-                child: Text(label, style: AppTheme.text.extra.xl3()),
+                child: Text(widget.description ? label : 'Aguarde...',
+                    style: AppTheme.text.extra.xl3()),
               ),
-              Positioned(
-                bottom: 260,
-                child: Text('O resultado aparecerá após o anúncio.',
-                    style: AppTheme.text.normal.sm(const Color(0xFF1B1C1C))),
-              ),
+              if (widget.description)
+                Positioned(
+                  bottom: 260,
+                  child: Text('O resultado aparecerá após o anúncio.',
+                      style: AppTheme.text.normal.sm(const Color(0xFF1B1C1C))),
+                ),
             ],
           ),
         ),
