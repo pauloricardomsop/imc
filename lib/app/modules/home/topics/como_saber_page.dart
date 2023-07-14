@@ -6,7 +6,6 @@ import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
-import 'package:svr/app/core/components/button_icon.dart';
 import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
@@ -122,10 +121,8 @@ class KnowReceivePageState extends State<ComoSaberPage> {
               const H(16),
               const HeaderHero(
                 title: 'Como saber se tenho valores a receber?',
-                desc:
-                    'Para saber se tem valores a receber, é preciso consultar o Serviço Valores a Receber (SVR), que é uma plataforma online criada para auxiliar o interessado a verificar se tem valores esquecidos para receber.',
-                image:
-                    'https://ldcapps.com/wp-content/uploads/2023/04/Como-saber-se-tenho-valores-a-receber.png',
+                desc:  'Para saber se tem valores a receber, é preciso consultar o Serviço Valores a Receber (SVR), que é uma plataforma online criada para auxiliar o interessado a verificar se tem valores esquecidos para receber.',
+                image: 'https://ldcapps.com/wp-content/uploads/2023/04/Como-saber-se-tenho-valores-a-receber.png',
               ),
               const H(16),
               AppBannerAd(AdBannerStorage.get('${widget.name}1')),

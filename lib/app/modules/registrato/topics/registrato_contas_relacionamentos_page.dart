@@ -30,33 +30,42 @@ class RegistratoContasRelacionamentoPageState
   List<CheckListModel> get _checklistcontas => [
         CheckListModel(
             icon: Icons.done,
-            label: 'Em quais bancos e instituições você tem ou teve conta, investimento ou outro relacionamento; e'),
+            label:
+                'Em quais bancos e instituições você tem ou teve conta, investimento ou outro relacionamento; e'),
         CheckListModel(
             icon: Icons.done,
-            label: 'A data de início e, se for o caso, a data de fim do relacionamento.'),
+            label:
+                'A data de início e, se for o caso, a data de fim do relacionamento.'),
       ];
   List<CheckListModel> get _checklistpraqueserve => [
         CheckListModel(
             icon: Icons.done,
-            label: 'Conferir em quais bancos possui conta, investimentos e outro tipo de relacionamento;'),
+            label:
+                'Conferir em quais bancos possui conta, investimentos e outro tipo de relacionamento;'),
         CheckListModel(
             icon: Icons.done,
-            label: 'Verificar se seu CPF ou CNPJ foi usado indevidamente para abertura de conta;'),
+            label:
+                'Verificar se seu CPF ou CNPJ foi usado indevidamente para abertura de conta;'),
         CheckListModel(
             icon: Icons.done,
-            label: 'Pesquisar contas e relacionamentos bancários de pessoa falecida para inventário.'),
+            label:
+                'Pesquisar contas e relacionamentos bancários de pessoa falecida para inventário.'),
       ];
 
   List<AccordeonModel> get _accordeonlist => [
         AccordeonModel(
             title: 'Como provar que você não possui conta em bancos',
-            desc:  'A Certidão Negativa de Relacionamento com o Sistema Financeiro informa que você não possui conta aberta ou investimento em bancos. \n\nMas se você tem alguma conta ou investimento, mesmo que esteja sem movimentar há anos, não conseguirá emitir essa certidão. \n\nNesse caso, você deve consultar o Relatório de Contas e Relacionamentos em Bancos, no sistema Registrato.'),
+            desc:
+                'A Certidão Negativa de Relacionamento com o Sistema Financeiro informa que você não possui conta aberta ou investimento em bancos. \n\nMas se você tem alguma conta ou investimento, mesmo que esteja sem movimentar há anos, não conseguirá emitir essa certidão. \n\nNesse caso, você deve consultar o Relatório de Contas e Relacionamentos em Bancos, no sistema Registrato.'),
         AccordeonModel(
             title: 'Relacionamento com banco que você não conhece',
-            desc:  'Se as informações estão erradas ou se seus dados foram usados sem sua autorização por terceiros para abertura de conta, entre em contato com o banco. \n\nPode acontecer de o seu banco não ser registrado na base de dados do Banco Central (BC), mas fazer parte de um grupo econômico ou ter vínculo com alguma instituição registrada, que fica responsável por encaminhar dados ao BC. Estamos trabalhando para diferenciar esses vínculos nos relatórios.'),
+            desc:
+                'Se as informações estão erradas ou se seus dados foram usados sem sua autorização por terceiros para abertura de conta, entre em contato com o banco. \n\nPode acontecer de o seu banco não ser registrado na base de dados do Banco Central (BC), mas fazer parte de um grupo econômico ou ter vínculo com alguma instituição registrada, que fica responsável por encaminhar dados ao BC. Estamos trabalhando para diferenciar esses vínculos nos relatórios.'),
         AccordeonModel(
-            title:'Tipos de instituições obrigadas a registrar as informações no relatório',
-            desc: 'As seguintes instituições enviam dados ao Banco Central (BC): \n• bancos, \n• cooperativas de crédito, \n• instituições de pagamento autorizadas pelo BC na condição de emissoras de moeda eletrônica (contas de pagamento) \n• corretoras e distribuidoras de títulos e valores mobiliários, \n• financeiras (sociedades de crédito, financiamento e investimento), e \n• Sociedade de Crédito Direto (SCD) e Sociedade de Empréstimo entre Pessoas (SEP), desde que sejam emissoras de moeda eletrônica (contas de pagamento). \n\nO relatório não informa dados de relacionamento com: \n• administradoras de consórcio, \n• instituição de pagamento emissoras de moeda eletrônica (contas de pagamento), quando não sejam autorizadas pelo Banco Central, mesmo quando façam Pix, \n• instituições de pagamento que atuam exclusivamente como credenciadoras ou iniciadoras de pagamento, e \n• instituições fiscalizadas por Susep e Previc.'),
+            title:
+                'Tipos de instituições obrigadas a registrar as informações no relatório',
+            desc:
+                'As seguintes instituições enviam dados ao Banco Central (BC): \n• bancos, \n• cooperativas de crédito, \n• instituições de pagamento autorizadas pelo BC na condição de emissoras de moeda eletrônica (contas de pagamento) \n• corretoras e distribuidoras de títulos e valores mobiliários, \n• financeiras (sociedades de crédito, financiamento e investimento), e \n• Sociedade de Crédito Direto (SCD) e Sociedade de Empréstimo entre Pessoas (SEP), desde que sejam emissoras de moeda eletrônica (contas de pagamento). \n\nO relatório não informa dados de relacionamento com: \n• administradoras de consórcio, \n• instituição de pagamento emissoras de moeda eletrônica (contas de pagamento), quando não sejam autorizadas pelo Banco Central, mesmo quando façam Pix, \n• instituições de pagamento que atuam exclusivamente como credenciadoras ou iniciadoras de pagamento, e \n• instituições fiscalizadas por Susep e Previc.'),
       ];
 
   @override
@@ -94,7 +103,8 @@ class RegistratoContasRelacionamentoPageState
                   const H(16),
                   const HeaderHero(
                     title: 'Contas e Relacionamentos',
-                    desc:  'O Relatório de Contas e Relacionamentos em Bancos (CCS) mostra:',
+                    desc:
+                        'O Relatório de Contas e Relacionamentos em Bancos (CCS) mostra:',
                   ),
                   const H(16),
                   CheckList(_checklistcontas),
@@ -105,21 +115,21 @@ class RegistratoContasRelacionamentoPageState
                   const H(16),
                   const HeaderHero(
                     title: 'Para que serve?',
-                    desc:  'O relatório serve para você:',
+                    desc: 'O relatório serve para você:',
                   ),
                   const H(16),
                   CheckList(_checklistpraqueserve),
                   const H(16),
                   const HeaderHero(
                     title: 'Perguntas Frequentes',
-                    desc:  'Confira perguntas frequentemente feitas por usuários, e tire suas dúvidas.',
+                    desc:
+                        'Confira perguntas frequentemente feitas por usuários, e tire suas dúvidas.',
                   ),
-                  const H(16),
-                  AppAccordeon(_accordeonlist),
-                  const H(16),
                 ],
               ),
             ),
+            AppAccordeon(_accordeonlist),
+            const H(30),
           ],
         ),
       ],
@@ -128,15 +138,17 @@ class RegistratoContasRelacionamentoPageState
 
   Widget infooter() {
     return InFooterCta(
-     onTap: () => push(
+      onTap: () => push(
           context,
           RedirectPage(
             'Você será encaminhado para um site oficial do Banco Central.',
             'https://registrato.bcb.gov.br/registrato/',
             titleInfooter: 'IR PARA REGISTRATO',
             child: Column(children: [
-              Text('Você será redirecionado para o site oficial do GOV.BR:', style: AppTheme.text.normal.xs(const Color(0xFF474747))),
-              Text('registrato.bcb.gov.br', style: AppTheme.text.extra.xs(const Color(0xFF474747)))
+              Text('Você será redirecionado para o site oficial do GOV.BR:',
+                  style: AppTheme.text.normal.xs(const Color(0xFF474747))),
+              Text('registrato.bcb.gov.br',
+                  style: AppTheme.text.extra.xs(const Color(0xFF474747)))
             ]),
           )),
       label: 'ACESSAR O REGISTRATO',

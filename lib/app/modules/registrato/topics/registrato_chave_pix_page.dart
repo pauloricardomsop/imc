@@ -36,13 +36,16 @@ class RegistratoChavePixPageState extends State<RegistratoChavePixPage> {
   List<AccordeonModel> get _accordeonlist => [
         AccordeonModel(
             title: 'Como consultar o relatório',
-            desc:  'Consulte seu Relatório de Chaves Pix no sistema Registrato, usando sua Conta Gov.br (nível prata ou ouro).'),
+            desc:
+                'Consulte seu Relatório de Chaves Pix no sistema Registrato, usando sua Conta Gov.br (nível prata ou ouro).'),
         AccordeonModel(
             title: 'Como corrigir informações do relatório',
-            desc:  'Caso seja identificado algum erro ou seus dados estejam desatualizados, você deve solicitar a retificação junto à instituição (financeira ou participante) na qual a chave foi registrada. \n\nSe o problema não for resolvido, reclame em www.consumidor.gov.br ou pelo Fale Conosco do Banco Central.'),
+            desc:
+                'Caso seja identificado algum erro ou seus dados estejam desatualizados, você deve solicitar a retificação junto à instituição (financeira ou participante) na qual a chave foi registrada. \n\nSe o problema não for resolvido, reclame em www.consumidor.gov.br ou pelo Fale Conosco do Banco Central.'),
         AccordeonModel(
             title: 'Prazo de atualização do relatório',
-            desc:  'A atualização do relatório acontece em tempo real. Ou seja, assim que a chave Pix é registrada na instituição, o sistema do Banco Central é informado e o dado é incluído no relatório.'),
+            desc:
+                'A atualização do relatório acontece em tempo real. Ou seja, assim que a chave Pix é registrada na instituição, o sistema do Banco Central é informado e o dado é incluído no relatório.'),
       ];
 
   @override
@@ -80,26 +83,27 @@ class RegistratoChavePixPageState extends State<RegistratoChavePixPage> {
                   const H(16),
                   const HeaderHero(
                     title: 'Chaves PIX',
-                    desc:  'O Relatório de Chaves Pix mostra as chaves Pix que você cadastrou, vinculadas aos dados de sua conta (nome do banco, número da agência e da conta).',
+                    desc:
+                        'O Relatório de Chaves Pix mostra as chaves Pix que você cadastrou, vinculadas aos dados de sua conta (nome do banco, número da agência e da conta).',
                   ),
                   const H(16),
                   const HeaderHero(
                     title: 'Para que serve?',
-                    desc:  'O relatório serve para você:',
+                    desc: 'O relatório serve para você:',
                   ),
                   const H(16),
                   CheckList(_checklist),
                   const H(16),
                   const HeaderHero(
                     title: 'Perguntas Frequentes',
-                    desc:  'Confira perguntas frequentemente feitas por usuários, e tire suas dúvidas.',
+                    desc:
+                        'Confira perguntas frequentemente feitas por usuários, e tire suas dúvidas.',
                   ),
-                  const H(16),
-                  AppAccordeon(_accordeonlist),
-                  const H(16),
                 ],
               ),
             ),
+            AppAccordeon(_accordeonlist),
+            const H(30),
           ],
         ),
       ],
@@ -115,8 +119,10 @@ class RegistratoChavePixPageState extends State<RegistratoChavePixPage> {
             'https://registrato.bcb.gov.br/registrato/',
             titleInfooter: 'IR PARA REGISTRATO',
             child: Column(children: [
-              Text('Você será redirecionado para o site oficial do GOV.BR:', style: AppTheme.text.normal.xs(const Color(0xFF474747))),
-              Text('registrato.bcb.gov.br', style: AppTheme.text.extra.xs(const Color(0xFF474747)))
+              Text('Você será redirecionado para o site oficial do GOV.BR:',
+                  style: AppTheme.text.normal.xs(const Color(0xFF474747))),
+              Text('registrato.bcb.gov.br',
+                  style: AppTheme.text.extra.xs(const Color(0xFF474747)))
             ]),
           )),
       label: 'ACESSAR O REGISTRATO',
