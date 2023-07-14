@@ -24,7 +24,7 @@ class SplashController {
   List<String> tips =
       jsonDecode(RemoteConfigService.defaultMap[RemoteConfigKey.tips]).cast<String>();
 
-  Future<void> init() async {
+  Future<void> init(Function onDispose) async {
     splash.add(SplashItem(await SplashRepository.getTip()));
     FlutterNativeSplash.remove();
     await Future.delayed(const Duration(seconds: 1));
@@ -41,6 +41,7 @@ class SplashController {
       splash.value.progress = 95;
       splash.update();
       AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
+      () => onDispose();
     } else {
       SplashController().dispose();
     }
@@ -58,11 +59,5 @@ class SplashController {
     }
     await SplashRepository.setTip(tipValue);
     _utilsController.moduleStream.add(Module.home);
-  }
-
-  void onEntrar() {
-    splash.value.label = 'entrando no app';
-    splash.value.progress = 99;
-    splash.update();
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:svr/app/core/components/splash_old_page.dart';
 import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/utils/utils_controller.dart';
 import 'package:svr/app/modules/home/home_page.dart';
 import 'package:svr/app/modules/onboarding/onboarding_page.dart';
+import 'package:svr/app/modules/splash/ui/splash_page.dart';
 
 class ModulePage extends StatefulWidget {
   const ModulePage({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _ModulePageState extends State<ModulePage> {
 
   Widget _buildPage(Module module, bool showOnboarding) {
     if (module == Module.splash) {
-      return const SplashOldPage();
+      return SplashPage(() => _utilsController.moduleStream.add(Module.home));
     }
     // if (showOnboarding) return const OnboardingPage();
     return const HomePage();

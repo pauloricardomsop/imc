@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:svr/app/core/components/app_scaffold.dart';
-import 'package:svr/app/core/components/card_xs.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/stream_out.dart';
-import 'package:svr/app/core/components/w.dart';
-import 'package:svr/app/core/enums/benefit_enum.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
-import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/splash/splah_controller.dart';
 import 'package:svr/app/modules/splash/splash_model.dart';
 
-class SplashPage extends JourneyStatefulWidget {
-  const SplashPage({Key? key}) : super(key: key, name: 'SplashPage');
+class SplashPage extends StatefulWidget {
+  final Function onDispose;
+
+  const SplashPage(this.onDispose, {Key? key}) : super(key: key);
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -22,71 +20,61 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    _splashController.init();
+    FlutterNativeSplash.remove();
+    _splashController.init(widget.onDispose);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      child: StreamOut<SplashItem>(
+    return Scaffold(
+      backgroundColor: const Color(0xFFFFFFFF),
+      body: StreamOut<SplashItem>(
         stream: _splashController.splash.listen,
         child: (_, splash) => Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 246,
+                height: 246,
+                child: Image.asset('assets/images/logo.png'),
+              ),
+              const H(32),
+              Row(
                 children: [
-                  const CardXs(
-                    benefit: Benefit.app,
-                  ),
-                  const H(32),
                   Text(
-                    'Dica importante!',
-                    style: AppTheme.text.extra.xl3(const Color(0xFF1B1C1C)),
+                    splash.label,
+                    style: AppTheme.text.normal.sm(const Color(0xFF474747)),
                   ),
-                  const H(8),
-                  Text(
-                    'Mantenha seu cadastro atualizado para evitar cancelamento.',
-                    style: AppTheme.text.normal.lg(const Color(0xFF474747)),
-                  )
+                  const Spacer(),
+                  Text('${splash.progress}%',
+                      style: AppTheme.text.semi.sm(const Color(0xFF1C44F9)))
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 8,
-                  height: 8,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF1B1C1C)),
+              const H(8),
+              Row(
+                children: [
+                  Expanded(
+                    child: TweenAnimationBuilder<double>(
+                      tween: Tween<double>(begin: 0, end: splash.progress / 100),
+                      duration: const Duration(milliseconds: 400),
+                      curve: Curves.easeInOut,
+                      builder: (_, value, child) {
+                        return LinearProgressIndicator(
+                          backgroundColor: const Color(0xFFE3E2E2),
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              Color(0xFF1C44F9)),
+                          value: value,
+                        );
+                      },
+                    ),
                   ),
-                ),
-                const W(8),
-                Text(
-                  splash.label,
-                  style: AppTheme.text.normal.sm(const Color(0xFF474747)),
-                ),
-                const W(32),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: LinearProgressIndicator(
-                    backgroundColor: const Color(0xFFE3E2E2),
-                    valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF006D3C)),
-                    value: splash.progress / 100,
-                  ),
-                ),
-                const W(8),
-                Text('${splash.progress}%', style: AppTheme.text.semi.sm(const Color(0xFF474747)))
-              ],
-            )
-          ]),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
