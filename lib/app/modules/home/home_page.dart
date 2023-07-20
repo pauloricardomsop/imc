@@ -51,6 +51,8 @@ class _HomePageState extends State<HomePage> {
       AdController.adConfig.banner.id,
       AdBannerStorage.get('${widget.name}2'),
     );
+
+    
     AdController.fetchRewardAd();
     super.initState();
   }

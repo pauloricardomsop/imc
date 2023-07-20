@@ -10,9 +10,10 @@ import 'package:svr/app/modules/splash/splash_model.dart';
 class RemoteConfigService {
   static FirebaseRemoteConfig get instance => FirebaseRemoteConfig.instance;
 
-  static const bool useDefaultValues = false;
+  static const bool useDefaultValues = true;
 
   static Future<void> init() async {
+    await instance.ensureInitialized();
     await instance.setConfigSettings(_configSettings);
     await instance.setDefaults(defaultMap);
     await instance.fetchAndActivate();
@@ -76,7 +77,7 @@ class RemoteConfigService {
 }
 
 class RemoteConfigKey {
-  static const String adConfig = 'ad_config';
+  static const String adConfig = 'ad_config_ios';
   static const String paymentCalendarNIS = 'payment_calendar_nis';
   static const String queryEnable = 'query_enable';
   static const String tips = 'tups';

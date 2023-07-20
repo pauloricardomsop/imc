@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
@@ -12,7 +11,6 @@ import 'package:svr/app/core/utils/dialog_utils.dart';
 
 import '../models/app_stream.dart';
 import '../services/foreground_service.dart';
-import '../services/notification_service.dart';
 import '../utils/global_resource.dart';
 import '../utils/utils_controller.dart';
 import 'ad_model.dart';
@@ -174,12 +172,12 @@ class AdController {
     if (ad != null) ad.dispose();
     if (fromBackground) {
       Navigator.pop(contextGlobal);
-      if (urlToShow != null) {
-        execUrl(urlToShow!);
-        urlToShow = null;
-      }
+      // if (urlToShow != null) {
+      //   execUrl(urlToShow!);
+      //   urlToShow = null;
+      // }
     } else {
-      handleInitialMessage(await FirebaseMessaging.instance.getInitialMessage());
+      // handleInitialMessage(await FirebaseMessaging.instance.getInitialMessage());
       ForegroundService.showForegroundBack = true;
     }
     UtilsController().moduleStream.add(Module.home);

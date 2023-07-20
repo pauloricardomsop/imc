@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -9,24 +10,21 @@ import 'package:svr/app/app_controller.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/services/foreground_service.dart';
-import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/services/remote_config_service.dart';
 import 'package:svr/app/core/services/route_service.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 import 'package:svr/app/core/utils/utils_controller.dart';
+import 'package:svr/firebase_options.dart';
 
 Future<void> initializeServices() async {
-  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: Platform.isAndroid ? null : DefaultFirebaseOptions.currentPlatform,
+  );
   await RemoteConfigService.init();
-  initFirebaseMessaging();
-  await setupFlutterNotifications();
   await ForegroundService.listen();
   await initializeDateFormatting('pt_BR');
-  //TODO
-  // await FacebookAppEvents().setAutoLogAppEventsEnabled(true);
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };
@@ -57,6 +55,7 @@ class _AppState extends State<App> {
       }
     });
     AdController.fetchBanner(AdController.adConfig.banner.id, AdController.adBannerStorage);
+    
   }
 
   @override

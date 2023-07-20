@@ -13,12 +13,12 @@ if (flutterRoot == null) {
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
-    flutterVersionCode = '301'
+    flutterVersionCode = '351'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '3.0.1'
+    flutterVersionName = '3.5.1'
 }
 
 def keystoreProperties = new Properties()
@@ -29,11 +29,13 @@ if (keystorePropertiesFile.exists()) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 33
+    namespace "com.ldcapps.svr"
+    compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -55,9 +57,9 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        multiDexEnabled true
+        
     }
-    
+
     signingConfigs {
        release {
            keyAlias keystoreProperties['keyAlias']
@@ -69,6 +71,8 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled true
+            shrinkResources true
             signingConfig signingConfigs.release
         }
     }

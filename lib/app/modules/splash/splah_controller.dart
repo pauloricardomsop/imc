@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/models/app_stream.dart';
 import 'package:svr/app/core/services/remote_config_service.dart';
@@ -26,7 +25,6 @@ class SplashController {
 
   Future<void> init(Function onDispose) async {
     splash.add(SplashItem(await SplashRepository.getTip()));
-    FlutterNativeSplash.remove();
     await Future.delayed(const Duration(seconds: 1));
     splash.value.label = 'Atualizando Informações';
     splash.value.progress = 45;
