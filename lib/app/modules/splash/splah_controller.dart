@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/models/app_stream.dart';
 import 'package:svr/app/core/services/remote_config_service.dart';
@@ -24,9 +23,8 @@ class SplashController {
   List<String> tips =
       jsonDecode(RemoteConfigService.defaultMap[RemoteConfigKey.tips]).cast<String>();
 
-  Future<void> init() async {
+  Future<void> init(Function onDispose) async {
     splash.add(SplashItem(await SplashRepository.getTip()));
-    FlutterNativeSplash.remove();
     await Future.delayed(const Duration(seconds: 1));
     splash.value.label = 'Atualizando Informações';
     splash.value.progress = 45;
@@ -41,6 +39,7 @@ class SplashController {
       splash.value.progress = 95;
       splash.update();
       AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
+      () => onDispose();
     } else {
       SplashController().dispose();
     }
@@ -58,11 +57,5 @@ class SplashController {
     }
     await SplashRepository.setTip(tipValue);
     _utilsController.moduleStream.add(Module.home);
-  }
-
-  void onEntrar() {
-    splash.value.label = 'entrando no app';
-    splash.value.progress = 99;
-    splash.update();
   }
 }

@@ -78,7 +78,7 @@ class _ExitBannerState extends State<ExitBanner> {
                   ),
                   const H(8),
                   Text(
-                    'Clique no botão abaixo para continuar.',
+                    'Para consultar seus valores a receber, clique no botão abaixo.',
                     style: AppTheme.text.normal.base(const Color(0xFF474747)),
                   ),
                 ],

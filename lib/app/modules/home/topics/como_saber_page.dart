@@ -6,7 +6,6 @@ import 'package:svr/app/core/components/app_banner_ad.dart';
 import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
-import 'package:svr/app/core/components/button_icon.dart';
 import 'package:svr/app/core/components/check_list.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
@@ -42,7 +41,8 @@ class KnowReceivePageState extends State<ComoSaberPage> {
   List<CheckListModel> checkList = [
     CheckListModel(
       icon: Icons.check,
-      label: 'Acesse o site e clique no botão ”Consulte se tem valores a receber”;',
+      label:
+          'Acesse o site e clique no botão ”Consulte se tem valores a receber”;',
     ),
     CheckListModel(
       icon: Icons.check,
@@ -56,7 +56,8 @@ class KnowReceivePageState extends State<ComoSaberPage> {
     ),
     CheckListModel(
       icon: Icons.check,
-      label: 'Se tiver algum valor a receber, selecione a opção “Acessar o SVR”;',
+      label:
+          'Se tiver algum valor a receber, selecione a opção “Acessar o SVR”;',
     ),
     CheckListModel(
       icon: Icons.check,
@@ -65,7 +66,8 @@ class KnowReceivePageState extends State<ComoSaberPage> {
     ),
     CheckListModel(
       icon: Icons.check,
-      label: 'Após realizar o login com sua conta gov.br, acesse a opção “Meus Valores a Receber”;',
+      label:
+          'Após realizar o login com sua conta gov.br, acesse a opção “Meus Valores a Receber”;',
     ),
     CheckListModel(
       icon: Icons.check,
@@ -110,17 +112,7 @@ class KnowReceivePageState extends State<ComoSaberPage> {
     return AppListView(
       padding: EdgeInsets.zero,
       children: [
-        BackHeader(
-          button: ButtonIconSmall(
-            onTap: () {
-              Navigator.pop(context);
-              push(context, Container());
-            },
-            icon: Icons.open_in_new,
-            label: 'Consultar Agora',
-            invert: true,
-          ),
-        ),
+        const BackHeader(),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -129,10 +121,8 @@ class KnowReceivePageState extends State<ComoSaberPage> {
               const H(16),
               const HeaderHero(
                 title: 'Como saber se tenho valores a receber?',
-                desc:
-                    'Para saber se tem valores a receber, é preciso consultar o Serviço Valores a Receber (SVR), que é uma plataforma online criada para auxiliar o interessado a verificar se tem valores esquecidos para receber.',
-                image:
-                    'https://ldcapps.com/wp-content/uploads/2023/04/Como-saber-se-tenho-valores-a-receber.png',
+                desc:  'Para saber se tem valores a receber, é preciso consultar o Serviço Valores a Receber (SVR), que é uma plataforma online criada para auxiliar o interessado a verificar se tem valores esquecidos para receber.',
+                image: 'https://ldcapps.com/wp-content/uploads/2023/04/Como-saber-se-tenho-valores-a-receber.png',
               ),
               const H(16),
               AppBannerAd(AdBannerStorage.get('${widget.name}1')),

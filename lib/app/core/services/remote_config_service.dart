@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:svr/app/core/ad/ad_controller.dart';
 import 'package:svr/app/core/ad/ad_model.dart';
+import 'package:svr/app/modules/estatisticas/estatisticas_model.dart';
 import 'package:svr/app/modules/splash/splah_controller.dart';
 import 'package:svr/app/modules/splash/splash_model.dart';
 
@@ -12,6 +13,7 @@ class RemoteConfigService {
   static const bool useDefaultValues = true;
 
   static Future<void> init() async {
+    await instance.ensureInitialized();
     await instance.setConfigSettings(_configSettings);
     await instance.setDefaults(defaultMap);
     await instance.fetchAndActivate();
@@ -21,6 +23,7 @@ class RemoteConfigService {
   static void _setValues() {
     AdController.adConfigStream.add(adConfig);
     SplashController().tips = tips;
+    EstatisticasValores.estatisticasValores = estatisticasValores;
   }
 
   static final RemoteConfigSettings _configSettings = RemoteConfigSettings(
@@ -31,7 +34,7 @@ class RemoteConfigService {
   static final Map<String, dynamic> defaultMap = {
     RemoteConfigKey.adConfig: jsonEncode(AdConfig.configDefault),
     RemoteConfigKey.tips: jsonEncode(SplashTips.values),
-    RemoteConfigKey.queryEnable: true,
+    RemoteConfigKey.valores: jsonEncode(EstatisticasValores.defaultMap),
   };
 
   static AdConfig get adConfig {
@@ -56,14 +59,27 @@ class RemoteConfigService {
     }
   }
 
+   static EstatisticasValores get estatisticasValores {
+    try {
+      if (useDefaultValues) {
+        return EstatisticasValores.fromJson(jsonDecode(defaultMap[RemoteConfigKey.valores]));
+      }
+      return EstatisticasValores.fromJson(jsonDecode(instance.getString(RemoteConfigKey.valores)));
+    } catch (e) {
+      return EstatisticasValores.fromJson(jsonDecode(defaultMap[RemoteConfigKey.valores]));
+    }
+  }
+
+
   static bool get showBanner => AdController.adConfig.banner.active;
   static bool get showBannerAccordeon => AdController.adConfig.bannerAccordeon.active;
   static bool get showBannerSmart => AdController.adConfig.bannerSmart.active;
 }
 
 class RemoteConfigKey {
-  static const String adConfig = 'ad_config';
+  static const String adConfig = 'ad_config_ios';
   static const String paymentCalendarNIS = 'payment_calendar_nis';
   static const String queryEnable = 'query_enable';
   static const String tips = 'tups';
+  static const String valores = 'valores';
 }

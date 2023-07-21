@@ -15,14 +15,15 @@ class DialogUtils {
         });
   }
 
-  static showTransitionLoadingDialog([BuildContext? context]) {
-    context ??= contextGlobal;
+  static showTransitionLoadingDialog({bool description = false}) {
     showDialog(
-        context: context,
+        context: contextGlobal,
         barrierDismissible: false,
         builder: (_) {
           FocusManager.instance.primaryFocus!.unfocus();
-          return const LoadingTransitionDialog();
+          return LoadingTransitionDialog(
+            description: description,
+          );
         });
   }
 

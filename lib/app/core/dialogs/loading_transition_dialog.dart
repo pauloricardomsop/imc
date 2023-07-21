@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:svr/app/core/components/app_image.dart';
-import 'package:svr/app/core/components/app_shimmer.dart';
-import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/theme/app_theme.dart';
 
 class LoadingTransitionDialog extends StatefulWidget {
-  const LoadingTransitionDialog({Key? key}) : super(key: key);
+  final bool description;
+
+  const LoadingTransitionDialog({this.description = false, Key? key}) : super(key: key);
 
   @override
   State<LoadingTransitionDialog> createState() => _LoadingTransitionDialogState();
@@ -25,39 +24,40 @@ class _LoadingTransitionDialogState extends State<LoadingTransitionDialog> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
-      child: SimpleDialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        contentPadding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+      child: Scaffold(  
+        body: SizedBox(
+          width: double.maxFinite,
+          height: double.maxFinite,
+          child: Stack(
+            alignment: Alignment.center,
             children: [
-              const AppImage(
-                url: 'https://ldcapps.com/wp-content/uploads/2023/05/cuate.svg',
-                isSVG: true,
-              ),
-              const H(12),
-              Row(
-                children: [
-                  Expanded(
-                    child:
-                        Text('$label...', style: AppTheme.text.semi.base(const Color(0xFF1B1C1C))),
-                  ),
-                  Text('$percent%', style: AppTheme.text.semi.base(const Color(0xFF1B1C1C))),
-                ],
-              ),
-              const H(12),
-              AppShimmer(
-                child: Container(
-                  width: double.maxFinite,
-                  height: 8,
+              Positioned(
+                bottom: 400,
+                width: 240,
+                height: 240,
+                child: CircularProgressIndicator(
+                  value: percent / 100,
+                  strokeWidth: 8,
+                  valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF1C44F9)),
                   color: Colors.grey,
+                  backgroundColor: Colors.grey,
                 ),
-              )
+              ),
+              Positioned(bottom: 480, child: Text('$percent%', style: AppTheme.text.extra.xl6())),
+              Positioned(
+                bottom: 300,
+                child: Text(widget.description ? label : 'Aguarde...',
+                    style: AppTheme.text.extra.xl3()),
+              ),
+              if (widget.description)
+                Positioned(
+                  bottom: 260,
+                  child: Text('O resultado aparecerá após o anúncio.',
+                      style: AppTheme.text.normal.sm(const Color(0xFF1B1C1C))),
+                ),
             ],
-          )
-        ],
+          ),
+        ),
       ),
     );
   }

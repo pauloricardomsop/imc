@@ -13,23 +13,33 @@ class AppCardGrid extends StatelessWidget {
     return InkWell(
       onTap: model.onTap,
       child: Container(
-        padding: const EdgeInsets.fromLTRB(12, 8, 12, 16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: const Color(0xFFFEFCFC),
             border: Border.all(color: const Color(0xFFE3E2E2)),
             borderRadius: BorderRadius.circular(10)),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              model.icon,
-              color: const Color(0xFF1C44F9),
-              size: 70,
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                  color: const Color(0xFF1C44F9),
+                  borderRadius: BorderRadius.circular(8)),
+              child: Icon(
+                model.icon,
+                color: const Color(0xFFFFFFFF),
+                size: 38,
+              ),
             ),
-            const H(4),
+            const H(18),
             Text(
               model.title,
-              textAlign: TextAlign.center,
-              style: AppTheme.text.semi.lg(const Color(0xFF1B1C1C)).copyWith(fontSize: 16),
+              textAlign: TextAlign.start,
+              style: AppTheme.text.extra
+                  .sm(const Color(0xFF000C61))
+                  .copyWith(fontSize: 16, height: 1.2),
             ),
           ],
         ),

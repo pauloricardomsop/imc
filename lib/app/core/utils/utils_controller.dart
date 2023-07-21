@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/models/app_stream.dart';
 
@@ -16,4 +17,21 @@ class UtilsController {
   final AppStream<Module> moduleStream = AppStream<Module>.seed(Module.splash);
 
   final AppStream<String> toastStream = AppStream<String>.seed('');
+
+  final showOnboarding = AppStream<bool>();
+
+  Future<void> getShowOnboarding() async {
+    final instance = await SharedPreferences.getInstance();
+    final showOnboarding = instance.getBool('showOnboarding');
+    if (showOnboarding == null) {
+      instance.setBool('showOnboarding', true);
+    }
+    _utilsController.showOnboarding.add(showOnboarding ?? true);
+  }
+
+  Future<void> setShowOnboarding(bool value) async {
+    final instance = await SharedPreferences.getInstance();
+    await instance.setBool('showOnboarding', value);
+    await getShowOnboarding();
+  }
 }

@@ -1,4 +1,0 @@
-enum ConfigNotification{
-  firebase,
-  flutterLocalNotification,
-}

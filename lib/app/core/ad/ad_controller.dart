@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rxdart/rxdart.dart';
@@ -12,7 +11,6 @@ import 'package:svr/app/core/utils/dialog_utils.dart';
 
 import '../models/app_stream.dart';
 import '../services/foreground_service.dart';
-import '../services/notification_service.dart';
 import '../utils/global_resource.dart';
 import '../utils/utils_controller.dart';
 import 'ad_model.dart';
@@ -465,7 +463,7 @@ class AdController {
 
   static void showRewardTransitionAd({Function? onComplete}) async {
     if (rewardedTransitionStream.value != null) {
-      DialogUtils.showTransitionLoadingDialog();
+      DialogUtils.showTransitionLoadingDialog(description: true);
       await Future.delayed(const Duration(seconds: 2));
       rewardedTransitionStream.value!.show(
         onUserEarnedReward: (ad, reward) {

@@ -26,7 +26,7 @@ class CheckList extends StatelessWidget {
                         children: [
                           Icon(
                             e.icon,
-                            color: const Color(0xFF1C44F9),
+                            color: e.color,
                             size: 26,
                           ),
                           const W(12),

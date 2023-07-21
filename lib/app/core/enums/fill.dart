@@ -1,1 +1,0 @@
-enum Fill { filled, outlined }

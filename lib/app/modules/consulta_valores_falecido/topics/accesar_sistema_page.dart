@@ -8,6 +8,7 @@ import 'package:svr/app/core/components/app_list_view.dart';
 import 'package:svr/app/core/components/app_scaffold.dart';
 import 'package:svr/app/core/components/back_header_benefit.dart';
 import 'package:svr/app/core/components/check_list.dart';
+import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/components/h.dart';
 import 'package:svr/app/core/components/header_hero.dart';
 import 'package:svr/app/core/components/in_footer_cta.dart';
@@ -110,9 +111,19 @@ class AccesarSistemaPageState extends State<AccesarSistemaPage> {
 
   InFooterCta _inFooterCta() {
     return InFooterCta(
-      onTap: () => AdController.showRewardTransitionAd(
+      onTap: () => push(
+          context,
+          ExitBanner(
+            widget.name,
+            title: 'Consulta de valores a receber do BACEN',
+            buttonLabel: 'CONSULTAR VALORES',
+            buttonSubLabel: 'Após o anhttps://valoresareceber.bcb.gov.br/publicoúncio você terá acesso ao formulário de valores a receber:  ',
+            buttonSubLabelBold: '',
+            onClick: () => AdController.showInterstitialTransitionAd(context,
           onComplete: () =>
               push(context, const WebViewPage('https://valoresareceber.bcb.gov.br/publico'))),
+          )),
+
       label: 'CONSULTAR VALORES',
       invert: true,
       icon: const AdIcon(),

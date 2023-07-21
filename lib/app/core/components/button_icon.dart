@@ -49,7 +49,7 @@ class ButtonIcon extends StatelessWidget {
           size: 28,
           color: textColor ?? const Color(0xFFFFFFFF),
         )
-      : icon;
+      : (icon ?? const SizedBox());
 
   Widget get text => Text(
         label,
