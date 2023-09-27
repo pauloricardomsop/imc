@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:svr/app/core/models/service_model.dart';
 import 'package:svr/app/core/services/ad_manager_service.dart';
-import 'package:svr/app/modules/calendario/calendario_repository.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 class RemoteConfigService implements Service {
@@ -23,9 +22,7 @@ class RemoteConfigService implements Service {
   );
 
   static final Map<String, dynamic> defaultMap = {
-    RemoteConfigKey.adConfig: jsonEncode(AdManagerService.config),
-    RemoteConfigKey.paymentCalendarNIS:
-        jsonEncode(CalendarioRepostory.calendar2023Update),
+    RemoteConfigKey.adConfig: jsonEncode(AdManagerService.config)
   };
 
   static Map<String, dynamic> get adConfig {
@@ -38,22 +35,8 @@ class RemoteConfigService implements Service {
     }
   }
 
-  static List<List<String>> get calendario {
-    try {
-      if (useDefaultValues) {
-        return CalendarioRepostory.parse(
-            defaultMap[RemoteConfigKey.paymentCalendarNIS]);
-      }
-      return CalendarioRepostory.parse(
-          instance.getString(RemoteConfigKey.paymentCalendarNIS));
-    } catch (e) {
-      return CalendarioRepostory.parse(
-          jsonDecode(defaultMap[RemoteConfigKey.paymentCalendarNIS]));
-    }
-  }
 }
 
 class RemoteConfigKey {
   static const String adConfig = 'ad_config';
-  static const String paymentCalendarNIS = 'payment_calendar_nis';
 }

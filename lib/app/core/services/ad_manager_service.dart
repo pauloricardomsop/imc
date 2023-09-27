@@ -21,10 +21,10 @@ class AdManagerService implements Service {
   }
 
   static final Map<String, dynamic> config = {
-    "activeAll": true,
+    "activeAll": false,
     "appOpen": {
       "active": true,
-      "mode": "bidding",
+      "mode": "waterfall",
       "idsIOS": [],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/4869133355',
@@ -35,7 +35,7 @@ class AdManagerService implements Service {
     },
     "banner": {
       "active": true,
-      "mode": "bidding",
+      "mode": "waterfall",
       "idsIOS": [],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/3284604853',
@@ -46,7 +46,7 @@ class AdManagerService implements Service {
     },
     "intersticial": {
       "active": true,
-      "mode": "bidding",
+      "mode": "waterfall",
       "idsIOS": [],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/7512728125',
@@ -57,7 +57,7 @@ class AdManagerService implements Service {
     },
     "rewarded": {
       "active": true,
-      "mode": "bidding",
+      "mode": "waterfall",
       "idsIOS": [],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/9018103605',
