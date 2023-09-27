@@ -1,13 +1,13 @@
-import 'dart:convert';
+library ad_manager;
 
-import 'package:svr/app/core/ad/ad_controller.dart';
+import 'package:ad_manager/ad_manager.dart';
 import 'package:svr/app/core/models/app_stream.dart';
-import 'package:svr/app/core/services/remote_config_service.dart';
+import 'package:svr/app/core/models/service_model.dart';
 import 'package:svr/app/core/utils/utils_controller.dart';
-import 'package:svr/app/modules/splash/splash_model.dart';
-import 'package:svr/app/modules/splash/splash_repository.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../core/enums/module_enum.dart';
+import 'splash_model.dart';
 
 class SplashController {
   static final SplashController _splashController = SplashController._();
@@ -20,11 +20,9 @@ class SplashController {
 
   AppStream<SplashItem> splash = AppStream<SplashItem>();
 
-  List<String> tips =
-      jsonDecode(RemoteConfigService.defaultMap[RemoteConfigKey.tips]).cast<String>();
-
   Future<void> init(Function onDispose) async {
-    splash.add(SplashItem(await SplashRepository.getTip()));
+    splash.add(SplashItem());
+    FlutterNativeSplash.remove();
     await Future.delayed(const Duration(seconds: 1));
     splash.value.label = 'Atualizando Informações';
     splash.value.progress = 45;
@@ -33,13 +31,13 @@ class SplashController {
     splash.value.label = 'Consultando Base de Dados';
     splash.value.progress = 75;
     splash.update();
-    if (AdController.adConfig.appOpen.active) {
+    await Service.initAplicationServices();
+    if (AdManager.instance.config.appOpen.active) {
       await Future.delayed(const Duration(seconds: 1));
       splash.value.label = 'Iniciando o App';
       splash.value.progress = 95;
       splash.update();
-      AdController.fetchOpenedAppAd(AdController.adConfig.appOpen.id);
-      () => onDispose();
+      AdManager.showAppOpen(onDispose: onDispose);
     } else {
       SplashController().dispose();
     }
@@ -49,13 +47,12 @@ class SplashController {
     splash.value.label = 'App Iniciado';
     splash.value.progress = 100;
     splash.update();
-    late int tipValue;
-    if (splash.value.tip + 1 == tips.length) {
-      tipValue = 0;
-    } else {
-      tipValue = splash.value.tip + 1;
-    }
-    await SplashRepository.setTip(tipValue);
     _utilsController.moduleStream.add(Module.home);
+  }
+
+  void onEntrar() {
+    splash.value.label = 'entrando no app';
+    splash.value.progress = 99;
+    splash.update();
   }
 }

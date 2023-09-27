@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>502689250513-q4tac291vqt50nsnkrit5qgcq6tjbmv1.apps.googleusercontent.com</string>
+	<string>796318567664-qh079b9looukuridd5up7ps97poklkdu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.502689250513-q4tac291vqt50nsnkrit5qgcq6tjbmv1</string>
+	<string>com.googleusercontent.apps.796318567664-qh079b9looukuridd5up7ps97poklkdu</string>
 	<key>API_KEY</key>
-	<string>AIzaSyC4Ao1Ct6Zo05PeiMrX_tFVGQg7dIOqF-8</string>
+	<string>AIzaSyB4RZKdOmaFXuQd_XHBqU-dhE4N9GQOQFs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>502689250513</string>
+	<string>796318567664</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ldcapps.svr</string>
+	<string>com.ldcapps.aidBrazil</string>
 	<key>PROJECT_ID</key>
-	<string>ldv-svr</string>
+	<string>ldc-aid-brazil</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ldv-svr.appspot.com</string>
+	<string>ldc-aid-brazil.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:502689250513:ios:ab4dd1f214915cf98119f0</string>
+	<string>1:796318567664:ios:7cfb59c5a52145e3084635</string>
 </dict>
 </plist>

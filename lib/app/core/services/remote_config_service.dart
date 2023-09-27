@@ -1,29 +1,20 @@
 import 'dart:convert';
-
+import 'dart:developer';
+import 'package:svr/app/core/models/service_model.dart';
+import 'package:svr/app/core/services/ad_manager_service.dart';
+import 'package:svr/app/modules/calendario/calendario_repository.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
-import 'package:svr/app/core/ad/ad_controller.dart';
-import 'package:svr/app/core/ad/ad_model.dart';
-import 'package:svr/app/modules/estatisticas/estatisticas_model.dart';
-import 'package:svr/app/modules/splash/splah_controller.dart';
-import 'package:svr/app/modules/splash/splash_model.dart';
 
-class RemoteConfigService {
+class RemoteConfigService implements Service {
   static FirebaseRemoteConfig get instance => FirebaseRemoteConfig.instance;
 
   static const bool useDefaultValues = true;
 
-  static Future<void> init() async {
-    await instance.ensureInitialized();
+  @override
+  Future<void> initialize() async {
     await instance.setConfigSettings(_configSettings);
     await instance.setDefaults(defaultMap);
     await instance.fetchAndActivate();
-    _setValues();
-  }
-
-  static void _setValues() {
-    AdController.adConfigStream.add(adConfig);
-    SplashController().tips = tips;
-    EstatisticasValores.estatisticasValores = estatisticasValores;
   }
 
   static final RemoteConfigSettings _configSettings = RemoteConfigSettings(
@@ -32,54 +23,37 @@ class RemoteConfigService {
   );
 
   static final Map<String, dynamic> defaultMap = {
-    RemoteConfigKey.adConfig: jsonEncode(AdConfig.configDefault),
-    RemoteConfigKey.tips: jsonEncode(SplashTips.values),
-    RemoteConfigKey.valores: jsonEncode(EstatisticasValores.defaultMap),
+    RemoteConfigKey.adConfig: jsonEncode(AdManagerService.config),
+    RemoteConfigKey.paymentCalendarNIS:
+        jsonEncode(CalendarioRepostory.calendar2023Update),
   };
 
-  static AdConfig get adConfig {
+  static Map<String, dynamic> get adConfig {
     try {
-      if (useDefaultValues) {
-        return AdConfig.fromJson(jsonDecode(defaultMap[RemoteConfigKey.adConfig]));
-      }
-      return AdConfig.fromJson(jsonDecode(instance.getString(RemoteConfigKey.adConfig)));
+      if (useDefaultValues) return defaultMap[RemoteConfigKey.adConfig];
+      log(jsonDecode(instance.getString(RemoteConfigKey.adConfig)).toString());
+      return jsonDecode(instance.getString(RemoteConfigKey.adConfig));
     } catch (e) {
-      return AdConfig.fromJson(jsonDecode(defaultMap[RemoteConfigKey.adConfig]));
+      return jsonDecode(defaultMap[RemoteConfigKey.adConfig]);
     }
   }
 
-  static List<String> get tips {
+  static List<List<String>> get calendario {
     try {
       if (useDefaultValues) {
-        return jsonDecode(instance.getString(RemoteConfigKey.tips)).cast<String>();
+        return CalendarioRepostory.parse(
+            defaultMap[RemoteConfigKey.paymentCalendarNIS]);
       }
-      return jsonDecode(instance.getString(RemoteConfigKey.tips));
+      return CalendarioRepostory.parse(
+          instance.getString(RemoteConfigKey.paymentCalendarNIS));
     } catch (e) {
-      return jsonDecode(defaultMap[RemoteConfigKey.tips]).cast<String>();
+      return CalendarioRepostory.parse(
+          jsonDecode(defaultMap[RemoteConfigKey.paymentCalendarNIS]));
     }
   }
-
-   static EstatisticasValores get estatisticasValores {
-    try {
-      if (useDefaultValues) {
-        return EstatisticasValores.fromJson(jsonDecode(defaultMap[RemoteConfigKey.valores]));
-      }
-      return EstatisticasValores.fromJson(jsonDecode(instance.getString(RemoteConfigKey.valores)));
-    } catch (e) {
-      return EstatisticasValores.fromJson(jsonDecode(defaultMap[RemoteConfigKey.valores]));
-    }
-  }
-
-
-  static bool get showBanner => AdController.adConfig.banner.active;
-  static bool get showBannerAccordeon => AdController.adConfig.bannerAccordeon.active;
-  static bool get showBannerSmart => AdController.adConfig.bannerSmart.active;
 }
 
 class RemoteConfigKey {
-  static const String adConfig = 'ad_config_ios';
+  static const String adConfig = 'ad_config';
   static const String paymentCalendarNIS = 'payment_calendar_nis';
-  static const String queryEnable = 'query_enable';
-  static const String tips = 'tups';
-  static const String valores = 'valores';
 }

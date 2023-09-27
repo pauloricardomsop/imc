@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:svr/app/core/enums/module_enum.dart';
 import 'package:svr/app/core/models/app_stream.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UtilsController {
   static final UtilsController _utilsController = UtilsController._();

@@ -1,13 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:math';
 
-import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:svr/app/app_controller.dart';
+import 'package:svr/app/core/services/notification_service.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:svr/app/app_controller.dart';
-import 'package:svr/app/core/services/foreground_service.dart';
-import 'package:svr/app/core/services/notification_service.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const String empty = '';
@@ -24,6 +21,15 @@ class ClearFocusOnPush extends NavigatorObserver {
     focus?.unfocus();
   }
 }
+
+// void setStatusBarColor([Color? color]) {
+//   color ??= AppColors.white;
+
+//   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+//     statusBarColor: color,
+//     statusBarBrightness: Brightness.dark,
+//   ));
+// }
 
 double get height =>
     MediaQuery.of(AppController().context).size.height -
@@ -49,8 +55,8 @@ dynamic push([a, b]) async {
   } else {
     context = b;
   }
-  var result = await Navigator.push(
-      context ?? contextGlobal, MaterialPageRoute(builder: (_) => widget ?? Container()));
+  var result = await Navigator.push(context ?? contextGlobal,
+      MaterialPageRoute(builder: (_) => widget ?? Container()));
   return result;
 }
 
@@ -72,8 +78,10 @@ void copyClipboard(String data) {
 }
 
 String toNonDiacritics(String value) {
-  String diacritics = 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
-  String nonDiacritics = 'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
+  String diacritics =
+      'ÀÁÂÃÄÅàáâãäåÒÓÔÕÕÖØòóôõöøÈÉÊËèéêëðÇçÐÌÍÎÏìíîïÙÚÛÜùúûüÑñŠšŸÿýŽž';
+  String nonDiacritics =
+      'AAAAAAaaaaaaOOOOOOOooooooEEEEeeeeeCcDIIIIiiiiUUUUuuuuNnSsYyyZz';
   return value.splitMapJoin('',
       onNonMatch: (char) => char.isNotEmpty && diacritics.contains(char)
           ? nonDiacritics[diacritics.indexOf(char)]
@@ -86,14 +94,13 @@ pops(BuildContext context, int length) {
   }
 }
 
-Future<void> nextPage(controller) async =>
-    await controller.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+Future<void> nextPage(controller) async => await controller.nextPage(
+    duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
 
 Future<void> previousPage(controller) async => await controller.previousPage(
     duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
 
 void execUrl(String url) {
-  ForegroundService.appReturnFromWebExec = true;
   launchUrl(
     Uri.parse(url),
     mode: LaunchMode.externalApplication,
@@ -105,29 +112,13 @@ void showDialogAndPush(context, Widget dialog, Widget page) async {
   push(context, page);
 }
 
-abstract class JourneyStatefulWidget extends StatefulWidget {
-  final String name;
-
-  const JourneyStatefulWidget({required this.name, Key? key}) : super(key: key);
-
-  @override
-  StatefulElement createElement() {
-    // FirebaseAnalytics.instance.logEvent(
-    //   name: 'app_screen_view',
-    //   parameters: {
-    //     'app_screen': name,
-    //   },
-    // );
-    return StatefulElement(this);
-  }
-}
-
 void pop([BuildContext? context]) => Navigator.pop(context ?? contextGlobal);
 
 // AppLocalizations get T => AppLocalizations.of(contextGlobal)!;
 
 DateTime? parsePeriod(String? period) => period != null
-    ? DateTime(int.parse(period.split('-').last), int.parse(period.split('-')[1]), 0)
+    ? DateTime(
+        int.parse(period.split('-').last), int.parse(period.split('-')[1]), 0)
     : null;
 
 String doubleToCurrency(double? value) {
@@ -139,3 +130,39 @@ String doubleToCurrency(double? value) {
 
 String urlImage =
     'https://img.freepik.com/fotos-premium/sinal-de-trabalho-em-andamento-amarelo-com-listras_698953-677.jpg?w=2000';
+
+void fazerChamada(String numero) async {
+  String url = 'tel:$numero';
+  if (await canLaunchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url));
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+void sendMensageWhatsApp(String numero, String mensagem) async {
+  String url =
+      'whatsapp://send?phone=$numero&text=${Uri.encodeComponent(mensagem)}';
+  if (await canLaunchUrl(Uri.parse(url))) {
+    await launchUrl(Uri.parse(url));
+  } else {
+    throw 'Não foi possível enviar a mensagem pelo WhatsApp para $numero';
+  }
+}
+
+String toMoney(double value, {bool removeLeftSymbol = false}) {
+  return MoneyMaskedTextController(
+    decimalSeparator: ',',
+    thousandSeparator: '.',
+    leftSymbol: removeLeftSymbol ? '' : 'R\$ ',
+    initialValue: value,
+    precision: 2,
+  ).value.text;
+}
+
+sendToStore() {
+  launchUrl(
+    Uri.parse('https://play.google.com/store/apps/details?id=com.ldcapps.svr'),
+    mode: LaunchMode.externalApplication,
+  );
+}

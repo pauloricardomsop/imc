@@ -1,224 +1,226 @@
-import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:svr/app/core/ad/ad_banner_storage.dart';
-import 'package:svr/app/core/ad/ad_controller.dart';
-import 'package:svr/app/core/components/app_banner_ad.dart';
-import 'package:svr/app/core/components/app_card.dart';
-import 'package:svr/app/core/components/app_card_grid.dart';
-import 'package:svr/app/core/components/app_list_view.dart';
-import 'package:svr/app/core/components/app_scaffold.dart';
-import 'package:svr/app/core/components/card_valor.dart';
-import 'package:svr/app/core/components/divisor.dart';
-import 'package:svr/app/core/components/h.dart';
-import 'package:svr/app/core/components/w.dart';
-import 'package:svr/app/core/models/card_grid_model.dart';
-import 'package:svr/app/core/theme/app_theme.dart';
+import 'package:ad_manager/ad_manager.dart';
+import 'package:svr/app/core/components/exit_banner.dart';
+import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/como_receber/ui/como_receber_home_page.dart';
-import 'package:svr/app/modules/consulta_valores/consulta_valores_page.dart';
-import 'package:svr/app/modules/consulta_valores_falecido/consulta_valores_falecido_page.dart';
-import 'package:svr/app/modules/estatisticas/estatisticas_model.dart';
-import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
-import 'package:svr/app/modules/home/topics/aumentar_nivel_page.dart';
-import 'package:svr/app/modules/home/topics/como_receber_page.dart';
-import 'package:svr/app/modules/home/topics/como_saber_page.dart';
-import 'package:svr/app/modules/home/topics/oque_e_page.dart';
-import 'package:svr/app/modules/registrato/registrato_page.dart';
+import 'package:svr/app/modules/atendimento/atendimento_home_page.dart';
+import 'package:svr/app/modules/atendimento/topics/atendimento_presencial_page.dart';
+import 'package:svr/app/modules/calculadora_renda/calculadora_renda_home_page.dart';
+import 'package:svr/app/modules/calculadora_valores/calculadora_valores_home_page.dart';
+import 'package:svr/app/modules/calendario/ui/calendario_home_page.dart';
+import 'package:svr/app/modules/como_funciona/como_funciona_home_page.dart';
+import 'package:svr/app/modules/consulta_cpf_ativo/consulta_cpf_ativo_home_page.dart';
+import 'package:svr/app/modules/consulta_nis/ui/consulta_nis_home_page.dart';
+import 'package:svr/app/modules/consulta_pagamentos/consulta_pagamentos_controller.dart';
+import 'package:svr/app/modules/consulta_pagamentos/consulta_pagamentos_model.dart';
+import 'package:svr/app/modules/consulta_pagamentos/ui/consulta_pagamentos_home_page.dart';
+import 'package:svr/app/modules/extrato/ui/extrato_page.dart';
+import 'package:svr/app/modules/home/home_bottomsheet_page.dart';
+import 'package:svr/app/modules/noticias/noticias_controller.dart';
+import 'package:svr/app/modules/noticias/noticias_home_page.dart';
+import 'package:svr/app/modules/saiba_voce_tem_direito/saiba_voce_tem_direito_home_page.dart';
+import 'package:design_kit/design_kit.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:share_plus/share_plus.dart';
 
-import '../../core/components/exit_banner.dart';
-import '../../core/components/label_double_column.dart';
-
-class HomePage extends JourneyStatefulWidget {
-  const HomePage({Key? key}) : super(key: key, name: 'HomePage');
+class HomePage extends AdStatefulWidget {
+  HomePage({Key? key}) : super(key: key, name: 'HomePage');
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  ConsultaPagamentosController consultaPagamentoController =
+      ConsultaPagamentosController();
+  final NoticiasController _noticiasController = NoticiasController();
+  bool isProcessing = false;
+
   @override
   void initState() {
-    AdController.fetchInterstitialAd(AdController.adConfig.intersticial.id);
-    AdController.fetchInterstitialTransitionAd(
-        AdController.adConfig.intersticialTransition.id);
-    AdController.fetchRewardTransitionAd(
-        AdController.adConfig.rewardedTransition.id);
-    AdController.fetchBanner(
-      AdController.adConfig.banner.id,
-      AdBannerStorage.get('${widget.name}1'),
-    );
-    AdController.fetchBanner(
-      AdController.adConfig.banner.id,
-      AdBannerStorage.get('${widget.name}2'),
-    );
-
-    
-    AdController.fetchRewardAd();
+    consultaPagamentoController.init();
+    _noticiasController.init();
     super.initState();
   }
 
-  List<CardGridModel> get gridItens => [
-        CardGridModel(
-          title: 'Consulta Valores a Receber',
-          icon: Symbols.payments,
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const ConsultaValoresPage())),
+  List<CardFeature> get cardItens => [
+        CardFeature(
+          label: 'Saiba se você\ntem direito.',
+          prefix: Symbols.tv_options_edit_channels,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, SaibaVoceTemDireitoHomePage())),
         ),
-        CardGridModel(
-          title: 'Consulta Valores\nde Falecidos',
-          icon: Symbols.deceased,
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () =>
-                  push(context, const ConsultaValoresFalecidoPage())),
+        CardFeature(
+          label: 'Encontre seu NIS\ncom CPF',
+          prefix: Symbols.data_loss_prevention,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, ConsultaNisHomePage())),
         ),
-        CardGridModel(
-          title: 'Serviços do Banco Central',
-          icon: Symbols.account_balance,
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () =>
-                  push(context, const RegistratoPage())),
+        CardFeature(
+          label: 'Calendário de\nPagamentos',
+          prefix: Symbols.free_cancellation,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, CalendarioHomePage())),
         ),
-        CardGridModel(
-          title: 'Estatísticas\ndo SVR',
-          icon: Symbols.monitoring,
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const EstatisticasHomePage())),
+        CardFeature(
+          label: 'Saiba se seu CPF\nestá ativo',
+          prefix: Symbols.assured_workload,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, ConsultaCpfAtivoHomePage())),
+        ),
+        CardFeature(
+          label: 'Calculadora de\nRenda',
+          prefix: Symbols.calculate,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, CalculadoraRendaHomePage())),
+        ),
+        CardFeature(
+          label: 'Simular valores do\nBolsa Família',
+          prefix: Symbols.attach_money,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, CalculadoraValoresHomePage())),
+        ),
+        CardFeature(
+          label: 'Encontrar um\nCRAS',
+          prefix: Symbols.pin_drop,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, AtendimentoPresencialPage())),
+        ),
+        CardFeature(
+          label: 'Como funciona e\nvalores',
+          prefix: Symbols.library_books,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, ComoFuncionaHomePage())),
+        ),
+        CardFeature(
+          label: 'Ultimas\nNotícias',
+          prefix: Symbols.newsmode,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, NoticiasHomePage())),
+        ),
+        CardFeature(
+          label: 'Canais de\nAtendimento',
+          prefix: Symbols.support_agent,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, AtendimentoHomePage())),
         )
-      ];
-
-  List<AppCardModel> get itens1 => [
-        AppCardModel(
-          icon: Icons.contact_support_outlined,
-          title: 'O que é o SVR?',
-          subtitle:
-              'Saiba o que é e como funciona o Sistema de Valores a Receber',
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const OqueEPage())),
-        ),
-        AppCardModel(
-          icon: Icons.psychology_alt_outlined,
-          title: 'O que é conta GOV.BR',
-          subtitle: 'Saiba como aumentar o nível de sua conta GOV.BR',
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const AumentarNivelPage())),
-        ),
-      ];
-  List<AppCardModel> get itens2 => [
-        AppCardModel(
-          icon: Icons.paid_outlined,
-          title: 'Tenho valores a receber?',
-          subtitle: 'Saiba se você tem e quanto tem em dinheiro esquecido.',
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const ComoSaberPage())),
-        ),
-        AppCardModel(
-          icon: Icons.price_change_outlined,
-          title: 'Como receber o dinheiro esquecido?',
-          subtitle: 'Entenda o processo.',
-          onTap: () => AdController.showInterstitialTransitionAd(context,
-              onComplete: () => push(context, const ComoReceberPage())),
-        ),
       ];
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      onWillPop: () async => push(context, const HomeExitBanner()),
-      active: AdController.adConfig.banner.active,
-      behavior: ['${widget.name}1', '${widget.name}2'],
-      child: body(context),
+      onWillPop: () async {
+        push(context, ExitBanner());
+        return false;
+      },
+      child: StreamOut<ConsultaPagamentosModel>(
+        loading: const BackgroundPage(),
+        stream: consultaPagamentoController.consultaPagamentoStream.listen,
+        child: (_, consultaPagamento) => body(context, consultaPagamento),
+      ),
     );
   }
 
-  Widget body(_) {
+  Widget body(_, ConsultaPagamentosModel consultaPagamentos) {
     return AppListView(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              SizedBox(
-                  width: 80,
-                  height: 80,
-                  child: Image.asset('assets/images/logo.png')),
-              const W(12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      getGreeting(),
-                      style: AppTheme.text.extra.xl2(const Color(0xFF1B1C1C)),
-                    ),
-                    const H(4),
-                    Text(
-                      'Bem vindo ao Valores a Receber\nGuia 2023',
-                      style: AppTheme.text.normal.sm(const Color(0xFF777777)),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-        const Divisor(),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CardValor(
-                title: EstatisticasValores.estatisticasValores.home!.title!,
-                value: EstatisticasValores.estatisticasValores.home!.value!,
-                desc: EstatisticasValores.estatisticasValores.home!.desc!,
-                onClick: () => AdController.showInterstitialTransitionAd(
-                    context,
-                    onComplete: () => push(context, const ComoReceberHomePage())),
-              ),
-              const H(16),
-              Row(
-                children: [
-                  Expanded(child: AppCardGrid(gridItens[0])),
-                  const W(8),
-                  Expanded(child: AppCardGrid(gridItens[1])),
-                ],
-              ),
-              const H(16),
-              AppBannerAd(AdBannerStorage.get('${widget.name}1')),
-              const H(16),
-              Row(
-                children: [
-                  Expanded(child: AppCardGrid(gridItens[2])),
-                  const W(8),
-                  Expanded(child: AppCardGrid(gridItens[3])),
-                ],
-              ),
-              const H(32),
-              const H(32),
-              const LabelDoubleColumn('Conteúdos', 'Valores a Receber'),
-              const H(16),
-              AppCardList(itens1),
-              const H(16),
-              AppBannerAd(AdBannerStorage.get('${widget.name}2')),
-              const H(16),
-              AppCardList(itens2),
-            ],
-          ),
-        )
+        consultaPagamentos.hasPagamentoSalvo
+            ? _headerInfoPagamento(_, consultaPagamentos)
+            : _header(),
+        const AppTitle('Veja mais opções'),
+        const H(24),
+        const BannerWidget(),
+        const H(16),
+        CardFeatures(cardItens)
       ],
     );
   }
 
-  String getGreeting() {
-    DateTime now = DateTime.now();
-    int currentHour = now.hour;
+  Header _header() {
+    return Header.text(
+      'Conheça o Novo Bolsa Família',
+      'Saiba tudo sobre o Novo Bolsa Família e consulte a disponibilidade do seu benefício.',
+      top: HeaderTop(
+        leading: AppIcon.share(
+            onTap: () => Share.share(
+                'https://play.google.com/store/apps/details?id=com.ldcapps.svr')),
+      ),
+      buttons: [
+        AppButton(
+            label: 'CONSULTAR BOLSA FAMÍLIA',
+            onTap: () => push(context, ConsultaPagamentosHomePage())),
+      ],
+    );
+  }
 
-    if (currentHour >= 6 && currentHour < 12) {
-      return 'Bom dia';
-    } else if (currentHour >= 12 && currentHour < 18) {
-      return 'Boa tarde';
-    } else {
-      return 'Boa noite';
-    }
+  Header _headerInfoPagamento(_, ConsultaPagamentosModel consultaPagamentos) {
+    return Header(
+      top: HeaderTop(
+        leading: const AppIcon.person(),
+        action: AppIcon.share(
+            onTap: isProcessing
+                ? null
+                : () async {
+                    setState(() => isProcessing = true);
+                    await Share.share(
+                        'https://play.google.com/store/apps/details?id=com.ldcapps.svr');
+                    await Future.delayed(const Duration(milliseconds: 500));
+                    setState(() => isProcessing = false);
+                  }),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Olá, ${consultaPagamentos.bolsaFamilia!.name.split(' ').first}',
+              style: const TextStyle(color: AppColors.surfaceContainerLowest)
+                  .titleMedium,
+            ),
+            Text(
+              'Benefício Ativo',
+              style: const TextStyle(color: AppColors.surfaceContainerLowest)
+                  .bodySmall,
+            ),
+          ],
+        ),
+      ),
+      buttons: [
+        AppButton.ad(
+            label: 'PRÓXIMO PAGAMENTO',
+            onTap: () => AdManager.showIntersticial(context,
+                onDispose: () => push(context, ExtratoPage()))),
+      ],
+      child: Row(
+        children: [
+          HeaderCard.text(
+            label: 'Valor do\nBenefício',
+            icon: Icons.attach_money,
+            title: consultaPagamentos.bolsaFamilia!.valor.contains('R\$')
+                ? consultaPagamentos.bolsaFamilia!.valor
+                : 'R\$ ${consultaPagamentos.bolsaFamilia!.valor}',
+            subtitle:
+                'Atualizado em ${DateFormat('MM/yy').format(consultaPagamentos.bolsaFamilia!.date)}',
+          ),
+          const W(8),
+          HeaderCard.action(
+            label: 'Final do\nNIS',
+            title: consultaPagamentos.bolsaFamilia!.nis.characters.last,
+            icon: Icons.password,
+            action: AppIcon.delete(
+              onTap: () => showModalBottomSheet<void>(
+                context: context,
+                builder: (BuildContext context) => const HomeBottomSheetPage(),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(28),
+                    topRight: Radius.circular(28),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

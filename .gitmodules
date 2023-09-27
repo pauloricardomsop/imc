@@ -1,0 +1,9 @@
+[submodule "packages/design_kit"]
+	path = packages/design_kit
+	url = git@github.com:ldc-apps/design_kit.git
+[submodule "packages/ad_manager"]
+	path = packages/ad_manager
+	url = git@github.com:ldc-apps/ad_manager.git
+[submodule "packages/log_manager"]
+	path = packages/log_manager
+	url = git@github.com:ldc-apps/log_manager.git

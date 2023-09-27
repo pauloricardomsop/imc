@@ -1,5 +1,48 @@
 workflows:
-    sample-workflow:
-        name: Codemagic Sample Workflow
-        max_build_duration: 120
-        instance_type: mac_mini_m1
+  android-workflow:
+    name: Android Workflow
+    max_build_duration: 120
+    triggering:
+      events:
+        - tag
+      cancel_previous_builds: true
+    environment:
+      android_signing:
+        - default_keystore
+      groups:
+        - default
+      vars:
+        PACKAGE_NAME: "com.ldcapps.svr"
+        GOOGLE_PLAY_TRACK: internal
+      flutter: stable
+    scripts:
+      - name: Set up local.properties
+        script: | 
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
+      - name: Get Flutter packages
+        script: | 
+          flutter packages pub get
+      - name: Build AAB with Flutter
+        script: | 
+          flutter build appbundle --release
+    artifacts:
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+      - flutter_drive.log
+    publishing:
+      slack:
+        channel: '#svr'
+        notify_on_build_start: true
+        notify:
+          success: true
+          failure: true
+      email:
+        recipients:
+          - ldc22@gmail.com
+        notify:
+          success: true
+          failure: false
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: $GOOGLE_PLAY_TRACK
+        submit_as_draft: true
