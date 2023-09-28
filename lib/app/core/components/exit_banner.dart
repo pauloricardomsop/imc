@@ -31,17 +31,6 @@ class ExitBannerState extends State<ExitBanner> {
   Widget body(_) {
     return Column(
       children: [
-        Header(
-          backgroundColor: AppColors.white,
-          top: HeaderTop(
-            backgroundColor: AppColors.white,
-            leading: AppIcon.back(
-              backgroundColor: AppColors.surfaceContainer,
-              iconColor: AppColors.onSurface,
-              onTap: () => Navigator.pop(context),
-            ),
-          ),
-        ),
         Center(
           child: Padding(
             padding: const EdgeInsets.all(16),
@@ -49,39 +38,91 @@ class ExitBannerState extends State<ExitBanner> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const BannerWidget(),
-                const H(24),
-                Text(
-                  'Conseguimos te ajudar?',
-                  textAlign: TextAlign.center,
-                  style:
-                      const TextStyle(color: AppColors.onSurface).titleMedium,
-                ),
-                const H(16),
-                Text(
-                  'Sua avaliação é muito importante, deixe\nsua opinião na PlayStore.',
-                  textAlign: TextAlign.center,
-                  style:
-                      const TextStyle(color: AppColors.onSurface).titleMedium,
-                ),
+                const H(20),
+                const AvaliarCard(),
                 const H(24),
                 AppButton(
-                  label: 'AVALIAR',
-                  onTap: () {
-                    Navigator.pop(context);
-                    sendToStore();
-                  },
-                ),
-                const H(8),
+                    label: 'CONTINUAR NO APP',
+                    onTap: () => Navigator.pop(context)),
+                const H(16),
                 AppButton.textButtons(
                   label: 'SAIR DO APP',
                   onTap: () => exit(0),
-                  icon: Symbols.exit_to_app,
-                )
+                  icon: Symbols.logout,
+                  backgroundColor: AppColors.surfaceContainer,
+                  foregroundColor: AppColors.onSurface,
+                ),
               ],
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class AvaliarCard extends StatelessWidget {
+  const AvaliarCard({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.surfaceContainer),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text('AVALIAR APP',
+              style: const TextStyle(color: AppColors.onSurface).titleMedium),
+          const H(8),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            for (var i = 0; i < 5; i++)
+              Padding(
+                padding: EdgeInsets.only(right: i != 4 ? 10 : 0),
+                child: const Icon(
+                  Symbols.star_rounded,
+                  fill: 1,
+                  size: 48,
+                  color: Colors.amber,
+                ),
+              ),
+          ]),
+          const H(8),
+          Container(
+            decoration: ShapeDecoration(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                shadows: const [
+                  BoxShadow(
+                    color: Color(0xFFCBD5E1),
+                    blurRadius: 12,
+                    offset: Offset(0, 4),
+                    spreadRadius: 0,
+                  )
+                ]),
+            child: CardFeatures.full([
+              CardFeature.full(
+                label: 'Valores a Receber\nGuia 2023',
+                prefix: 'assets/images/logo.png',
+                sufix: const AppIcon.openInNew(size: 30),
+                onTap: () {
+                  Navigator.pop(context);
+                  sendToStore();
+                },
+                backgroundColor: AppColors.surfaceContainerLowest,
+              )
+            ]),
+          )
+        ],
+      ),
     );
   }
 }
