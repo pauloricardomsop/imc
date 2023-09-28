@@ -24,67 +24,23 @@ class AdManagerService implements Service {
     "activeAll": true,
     "appOpen": {
       "active": true,
-      "mode": "waterfall",
-      "idsIOS": [
-        'ca-app-pub-8419654969814276/4260756478',
-        'ca-app-pub-8419654969814276/6914839978',
-        'ca-app-pub-8419654969814276/2975594962',
-        'bidding:ca-app-pub-8419654969814276/7184142484',
-      ],
-      "idsAndroid": [
-        'ca-app-pub-8419654969814276/4869133355',
-        'ca-app-pub-8419654969814276/7656198350',
-        'ca-app-pub-8419654969814276/5179306302',
-        'bidding:ca-app-pub-8419654969814276/4927579039',
-      ]
+      "idIOS": "ca-app-pub-8419654969814276/7184142484",
+      "idAndroid": "ca-app-pub-8419654969814276/4927579039",
     },
     "banner": {
       "active": true,
-      "mode": "waterfall",
-      "idsIOS": [
-        'ca-app-pub-8419654969814276/7184142484',
-        'ca-app-pub-8419654969814276/7184142484',
-        'ca-app-pub-8419654969814276/7184142484',
-        'bidding:ca-app-pub-8419654969814276/7184142484',
-      ],
-      "idsAndroid": [
-        'ca-app-pub-8419654969814276/3284604853',
-        'ca-app-pub-8419654969814276/3727457981',
-        'ca-app-pub-8419654969814276/1971523182',
-        'bidding:ca-app-pub-8419654969814276/6666047983',
-      ]
+      "idIOS": "ca-app-pub-8419654969814276/7291953690",
+      "idAndroid": "ca-app-pub-8419654969814276/6666047983",
     },
     "intersticial": {
       "active": true,
-      "mode": "waterfall",
-      "idsIOS": [
-        'ca-app-pub-8419654969814276/5331145625',
-        'ca-app-pub-8419654969814276/8013929534',
-        'ca-app-pub-8419654969814276/6700847863',
-        'bidding:ca-app-pub-8419654969814276/3520229645',
-      ],
-      "idsAndroid": [
-        'ca-app-pub-8419654969814276/7512728125',
-        'ca-app-pub-8419654969814276/7033930567',
-        'ca-app-pub-8419654969814276/8405069592',
-        'bidding:ca-app-pub-8419654969814276/6721888307',
-      ]
+      "idIOS": "ca-app-pub-8419654969814276/3520229645",
+      "idAndroid": "ca-app-pub-8419654969814276/6721888307",
     },
     "rewarded": {
       "active": true,
-      "mode": "waterfall",
-      "idsIOS": [
-        'ca-app-pub-8419654969814276/3520229645',
-        'ca-app-pub-8419654969814276/7574165584',
-        'ca-app-pub-8419654969814276/4948002240',
-        'bidding:ca-app-pub-8419654969814276/5978872021',
-      ],
-      "idsAndroid": [
-        'ca-app-pub-8419654969814276/9018103605',
-        'ca-app-pub-8419654969814276/8853671820',
-        'ca-app-pub-8419654969814276/4520455392',
-        'bidding:ca-app-pub-8419654969814276/5856363345',
-      ]
+      "idIOS": "ca-app-pub-8419654969814276/5978872021",
+      "idAndroid": "ca-app-pub-8419654969814276/5856363345",
     }
   };
 }
