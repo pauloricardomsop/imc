@@ -14,7 +14,6 @@ void main() {
         .light, // Change this to Brightness.dark if your status bar content is light-colored
   ));
 
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };

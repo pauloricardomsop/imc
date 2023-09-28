@@ -120,7 +120,8 @@ class _HomePageState extends State<HomePage> {
                   AppButton(
                       label: 'VER COMO RECEBER',
                       icon: Symbols.east,
-                      onTap: () {}),
+                      onTap: () => AdManager.showIntersticial(context,
+                          onDispose: () => push(context, const Text('teste')))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
