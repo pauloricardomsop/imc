@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
-        android:label="Meu Auxílio Consulta e Datas"
+        android:label="SVR - Valores a Receber"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
@@ -20,7 +20,7 @@
         />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8419654969814276~2965494282"/>
+            android:value="ca-app-pub-8419654969814276~5324085380"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

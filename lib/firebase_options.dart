@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDILXgl_pFNqDGLrRHgxbomxTTHu5TXqII',
-    appId: '1:502689250513:android:8231eb89149504878119f0',
+    appId: '1:502689250513:android:70df4e4e2ccbc4dd8119f0',
     messagingSenderId: '502689250513',
     projectId: 'ldv-svr',
     storageBucket: 'ldv-svr.appspot.com',
@@ -59,10 +59,11 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyC4Ao1Ct6Zo05PeiMrX_tFVGQg7dIOqF-8',
-    appId: '1:502689250513:ios:6b33e867f361bb528119f0',
+    appId: '1:502689250513:ios:ab4dd1f214915cf98119f0',
     messagingSenderId: '502689250513',
     projectId: 'ldv-svr',
     storageBucket: 'ldv-svr.appspot.com',
-    iosBundleId: 'com.ldcapps.aidBrazil',
+    iosClientId: '502689250513-csek955t406pe70qrmc0lsb87ttj2irs.apps.googleusercontent.com',
+    iosBundleId: 'com.ldcapps.svr',
   );
 }
