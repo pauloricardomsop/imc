@@ -21,11 +21,16 @@ class AdManagerService implements Service {
   }
 
   static final Map<String, dynamic> config = {
-    "activeAll": false,
+    "activeAll": true,
     "appOpen": {
       "active": true,
       "mode": "waterfall",
-      "idsIOS": [],
+      "idsIOS": [
+        'ca-app-pub-8419654969814276/4260756478',
+        'ca-app-pub-8419654969814276/6914839978',
+        'ca-app-pub-8419654969814276/2975594962',
+        'bidding:ca-app-pub-8419654969814276/7184142484',
+      ],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/4869133355',
         'ca-app-pub-8419654969814276/7656198350',
@@ -36,7 +41,12 @@ class AdManagerService implements Service {
     "banner": {
       "active": true,
       "mode": "waterfall",
-      "idsIOS": [],
+      "idsIOS": [
+        'ca-app-pub-8419654969814276/7184142484',
+        'ca-app-pub-8419654969814276/7184142484',
+        'ca-app-pub-8419654969814276/7184142484',
+        'bidding:ca-app-pub-8419654969814276/7184142484',
+      ],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/3284604853',
         'ca-app-pub-8419654969814276/3727457981',
@@ -47,7 +57,12 @@ class AdManagerService implements Service {
     "intersticial": {
       "active": true,
       "mode": "waterfall",
-      "idsIOS": [],
+      "idsIOS": [
+        'ca-app-pub-8419654969814276/5331145625',
+        'ca-app-pub-8419654969814276/8013929534',
+        'ca-app-pub-8419654969814276/6700847863',
+        'bidding:ca-app-pub-8419654969814276/3520229645',
+      ],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/7512728125',
         'ca-app-pub-8419654969814276/7033930567',
@@ -58,7 +73,12 @@ class AdManagerService implements Service {
     "rewarded": {
       "active": true,
       "mode": "waterfall",
-      "idsIOS": [],
+      "idsIOS": [
+        'ca-app-pub-8419654969814276/3520229645',
+        'ca-app-pub-8419654969814276/7574165584',
+        'ca-app-pub-8419654969814276/4948002240',
+        'bidding:ca-app-pub-8419654969814276/5978872021',
+      ],
       "idsAndroid": [
         'ca-app-pub-8419654969814276/9018103605',
         'ca-app-pub-8419654969814276/8853671820',
