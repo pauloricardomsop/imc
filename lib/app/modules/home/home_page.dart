@@ -101,27 +101,20 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: AppColors.surfaceContainer,
               top: HeaderTop(
                 backgroundColor: AppColors.surfaceContainer,
-                leading: const AppTitle(
-                  'Bem vindo ao app\nValores a Receber',
-                  color: AppColors.onSurface,
-                ),
-                action: AppIcon.share(
-                    onTap: () async => await Share.share(
-                        'https://play.google.com/store/apps/details?id=com.ldcapps.svr')),
+                leading: const AppTitle('Bem vindo ao app\nValores a Receber', color: AppColors.onSurface),
+                action: AppIcon.share(onTap: () async => await Share.share('https://play.google.com/store/apps/details?id=com.ldcapps.svr')),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                       'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
-                      style: const TextStyle(color: AppColors.onSurfaceVariant)
-                          .bodyLarge),
+                      style: const TextStyle(color: AppColors.onSurfaceVariant).bodyLarge),
                   const H(24),
                   AppButton(
                       label: 'VER COMO RECEBER',
                       icon: Symbols.east,
-                      onTap: () => AdManager.showIntersticial(context,
-                          onDispose: () => push(context, const Text('teste')))),
+                      onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, const Text('teste')))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
