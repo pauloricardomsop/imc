@@ -64,25 +64,25 @@ class _HomePageState extends State<HomePage> {
         CardFeature.full(
           label: 'O que é o Sistema de\nValores a Receber?',
           prefix: Symbols.counter_1,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
         CardFeature.full(
           label: 'O que é conta GOV.BR\ne como subir de nível?',
           prefix: Symbols.counter_2,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
         CardFeature.full(
           label: 'Como saber se tenho\nvalores a receber?',
           prefix: Symbols.counter_3,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
         CardFeature.full(
           label: 'Como receber o\ndinheiro esquecido?',
           prefix: Symbols.counter_4,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
       ];
@@ -101,27 +101,20 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: AppColors.surfaceContainer,
               top: HeaderTop(
                 backgroundColor: AppColors.surfaceContainer,
-                leading: const AppTitle(
-                  'Bem vindo ao app\nValores a Receber',
-                  color: AppColors.onSurface,
-                ),
-                action: AppIcon.share(
-                    onTap: () async => await Share.share(
-                        'https://play.google.com/store/apps/details?id=com.ldcapps.svr')),
+                leading: const AppTitle('Bem vindo ao app\nValores a Receber', color: AppColors.onSurface),
+                action: AppIcon.share(onTap: () async => await Share.share('https://play.google.com/store/apps/details?id=com.ldcapps.svr')),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                       'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
-                      style: const TextStyle(color: AppColors.onSurfaceVariant)
-                          .bodyLarge),
+                      style: const TextStyle(color: AppColors.onSurfaceVariant).bodyLarge),
                   const H(24),
                   AppButton(
                       label: 'VER COMO RECEBER',
                       icon: Symbols.east,
-                      onTap: () => AdManager.showIntersticial(context,
-                          onDispose: () => push(context, const Text('teste')))),
+                      onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, const Text('teste')))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
