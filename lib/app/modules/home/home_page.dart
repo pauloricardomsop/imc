@@ -64,25 +64,25 @@ class _HomePageState extends State<HomePage> {
         CardFeature.full(
           label: 'O que é o Sistema de\nValores a Receber?',
           prefix: Symbols.counter_1,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
         CardFeature.full(
           label: 'O que é conta GOV.BR\ne como subir de nível?',
           prefix: Symbols.counter_2,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
         CardFeature.full(
           label: 'Como saber se tenho\nvalores a receber?',
           prefix: Symbols.counter_3,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
         CardFeature.full(
           label: 'Como receber o\ndinheiro esquecido?',
           prefix: Symbols.counter_4,
-          sufix: const AppIcon.back(),
+          sufix: const AppIcon.frontLight(),
           onTap: () => push(context, Container()),
         ),
       ];
