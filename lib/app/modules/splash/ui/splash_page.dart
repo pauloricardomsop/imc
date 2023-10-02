@@ -26,8 +26,11 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    const color = Color(0xFF082F49);
     return AppScaffold(
-      backgroundColor: const Color(0xFF082F49),
+      statusBarColor: color,
+      navigatorBarColor: color,
+      backgroundColor: color,
       child: StreamOut<SplashItem>(
         loading: const SizedBox(),
         stream: _splashController.splash.listen,
@@ -49,16 +52,12 @@ class _SplashPageState extends State<SplashPage> {
                 children: [
                   Text(
                     splash.label,
-                    style:
-                        const TextStyle(color: AppColors.surfaceContainerLowest)
-                            .titleSmall,
+                    style: const TextStyle(color: AppColors.surfaceContainerLowest).titleSmall,
                   ),
                   const Spacer(),
                   Text(
                     '${splash.progress}%',
-                    style:
-                        const TextStyle(color: AppColors.surfaceContainerLowest)
-                            .titleSmall,
+                    style: const TextStyle(color: AppColors.surfaceContainerLowest).titleSmall,
                   )
                 ],
               ),

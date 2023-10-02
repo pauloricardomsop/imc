@@ -90,6 +90,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      statusBarColor: AppColors.surfaceContainer,
         onWillPop: () async {
           push(context, ExitBanner());
           return false;
@@ -111,7 +112,6 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const BannerWidget(),
                   Text(
                       'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
                       style: const TextStyle(color: AppColors.onSurfaceVariant)
