@@ -32,7 +32,7 @@ class AdManagerService implements Service {
     "banner": {
       "active": true,
       "idIOS": "ca-app-pub-8419654969814276/7291953690",
-      "idAndroid": "ca-app-pub-8419654969814276/1971523182",
+      "idAndroid": "ca-app-pub-8419654969814276/6666047983",
     },
     "intersticial": {
       "active": false,
