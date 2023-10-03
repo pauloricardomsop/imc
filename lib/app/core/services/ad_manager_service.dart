@@ -11,6 +11,8 @@ class AdManagerService implements Service {
   Future<void> initialize() async {
     if (AdManager.instance.isInitialized) return;
     await MobileAds.instance.initialize();
+    await MobileAds.instance.updateRequestConfiguration(RequestConfiguration(
+        testDeviceIds: ['E5050E013B8198CA09DA8ED5AB922238']));
     await AdManager.instance.initialize(
       json: config,
       navigatorKey: AppController().key,
