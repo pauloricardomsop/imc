@@ -6,7 +6,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulta_valores_home_page.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/home/topics/como_aumentar_nivel_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_meus_valores_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_se_tenho_valores_page.dart';
