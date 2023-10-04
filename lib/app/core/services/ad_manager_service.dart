@@ -1,7 +1,6 @@
 import 'package:ad_manager/ad_manager.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:log_manager/log_manager.dart';
 import 'package:svr/app/app_controller.dart';
