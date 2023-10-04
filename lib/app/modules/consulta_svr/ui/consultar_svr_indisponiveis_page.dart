@@ -4,7 +4,7 @@ import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/consulta_valores_receber/consulta_valores_controller.dart';
+import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
 class ConsulteSeusValoresIndisponiveisPage extends AdStatefulWidget {
   ConsulteSeusValoresIndisponiveisPage({

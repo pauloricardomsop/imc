@@ -6,7 +6,7 @@ import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/formatters/cnpj_input_formatter.dart';
 import 'package:svr/app/core/formatters/cpf_input_formatter.dart';
 import 'package:svr/app/core/formatters/date_input_formatter.dart';
-import 'package:svr/app/modules/consulta_valores_receber/consulta_valores_controller.dart';
+import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
 class ConsultaValoresFormPage extends AdStatefulWidget {
   final ConsultaValoresPessoa tipo;

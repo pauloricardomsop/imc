@@ -6,7 +6,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulta_valores_home_page.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 
 class HomePage extends AdStatefulWidget {
   HomePage({Key? key}) : super(key: key, name: 'HomePage');

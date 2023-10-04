@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulta_valores_form_page.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 
 class ConsultaValoresHomePage extends AdStatefulWidget {
   ConsultaValoresHomePage({Key? key}) : super(key: key, name: 'ConsultaValoresReceberHomePage');

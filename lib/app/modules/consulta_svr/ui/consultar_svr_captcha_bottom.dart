@@ -7,7 +7,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/client/valores_receber/models/valores_receber_captcha_model.dart';
 import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/models/api_response_model.dart';
-import 'package:svr/app/modules/consulta_valores_receber/consulta_valores_controller.dart';
+import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
 Future<ApiResponse<bool>?> showConsultaValoresCaptchaBottom(_) async => await showModalBottomSheet(
     isScrollControlled: true,

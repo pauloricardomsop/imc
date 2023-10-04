@@ -15,7 +15,7 @@ packages:
       path: "packages/ad_manager"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "2.0.0"
   archive:
     dependency: transitive
     description:
@@ -142,7 +142,7 @@ packages:
       path: "packages/design_kit"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "2.0.0"
   dio:
     dependency: "direct main"
     description:
@@ -545,7 +545,7 @@ packages:
       path: "packages/log_manager"
       relative: true
     source: path
-    version: "1.0.0"
+    version: "2.0.0"
   matcher:
     dependency: transitive
     description:
@@ -959,6 +959,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
+  validators:
+    dependency: "direct main"
+    description:
+      name: validators
+      sha256: "884515951f831a9c669a41ed6c4d3c61c2a0e8ec6bca761a4480b28e99cecf5d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   vector_graphics:
     dependency: transitive
     description:
