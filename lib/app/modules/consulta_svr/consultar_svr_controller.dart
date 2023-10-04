@@ -8,26 +8,27 @@ import 'package:svr/app/core/models/app_stream_response.dart';
 import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_model.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_captcha_bottom.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_disponiveis_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_error_page.dart';
-import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_captcha_bottom.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_indisponiveis_page.dart';
 import 'package:validators/validators.dart';
 
-class ConsulteValoresController {
-  static final ConsulteValoresController _instance = ConsulteValoresController._();
+class ConsultarSVRController {
+  static final ConsultarSVRController _instance = ConsultarSVRController._();
 
-  ConsulteValoresController._();
+  ConsultarSVRController._();
 
-  factory ConsulteValoresController() => _instance;
+  factory ConsultarSVRController() => _instance;
 
-  AppStreamResponse<ValoresReceberCaptcha> captchaResponseStream = AppStreamResponse<ValoresReceberCaptcha>();
+  AppStreamResponse<ValoresReceberCaptcha> captchaResponseStream =
+      AppStreamResponse<ValoresReceberCaptcha>();
 
-  AppStream<ConsulteValoresModel> consultaValoresStream = AppStream<ConsulteValoresModel>();
-  
-  ConsulteValoresModel get consulta => consultaValoresStream.value;
+  AppStream<ConsultarSVRModel> consultaValoresStream =
+      AppStream<ConsultarSVRModel>();
+  ConsultarSVRModel get consulta => consultaValoresStream.value;
 
-  Future<void> onClickIniciarConsulta(_) async {
+  Future<void> onClickProximo(_) async {
     try {
       late bool isValidIdentifier;
       if (consulta.isPessoaFisica) {
@@ -48,7 +49,7 @@ class ConsulteValoresController {
       if (result == null) return;
 
       if (result.hasError) {
-        push(_, ConsulteValoresErrorPage());
+        push(_, ConsultarSVRServicoIndisponivelPage());
         return;
       }
 
@@ -56,8 +57,30 @@ class ConsulteValoresController {
           onDispose: () => push(
               _,
               result.data
-                  ? ConsulteSeusValoresDisponiveisPage()
-                  : ConsulteSeusValoresIndisponiveisPage()));
+                  ? ConsultarSVRDisponiveisPage()
+                  : ConsultarSVRNaoEncontradoPage()));
+    } catch (e) {
+      NotificationService.negative(e.toString());
+    }
+  }
+
+  Future<void> onClickTentarNovamente(_) async {
+    try {
+      final result = await showConsultaValoresCaptchaBottom(_);
+
+      if (result == null || result.hasError) {
+        Navigator.pop(_);
+        return;
+      }
+
+      AdManager.showRewarded(onDispose: () {
+        pops(_, 2);
+        push(
+            _,
+            result.data
+                ? ConsultarSVRDisponiveisPage()
+                : ConsultarSVRNaoEncontradoPage());
+      });
     } catch (e) {
       NotificationService.negative(e.toString());
     }
