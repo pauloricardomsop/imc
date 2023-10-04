@@ -33,18 +33,8 @@ class ConsultaValoresReceberHomePageState extends State<ConsultaValoresHomePage>
       statusBarColor: AppColors.surfaceContainer,
       child: AppListView(
         children: [
-          const Header(
-            top: HeaderTop(backgroundColor: AppColors.surfaceContainer, leading: AppIcon.backLight(backgroundColor: AppColors.surfaceContainerHigh)),
-            backgroundColor: AppColors.surfaceContainer,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HeaderTitle('Consulte seus valores\na receber', color: AppColors.onSurface),
-                H(16),
-                HeaderDesc('Consulte se você possui valores a receber pelo sistema do Banco Central.', color: AppColors.onSurface),
-              ],
-            ),
-          ),
+          const Header.text('Consulte seus valores\na receber',
+              'Consulte se você possui valores a receber pelo sistema do Banco Central.'),
           CardFeatures(cardFeatureItens),
         ],
       ),
