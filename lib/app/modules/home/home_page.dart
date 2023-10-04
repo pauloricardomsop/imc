@@ -9,6 +9,10 @@ import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
+import 'package:svr/app/modules/home/topics/como_aumentar_nivel_page.dart';
+import 'package:svr/app/modules/home/topics/como_receber_meus_valores_page.dart';
+import 'package:svr/app/modules/home/topics/como_receber_se_tenho_valores_page.dart';
+import 'package:svr/app/modules/home/topics/o_que_e_page.dart';
 
 class HomePage extends AdStatefulWidget {
   HomePage({Key? key}) : super(key: key, name: 'HomePage');
@@ -74,25 +78,25 @@ class _HomePageState extends State<HomePage> {
           label: 'O que é o Sistema de\nValores a Receber?',
           prefix: Symbols.counter_1,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, ComoReceberMeusValoresPage()),
         ),
         CardFeature.full(
           label: 'O que é conta GOV.BR\ne como subir de nível?',
           prefix: Symbols.counter_2,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, ComoReceberSeTenhoValoresPage()),
         ),
         CardFeature.full(
           label: 'Como saber se tenho\nvalores a receber?',
           prefix: Symbols.counter_3,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, ComoAumentarNivelPage()),
         ),
         CardFeature.full(
           label: 'Como receber o\ndinheiro esquecido?',
           prefix: Symbols.counter_4,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, OQueEPage()),
         ),
       ];
 
@@ -116,17 +120,9 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                      'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
-                      style: const TextStyle(color: AppColors.onSurfaceVariant)
-                          .bodyLarge),
+                  Text( 'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.', style: const TextStyle(color: AppColors.onSurfaceVariant).bodyLarge),
                   const H(24),
-                  AppButton(
-                      label: 'VER COMO RECEBER',
-                      icon: Symbols.east,
-                      onTap: () => AdManager.showIntersticial(context,
-                          onDispose: () =>
-                              push(context, ComoReceberQuizHomePage()))),
+                  AppButton(label: 'VER COMO RECEBER', icon: Symbols.east, onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, ComoReceberQuizHomePage()))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
