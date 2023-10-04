@@ -7,11 +7,11 @@ import 'package:svr/app/core/client/valores_receber/valores_receber_provider.dar
 import 'package:svr/app/core/models/app_stream_response.dart';
 import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/consulta_valores_receber/consulta_valores_model.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulte_valores_disponiveis_page.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulte_valores_error_page.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulte_valores_captcha_bottom.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulte_valores_indisponiveis_page.dart';
+import 'package:svr/app/modules/consulta_svr/consultar_svr_model.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_disponiveis_page.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_error_page.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_captcha_bottom.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_indisponiveis_page.dart';
 import 'package:validators/validators.dart';
 
 class ConsulteValoresController {

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/consulta_valores_receber/ui/consulta_valores_form_page.dart';
+import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 
 class ConsultaValoresHomePage extends AdStatefulWidget {
   ConsultaValoresHomePage({Key? key}) : super(key: key, name: 'ConsultaValoresReceberHomePage');
@@ -33,18 +33,8 @@ class ConsultaValoresReceberHomePageState extends State<ConsultaValoresHomePage>
       statusBarColor: AppColors.surfaceContainer,
       child: AppListView(
         children: [
-          const Header(
-            top: HeaderTop(backgroundColor: AppColors.surfaceContainer, leading: AppIcon.backLight(backgroundColor: AppColors.surfaceContainerHigh)),
-            backgroundColor: AppColors.surfaceContainer,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                HeaderTitle('Consulte seus valores\na receber', color: AppColors.onSurface),
-                H(16),
-                HeaderDesc('Consulte se você possui valores a receber pelo sistema do Banco Central.', color: AppColors.onSurface),
-              ],
-            ),
-          ),
+          const Header.text('Consulte seus valores\na receber',
+              'Consulte se você possui valores a receber pelo sistema do Banco Central.'),
           CardFeatures(cardFeatureItens),
         ],
       ),
