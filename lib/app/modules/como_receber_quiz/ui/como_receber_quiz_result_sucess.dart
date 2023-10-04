@@ -69,7 +69,7 @@ class _ComoReceberQuizResultSuccessPageState
             const H(20),
             AppImage(url: _controller.image, fit: BoxFit.contain, isSVG: true),
             const H(24),
-            // AppTitle(_controller.titlePage, textAlign: Alignment.center),
+            AppTitle(_controller.titlePage, textAlign: TextAlign.center),
             const H(8),
             Center(child: AppDesc(_controller.descPage, textAlign: TextAlign.center)),
             const H(24),

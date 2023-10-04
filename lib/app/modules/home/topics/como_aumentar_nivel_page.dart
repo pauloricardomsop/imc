@@ -117,7 +117,7 @@ class _ComoAumentarNivelPageState extends State<ComoAumentarNivelPage> {
   }
 }
 
-class WarningCard extends StatelessWidget {
+class WarningCard extends StatelessWidget {    //TODO: NOVO COMPONENTE!!!!!!
   final String? text;
   final String label;
   final bool hasTitle;
