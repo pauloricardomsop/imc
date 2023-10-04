@@ -35,6 +35,12 @@ class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
   Widget build(BuildContext context) {
     return AppScaffold(
       statusBarColor: AppColors.surfaceContainer,
+      bottom: Footer(
+        AppButton(
+          label: 'PRÓXIMO',
+          onTap: () => _controller.onClickProximo(context),
+        ),
+      ),
       child: StreamOut<ConsultarSVRModel>(
         stream: _controller.consultaValoresStream.listen,
         child: (_, model) => AppListView(
@@ -98,10 +104,7 @@ class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
             const CardAlert.info(
                 'Para consultar valores de pessoas falecidas você precisa ser herdeiro, testamentário, inventariante ou procurador.'),
             const H(12),
-            AppButton(
-              label: 'PRÓXIMO',
-              onTap: () => _controller.onClickProximo(_),
-            )
+            
           ],
         ),
       ),

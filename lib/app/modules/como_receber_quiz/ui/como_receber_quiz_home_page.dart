@@ -18,6 +18,7 @@ class _ComoReceberQuizHomePageState extends State<ComoReceberQuizHomePage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      statusBarColor: AppColors.surfaceContainerLowest,
       bottom: Footer(
         AppButton(
           label: 'VERIFICAR VALORES',

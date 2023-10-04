@@ -8,13 +8,16 @@ import 'package:svr/app/modules/servicos_banco_central/topics/contas_relacioname
 import 'package:svr/app/modules/servicos_banco_central/topics/emprestimos_financiamentos_pasge.dart';
 
 class ServicoBancoCentralHomePage extends AdStatefulWidget {
-  ServicoBancoCentralHomePage({Key? key}) : super(key: key, name: 'ServicoBancoCentralHomePage');
+  ServicoBancoCentralHomePage({Key? key})
+      : super(key: key, name: 'ServicoBancoCentralHomePage');
 
   @override
-  State<ServicoBancoCentralHomePage> createState() => _ServicoBancoCentralHomePageState();
+  State<ServicoBancoCentralHomePage> createState() =>
+      _ServicoBancoCentralHomePageState();
 }
 
-class _ServicoBancoCentralHomePageState extends State<ServicoBancoCentralHomePage> {
+class _ServicoBancoCentralHomePageState
+    extends State<ServicoBancoCentralHomePage> {
   List<CardFeature> get cardFeatureFullItens => [
         CardFeature.full(
           label: 'Empréstimos e\nFinanciamentos',
@@ -29,7 +32,7 @@ class _ServicoBancoCentralHomePageState extends State<ServicoBancoCentralHomePag
           onTap: () => push(context, ContasRelacionamentosPage()),
         ),
         CardFeature.full(
-          label: 'Chaves PIX\nregistradas em seu\nnome.',
+          label: 'Chaves PIX registradas\nem seu nome.',
           prefix: Icons.pix,
           sufix: const AppIcon.frontLight(),
           onTap: () => push(context, ChavePixPage()),
@@ -39,6 +42,7 @@ class _ServicoBancoCentralHomePageState extends State<ServicoBancoCentralHomePag
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      statusBarColor: AppColors.surfaceContainer,
       child: AppListView(
         children: [
           const Header.text(
