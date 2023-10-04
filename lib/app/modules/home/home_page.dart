@@ -11,6 +11,7 @@ import 'package:svr/app/modules/home/topics/como_aumentar_nivel_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_meus_valores_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_se_tenho_valores_page.dart';
 import 'package:svr/app/modules/home/topics/o_que_e_page.dart';
+import 'package:svr/app/modules/servicos_banco_central/servico_banco_central_home_page.dart';
 
 class HomePage extends AdStatefulWidget {
   HomePage({Key? key}) : super(key: key, name: 'HomePage');
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
         CardFeature(
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, ServicoBancoCentralHomePage()),
         ),
         CardFeature(
           label: 'Estatísticas\ndo SVR',

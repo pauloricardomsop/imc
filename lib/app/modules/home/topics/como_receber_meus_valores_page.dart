@@ -2,6 +2,7 @@ import 'package:ad_manager/ad_manager.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:svr/app/modules/home/topics/como_aumentar_nivel_page.dart';
 
 class ComoReceberMeusValoresPage extends AdStatefulWidget {
   ComoReceberMeusValoresPage({Key? key})
@@ -73,57 +74,6 @@ class _ComoReceberMeusValoresPageState extends State<ComoReceberMeusValoresPage>
           const AppDesc('Confira perguntas frequentemente feitas por usuários, e tire suas dúvidas.'),
           const H(24),
           CardAppAccordeon(accordeonList),
-        ],
-      ),
-    );
-  }
-}
-
-class WarningCard extends StatelessWidget {
-  final String label;
-  const WarningCard(this.label, {
-    super.key
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: ShapeDecoration(
-        color: AppColors.onWarningContainer,
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(width: 1, color: AppColors.onErrorShadow),
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text: 'Atenção: ',
-                        style: const TextStyle(color: AppColors.warningShadow).titleMedium,
-                      ),
-                      TextSpan(
-                        text: label,
-                        style: const TextStyle(color: AppColors.warningShadow).bodyLarge,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
