@@ -67,8 +67,6 @@ class _ChavePixPageState extends State<ChavePixPage> {
           const AppDesc('Confira perguntas frequentemente feitas por usuários, e tire suas dúvidas.'),
           const H(24),
           CardAppAccordeon(accordeonList),
-          const H(24),
-          const AppDesc('Preparamos um QUIZ para saber se você tem ou não direito de participar do Novo Bolsa Família. Para participar, toque no botão fixo na parte inferior desta página.')
         ],
       ),
     );
