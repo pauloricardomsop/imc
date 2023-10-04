@@ -1,9 +1,9 @@
 import 'package:ad_manager/ad_manager.dart';
-import 'package:design_kit/design_kit.dart' as dk;
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
+import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
 class ConsulteValoresErrorPage extends AdStatefulWidget {
   ConsulteValoresErrorPage({
@@ -11,10 +11,13 @@ class ConsulteValoresErrorPage extends AdStatefulWidget {
   }) : super(key: key, name: 'ConsulteValoresErrorPage');
 
   @override
-  State<ConsulteValoresErrorPage> createState() => ConsulteValoresErrorPageState();
+  State<ConsulteValoresErrorPage> createState() =>
+      ConsulteValoresErrorPageState();
 }
 
 class ConsulteValoresErrorPageState extends State<ConsulteValoresErrorPage> {
+  final ConsulteValoresController _controller = ConsulteValoresController();
+
   List<CardFeature> get gridItens => [
         CardFeature(
           label: 'Serviços do Banco Central',
@@ -32,52 +35,58 @@ class ConsulteValoresErrorPageState extends State<ConsulteValoresErrorPage> {
 
   @override
   Widget build(BuildContext context) {
-    return dk.AppScaffold(
-      hasBannerBottom: false,
-      child: body(context),
-    );
-  }
-
-  Widget body(_) {
-    return dk.AppListView(
-      padding: EdgeInsets.zero,
-      children: [
-        Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                titlePage(),
-                const H(16),
-                const AppDesc(
-                    "Não foi possível acessar o Sistema de Valores a Receber neste momento. Tente novamente mais tarde."),
-                const H(16),
-                CardFeatures(gridItens),
-                const H(16),
-              ],
-            ))
-      ],
-    );
-  }
-
-  Widget titlePage() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(
-          Icons.cloud_off,
-          size: 64,
-          fill: 1,
-          color: Color(0xFFFF7A00),
-        ),
-        const H(12),
-        Text(
-          'Serviço Temporariamente Indisponível',
-          textAlign: TextAlign.center,
-          // style: AppTheme.text.extra.xl2(
-          //   const Color(0xFF1B1C1C),
-          // ),
-        ),
-      ],
+    return AppScaffold(
+      backgroundColor: const Color(0xFFEFF6FF),
+      child: Column(
+        children: [
+          Header.light(
+            top: HeaderTop.light(
+              backgroundColor: const Color(0xFFEFF6FF),
+              leading: AppIcon.exit(
+                onTap: () =>
+                    AdManager.showIntersticial(context, flow: AdFlow.returning),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: [
+                  const Expanded(
+                    child: AppImage(
+                      url: 'assets/images/pana.svg',
+                      fit: BoxFit.contain,
+                      isSVG: true,
+                    ),
+                  ),
+                  const H(24),
+                  const Center(
+                    child: AppTitle(
+                      'Serviço\nIndisponível',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const H(12),
+                  const Center(
+                    child: AppDesc(
+                      'Os serviços do Banco Central estão temporariamente indisponíveis.',
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  const H(24),
+                  AppButton(
+                    label: 'TENTAR NOVAMENTE',
+                    icon: Symbols.restart_alt,
+                    onTap: () => _controller.onClickTentarNovamente(context),
+                  ),
+                  const H(16),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -4,8 +4,8 @@ import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
 class ConsulteValoresModel {
-  final identifier = TextEditingController();
-  final date = TextEditingController();
+  final identifier = TextEditingController(text: '05769335386');
+  final date = TextEditingController(text: '15/06/1993');
   final captcha = TextEditingController();
 
   String imageCaptcha = empty;
@@ -13,6 +13,9 @@ class ConsulteValoresModel {
 
   ConsultaValoresPessoa pessoa;
   bool get isPessoaFisica => pessoa == ConsultaValoresPessoa.fisica;
+
+  ConsultaValoresPessoaEstado pessoaEstado;
+  bool get isFalecido => pessoaEstado == ConsultaValoresPessoaEstado.falecido;
 
   String get dateFormatted => DateFormat('yyyy-MM-dd')
       .format(DateFormat('dd/MM/yyyy').parse(date.text));
@@ -23,5 +26,5 @@ class ConsulteValoresModel {
       .replaceAll('-', '')
       .replaceAll('/', '');
 
-  ConsulteValoresModel(this.pessoa);
+  ConsulteValoresModel(this.pessoa, this.pessoaEstado);
 }

@@ -7,23 +7,33 @@ import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 
 class ConsultaValoresHomePage extends AdStatefulWidget {
-  ConsultaValoresHomePage({Key? key}) : super(key: key, name: 'ConsultaValoresReceberHomePage');
+  final ConsultaValoresPessoaEstado estado;
+  ConsultaValoresHomePage(this.estado, {Key? key})
+      : super(key: key, name: 'ConsultaValoresReceberHomePage');
 
   @override
-  State<ConsultaValoresHomePage> createState() => ConsultaValoresReceberHomePageState();
+  State<ConsultaValoresHomePage> createState() =>
+      ConsultaValoresReceberHomePageState();
 }
 
-class ConsultaValoresReceberHomePageState extends State<ConsultaValoresHomePage> {
+class ConsultaValoresReceberHomePageState
+    extends State<ConsultaValoresHomePage> {
   List<CardFeature> get cardFeatureItens => [
         CardFeature(
           label: 'Consulta Pessoa\nFísica',
           prefix: Symbols.group,
-          onTap: () => push(context, ConsultaValoresFormPage(ConsultaValoresPessoa.fisica)),
+          onTap: () => push(
+              context,
+              ConsultaValoresFormPage(
+                  widget.estado, ConsultaValoresPessoa.fisica)),
         ),
         CardFeature(
           label: 'Consulta Pessoa\nJurídica',
           prefix: Symbols.domain,
-          onTap: () => push(context, ConsultaValoresFormPage(ConsultaValoresPessoa.juridica)),
+          onTap: () => push(
+              context,
+              ConsultaValoresFormPage(
+                  widget.estado, ConsultaValoresPessoa.juridica)),
         ),
       ];
 
@@ -34,7 +44,7 @@ class ConsultaValoresReceberHomePageState extends State<ConsultaValoresHomePage>
       child: AppListView(
         children: [
           const Header.text('Consulte seus valores\na receber',
-              'Consulte se você possui valores a receber pelo sistema do Banco Central.'),
+              'Descubra se você tem valores esquecidos em instituições financeiras.'),
           CardFeatures(cardFeatureItens),
         ],
       ),

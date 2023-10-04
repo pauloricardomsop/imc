@@ -1,5 +1,4 @@
 import 'package:ad_manager/ad_manager.dart';
-import 'package:design_kit/design_kit.dart' as dk;
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -35,169 +34,90 @@ class ConsulteSeusValoresDisponiveisPageState
 
   @override
   Widget build(BuildContext context) {
-    return dk.AppScaffold(
-      hasBannerBottom: false,
-      child: body(context),
-    );
-  }
-
-  Widget body(_) {
-    return dk.AppListView(
-      padding: EdgeInsets.zero,
-      children: [
-        Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: [
-                titlePage(),
-                const H(16),
-                const Divisor(),
-                const H(8),
-                _userDataItem(
-                  'CPF',
-                  _controller.consulta.identifier.text,
-                ),
-                const H(8),
-                _userDataItem(
-                  'DATA DE NASCIMENTO',
-                  _controller.consulta.date.text,
-                ),
-                const H(8),
-                const Divisor(),
-                const H(8),
-                const AppDesc(
-                    "Você precisa ter Conta gov.br (nível prata ou ouro*) para entrar no Sistema de Valores a Receber (SVR).\n\nNo SVR, você pode consultar seus valores ou de pessoas falecidas (nesse caso, você precisa ser herdeiro, testamentário, inventariante ou procurador)."),
-                const H(16),
-                AppButton(
-                  label: 'ACESSAR O SVR',
-                  onTap: () => AdUtils.loadUrl(
-                      'https://valoresareceber.bcb.gov.br/wr/rest/start'),
-                  icon: Symbols.open_in_new,
-                ),
-                const H(16),
-                appRateCard(),
-                const H(16),
-                CardFeatures(gridItens),
-                const H(16),
-                appInfoCard(),
-              ],
-            ))
-      ],
-    );
-  }
-
-  Row _userDataItem(String label, String value) {
-    return Row(
-      children: [
-        Text(
-          '$label:',
-          // style: AppTheme.text.extra.base(const Color(0xFF1B1C1C)),
-        ),
-        const W(8),
-        Text(
-          value,
-          // style: AppTheme.text.normal.base(const Color(0xFF1B1C1C)),
-        ),
-      ],
-    );
-  }
-
-  Widget titlePage() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(
-          Icons.done,
-          size: 64,
-          fill: 1,
-          color: Color(0xFF00C537),
-        ),
-        const H(12),
-        Text(
-          'O CPF pesquisado tem\nvalores a receber',
-          textAlign: TextAlign.center,
-          // style: AppTheme.text.extra.xl2(const Color(0xFF1B1C1C)),
-        ),
-      ],
-    );
-  }
-
-  Widget appRateCard() => InkWell(
-        onTap: () => sendToStore(),
-        child: Container(
-          width: double.maxFinite,
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: const Color(0xFFFFFFFF),
-            border: Border.all(width: 1, color: const Color(0xFFE3E2E2)),
-            borderRadius: BorderRadius.circular(12),
+    return AppScaffold(
+      child: AppListView(
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: AppIcon.exit(
+              onTap: () => Navigator.pop(context),
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          const H(16),
+          const BannerWidget(),
+          const H(20),
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              decoration: const BoxDecoration(
+                color: Color(0xFF079669),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.done,
+                size: 32,
+                color: Color(0xFFECFEF6),
+              ),
+            ),
+          ),
+          const H(24),
+          Center(
+              child: AppTitle(
+            'O ${_controller.consulta.isPessoaFisica ? 'CPF' : 'CNPJ'} pesquisado tem valores a receber',
+            textAlign: TextAlign.center,
+          )),
+          const H(24),
+          Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(5, (index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      right: (index == 4) ? 0 : 8,
-                    ),
-                    child: const Icon(
-                      Symbols.star,
-                      fill: 1,
-                      size: 32,
-                      color: Color(0xFFF9A825),
-                    ),
-                  );
-                }),
+              HeaderCard.text(
+                label: _controller.consulta.isPessoaFisica
+                    ? 'CPF do\nTitular'
+                    : 'CNPJ',
+                icon: Symbols.password,
+                title: _controller.consulta.identifier.text,
               ),
-              const H(8),
-              Text('Avaliar nosso app.',
-                  textAlign: TextAlign.center,
-                  // style: AppTheme.text.extra.xl2(const Color(0xFF1B1C1C)),
-                  ),
-              const H(8),
-              Text(
-                'Sua avaliação é muito importante, deixe \nsua opinião na PlayStore.',
-                textAlign: TextAlign.center,
-                // style: AppTheme.text.normal.base(const Color(0xFF1B1C1C)),
-              ),
-              const H(8),
-              Text(
-                'AVALIAR AGORA',
-                textAlign: TextAlign.center,
-              //   style: AppTheme.text.normal
-              //       .xl(const Color(0xFF1C44F9))
-              //       .copyWith(fontWeight: FontWeight.bold),
+              const W(8),
+              HeaderCard.text(
+                label: 'Data de\nNascimento',
+                icon: Symbols.event,
+                title: _controller.consulta.date.text,
               )
             ],
           ),
-        ),
-      );
-
-  Widget appInfoCard() {
-    return Row(
-      children: [
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-              color: const Color(0xFFDDE0FF),
-              borderRadius: BorderRadius.circular(8)),
-          child: const Icon(
-            Symbols.info,
-            weight: 800,
-            color: Color(0xFF000C61),
+          const H(24),
+          AppButton(
+              label: 'ACESSAR O SVR',
+              onTap: () => AdUtils.loadUrl(
+                  'https://valoresareceber.bcb.gov.br/wr/rest/start')),
+          const H(12),
+          AppButton(
+              label: 'NOVA CONSULTA',
+              backgroundColor: const Color(0xFFEFF6FF),
+              borderColor: const Color(0xFF94C4FD),
+              foregroundColor: const Color(0xFF172554),
+              onTap: () => AdManager.showIntersticial(context,
+                  onDispose: () => pops(context, 2))),
+          const H(24),
+          const CardAlert(
+            icon: AppIcon.info(
+              backgroundColor: Color(0xFFFED8AA),
+              iconColor: Color(0xFF441407),
+            ),
+            label:
+                'Você precisa ter Conta gov.br (nível prata ou ouro*) para entrar no Sistema de Valores a Receber (SVR).',
+            backgroundColor: Color(0xFFFFEDD5),
+            borderColor: Color(0xFFFED8AA),
+            textColor: Color(0xFF421407),
           ),
-        ),
-        const W(16),
-        Expanded(
-          child: Text(
-            'Informações extraídas do site oficial do Banco Central do Brasil.',
-            // style: AppTheme.text.normal.base(const Color(0xFF000C61)),
+          const H(24),
+          const AppDesc(
+            'No SVR, você pode consultar seus valores ou de pessoas falecidas (nesse caso, você precisa ser herdeiro, testamentário, inventariante ou procurador).',
+            textAlign: TextAlign.center,
           ),
-        ),
-      ],
+          const H(24),
+          const RateApp()
+        ],
+      ),
     );
   }
 }
