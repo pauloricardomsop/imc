@@ -1,0 +1,1 @@
+enum ConsultaValoresPessoa { fisica, juridica }

@@ -42,6 +42,7 @@ dependencies:
   webfeed_revised: ^0.7.2
   flutter_fgbg: ^0.2.2
   location: ^5.0.3
+  validators: ^3.0.0
   design_kit:
     path: packages/design_kit/
   ad_manager:

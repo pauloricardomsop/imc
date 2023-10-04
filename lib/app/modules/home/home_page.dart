@@ -5,6 +5,8 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
+import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
+import 'package:svr/app/modules/consulta_valores_receber/ui/consulta_valores_home_page.dart';
 
 class HomePage extends AdStatefulWidget {
   HomePage({Key? key}) : super(key: key, name: 'HomePage');
@@ -15,13 +17,13 @@ class HomePage extends AdStatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<CardFeature> get cardFeatureHeaderItens => [
-        CardFeature(
+        CardFeature.hasBlur(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, ConsultaValoresHomePage()),
         ),
-        CardFeature(
-          label: 'Saiba se seu CPF\nestá ativo',
+        CardFeature.hasBlur(
+          label: 'Saiba se seu\nCPF está ativo',
           prefix: Symbols.assured_workload,
           onTap: () => push(context, Container()),
         ),
@@ -31,7 +33,7 @@ class _HomePageState extends State<HomePage> {
         CardFeature(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => push(context, Container()),
+          onTap: () => push(context, ConsultaValoresHomePage()),
         ),
         CardFeature(
           label: 'Consultar Valores\nde Falecidos',
@@ -114,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                   AppButton(
                       label: 'VER COMO RECEBER',
                       icon: Symbols.east,
-                      onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, const Text('teste')))),
+                      onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, ComoReceberQuizHomePage()))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),

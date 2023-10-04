@@ -112,12 +112,11 @@ class AvaliarCard extends StatelessWidget {
               CardFeature.full(
                 label: 'Valores a Receber\nGuia 2023',
                 prefix: 'assets/images/logo.png',
-                // sufix: const AppIcon.openInNew(size: 30),
+                sufix: const AppIcon.openInNew(size: 30, backgroundColor: AppColors.surfaceContainerLow),
                 onTap: () {
-                  Navigator.pop(context);
                   sendToStore();
+                  pop(context);
                 },
-                // backgroundColor: AppColors.surfaceContainerLowest,
               )
             ]),
           )
