@@ -9,6 +9,7 @@ import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
+import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
 import 'package:svr/app/modules/home/topics/como_aumentar_nivel_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_meus_valores_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_se_tenho_valores_page.dart';
@@ -23,53 +24,61 @@ class HomePage extends AdStatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<CardFeature> get cardFeatureHeaderItens => [
-        // CardFeature.hasBlur(
-        //   label: 'Consultar Valores\na Receber',
-        //   prefix: Symbols.payments,
-        //   onTap: () => push(context, ConsultarSVRHomePage()),
-        // ),
-        // CardFeature.hasBlur(
-        //   label: 'Saiba se seu\nCPF está ativo',
-        //   prefix: Symbols.assured_workload,
-        //   onTap: () => push(context, Container()),
-        // ),
+        CardFeature.hasBlur(
+          label: 'Consultar Valores\na Receber',
+          prefix: Symbols.payments,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context,
+                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
+        ),
+        CardFeature.hasBlur(
+          label: 'Saiba se seu\nCPF está ativo',
+          prefix: Symbols.assured_workload,
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, Container)),
+        ),
       ];
 
   List<CardFeature> get cardFeatureItens => [
         CardFeature(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => push(
-              context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo)),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context,
+                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
         ),
         CardFeature(
           label: 'Consultar Valores\nde Falecidos',
           prefix: Symbols.deceased,
-          onTap: () => push(
-            context,
-            ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
-                ConsultaValoresPessoa.fisica),
-          ),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(
+                  context,
+                  ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
+                      ConsultaValoresPessoa.fisica))),
         ),
         CardFeature(
           label: 'Saiba se seu CPF\nestá ativo',
           prefix: Symbols.assured_workload,
-          onTap: () => push(context, Container()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, Container())),
         ),
         CardFeature(
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
-          onTap: () => push(context, Container()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, Container())),
         ),
         CardFeature(
           label: 'Estatísticas\ndo SVR',
           prefix: Symbols.add_chart,
-          onTap: () => push(context, Container()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, EstatisticasHomePage())),
         ),
         CardFeature(
           label: 'Últimas Notícias\ndo SVR',
           prefix: Symbols.newsmode,
-          onTap: () => push(context, Container()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, Container())),
         ),
       ];
 
@@ -78,25 +87,29 @@ class _HomePageState extends State<HomePage> {
           label: 'O que é o Sistema de\nValores a Receber?',
           prefix: Symbols.counter_1,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, ComoReceberMeusValoresPage()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, ComoReceberMeusValoresPage())),
         ),
         CardFeature.full(
           label: 'O que é conta GOV.BR\ne como subir de nível?',
           prefix: Symbols.counter_2,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, ComoReceberSeTenhoValoresPage()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, ComoReceberSeTenhoValoresPage())),
         ),
         CardFeature.full(
           label: 'Como saber se tenho\nvalores a receber?',
           prefix: Symbols.counter_3,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, ComoAumentarNivelPage()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, ComoAumentarNivelPage())),
         ),
         CardFeature.full(
           label: 'Como receber o\ndinheiro esquecido?',
           prefix: Symbols.counter_4,
           sufix: const AppIcon.frontLight(),
-          onTap: () => push(context, OQueEPage()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, OQueEPage())),
         ),
       ];
 
