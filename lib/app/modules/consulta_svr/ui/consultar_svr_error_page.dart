@@ -5,18 +5,19 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
-class ConsulteValoresErrorPage extends AdStatefulWidget {
-  ConsulteValoresErrorPage({
+class ConsultarSVRServicoIndisponivelPage extends AdStatefulWidget {
+  ConsultarSVRServicoIndisponivelPage({
     Key? key,
-  }) : super(key: key, name: 'ConsulteValoresErrorPage');
+  }) : super(key: key, name: 'ConsultarSVRServicoIndisponivelPage');
 
   @override
-  State<ConsulteValoresErrorPage> createState() =>
-      ConsulteValoresErrorPageState();
+  State<ConsultarSVRServicoIndisponivelPage> createState() =>
+      ConsultarSVRServicoIndisponivelPageState();
 }
 
-class ConsulteValoresErrorPageState extends State<ConsulteValoresErrorPage> {
-  final ConsulteValoresController _controller = ConsulteValoresController();
+class ConsultarSVRServicoIndisponivelPageState
+    extends State<ConsultarSVRServicoIndisponivelPage> {
+  final ConsultarSVRController _controller = ConsultarSVRController();
 
   List<CardFeature> get gridItens => [
         CardFeature(

@@ -14,20 +14,19 @@ import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_error_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_indisponiveis_page.dart';
 import 'package:validators/validators.dart';
 
-class ConsulteValoresController {
-  static final ConsulteValoresController _instance =
-      ConsulteValoresController._();
+class ConsultarSVRController {
+  static final ConsultarSVRController _instance = ConsultarSVRController._();
 
-  ConsulteValoresController._();
+  ConsultarSVRController._();
 
-  factory ConsulteValoresController() => _instance;
+  factory ConsultarSVRController() => _instance;
 
   AppStreamResponse<ValoresReceberCaptcha> captchaResponseStream =
       AppStreamResponse<ValoresReceberCaptcha>();
 
-  AppStream<ConsulteValoresModel> consultaValoresStream =
-      AppStream<ConsulteValoresModel>();
-  ConsulteValoresModel get consulta => consultaValoresStream.value;
+  AppStream<ConsultarSVRModel> consultaValoresStream =
+      AppStream<ConsultarSVRModel>();
+  ConsultarSVRModel get consulta => consultaValoresStream.value;
 
   Future<void> onClickProximo(_) async {
     try {
@@ -50,7 +49,7 @@ class ConsulteValoresController {
       if (result == null) return;
 
       if (result.hasError) {
-        push(_, ConsulteValoresErrorPage());
+        push(_, ConsultarSVRServicoIndisponivelPage());
         return;
       }
 
@@ -58,8 +57,8 @@ class ConsulteValoresController {
           onDispose: () => push(
               _,
               result.data
-                  ? ConsulteSeusValoresDisponiveisPage()
-                  : ConsulteSeusValoresIndisponiveisPage()));
+                  ? ConsultarSVRDisponiveisPage()
+                  : ConsultarSVRNaoEncontradoPage()));
     } catch (e) {
       NotificationService.negative(e.toString());
     }
@@ -79,8 +78,8 @@ class ConsulteValoresController {
         push(
             _,
             result.data
-                ? ConsulteSeusValoresDisponiveisPage()
-                : ConsulteSeusValoresIndisponiveisPage());
+                ? ConsultarSVRDisponiveisPage()
+                : ConsultarSVRNaoEncontradoPage());
       });
     } catch (e) {
       NotificationService.negative(e.toString());

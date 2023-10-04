@@ -9,26 +9,28 @@ import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/models/api_response_model.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
-Future<ApiResponse<bool>?> showConsultaValoresCaptchaBottom(_) async => await showModalBottomSheet(
-    isScrollControlled: true,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(28),
-        topRight: Radius.circular(28),
-      ),
-    ),
-    context: _,
-    builder: (_) => const ConsulteSeusValoresCaptchaBottom());
+Future<ApiResponse<bool>?> showConsultaValoresCaptchaBottom(_) async =>
+    await showModalBottomSheet(
+        isScrollControlled: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(28),
+            topRight: Radius.circular(28),
+          ),
+        ),
+        context: _,
+        builder: (_) => const ConsultarSVRCaptchaBottom());
 
-class ConsulteSeusValoresCaptchaBottom extends StatefulWidget {
-  const ConsulteSeusValoresCaptchaBottom({super.key});
+class ConsultarSVRCaptchaBottom extends StatefulWidget {
+  const ConsultarSVRCaptchaBottom({super.key});
 
   @override
-  State<ConsulteSeusValoresCaptchaBottom> createState() => _ConsulteSeusValoresCaptchaBottomState();
+  State<ConsultarSVRCaptchaBottom> createState() =>
+      _ConsultarSVRCaptchaBottomState();
 }
 
-class _ConsulteSeusValoresCaptchaBottomState extends State<ConsulteSeusValoresCaptchaBottom> {
-  final ConsulteValoresController _controller = ConsulteValoresController();
+class _ConsultarSVRCaptchaBottomState extends State<ConsultarSVRCaptchaBottom> {
+  final ConsultarSVRController _controller = ConsultarSVRController();
 
   @override
   void initState() {
@@ -38,7 +40,8 @@ class _ConsulteSeusValoresCaptchaBottomState extends State<ConsulteSeusValoresCa
 
   @override
   Widget build(BuildContext context) {
-    return StreamOutResponse<ApiResponse<ValoresReceberCaptcha>, ValoresReceberCaptcha>(
+    return StreamOutResponse<ApiResponse<ValoresReceberCaptcha>,
+        ValoresReceberCaptcha>(
       loading: _shimmer(),
       stream: _controller.captchaResponseStream.listen,
       child: (_, captcha) => StreamOut(
@@ -46,7 +49,9 @@ class _ConsulteSeusValoresCaptchaBottomState extends State<ConsulteSeusValoresCa
         stream: _controller.consultaValoresStream.listen,
         child: (_, model) => Padding(
           padding: EdgeInsets.only(
-              left: 16, right: 16, bottom: MediaQuery.of(context).viewInsets.bottom),
+              left: 16,
+              right: 16,
+              bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -79,7 +84,8 @@ class _ConsulteSeusValoresCaptchaBottomState extends State<ConsulteSeusValoresCa
                         color: const Color(0xFF1C44F9),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Icon(Symbols.cached, color: Color(0xFFFFFFFF)),
+                      child:
+                          const Icon(Symbols.cached, color: Color(0xFFFFFFFF)),
                     ),
                   ),
                 ],

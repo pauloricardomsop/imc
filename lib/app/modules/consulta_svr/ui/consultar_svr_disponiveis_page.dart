@@ -5,19 +5,19 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
-class ConsulteSeusValoresDisponiveisPage extends AdStatefulWidget {
-  ConsulteSeusValoresDisponiveisPage({
+class ConsultarSVRDisponiveisPage extends AdStatefulWidget {
+  ConsultarSVRDisponiveisPage({
     Key? key,
-  }) : super(key: key, name: 'ConsulteSeusValoresDisponiveisPage');
+  }) : super(key: key, name: 'ConsultarSVRDisponiveisPage');
 
   @override
-  State<ConsulteSeusValoresDisponiveisPage> createState() =>
-      ConsulteSeusValoresDisponiveisPageState();
+  State<ConsultarSVRDisponiveisPage> createState() =>
+      ConsultarSVRDisponiveisPageState();
 }
 
-class ConsulteSeusValoresDisponiveisPageState
-    extends State<ConsulteSeusValoresDisponiveisPage> {
-  final ConsulteValoresController _controller = ConsulteValoresController();
+class ConsultarSVRDisponiveisPageState
+    extends State<ConsultarSVRDisponiveisPage> {
+  final ConsultarSVRController _controller = ConsultarSVRController();
 
   List<CardFeature> get gridItens => [
         CardFeature(

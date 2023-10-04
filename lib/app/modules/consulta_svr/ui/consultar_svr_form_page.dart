@@ -10,25 +10,24 @@ import 'package:svr/app/core/formatters/date_input_formatter.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_model.dart';
 
-class ConsultaValoresFormPage extends AdStatefulWidget {
+class ConsultarSVRFormPage extends AdStatefulWidget {
   final ConsultaValoresPessoaEstado estado;
   final ConsultaValoresPessoa tipo;
-  ConsultaValoresFormPage(this.estado, this.tipo, {Key? key})
+  ConsultarSVRFormPage(this.estado, this.tipo, {Key? key})
       : super(key: key, name: 'ConsultaValoresReceberFormPage');
 
   @override
-  State<ConsultaValoresFormPage> createState() =>
+  State<ConsultarSVRFormPage> createState() =>
       ConsultaValoresReceberFormPageState();
 }
 
-class ConsultaValoresReceberFormPageState
-    extends State<ConsultaValoresFormPage> {
-  final ConsulteValoresController _controller = ConsulteValoresController();
+class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
+  final ConsultarSVRController _controller = ConsultarSVRController();
 
   @override
   void initState() {
     _controller.consultaValoresStream
-        .add(ConsulteValoresModel(widget.tipo, widget.estado));
+        .add(ConsultarSVRModel(widget.tipo, widget.estado));
     super.initState();
   }
 
@@ -36,7 +35,7 @@ class ConsultaValoresReceberFormPageState
   Widget build(BuildContext context) {
     return AppScaffold(
       statusBarColor: AppColors.surfaceContainer,
-      child: StreamOut<ConsulteValoresModel>(
+      child: StreamOut<ConsultarSVRModel>(
         stream: _controller.consultaValoresStream.listen,
         child: (_, model) => AppListView(
           children: [

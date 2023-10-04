@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 
-class ConsulteValoresModel {
+class ConsultarSVRModel {
   final identifier = TextEditingController(text: '05769335386');
   final date = TextEditingController(text: '15/06/1993');
   final captcha = TextEditingController();
@@ -26,5 +26,5 @@ class ConsulteValoresModel {
       .replaceAll('-', '')
       .replaceAll('/', '');
 
-  ConsulteValoresModel(this.pessoa, this.pessoaEstado);
+  ConsultarSVRModel(this.pessoa, this.pessoaEstado);
 }

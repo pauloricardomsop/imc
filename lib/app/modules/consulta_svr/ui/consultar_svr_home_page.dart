@@ -6,25 +6,24 @@ import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 
-class ConsultaValoresHomePage extends AdStatefulWidget {
+class ConsultarSVRHomePage extends AdStatefulWidget {
   final ConsultaValoresPessoaEstado estado;
-  ConsultaValoresHomePage(this.estado, {Key? key})
+  ConsultarSVRHomePage(this.estado, {Key? key})
       : super(key: key, name: 'ConsultaValoresReceberHomePage');
 
   @override
-  State<ConsultaValoresHomePage> createState() =>
+  State<ConsultarSVRHomePage> createState() =>
       ConsultaValoresReceberHomePageState();
 }
 
-class ConsultaValoresReceberHomePageState
-    extends State<ConsultaValoresHomePage> {
+class ConsultaValoresReceberHomePageState extends State<ConsultarSVRHomePage> {
   List<CardFeature> get cardFeatureItens => [
         CardFeature(
           label: 'Consulta Pessoa\nFísica',
           prefix: Symbols.group,
           onTap: () => push(
               context,
-              ConsultaValoresFormPage(
+              ConsultarSVRFormPage(
                   widget.estado, ConsultaValoresPessoa.fisica)),
         ),
         CardFeature(
@@ -32,7 +31,7 @@ class ConsultaValoresReceberHomePageState
           prefix: Symbols.domain,
           onTap: () => push(
               context,
-              ConsultaValoresFormPage(
+              ConsultarSVRFormPage(
                   widget.estado, ConsultaValoresPessoa.juridica)),
         ),
       ];

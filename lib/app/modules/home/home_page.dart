@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         // CardFeature.hasBlur(
         //   label: 'Consultar Valores\na Receber',
         //   prefix: Symbols.payments,
-        //   onTap: () => push(context, ConsultaValoresHomePage()),
+        //   onTap: () => push(context, ConsultarSVRHomePage()),
         // ),
         // CardFeature.hasBlur(
         //   label: 'Saiba se seu\nCPF está ativo',
@@ -39,15 +39,15 @@ class _HomePageState extends State<HomePage> {
         CardFeature(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => push(context,
-              ConsultaValoresHomePage(ConsultaValoresPessoaEstado.vivo)),
+          onTap: () => push(
+              context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo)),
         ),
         CardFeature(
           label: 'Consultar Valores\nde Falecidos',
           prefix: Symbols.deceased,
           onTap: () => push(
             context,
-            ConsultaValoresFormPage(ConsultaValoresPessoaEstado.falecido,
+            ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
                 ConsultaValoresPessoa.fisica),
           ),
         ),
@@ -120,9 +120,17 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text( 'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.', style: const TextStyle(color: AppColors.onSurfaceVariant).bodyLarge),
+                  Text(
+                      'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
+                      style: const TextStyle(color: AppColors.onSurfaceVariant)
+                          .bodyLarge),
                   const H(24),
-                  AppButton(label: 'VER COMO RECEBER', icon: Symbols.east, onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, ComoReceberQuizHomePage()))),
+                  AppButton(
+                      label: 'VER COMO RECEBER',
+                      icon: Symbols.east,
+                      onTap: () => AdManager.showIntersticial(context,
+                          onDispose: () =>
+                              push(context, ComoReceberQuizHomePage()))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
