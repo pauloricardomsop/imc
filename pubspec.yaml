@@ -57,7 +57,6 @@ dependencies:
   # log_manager:
   #   git:
   #     url: git@github.com:ldc-apps/log_manager.git
-  #     ref: main
 
 dev_dependencies:
   flutter_test:

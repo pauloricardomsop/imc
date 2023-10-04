@@ -29,10 +29,10 @@ class _ModulePageState extends State<ModulePage> {
         stream: _utilsController.ignoringStream.listen,
         child: (_, ignoring) => IgnorePointer(
               ignoring: ignoring,
-              child: StreamOut(
+              child: StreamOut<Module>(
                 loading: const BackgroundPage(),
                 stream: _utilsController.moduleStream.listen,
-                child: (_, module) => StreamOut(
+                child: (_, module) => StreamOut<bool>(
                     stream: _utilsController.showOnboarding.listen,
                     loading: const BackgroundPage(),
                     child: (_, showOnboarding) =>

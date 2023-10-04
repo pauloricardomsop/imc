@@ -1,10 +1,7 @@
-library ad_manager;
-
 import 'package:ad_manager/ad_manager.dart';
-import 'package:svr/app/core/models/app_stream.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:svr/app/core/models/service_model.dart';
 import 'package:svr/app/core/utils/utils_controller.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../core/enums/module_enum.dart';
 import 'splash_model.dart';
