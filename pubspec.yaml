@@ -77,11 +77,11 @@ flutter_native_splash:
   android: true
   ios: false
   web: false
-  color: "#082F49"
+  color: "#F9FAFC"
   image: assets/launcher/splash.png
   android_12:
     image: assets/launcher/splash.png
-    icon_background_color: "#082F49"
+    icon_background_color: "#F9FAFC"
 
 flutter:
   generate: true

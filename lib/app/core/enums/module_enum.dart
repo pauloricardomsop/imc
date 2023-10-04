@@ -1,1 +1,1 @@
-enum Module { home, splash }
+enum Module { home, loading }

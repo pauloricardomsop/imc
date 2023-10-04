@@ -15,7 +15,7 @@ packages:
       path: "packages/ad_manager"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "2.0.0"
   archive:
     dependency: transitive
     description:
@@ -142,7 +142,7 @@ packages:
       path: "packages/design_kit"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "2.0.0"
   dio:
     dependency: "direct main"
     description:
@@ -545,7 +545,7 @@ packages:
       path: "packages/log_manager"
       relative: true
     source: path
-    version: "1.0.0"
+    version: "2.0.0"
   matcher:
     dependency: transitive
     description:

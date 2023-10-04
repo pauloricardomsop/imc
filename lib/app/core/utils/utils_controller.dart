@@ -14,7 +14,7 @@ class UtilsController {
 
   final AppStream<bool> ignoringStream = AppStream<bool>.seed(false);
 
-  final AppStream<Module> moduleStream = AppStream<Module>.seed(Module.splash);
+  final AppStream<Module> moduleStream = AppStream<Module>.seed(Module.loading);
 
   final AppStream<String> toastStream = AppStream<String>.seed('');
 

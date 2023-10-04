@@ -19,7 +19,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return OverlaySupport(
       child: MaterialApp(
-        color: const Color(0xFF082F49),
+        color: const Color(0xFFF8FAFC),
         debugShowCheckedModeBanner: false,
         navigatorKey: _appController.key,
         title: 'SVR - Valores a Receber',
