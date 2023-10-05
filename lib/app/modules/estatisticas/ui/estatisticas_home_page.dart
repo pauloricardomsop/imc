@@ -25,7 +25,7 @@ class EstatisticasPageState extends State<EstatisticasHomePage> {
                   push(context, EstatisticasValoresDevolvidosPage())),
         ),
         CardFeature(
-          label: 'Próximas divulgações',
+          label: 'Próximas\ndivulgações',
           prefix: Symbols.event_upcoming,
           onTap: () => AdManager.showIntersticial(context,
               onDispose: () =>

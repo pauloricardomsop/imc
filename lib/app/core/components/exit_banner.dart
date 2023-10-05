@@ -16,47 +16,38 @@ class ExitBanner extends AdStatefulWidget {
 }
 
 class ExitBannerState extends State<ExitBanner> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      child: body(context),
-    );
-  }
-
-  Widget body(_) {
-    return Column(
-      children: [
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const BannerWidget(),
-                const H(20),
-                const AvaliarCard(),
-                const H(24),
-                AppButton(
-                    label: 'CONTINUAR NO APP',
-                    onTap: () => Navigator.pop(context)),
-                const H(16),
-                AppButton.textButtons(
-                  label: 'SAIR DO APP',
-                  onTap: () => exit(0),
-                  icon: Symbols.logout,
-                  backgroundColor: AppColors.surfaceContainer,
-                  foregroundColor: AppColors.onSurface,
-                ),
-              ],
+      statusBarColor: AppColors.surfaceContainerLowest,
+      child: Column(
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const BannerWidget(),
+                  const H(20),
+                  const AvaliarCard(),
+                  const H(24),
+                  AppButton(label: 'CONTINUAR NO APP', onTap: () => Navigator.pop(context)),
+                  const H(16),
+                  AppButton.textButtons(
+                    label: 'SAIR DO APP',
+                    onTap: () => exit(0),
+                    icon: Symbols.logout,
+                    backgroundColor: AppColors.surfaceContainer,
+                    foregroundColor: AppColors.onSurface,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -119,8 +110,10 @@ class AvaliarCard extends StatelessWidget {
                   CardFeature.full(
                     label: 'Valores a Receber\nGuia 2023',
                     prefix: 'assets/images/logo.png',
-                    sufix: const AppIcon.openInNew(size: 30, backgroundColor: AppColors.surfaceContainerLow),
-                   onTap: () {},
+                    sufix: const AppIcon.openInNew(
+                        size: 30,
+                        backgroundColor: AppColors.surfaceContainerLow),
+                    onTap: () {},
                   )
                 ]),
               ),
