@@ -30,39 +30,58 @@ class _HomePageState extends State<HomePage> {
         CardFeature.hasBlur(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context,
+                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
         ),
         CardFeature.hasBlur(
             label: 'Saiba se seu\nCPF está ativo',
             prefix: Symbols.assured_workload,
-            onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ConsultaCPFHomePage())))
+            onTap: () => AdManager.showIntersticial(context,
+                flow: AdFlow.going,
+                onDispose: () => push(context, ConsultaCPFHomePage())))
       ];
 
   List<CardFeature> get cardFeatureItens => [
         CardFeature(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context,
+                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
         ),
         CardFeature(
           label: 'Consultar Valores\nde Falecidos',
           prefix: Symbols.deceased,
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido, ConsultaValoresPessoa.fisica))),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(
+                  context,
+                  ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
+                      ConsultaValoresPessoa.fisica))),
         ),
         CardFeature(
           label: 'Saiba se seu CPF\nestá ativo',
           prefix: Symbols.assured_workload,
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ConsultaCPFHomePage())),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, ConsultaCPFHomePage())),
         ),
         CardFeature(
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ServicoBancoCentralHomePage())),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, ServicoBancoCentralHomePage())),
         ),
         CardFeature(
           label: 'Estatísticas\ndo SVR',
           prefix: Symbols.add_chart,
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, EstatisticasHomePage())),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, EstatisticasHomePage())),
         ),
       ];
 
@@ -71,25 +90,32 @@ class _HomePageState extends State<HomePage> {
           label: 'O que é o Sistema de\nValores a Receber?',
           prefix: Symbols.counter_1,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, OQueEPage())),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going, onDispose: () => push(context, OQueEPage())),
         ),
         CardFeature.full(
           label: 'O que é conta GOV.BR\ne como subir de nível?',
           prefix: Symbols.counter_2,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ComoAumentarNivelPage())),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, ComoAumentarNivelPage())),
         ),
         CardFeature.full(
           label: 'Como saber se tenho\nvalores a receber?',
           prefix: Symbols.counter_3,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ComoReceberSeTenhoValoresPage())),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, ComoReceberSeTenhoValoresPage())),
         ),
         CardFeature.full(
           label: 'Como receber o\ndinheiro esquecido?',
           prefix: Symbols.counter_4,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ComoReceberMeusValoresPage())),
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, ComoReceberMeusValoresPage())),
         ),
       ];
 
@@ -109,10 +135,15 @@ class _HomePageState extends State<HomePage> {
                 action: AppIcon.share(
                   onTap: isEnable
                       ? () async {
-                          setState(() {isEnable = false;});
-                          await Share.share('https://play.google.com/store/apps/details?id=com.ldcapps.svr');
+                          setState(() {
+                            isEnable = false;
+                          });
+                          await Share.share(
+                              'https://play.google.com/store/apps/details?id=com.ldcapps.svr');
                           await Future.delayed(const Duration(seconds: 1));
-                          setState(() {isEnable = true;});
+                          setState(() {
+                            isEnable = true;
+                          });
                         }
                       : null,
                 ),
@@ -122,12 +153,16 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                       'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
-                      style: const TextStyle(color: AppColors.onSurfaceVariant).bodyLarge),
+                      style: const TextStyle(color: AppColors.onSurfaceVariant)
+                          .bodyLarge),
                   const H(24),
                   AppButton(
                       label: 'VER COMO RECEBER',
                       icon: Symbols.east,
-                      onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ComoReceberQuizHomePage()))),
+                      onTap: () => AdManager.showIntersticial(context,
+                          flow: AdFlow.going,
+                          onDispose: () =>
+                              push(context, ComoReceberQuizHomePage()))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
