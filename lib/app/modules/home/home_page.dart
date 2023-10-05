@@ -10,6 +10,7 @@ import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page
 import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_home_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
+import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
 import 'package:svr/app/modules/home/topics/como_aumentar_nivel_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_meus_valores_page.dart';
 import 'package:svr/app/modules/home/topics/como_receber_se_tenho_valores_page.dart';
@@ -41,8 +42,9 @@ class _HomePageState extends State<HomePage> {
         CardFeature(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => push(
-              context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo)),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context,
+                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
         ),
         CardFeature(
           label: 'Consultar Valores\nde Falecidos',
@@ -57,17 +59,20 @@ class _HomePageState extends State<HomePage> {
         CardFeature(
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
-          onTap: () => push(context, ServicoBancoCentralHomePage()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, ServicoBancoCentralHomePage())),
         ),
         CardFeature(
           label: 'Estatísticas\ndo SVR',
           prefix: Symbols.add_chart,
-          onTap: () => push(context, Container()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, EstatisticasHomePage())),
         ),
         CardFeature(
           label: 'Últimas Notícias\ndo SVR',
           prefix: Symbols.newsmode,
-          onTap: () => push(context, Container()),
+          onTap: () => AdManager.showIntersticial(context,
+              onDispose: () => push(context, Container())),
         ),
       ];
 
