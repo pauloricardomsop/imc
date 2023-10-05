@@ -26,6 +26,12 @@ class _ComoReceberQuiz01HomePageState extends State<ComoReceberQuiz01HomePage> {
   ];
 
   @override
+  void initState() {
+    _controller.dispose();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AppScaffold(
       statusBarColor: AppColors.surfaceContainerLowest,
@@ -39,7 +45,7 @@ class _ComoReceberQuiz01HomePageState extends State<ComoReceberQuiz01HomePage> {
               NotificationService.negative('Selecione uma das opções');
               return;
             }
-            AdManager.showIntersticial(context, onDispose: () => push(context, ComoReceberQuiz02Page()));
+            AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ComoReceberQuiz02Page()));
           },
         ),
       ),

@@ -20,16 +20,12 @@ class EstatisticasPageState extends State<EstatisticasHomePage> {
         CardFeature(
           label: 'Valores que foram\ndevolvidos',
           prefix: Symbols.free_cancellation,
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () =>
-                  push(context, EstatisticasValoresDevolvidosPage())),
+          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, EstatisticasValoresDevolvidosPage())),
         ),
         CardFeature(
           label: 'Próximas\ndivulgações',
           prefix: Symbols.event_upcoming,
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () =>
-                  push(context, EstatisticasProximasDivulgacoesPage())),
+          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, EstatisticasProximasDivulgacoesPage())),
         ),
       ];
 
@@ -54,9 +50,7 @@ class EstatisticasPageState extends State<EstatisticasHomePage> {
                     .estatisticasValores.estatisticas!.home!.cardValores!.desc!,
                 button: AppButton.forward(
                     label: 'VER DETALHES',
-                    onTap: () => AdManager.showIntersticial(context,
-                        onDispose: () =>
-                            push(context, EstatisticasDetalhesPage()))),
+                    onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, EstatisticasDetalhesPage()))),
               ),
             ],
           ),

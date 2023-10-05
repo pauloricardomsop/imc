@@ -21,18 +21,12 @@ class ConsultaValoresReceberHomePageState extends State<ConsultarSVRHomePage> {
         CardFeature(
           label: 'Consulta Pessoa\nFísica',
           prefix: Symbols.group,
-          onTap: () => push(
-              context,
-              ConsultarSVRFormPage(
-                  widget.estado, ConsultaValoresPessoa.fisica)),
+          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ConsultarSVRFormPage(widget.estado, ConsultaValoresPessoa.fisica))),
         ),
         CardFeature(
           label: 'Consulta Pessoa\nJurídica',
           prefix: Symbols.domain,
-          onTap: () => push(
-              context,
-              ConsultarSVRFormPage(
-                  widget.estado, ConsultaValoresPessoa.juridica)),
+          onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => push(context, ConsultarSVRFormPage(widget.estado, ConsultaValoresPessoa.juridica))),
         ),
       ];
 
@@ -42,9 +36,13 @@ class ConsultaValoresReceberHomePageState extends State<ConsultarSVRHomePage> {
       statusBarColor: AppColors.surfaceContainer,
       child: AppListView(
         children: [
-          const Header.text('Consulte seus valores\na receber',
-              'Descubra se você tem valores esquecidos em instituições financeiras.'),
+          const Header.text(
+            'Consulte seus valores a receber',
+            'Descubra se você tem valores esquecidos em instituições financeiras.',
+          ),
           CardFeatures(cardFeatureItens),
+          const H(16),
+          const BannerWidget(),
         ],
       ),
     );
