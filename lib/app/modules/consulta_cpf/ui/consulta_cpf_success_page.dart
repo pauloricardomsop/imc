@@ -3,7 +3,6 @@ import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/client/cpf_captcha/models/cpf_captcha_situacao_model.dart';
-import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/topics/consulta_cpf_situacao_cadastrais_page.dart';
@@ -99,7 +98,7 @@ class _ConsultaCPFSuccessPageState extends State<ConsultaCPFSuccessPage> {
             )
           ]),
           const H(24),
-          const AvaliarCard(),
+          const RateApp(),
           const H(24),
           const AppTitle('Mais opções'),
           const H(16),
