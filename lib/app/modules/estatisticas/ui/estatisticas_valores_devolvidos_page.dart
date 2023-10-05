@@ -20,16 +20,16 @@ class EstatisticasPageState extends State<EstatisticasValoresDevolvidosPage> {
         child: AppListView(
           children: [
             const Header.text(
-              'Próximas\nDivulgações',
+              'Valores já\ndevolvidos',
               'Todos os meses mais valores estão disponíveis, fique atento.',
             ),
             TableValues(
-              left: 'DATA',
-              right: 'HORÁRIO',
+              left: 'ANO - MÊS',
+              right: 'VALOR DEVOLVIDO',
+              rightItemStyle: const TextStyle(color: Color(0xFF065F46)).titleMedium,
               itens: EstatisticasValores
-                  .estatisticasValores.estatisticas!.proximasDivulgacoes!
-                  .map((e) =>
-                      TableValuesModel(label: e.data!, value: e.horario!))
+                  .estatisticasValores.estatisticas!.valoresJaDevolvidos!
+                  .map((e) => TableValuesModel(label: e.data!, value: e.valor!))
                   .toList(),
             )
           ],

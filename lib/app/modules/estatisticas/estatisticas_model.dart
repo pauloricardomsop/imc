@@ -67,6 +67,13 @@ class EstatisticasValores {
         {"data": "08 DE NOVEMBRO", "horario": "14:30"},
         {"data": "07 DE DEZEMBRO", "horario": "14:30"}
       ],
+      "valoresJaDevolvidos": [
+        {"data": "2023 - JUNHO", "valor": "R\$ 229 Milhões"},
+        {"data": "2023 - MAIO", "valor": "R\$ 236 Milhões"},
+        {"data": "2023 - ABRIL", "valor": "R\$ 260 Milhões"},
+        {"data": "2023 - MARÇO", "valor": "R\$ 505 Milhões"},
+        {"data": "2023 - FEVEREIRO", "valor": "R\$ 151 Milhões"},
+      ],
       "detalhes": {
         "cardValoresReceber": {
           "title": "Total de valores a receber",
@@ -131,18 +138,21 @@ class EstatisticasValores {
 class Estatisticas {
   EstatisticasHome? home;
   List<ProximasDivulgacoes>? proximasDivulgacoes;
+  List<ValoresJaDevolvidos>? valoresJaDevolvidos;
   Detalhes? detalhes;
 
-  Estatisticas({this.home, this.proximasDivulgacoes, this.detalhes});
+  Estatisticas({this.home, this.proximasDivulgacoes, this.valoresJaDevolvidos, this.detalhes});
 
   Estatisticas.fromJson(Map<String, dynamic> json) {
     home =
         json['home'] != null ? EstatisticasHome.fromJson(json['home']) : null;
     if (json['proximasDivulgacoes'] != null) {
       proximasDivulgacoes = <ProximasDivulgacoes>[];
-      json['proximasDivulgacoes'].forEach((v) {
-        proximasDivulgacoes!.add(ProximasDivulgacoes.fromJson(v));
-      });
+      json['proximasDivulgacoes'].forEach((v) {proximasDivulgacoes!.add(ProximasDivulgacoes.fromJson(v));});
+    }
+    if (json['valoresJaDevolvidos'] != null) {
+      valoresJaDevolvidos = <ValoresJaDevolvidos>[];
+      json['valoresJaDevolvidos'].forEach((v) {valoresJaDevolvidos!.add(ValoresJaDevolvidos.fromJson(v));});
     }
     detalhes =
         json['detalhes'] != null ? Detalhes.fromJson(json['detalhes']) : null;
@@ -156,6 +166,10 @@ class Estatisticas {
     if (proximasDivulgacoes != null) {
       data['proximasDivulgacoes'] =
           proximasDivulgacoes!.map((v) => v.toJson()).toList();
+    }
+    if (valoresJaDevolvidos != null) {
+      data['valoresJaDevolvidos'] =
+          valoresJaDevolvidos!.map((v) => v.toJson()).toList();
     }
     if (detalhes != null) {
       data['detalhes'] = detalhes!.toJson();
@@ -174,6 +188,12 @@ class EstatisticasHome {
     cardValores = json['cardValores'] != null
         ? EstatisticasCard.fromJson(json['cardValores'])
         : null;
+    if (json['valoresDevolvidos'] != null) {
+      valoresDevolvidos = <ValoresDevolvidos>[];
+      json['valoresDevolvidos'].forEach((v) {
+        valoresDevolvidos!.add(ValoresDevolvidos.fromJson(v));
+      });
+    }
     if (json['valoresDevolvidos'] != null) {
       valoresDevolvidos = <ValoresDevolvidos>[];
       json['valoresDevolvidos'].forEach((v) {
@@ -229,6 +249,24 @@ class ProximasDivulgacoes {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['data'] = this.data;
     data['horario'] = horario;
+    return data;
+  }
+}
+class ValoresJaDevolvidos {
+  String? data;
+  String? valor;
+
+  ValoresJaDevolvidos({this.data, this.valor});
+
+  ValoresJaDevolvidos.fromJson(Map<String, dynamic> json) {
+    data = json['data'];
+    valor = json['valor'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['data'] = this.data;
+    data['valor'] = valor;
     return data;
   }
 }

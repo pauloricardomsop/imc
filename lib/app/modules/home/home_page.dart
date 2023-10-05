@@ -25,17 +25,21 @@ class HomePage extends AdStatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isEnable = true;
   List<CardFeature> get cardFeatureHeaderItens => [
         CardFeature.hasBlur(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => push(context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo)),
+          onTap: () => push(
+              context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo)),
         ),
         CardFeature.hasBlur(
-          label: 'Saiba se seu\nCPF está ativo',
-          prefix: Symbols.assured_workload,
-          onTap: () => push(context, ConsultaCPFHomePage(),
-        ))
+            label: 'Saiba se seu\nCPF está ativo',
+            prefix: Symbols.assured_workload,
+            onTap: () => push(
+                  context,
+                  ConsultaCPFHomePage(),
+                ))
       ];
 
   List<CardFeature> get cardFeatureItens => [
@@ -49,7 +53,11 @@ class _HomePageState extends State<HomePage> {
         CardFeature(
           label: 'Consultar Valores\nde Falecidos',
           prefix: Symbols.deceased,
-          onTap: () => push(context, ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido, ConsultaValoresPessoa.fisica),),
+          onTap: () => push(
+            context,
+            ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
+                ConsultaValoresPessoa.fisica),
+          ),
         ),
         CardFeature(
           label: 'Saiba se seu CPF\nestá ativo',
@@ -117,23 +125,27 @@ class _HomePageState extends State<HomePage> {
               top: HeaderTop(
                 leading: const AppTitle('Bem vindo ao app\nValores a Receber'),
                 action: AppIcon.share(
-                    onTap: () async => await Share.share(
-                        'https://play.google.com/store/apps/details?id=com.ldcapps.svr')),
+                  onTap: isEnable
+                      ? () async {
+                          setState(() {isEnable = false;});
+                          await Share.share('https://play.google.com/store/apps/details?id=com.ldcapps.svr');
+                          await Future.delayed(const Duration(seconds: 1));
+                          setState(() {isEnable = true;});
+                        }
+                      : null,
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                       'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
-                      style: const TextStyle(color: AppColors.onSurfaceVariant)
-                          .bodyLarge),
+                      style: const TextStyle(color: AppColors.onSurfaceVariant).bodyLarge),
                   const H(24),
                   AppButton(
                       label: 'VER COMO RECEBER',
                       icon: Symbols.east,
-                      onTap: () => AdManager.showIntersticial(context,
-                          onDispose: () =>
-                              push(context, ComoReceberQuizHomePage()))),
+                      onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, ComoReceberQuizHomePage()))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
