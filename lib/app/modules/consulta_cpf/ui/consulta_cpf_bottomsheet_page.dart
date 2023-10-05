@@ -1,6 +1,5 @@
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/client/cpf_captcha/models/cpf_captcha_situacao_model.dart';
 import 'package:svr/app/core/components/stream_out.dart';
@@ -10,8 +9,7 @@ import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';
 
 class ConsultaCPFBottomSheetPage extends StatelessWidget {
   final CPFCaptchaSituacaoModel model;
-  final DateTime now;
-  const ConsultaCPFBottomSheetPage(this.model, this.now, {Key? key})
+  const ConsultaCPFBottomSheetPage(this.model, {Key? key})
       : super(key: key);
 
   @override
@@ -69,11 +67,16 @@ class ConsultaCPFBottomSheetPage extends StatelessWidget {
           const H(8),
           camposUser('Dígito Verificador', model.digitoVerificador),
           const H(8),
-          Text(
-            'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Color(0xFF020617)).bodyMedium,
-          ),
+          // Text(
+          //   'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',
+          //   textAlign: TextAlign.center,
+          //   style: const TextStyle(color: Color(0xFF020617)).bodyMedium,
+          // ),
+          // Text(
+          //   'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',
+          //   textAlign: TextAlign.center,
+          //   style: const TextStyle(color: Color(0xFF020617)).bodyMedium,
+          // ),
           const H(8),
           AppButton.forward(
             label: 'ESCONDER DETALHES',
