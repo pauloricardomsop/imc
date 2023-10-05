@@ -52,8 +52,11 @@ class EstatisticasPageState extends State<EstatisticasHomePage> {
                     .home!.cardValores!.value!,
                 desc: EstatisticasValores
                     .estatisticasValores.estatisticas!.home!.cardValores!.desc!,
-                onClick: () => AdManager.showIntersticial(context,
-                    onDispose: () => push(context, EstatisticasDetalhesPage())),
+                button: AppButton.forward(
+                    label: 'VER DETALHES',
+                    onTap: () => AdManager.showIntersticial(context,
+                        onDispose: () =>
+                            push(context, EstatisticasDetalhesPage()))),
               ),
             ],
           ),

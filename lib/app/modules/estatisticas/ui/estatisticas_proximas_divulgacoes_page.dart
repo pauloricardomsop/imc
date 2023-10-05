@@ -26,7 +26,7 @@ class EstatisticasPageState extends State<EstatisticasProximasDivulgacoesPage> {
             TableValues(
               left: 'DATA',
               right: 'HORÁRIO',
-              models: EstatisticasValores
+              itens: EstatisticasValores
                   .estatisticasValores.estatisticas!.proximasDivulgacoes!
                   .map((e) =>
                       TableValuesModel(label: e.data!, value: e.horario!))

@@ -18,34 +18,79 @@ class EstatisticasPageState extends State<EstatisticasDetalhesPage> {
         backgroundColor: const Color(0xFFEEF5FE),
         child: AppListView(
           children: [
-            const Header(
+            Header(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeaderTitle(
+                  const HeaderTitle(
                     'Detalhes',
                     color: Color(0xFF172554),
                   ),
-                  H(12),
-                  AppTitle(
+                  const H(12),
+                  const AppTitle(
                     'Valores disponíveis',
                     color: Color(0xFF172554),
                   ),
-                  H(4),
-                  AppDesc(
+                  const H(4),
+                  const AppDesc(
                     'Total de valores que ainda não foram resgatados.',
                     color: Color(0xFF172554),
                   ),
+                  const H(24),
+                  CardValor(
+                    title: EstatisticasValores.estatisticasValores.estatisticas!
+                        .detalhes!.cardValoresReceber!.title!,
+                    value: EstatisticasValores.estatisticasValores.estatisticas!
+                        .detalhes!.cardValoresReceber!.value!,
+                    desc: EstatisticasValores.estatisticasValores.estatisticas!
+                        .detalhes!.cardValoresReceber!.desc!,
+                  ),
+                  const H(24),
+                  TableValues(
+                    left: 'DESCRIÇÃO',
+                    right: 'VALOR',
+                    hasBlur: false,
+                    rightItemStyle:
+                        const TextStyle(color: Color(0xFF076046)).titleMedium,
+                    itens: EstatisticasValores.estatisticasValores.estatisticas!
+                        .detalhes!.valoresReceber!
+                        .map((e) => TableValuesModel(
+                            label: e.descricao!,
+                            value: e.valor!,
+                            desc: e.subtitle))
+                        .toList(),
+                  )
                 ],
               ),
             ),
+            const AppTitle(
+              'Valores disponíveis',
+              color: Color(0xFF172554),
+            ),
+            const H(4),
+            const AppDesc(
+              'Total de valores que ainda não foram resgatados.',
+              color: Color(0xFF172554),
+            ),
+            const H(24),
+            CardValor(
+              title: EstatisticasValores.estatisticasValores.estatisticas!
+                  .detalhes!.cardValoresDevolvidos!.title!,
+              value: EstatisticasValores.estatisticasValores.estatisticas!
+                  .detalhes!.cardValoresDevolvidos!.value!,
+              desc: EstatisticasValores.estatisticasValores.estatisticas!
+                  .detalhes!.cardValoresDevolvidos!.desc!,
+            ),
+            const H(24),
             TableValues(
-              left: 'DATA',
-              right: 'HORÁRIO',
-              models: EstatisticasValores
-                  .estatisticasValores.estatisticas!.proximasDivulgacoes!
-                  .map((e) =>
-                      TableValuesModel(label: e.data!, value: e.horario!))
+              left: 'DESCRIÇÃO',
+              right: 'VALOR',
+              rightItemStyle:
+                  const TextStyle(color: Color(0xFF076046)).titleMedium,
+              itens: EstatisticasValores.estatisticasValores.estatisticas!
+                  .detalhes!.valoresDevolvidos!
+                  .map((e) => TableValuesModel(
+                      label: e.descricao!, value: e.valor!, desc: e.subtitle))
                   .toList(),
             )
           ],
