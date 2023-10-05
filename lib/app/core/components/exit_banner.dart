@@ -70,7 +70,7 @@ class AvaliarCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        sendToStore();
+        StoreReviewService.open();
         pop(context);
       },
       child: Container(

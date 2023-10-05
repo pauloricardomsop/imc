@@ -17,10 +17,11 @@ class CPFProvider {
         headers: header,
       );
       log(response.headers.toString());
-      return ApiResponse.complete(
-          CPFCaptchaModel.fromJson(response.body.toString(), header, response.headers));
+      return ApiResponse.complete(CPFCaptchaModel.fromJson(
+          response.body.toString(), header, response.headers));
     } catch (e) {
-      return ApiResponse.error(DioException(requestOptions: RequestOptions(), error: e.toString()));
+      return ApiResponse.error(
+          DioException(requestOptions: RequestOptions(), error: e.toString()));
     }
   }
 
@@ -52,7 +53,8 @@ class CPFProvider {
       return ApiResponse.complete(response.data);
     } catch (e) {
       log(e.toString());
-      return ApiResponse.error(DioException(requestOptions: RequestOptions(), error: e.toString()));
+      return ApiResponse.error(
+          DioException(requestOptions: RequestOptions(), error: e.toString()));
     }
   }
 }

@@ -2,7 +2,6 @@ import 'package:ad_manager/ad_manager.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/como_receber_quiz_controller.dart';
