@@ -82,7 +82,7 @@ class _ContasRelacionamentosPageState extends State<ContasRelacionamentosPage> {
         AppButton(
           label: 'ACESSAR REGISTRATO',
           icon: Symbols.open_in_new,
-          onTap: () => push(context, const Text('ACESSAR REGISTRATO')),
+          onTap: () async => execUrl('https://registrato.bcb.gov.br/registrato/'),
         ),
       ),
       child: AppListView(

@@ -112,13 +112,13 @@ class ConsultarSVRController {
         consulta.captcha.text,
       );
 
-      if (resultado.hasError &&
-          (resultado.error.error.toString().contains('412') ||
-              resultado.error.error.toString().contains('404'))) {
-        NotificationService.negative('Captcha Inválido, tente novamente.');
-        fetchValoresReceberCaptcha();
-        return;
-      }
+      // if (resultado.hasError &&
+      //     (resultado.error.error.toString().contains('412') ||
+      //         resultado.error.error.toString().contains('404'))) {
+      //   NotificationService.negative('Captcha Inválido, tente novamente.');
+      //   fetchValoresReceberCaptcha();
+      //   return;
+      // }
 
       Navigator.pop(context, resultado);
     } catch (_) {}

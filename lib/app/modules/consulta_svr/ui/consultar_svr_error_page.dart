@@ -37,6 +37,7 @@ class ConsultarSVRServicoIndisponivelPageState
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      statusBarColor: AppColors.surfaceContainerLowest,
       backgroundColor: const Color(0xFFEFF6FF),
       child: Column(
         children: [

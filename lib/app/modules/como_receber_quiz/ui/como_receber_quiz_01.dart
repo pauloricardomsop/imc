@@ -29,6 +29,7 @@ class _ComoReceberQuiz01HomePageState extends State<ComoReceberQuiz01HomePage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      statusBarColor: AppColors.surfaceContainerLowest,
       bottom: Footer(
         AppButton(
           label: 'PRÓXIMO',

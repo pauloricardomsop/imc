@@ -1,11 +1,11 @@
-import 'package:dio/dio.dart';
-
 class ApiResponse<T> {
   late T data;
-  late DioException error;
+  late Exception error;
   bool hasError;
   bool hasData;
   bool hasLoading = false;
+
+  bool get isDioException => hasError && error.toString().toLowerCase().contains('dio');
 
   ApiResponse.complete(this.data)
       : hasError = false,

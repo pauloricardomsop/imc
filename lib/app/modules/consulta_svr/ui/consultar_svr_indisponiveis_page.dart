@@ -35,6 +35,7 @@ class ConsultarSVRNaoEncontradoPageState
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
+      statusBarColor: AppColors.surfaceContainerLowest,
       child: AppListView(
         children: [
           Align(

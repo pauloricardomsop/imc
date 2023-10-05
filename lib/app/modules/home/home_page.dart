@@ -7,6 +7,7 @@ import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
+import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_home_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
@@ -28,16 +29,13 @@ class _HomePageState extends State<HomePage> {
         CardFeature.hasBlur(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(context,
-                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
+          onTap: () => push(context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo)),
         ),
         CardFeature.hasBlur(
           label: 'Saiba se seu\nCPF está ativo',
           prefix: Symbols.assured_workload,
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(context, Container)),
-        ),
+          onTap: () => push(context, ConsultaCPFHomePage(),
+        ))
       ];
 
   List<CardFeature> get cardFeatureItens => [
@@ -51,17 +49,12 @@ class _HomePageState extends State<HomePage> {
         CardFeature(
           label: 'Consultar Valores\nde Falecidos',
           prefix: Symbols.deceased,
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(
-                  context,
-                  ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
-                      ConsultaValoresPessoa.fisica))),
+          onTap: () => push(context, ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido, ConsultaValoresPessoa.fisica),),
         ),
         CardFeature(
           label: 'Saiba se seu CPF\nestá ativo',
           prefix: Symbols.assured_workload,
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(context, Container())),
+          onTap: () => push(context, ConsultaCPFHomePage()),
         ),
         CardFeature(
           label: 'Serviços do Banco\nCentral',
@@ -88,29 +81,25 @@ class _HomePageState extends State<HomePage> {
           label: 'O que é o Sistema de\nValores a Receber?',
           prefix: Symbols.counter_1,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(context, ComoReceberMeusValoresPage())),
+          onTap: () => push(context, OQueEPage()),
         ),
         CardFeature.full(
           label: 'O que é conta GOV.BR\ne como subir de nível?',
           prefix: Symbols.counter_2,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(context, ComoReceberSeTenhoValoresPage())),
+          onTap: () => push(context, ComoAumentarNivelPage()),
         ),
         CardFeature.full(
           label: 'Como saber se tenho\nvalores a receber?',
           prefix: Symbols.counter_3,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(context, ComoAumentarNivelPage())),
+          onTap: () => push(context, ComoReceberSeTenhoValoresPage()),
         ),
         CardFeature.full(
           label: 'Como receber o\ndinheiro esquecido?',
           prefix: Symbols.counter_4,
           sufix: const AppIcon.frontLight(),
-          onTap: () => AdManager.showIntersticial(context,
-              onDispose: () => push(context, OQueEPage())),
+          onTap: () => push(context, ComoReceberMeusValoresPage()),
         ),
       ];
 
