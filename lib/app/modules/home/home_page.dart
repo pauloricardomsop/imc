@@ -127,10 +127,15 @@ class _HomePageState extends State<HomePage> {
                 action: AppIcon.share(
                   onTap: isEnable
                       ? () async {
-                          setState(() {isEnable = false;});
-                          await Share.share('https://play.google.com/store/apps/details?id=com.ldcapps.svr');
+                          setState(() {
+                            isEnable = false;
+                          });
+                          await Share.share(
+                              'https://play.google.com/store/apps/details?id=com.ldcapps.svr');
                           await Future.delayed(const Duration(seconds: 1));
-                          setState(() {isEnable = true;});
+                          setState(() {
+                            isEnable = true;
+                          });
                         }
                       : null,
                 ),
@@ -140,12 +145,15 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text(
                       'Mais de 37 milhões de Brasileiros com dinheiro esquecido nos bancos.',
-                      style: const TextStyle(color: AppColors.onSurfaceVariant).bodyLarge),
+                      style: const TextStyle(color: AppColors.onSurfaceVariant)
+                          .bodyLarge),
                   const H(24),
                   AppButton(
                       label: 'VER COMO RECEBER',
                       icon: Symbols.east,
-                      onTap: () => AdManager.showIntersticial(context, onDispose: () => push(context, ComoReceberQuizHomePage()))),
+                      onTap: () => AdManager.showIntersticial(context,
+                          onDispose: () =>
+                              push(context, ComoReceberQuizHomePage()))),
                   const H(24),
                   const AppTitle('Mais acessados'),
                   const H(24),
