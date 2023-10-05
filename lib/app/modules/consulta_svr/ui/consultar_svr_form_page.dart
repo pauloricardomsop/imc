@@ -2,7 +2,6 @@ import 'package:ad_manager/ad_manager.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/formatters/cnpj_input_formatter.dart';
 import 'package:svr/app/core/formatters/cpf_input_formatter.dart';
@@ -104,7 +103,6 @@ class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
             const CardAlert.info(
                 'Para consultar valores de pessoas falecidas você precisa ser herdeiro, testamentário, inventariante ou procurador.'),
             const H(12),
-            
           ],
         ),
       ),

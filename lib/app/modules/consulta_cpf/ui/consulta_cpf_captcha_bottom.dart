@@ -4,7 +4,6 @@ import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/client/cpf_captcha/models/cpf_captcha_situacao_model.dart';
-import 'package:svr/app/core/components/stream_out.dart';
 import 'package:svr/app/core/models/api_response_model.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_controller.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';

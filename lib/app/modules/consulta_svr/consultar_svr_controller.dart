@@ -98,6 +98,7 @@ class ConsultarSVRController {
 
       captchaResponseStream.add(captcha);
     } catch (e) {
+      // ignore: use_build_context_synchronously
       Navigator.pop(contextGlobal);
       NotificationService.negative(e.toString());
     }
@@ -120,6 +121,7 @@ class ConsultarSVRController {
       //   return;
       // }
 
+      // ignore: use_build_context_synchronously
       Navigator.pop(context, resultado);
     } catch (_) {}
   }

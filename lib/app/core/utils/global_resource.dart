@@ -1,10 +1,9 @@
 import 'dart:math';
 
-import 'package:svr/app/app_controller.dart';
-import 'package:svr/app/core/services/notification_service.dart';
-import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:svr/app/app_controller.dart';
+import 'package:svr/app/core/services/notification_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const String empty = '';
@@ -21,15 +20,6 @@ class ClearFocusOnPush extends NavigatorObserver {
     focus?.unfocus();
   }
 }
-
-// void setStatusBarColor([Color? color]) {
-//   color ??= AppColors.white;
-
-//   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
-//     statusBarColor: color,
-//     statusBarBrightness: Brightness.dark,
-//   ));
-// }
 
 double get height =>
     MediaQuery.of(AppController().context).size.height -
@@ -114,20 +104,6 @@ void showDialogAndPush(context, Widget dialog, Widget page) async {
 
 void pop([BuildContext? context]) => Navigator.pop(context ?? contextGlobal);
 
-// AppLocalizations get T => AppLocalizations.of(contextGlobal)!;
-
-DateTime? parsePeriod(String? period) => period != null
-    ? DateTime(
-        int.parse(period.split('-').last), int.parse(period.split('-')[1]), 0)
-    : null;
-
-String doubleToCurrency(double? value) {
-  if (value == null) return '-';
-  return 'R\$ ${value.toStringAsFixed(2).replaceAll('.', ',')}';
-}
-
-// AppLocalizations get T => AppLocalizations.of(contextGlobal)!;
-
 String urlImage =
     'https://img.freepik.com/fotos-premium/sinal-de-trabalho-em-andamento-amarelo-com-listras_698953-677.jpg?w=2000';
 
@@ -148,21 +124,4 @@ void sendMensageWhatsApp(String numero, String mensagem) async {
   } else {
     throw 'Não foi possível enviar a mensagem pelo WhatsApp para $numero';
   }
-}
-
-String toMoney(double value, {bool removeLeftSymbol = false}) {
-  return MoneyMaskedTextController(
-    decimalSeparator: ',',
-    thousandSeparator: '.',
-    leftSymbol: removeLeftSymbol ? '' : 'R\$ ',
-    initialValue: value,
-    precision: 2,
-  ).value.text;
-}
-
-sendToStore() {
-  launchUrl(
-    Uri.parse('https://play.google.com/store/apps/details?id=com.ldcapps.svr'),
-    mode: LaunchMode.externalApplication,
-  );
 }
