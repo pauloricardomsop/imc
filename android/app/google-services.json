@@ -7,43 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:502689250513:android:8231eb89149504878119f0",
-        "android_client_info": {
-          "package_name": "com.ldcapps.aid_brazil"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "502689250513-kf3fipfti8u2rccehvj9cibn2mdf25g6.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDILXgl_pFNqDGLrRHgxbomxTTHu5TXqII"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "502689250513-kf3fipfti8u2rccehvj9cibn2mdf25g6.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "502689250513-csek955t406pe70qrmc0lsb87ttj2irs.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.ldcapps.svr",
-                "app_store_id": "6449979404"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:502689250513:android:70df4e4e2ccbc4dd8119f0",
         "android_client_info": {
           "package_name": "com.ldcapps.svr"
