@@ -22,12 +22,12 @@ class EstatisticasPageState extends State<EstatisticasValoresDevolvidosPage> {
             const Header.text(
               'Valores já\ndevolvidos',
               'Todos os meses mais valores estão disponíveis, fique atento.',
-              banner: BannerWidget(),
             ),
             TableValues(
               left: 'ANO - MÊS',
               right: 'VALOR DEVOLVIDO',
-              rightItemStyle: const TextStyle(color: Color(0xFF065F46)).titleMedium,
+              rightItemStyle:
+                  const TextStyle(color: Color(0xFF065F46)).titleMedium,
               itens: EstatisticasValores
                   .estatisticasValores.estatisticas!.valoresJaDevolvidos!
                   .map((e) => TableValuesModel(label: e.data!, value: e.valor!))
