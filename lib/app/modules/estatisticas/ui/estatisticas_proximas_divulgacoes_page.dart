@@ -22,6 +22,7 @@ class EstatisticasPageState extends State<EstatisticasProximasDivulgacoesPage> {
             const Header.text(
               'Próximas\nDivulgações',
               'Todos os meses mais valores estão disponíveis, fique atento.',
+              banner: BannerWidget(),
             ),
             TableValues(
               left: 'DATA',

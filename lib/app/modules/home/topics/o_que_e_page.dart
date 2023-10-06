@@ -83,6 +83,7 @@ class _OQueEPageState extends State<OQueEPage> {
           const Header.text(
             'O que é o Sistema de Valores a Rceber?',
             'O Sistema de Valores a Receber (SVR) é um serviço do Banco Central que permite ao cidadão consultar se ele, sua empresa ou pessoa falecida tem dinheiro esquecido em algum banco, consórcio ou outra instituição.',
+            banner: BannerWidget(),
           ),
           const AppTitle('Para que serve?'),
           const H(24),

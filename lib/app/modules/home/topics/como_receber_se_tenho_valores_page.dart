@@ -100,6 +100,7 @@ class _ComoReceberSeTenhoValoresPageState
           const Header.text(
             'Como saber se tenho valores a receber?',
             'Para saber se tem valores a receber, é preciso consultar o Serviço Valores a Receber (SVR), que é uma plataforma online criada para auxiliar o interessado a verificar se tem valores esquecidos para receber.',
+            banner: BannerWidget(),
           ),
           const AppTitle('Como fazer?'),
           const H(24),

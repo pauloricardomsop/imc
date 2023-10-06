@@ -73,6 +73,7 @@ class _ComoAumentarNivelPageState extends State<ComoAumentarNivelPage> {
           const Header.text(
             'Conta gov.br: como aumentar o nível para \'prata\' ou \'ouro\'',
             'Para resgatar seus valores, é preciso ter uma conta Gov.br, com nível de segurança prata ou ouro. \n\nA conta gov.br dá acesso aos serviços digitais do governo como, por exemplo, INSS, carteira de trabalho digital, Receita Federal, eSocial, entre outros.',
+            banner: BannerWidget(),
           ),
           const WarningCard('Estas contas são divididas em "ouro", "prata" e "bronze". O padrão ao entrar no serviço é ter o acesso "bronze". O login nível "prata" ou "ouro" exige maior nível de segurança, como reconhecimento facial, permitindo o acesso a bancos credenciados e a serviços mais sensíveis - como o resgate de valores esquecidos nos bancos.', hasTitle: false,),
           const H(24),

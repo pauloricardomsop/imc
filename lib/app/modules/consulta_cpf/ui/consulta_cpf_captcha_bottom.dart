@@ -54,6 +54,7 @@ class _ConsulteSeusValoresCaptchaBottomState extends State<ConsulteSeusValoresCa
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
+              
               const H(16),
               Image.memory(
                 image,
@@ -80,6 +81,7 @@ class _ConsulteSeusValoresCaptchaBottomState extends State<ConsulteSeusValoresCa
                       controller: model.captchaEC,
                       label: 'Digite o texto da imagem acima',
                       autoFocus: true,
+                      icon: Symbols.dialpad,
                     ),
                   ),
                   const W(8),

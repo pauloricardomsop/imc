@@ -48,6 +48,7 @@ class _ServicoBancoCentralHomePageState
           const Header.text(
             'Registrato Banco\nCentral',
             'No site do Banco Central você vai encontrar os serviços abaixo, saiba mais sobre cada um deles.',
+            banner: BannerWidget(),
           ),
           const AppTitle('Opções de consulta'),
           const H(24),

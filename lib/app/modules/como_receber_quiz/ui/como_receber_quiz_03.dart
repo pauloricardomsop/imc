@@ -29,9 +29,8 @@ class _ComoReceberQuiz03PageState extends State<ComoReceberQuiz03Page> {
     return AppScaffold(
       statusBarColor: AppColors.surfaceContainerLowest,
       bottom: Footer(
-        AppButton(
+        AppButton.ad(
           label: 'VER RESULTADO',
-          icon: const AdIcon(),
           onTap: () {
             var controller = _controller.quizStream.value;
             if(controller.question03 == null) {

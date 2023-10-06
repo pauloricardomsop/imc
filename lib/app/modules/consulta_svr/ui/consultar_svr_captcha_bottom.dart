@@ -57,8 +57,8 @@ class _ConsultarSVRCaptchaBottomState extends State<ConsultarSVRCaptchaBottom> {
               const H(8),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 8),
-                width: 33,
-                height: 7,
+                width: 100,
+                height: 5,
                 decoration: BoxDecoration(
                   color: const Color(0xFFD9D9D9),
                   borderRadius: BorderRadius.circular(12),
@@ -93,6 +93,7 @@ class _ConsultarSVRCaptchaBottomState extends State<ConsultarSVRCaptchaBottom> {
               AppField(
                 controller: model.captcha,
                 label: 'Digite o texto da imagem acima',
+                icon: Symbols.dialpad,
               ),
               const H(16),
               AppButton(
