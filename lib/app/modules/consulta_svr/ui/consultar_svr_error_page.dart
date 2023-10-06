@@ -38,16 +38,14 @@ class ConsultarSVRServicoIndisponivelPageState
   Widget build(BuildContext context) {
     return AppScaffold(
       statusBarColor: AppColors.surfaceContainerLowest,
-      backgroundColor: const Color(0xFFEFF6FF),
+      backgroundColor: AppColors.surfaceContainerLowest,
       child: Column(
         children: [
           Header.light(
             top: HeaderTop.light(
-              backgroundColor: const Color(0xFFEFF6FF),
-              leading: AppIcon.exit(
-                onTap: () =>
-                    AdManager.showIntersticial(context, flow: AdFlow.returning),
-              ),
+              backgroundColor: AppColors.surfaceContainerLowest,
+              leading: AppIcon.exit(onTap: () => AdManager.showIntersticial(context, flow: AdFlow.returning)),
+              child: Text('O Banco Central não está\nrespondendo, volte mais tarde.', style: const TextStyle(color: AppColors.onSurface).bodyMedium),
             ),
           ),
           Expanded(
@@ -64,9 +62,10 @@ class ConsultarSVRServicoIndisponivelPageState
                   ),
                   const H(24),
                   const Center(
-                    child: AppTitle(
+                    child: HeaderTitle(
                       'Serviço\nIndisponível',
                       textAlign: TextAlign.center,
+                      color: AppColors.onSurface,
                     ),
                   ),
                   const H(12),

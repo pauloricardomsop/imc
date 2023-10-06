@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
+import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
+import 'package:svr/app/modules/home/home_page.dart';
 
 class ConsultarSVRNaoEncontradoPage extends AdStatefulWidget {
   ConsultarSVRNaoEncontradoPage({
@@ -18,19 +20,6 @@ class ConsultarSVRNaoEncontradoPage extends AdStatefulWidget {
 class ConsultarSVRNaoEncontradoPageState
     extends State<ConsultarSVRNaoEncontradoPage> {
   final ConsultarSVRController _controller = ConsultarSVRController();
-
-  List<CardFeature> get gridItens => [
-        CardFeature(
-            label: 'Não sei o que é conta GOV.BR',
-            prefix: Symbols.contact_support,
-            onTap: () => AdManager.showIntersticial(context,
-                flow: AdFlow.going,
-                onDispose: () => push(context, Container()))),
-        CardFeature(
-            label: 'Fazer uma Nova Consulta',
-            prefix: Symbols.find_replace,
-            onTap: () => pops(context, 3)),
-      ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +46,7 @@ class ConsultarSVRNaoEncontradoPageState
               child: const Icon(
                 Symbols.exclamation,
                 size: 32,
+                weight: 700,
                 color: Color(0xFFECFEF6),
               ),
             ),
@@ -64,7 +54,7 @@ class ConsultarSVRNaoEncontradoPageState
           const H(24),
           const Center(
               child: AppTitle(
-            'Não foram encontrados valores a receber para os dados informados:',
+            'Não foram encontrados\nvalores a receber para os\ndados informados:',
             textAlign: TextAlign.center,
           )),
           const H(24),
@@ -86,17 +76,21 @@ class ConsultarSVRNaoEncontradoPageState
           const H(24),
           AppButton(
               label: 'PRÓXIMAS DIVULGAÇÕES',
-              icon: Icons.open_in_new,
-              onTap: () => AdUtils.loadUrl(
-                  'https://valoresareceber.bcb.gov.br/wr/rest/start')),
+              icon: Icons.calendar_month,
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomePage()),
+                    (route) => false);
+                push(context, EstatisticasHomePage());
+              }),
           const H(12),
           AppButton(
               label: 'NOVA CONSULTA',
               backgroundColor: const Color(0xFFEFF6FF),
               borderColor: const Color(0xFF94C4FD),
               foregroundColor: const Color(0xFF172554),
-              onTap: () => AdManager.showIntersticial(context,
-                  onDispose: () => pops(context, 2))),
+              onTap: () => AdManager.showIntersticial(context, flow: AdFlow.going, onDispose: () => pops(context, 2))),
           const H(24),
           const CardAlert(
             icon: AppIcon.info(

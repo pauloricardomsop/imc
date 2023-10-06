@@ -22,6 +22,7 @@ class EstatisticasPageState extends State<EstatisticasValoresDevolvidosPage> {
             const Header.text(
               'Valores já\ndevolvidos',
               'Todos os meses mais valores estão disponíveis, fique atento.',
+              banner: BannerWidget(),
             ),
             TableValues(
               left: 'ANO - MÊS',

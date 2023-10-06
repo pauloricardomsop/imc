@@ -90,9 +90,8 @@ class _ContasRelacionamentosPageState extends State<ContasRelacionamentosPage> {
           const Header.text(
             'Contas e Relacionamentos',
             'O Relatório de Contas e Relacionamentos em Bancos (CCS) mostra:',
+            banner: BannerWidget(),
           ),
-          const BannerWidget(),
-          const H(16),
           CheckList(checkList.sublist(0, 2)),
           const H(24),
           const AppDesc('Ele não mostra números de agências e de contas, dados cadastrais, nem saldos e movimentações. \n\nO relatório contém informações dos relacionamentos iniciados a partir 01/01/2001 ou em data anterior, desde que não encerrados até 31/12/2000.'),

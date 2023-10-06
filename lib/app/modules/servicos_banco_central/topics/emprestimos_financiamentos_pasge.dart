@@ -76,9 +76,8 @@ class _EmprestimosFinanciamentosPageState extends State<EmprestimosFinanciamento
           const Header.text(
             'Empréstimos e Financiamentos',
             'O Relatório de Empréstimos e Financiamentos (SCR) mostra todas as suas dívidas com bancos e financeiras. Você pode verificar o saldo devedor e o tipo de operação de crédito, se a dívida está em dia ou em atraso, e outras informações.',
+            banner: BannerWidget(),
           ),
-          const BannerWidget(),
-          const H(16),
           const AppTitle('Para que serve?'),
           const H(24),
           const AppDesc('O relatório serve para você:'),

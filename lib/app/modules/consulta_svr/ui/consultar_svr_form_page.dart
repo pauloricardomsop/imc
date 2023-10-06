@@ -37,6 +37,7 @@ class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
       bottom: Footer(
         AppButton(
           label: 'PRÓXIMO',
+          icon: Symbols.trending_flat,
           onTap: () => _controller.onClickProximo(context),
         ),
       ),
@@ -92,17 +93,16 @@ class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
                   backgroundColor: Color(0xFFFED8AA),
                   iconColor: Color(0xFF441407),
                 ),
-                label:
-                    'Para consultar valores de pessoas falecidas você precisa ser herdeiro, testamentário, inventariante ou procurador.',
+                label: 'Para consultar valores de pessoas falecidas você precisa ser herdeiro, testamentário, inventariante ou procurador.',
                 backgroundColor: Color(0xFFFFEDD5),
                 borderColor: Color(0xFFFED8AA),
                 textColor: Color(0xFF421407),
               ),
               const H(12),
             },
-            const CardAlert.info(
-                'Para consultar valores de pessoas falecidas você precisa ser herdeiro, testamentário, inventariante ou procurador.'),
+            const CardAlert.info('Para consultar valores de pessoas falecidas você precisa ser herdeiro, testamentário, inventariante ou procurador.'),
             const H(12),
+            const BannerWidget(),
           ],
         ),
       ),

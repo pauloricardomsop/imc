@@ -55,9 +55,8 @@ class _ChavePixPageState extends State<ChavePixPage> {
           const Header.text(
             'Chaves PIX',
             'O Relatório de Chaves Pix mostra as chaves Pix que você cadastrou, vinculadas aos dados de sua conta (nome do banco, número da agência e da conta).',
+            banner: BannerWidget(),
           ),
-          const BannerWidget(),
-          const H(16),
           const AppTitle('Para que serve?'),
           const H(24),
           const AppDesc('O relatório serve para você:'),

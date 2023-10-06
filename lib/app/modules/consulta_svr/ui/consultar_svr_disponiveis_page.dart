@@ -2,6 +2,7 @@ import 'package:ad_manager/ad_manager.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:svr/app/core/utils/extensions.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_svr/consultar_svr_controller.dart';
 
@@ -75,7 +76,9 @@ class ConsultarSVRDisponiveisPageState
                     ? 'CPF do\nTitular'
                     : 'CNPJ',
                 icon: Symbols.password,
-                title: _controller.consulta.identifier.text,
+                title: _controller.consulta.isPessoaFisica
+                    ? _controller.consulta.identifier.text.toCPF()
+                    : _controller.consulta.identifier.text.toCNPJ(),
               ),
               const W(8),
               HeaderCard.text(

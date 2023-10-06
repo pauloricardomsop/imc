@@ -54,6 +54,7 @@ class _ComoReceberMeusValoresPageState extends State<ComoReceberMeusValoresPage>
           const Header.text(
             'Como vou receber meus valores?',
             'O recebimento do dinheiro esquecido pode ser feito de duas maneiras, pelo sistema oferecido ou por contato direto com a instituição financeira ou banco.',
+            banner: BannerWidget(),
           ),
           const WarningCard('O Banco Central informou que não solicita confirmação de dados posteriormente e que somente a instituição ou banco que aparece na consulta do SVR pode entrar em contato com o cliente.'),
           const H(24),
