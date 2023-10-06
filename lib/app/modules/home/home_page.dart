@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-5s0p[rZ]        statusBarColor: AppColors.surfaceContainer,/.As`pl]`12qa;[][``;asx;].
+        statusBarColor: AppColors.surfaceContainer,
         onWillPop: () async {
           push(context, ExitBanner());
           return false;
@@ -130,6 +130,7 @@ class _HomePageState extends State<HomePage> {
         child: AppListView(
           children: [
             Header(
+              banner: const BannerWidget(),
               top: HeaderTop(
                 leading: const AppTitle('Bem vindo ao app\nValores a Receber'),
                 action: AppIcon.share(
