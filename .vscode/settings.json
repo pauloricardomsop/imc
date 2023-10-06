@@ -1,4 +1,7 @@
 {
-    "dart.flutterSdkPath": "/Users/Paulo/fvm/versions/stable",
+    "dart.flutterSdkPath": "Paulo/fvm/versions/stable",
+    "dart.flutterSdkPaths": [
+        "/Users/Paulo/fvm/versions"
+    ],
     "java.configuration.updateBuildConfiguration": "automatic"
 }
