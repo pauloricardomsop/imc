@@ -17,7 +17,7 @@ class _ConsultaCPFNetworkHomePageState
   final ConsultaCPFController _controller = ConsultaCPFController();
   @override
   void initState() {
-    _controller.cpfAdapter.getCaptcha();
+    // _controller.cpfAdapter.getCaptcha();
     super.initState();
   }
 

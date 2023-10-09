@@ -51,7 +51,7 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
           icon: Icons.arrow_forward,
         ),
       ),
-      child: StreamOut<ConsultaCPFModel>(
+      child: StreamOut<ConsultaCPFViewModel>(
         stream: _controller.consultaStream.listen,
         child: (_, model) => AppListView(
           children: [

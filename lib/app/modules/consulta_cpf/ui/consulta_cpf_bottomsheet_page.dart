@@ -1,15 +1,14 @@
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:svr/app/core/client/cpf_captcha/models/cpf_captcha_situacao_model.dart';
+import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_controller.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';
 
 class ConsultaCPFBottomSheetPage extends StatelessWidget {
-  final CPFCaptchaSituacaoModel model;
-  const ConsultaCPFBottomSheetPage(this.model, {Key? key})
-      : super(key: key);
+  final ConsultaCPFModel model;
+  const ConsultaCPFBottomSheetPage(this.model, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class ConsultaCPFBottomSheetPage extends StatelessWidget {
           topLeft: Radius.circular(28),
           topRight: Radius.circular(28),
         ),
-        child: StreamOut<ConsultaCPFModel>(
+        child: StreamOut<ConsultaCPFViewModel>(
           stream: consultaPagamentoController.consultaStream.listen,
           child: (_, consultaPagamento) =>
               body(context, consultaPagamento, consultaPagamentoController),
@@ -35,7 +34,7 @@ class ConsultaCPFBottomSheetPage extends StatelessWidget {
     );
   }
 
-  Widget body(BuildContext context, ConsultaCPFModel consultaPagamento,
+  Widget body(BuildContext context, ConsultaCPFViewModel consultaPagamento,
       ConsultaCPFController consultaPagamentoController) {
     return Container(
       padding: const EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 16),
@@ -54,17 +53,18 @@ class ConsultaCPFBottomSheetPage extends StatelessWidget {
             ),
           ),
           const H(8),
-          camposUser('Nome completo', model.nome),
-          const H(8),
-          camposUser('Data de Nascimento', model.dataNascimento),
-          const H(8),
-          camposUser('CPF', model.cpf),
-          const H(8),
-          camposUser('Data de inscrição', model.dataInscricao),
-          const H(8),
-          camposUser('Código de verificação', model.codigoControleComprovante, isCopy: true),
-          const H(8),
-          camposUser('Dígito Verificador', model.digitoVerificador),
+          // camposUser('Nome completo', model.nome),
+          // const H(8),
+          // camposUser('Data de Nascimento', model.dataNascimento),
+          // const H(8),
+          // camposUser('CPF', model.cpf),
+          // const H(8),
+          // camposUser('Data de inscrição', model.dataInscricao),
+          // const H(8),
+          // camposUser('Código de verificação', model.codigoControleComprovante,
+          //     isCopy: true),
+          // const H(8),
+          // camposUser('Dígito Verificador', model.digitoVerificador),
           const H(8),
           // Text(
           //   'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',

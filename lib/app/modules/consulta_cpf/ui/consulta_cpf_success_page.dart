@@ -2,7 +2,7 @@ import 'package:ad_manager/ad_manager.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:svr/app/core/client/cpf_captcha/models/cpf_captcha_situacao_model.dart';
+import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/topics/consulta_cpf_situacao_cadastrais_page.dart';
@@ -11,7 +11,7 @@ import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/servicos_banco_central/servico_banco_central_home_page.dart';
 
 class ConsultaCPFSuccessPage extends AdStatefulWidget {
-  final CPFCaptchaSituacaoModel model;
+  final ConsultaCPFModel model;
   ConsultaCPFSuccessPage(this.model, {Key? key})
       : super(key: key, name: 'ConsultaCPFSuccessPage');
 
@@ -33,7 +33,8 @@ class _ConsultaCPFSuccessPageState extends State<ConsultaCPFSuccessPage> {
           prefix: Symbols.payments,
           onTap: () => AdManager.showIntersticial(context,
               flow: AdFlow.going,
-              onDispose: () => push(context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
+              onDispose: () => push(context,
+                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
         ),
       ];
 
@@ -64,14 +65,17 @@ class _ConsultaCPFSuccessPageState extends State<ConsultaCPFSuccessPage> {
           ),
           const H(8),
           const Center(
-            child: AppDesc('O resultado desta consulta não tem valor\nfiscal ou de crédito.', textAlign: TextAlign.center),
+            child: AppDesc(
+                'O resultado desta consulta não tem valor\nfiscal ou de crédito.',
+                textAlign: TextAlign.center),
           ),
           const H(16),
           AppButton.textButtons(
             label: 'VER DETALHES',
             onTap: () => showModalBottomSheet<void>(
               context: context,
-              builder: (BuildContext context) => ConsultaCPFBottomSheetPage(widget.model),
+              builder: (BuildContext context) =>
+                  ConsultaCPFBottomSheetPage(widget.model),
               isScrollControlled: true,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -90,7 +94,9 @@ class _ConsultaCPFSuccessPageState extends State<ConsultaCPFSuccessPage> {
           CardFeatures.full([
             CardFeature.full(
               label: 'Entenda a situação\ndo seu CPF',
-              onTap: () => AdManager.showRewarded(onDispose: () => push(context, ConsultaCpfAtivoSituacaoCadastraisPage())),
+              onTap: () => AdManager.showRewarded(
+                  onDispose: () =>
+                      push(context, ConsultaCpfAtivoSituacaoCadastraisPage())),
               prefix: Symbols.assured_workload,
               sufix: const AppIcon(
                   icon: AdIcon(color: AppColors.onSurface),

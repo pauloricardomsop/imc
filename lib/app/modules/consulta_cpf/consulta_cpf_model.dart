@@ -2,7 +2,7 @@ import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ConsultaCPFModel {
+class ConsultaCPFViewModel {
   final TextEditingController cpfEC =
       MaskedTextController(mask: '000.000.000-00');
   final FocusNode cpfFC = FocusNode();
