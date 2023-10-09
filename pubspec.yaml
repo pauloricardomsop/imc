@@ -47,6 +47,10 @@ dependencies:
     path: packages/log_manager/
   #   git:
   #     url: git@github.com:ldc-apps/log_manager.git
+  request_manager:
+    path: packages/request_manager/
+  #   git:
+  #     url: git@github.com:ldc-apps/request_manager.git
 
   #OUTROS
   google_mobile_ads: ^3.0.0

@@ -2,12 +2,11 @@ import 'package:ad_manager/ad_manager.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:svr/app/core/client/cpf_captcha/models/cpf_captcha_situacao_model.dart';
+import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_controller.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';
-import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_success_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/servicos_banco_central/servico_banco_central_home_page.dart';
 
@@ -35,7 +34,8 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
           prefix: Symbols.payments,
           onTap: () => AdManager.showIntersticial(context,
               flow: AdFlow.going,
-              onDispose: () => push(context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
+              onDispose: () => push(context,
+                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
         ),
       ];
 
@@ -46,17 +46,8 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
       bottom: Footer(
         AppButton(
           label: 'CONSULTAR',
-          onTap: () => push(
-              context,
-              ConsultaCPFSuccessPage(CPFCaptchaSituacaoModel(
-                  cpf: '',
-                  dataNascimento: '',
-                  situacaoCadastral: '',
-                  codigoControleComprovante: '',
-                  comprovanteEmitido: '',
-                  dataInscricao: '',
-                  digitoVerificador: '',
-                  nome: ''))),
+          onTap: () =>
+              ConsultaCPFAdapter.getConsultaCPF('606.960.033-92', '14/09/1995'),
           icon: Icons.arrow_forward,
         ),
       ),
@@ -66,7 +57,8 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
           children: [
             const Header(
               title: 'Verifique a\nsituação de seu\nCPF.',
-              desc: 'Digite seu CPF no campo abaixo para realizar uma consulta nas bases de dados da Receita Federal.',
+              desc:
+                  'Digite seu CPF no campo abaixo para realizar uma consulta nas bases de dados da Receita Federal.',
             ),
             AppField(
               controller: model.cpfEC,

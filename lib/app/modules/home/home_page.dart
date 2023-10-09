@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
         child: AppListView(
           children: [
             Header(
-              banner: const BannerWidget(),
+              // banner: const BannerWidget(),
               top: HeaderTop(
                 leading: const AppTitle('Bem vindo ao app\nValores a Receber'),
                 action: AppIcon.share(

@@ -7,3 +7,6 @@
 [submodule "packages/log_manager"]
 	path = packages/log_manager
 	url = git@github.com:ldc-apps/log_manager.git
+[submodule "packages/request_manager"]
+	path = packages/request_manager
+	url = git@github.com:ldc-apps/request_manager.git
