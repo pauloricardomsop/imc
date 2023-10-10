@@ -39,6 +39,7 @@ class ConsultaValoresReceberHomePageState extends State<ConsultarSVRHomePage> {
           const Header.text(
             'Consulte seus valores a receber',
             'Descubra se você tem valores esquecidos em instituições financeiras.',
+            hasBanner: false,
           ),
           const H(16),
           CardFeatures(cardFeatureItens),

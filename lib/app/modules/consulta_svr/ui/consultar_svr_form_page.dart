@@ -56,6 +56,7 @@ class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
                   : model.isPessoaFisica
                       ? 'Insira CPF e data de nascimento da pessoa desejada.'
                       : 'Insira CNPJ e data de abertura da empresa desejada.',
+                      hasBanner: false,
             ),
             AppField(
               controller: model.identifier,
