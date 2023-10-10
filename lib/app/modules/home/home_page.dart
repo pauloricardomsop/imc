@@ -7,7 +7,6 @@ import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
-import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_home_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
