@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:developer';
+
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:svr/app/core/models/service_model.dart';
 import 'package:svr/app/core/services/ad_manager_service.dart';
-import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:svr/app/modules/estatisticas/estatisticas_model.dart';
 
 class RemoteConfigService implements Service {
@@ -18,7 +18,7 @@ class RemoteConfigService implements Service {
     _setValues();
   }
 
-    static void _setValues() {
+  static void _setValues() {
     EstatisticasValores.estatisticasValores = estatisticasValores;
   }
 
@@ -35,7 +35,6 @@ class RemoteConfigService implements Service {
   static Map<String, dynamic> get adConfig {
     try {
       if (useDefaultValues) return defaultMap[RemoteConfigKey.adConfig];
-      log(jsonDecode(instance.getString(RemoteConfigKey.adConfig)).toString());
       return jsonDecode(instance.getString(RemoteConfigKey.adConfig));
     } catch (e) {
       return jsonDecode(defaultMap[RemoteConfigKey.adConfig]);
@@ -55,7 +54,6 @@ class RemoteConfigService implements Service {
           jsonDecode(defaultMap[RemoteConfigKey.valores]));
     }
   }
-
 }
 
 class RemoteConfigKey {

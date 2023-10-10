@@ -11,7 +11,7 @@ import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/servicos_banco_central/servico_banco_central_home_page.dart';
 
 class ConsultaCPFSuccessPage extends AdStatefulWidget {
-  final ConsultaCPFModel model;
+  final ConsultaCPFAdapterModel model;
   ConsultaCPFSuccessPage(this.model, {Key? key})
       : super(key: key, name: 'ConsultaCPFSuccessPage');
 

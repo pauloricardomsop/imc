@@ -5,9 +5,10 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/models/api_response_model.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_controller.dart';
-import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';
+import 'package:svr/app/modules/consulta_cpf/consulta_cpf_view_model.dart';
 
-Future<ApiResponse<ConsultaCPFModel>?> showConsultaCPFCaptchaBottom(_) async =>
+Future<ApiResponse<ConsultaCPFAdapterModel>?> showConsultaCPFCaptchaBottom(
+        _) async =>
     await showModalBottomSheet(
         isScrollControlled: true,
         shape: const RoundedRectangleBorder(

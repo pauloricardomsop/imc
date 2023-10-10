@@ -6,7 +6,7 @@ import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_controller.dart';
-import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';
+import 'package:svr/app/modules/consulta_cpf/consulta_cpf_view_model.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/servicos_banco_central/servico_banco_central_home_page.dart';
 

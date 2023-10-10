@@ -3,7 +3,7 @@ import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
-import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';
+import 'package:svr/app/modules/consulta_cpf/consulta_cpf_view_model.dart';
 import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_captcha_bottom.dart';
 import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_network_error_page.dart';
 import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_success_page.dart';

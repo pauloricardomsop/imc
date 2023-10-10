@@ -61,15 +61,14 @@ class _ConsultaCPFNetworkHomePageState
     );
   }
 
-   Header _headerInfoPagamento(_) {
+  Header _headerInfoPagamento(_) {
     return const Header(
       backgroundColor: AppColors.surfaceContainerLowest,
       top: HeaderTop.light(
-        leading:  AppIcon.exit(
-          iconColor: AppColors.onSurface,
-          backgroundColor: AppColors.surfaceContainer,
-        )
-      ),
+          leading: AppIcon.exit(
+        iconColor: AppColors.onSurface,
+        backgroundColor: AppColors.surfaceContainer,
+      )),
       child: BannerWidget(),
     );
   }

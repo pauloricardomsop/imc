@@ -4,10 +4,10 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_controller.dart';
-import 'package:svr/app/modules/consulta_cpf/consulta_cpf_model.dart';
+import 'package:svr/app/modules/consulta_cpf/consulta_cpf_view_model.dart';
 
 class ConsultaCPFBottomSheetPage extends StatelessWidget {
-  final ConsultaCPFModel model;
+  final ConsultaCPFAdapterModel model;
   const ConsultaCPFBottomSheetPage(this.model, {Key? key}) : super(key: key);
 
   @override
