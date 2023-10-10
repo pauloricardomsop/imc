@@ -26,8 +26,7 @@ class AdManagerService implements Service {
     "activeAll": true,
     "appOpen": {
       "active": true,
-      // "idIOS": "ca-app-pub-8419654969814276/7184142484",
-      "idIOS": "ca-app-pub-3940256099942544/1033173712",
+      "idIOS": "ca-app-pub-8419654969814276/7184142484",
       "idAndroid": "ca-app-pub-8419654969814276/4927579039",
     },
     "banner": {
