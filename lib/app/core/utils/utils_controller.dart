@@ -1,7 +1,6 @@
 import 'package:ad_manager/ad_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:svr/app/core/enums/module_enum.dart';
 
 class UtilsController {
   static final UtilsController _utilsController = UtilsController._();
@@ -13,8 +12,6 @@ class UtilsController {
   final GlobalKey<NavigatorState> key = GlobalKey<NavigatorState>();
 
   final AppStream<bool> ignoringStream = AppStream<bool>.seed(false);
-
-  final AppStream<Module> moduleStream = AppStream<Module>.seed(Module.loading);
 
   final AppStream<String> toastStream = AppStream<String>.seed('');
 

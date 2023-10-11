@@ -1,7 +1,7 @@
-import 'package:svr/app/core/components/module_page.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:svr/app/modules/home/home_page.dart';
 
 import 'app_controller.dart';
 
@@ -24,7 +24,10 @@ class _AppState extends State<App> {
         navigatorKey: _appController.key,
         title: 'SVR - Valores a Receber',
         theme: appTheme,
-        home: const ModulePage(),
+        home: ModulePage(
+          home: HomePage(),
+          onInit: _appController.onInit(),
+        ),
       ),
     );
   }
