@@ -47,7 +47,7 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
         AppButton(
           label: 'CONSULTAR',
           onTap: () =>
-              ConsultaCPFAdapter.getConsultaCPF('606.960.033-92', '14/09/1995'),
+              ConsultaCPFAdapter.getConsultaCPF('082.900.263-40', '24/02/2001'),
           icon: Icons.arrow_forward,
         ),
       ),
