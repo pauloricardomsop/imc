@@ -11,6 +11,9 @@ workflows:
     environment:
       android_signing:
         - default_keystore
+      ios_signing:
+        distribution_type: app_store # or: ad_hoc | development | enterprise
+        bundle_identifier: com.ldcapps.svr
       groups:
         - default
       vars:
@@ -25,9 +28,11 @@ workflows:
       - name: Get Flutter packages
         script: | 
           flutter packages pub get
-      - name: Build AAB with Flutter
-        script: | 
-          flutter build appbundle --release
+      # - name: Build AAB with Flutter
+      #   script: | 
+      #     flutter build appbundle --release
+      - name: Set up code signing settings on Xcode project
+        script: xcode-project use-profiles
       - name: Build IPA with Flutter
         script: | 
           flutter build ios --release
@@ -35,7 +40,7 @@ workflows:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
-      - build/ios/iphoneos/Runner.app # Include the generated IPA file
+      - build/ios/ipa/*.ipa
     publishing:
       slack:
         channel: '#svr'
