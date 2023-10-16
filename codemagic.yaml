@@ -38,9 +38,7 @@ workflows:
         script: xcode-project use-profiles
       - name: Build ipa for distribution
         script: | 
-          xcode-project build-ipa \
-            --workspace "$CM_BUILD_DIR/$Runner.xcworkspace" \
-            --scheme "$Runner"
+          flutter build ipa --release --export-options-plist 
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
