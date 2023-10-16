@@ -16,6 +16,7 @@ workflows:
       vars:
         PACKAGE_NAME: "com.ldcapps.svr"
         GOOGLE_PLAY_TRACK: internal
+        # You may need to set other iOS-related environment variables here.
       flutter: stable
     scripts:
       - name: Set up local.properties
@@ -27,10 +28,14 @@ workflows:
       - name: Build AAB with Flutter
         script: | 
           flutter build appbundle --release
+      - name: Build IPA with Flutter
+        script: | 
+          flutter build ios --release
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
+      - build/ios/iphoneos/Runner.app # Include the generated IPA file
     publishing:
       slack:
         channel: '#svr'
