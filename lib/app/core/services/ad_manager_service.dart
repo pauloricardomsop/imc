@@ -21,7 +21,7 @@ class AdManagerService implements Service {
   }
 
   static final Map<String, dynamic> config = {
-    "activeAll": true,
+    "activeAll": false,
     "appOpen": {
       "active": true,
       "idIOS": "ca-app-pub-8419654969814276/5311849118",

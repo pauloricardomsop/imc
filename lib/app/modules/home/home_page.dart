@@ -7,6 +7,7 @@ import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/como_receber_quiz/ui/como_receber_quiz_home_page.dart';
+import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_home_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_form_page.dart';
 import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/estatisticas/ui/estatisticas_home_page.dart';
@@ -62,13 +63,13 @@ class _HomePageState extends State<HomePage> {
                   ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
                       ConsultaValoresPessoa.fisica))),
         ),
-        // CardFeature(
-        //   label: 'Saiba se seu CPF\nestá ativo',
-        //   prefix: Symbols.assured_workload,
-        //   onTap: () => AdManager.showIntersticial(context,
-        //       flow: AdFlow.going,
-        //       onDispose: () => push(context, ConsultaCPFHomePage())),
-        // ),
+        CardFeature(
+          label: 'Saiba se seu CPF\nestá ativo',
+          prefix: Symbols.assured_workload,
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, ConsultaCPFHomePage())),
+        ),
         CardFeature(
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
