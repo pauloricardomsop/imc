@@ -12,13 +12,16 @@ workflows:
       android_signing:
         - default_keystore
       ios_signing:
-        distribution_type: app_store # or: ad_hoc | development | enterprise
+        distribution_type: app_store
         bundle_identifier: com.ldcapps.svr
       groups:
         - default
       vars:
         PACKAGE_NAME: "com.ldcapps.svr"
         GOOGLE_PLAY_TRACK: internal
+        BUNDLE_ID: "com.ldcapps.svr"
+        # XCODE_WORKSPACE: "CodemagicSample.xcworkspace" # <-- Name of your Xcode workspace
+        # XCODE_SCHEME: "CodemagicSample"
         # You may need to set other iOS-related environment variables here.
       flutter: stable
     scripts:
@@ -33,9 +36,11 @@ workflows:
       #     flutter build appbundle --release
       - name: Set up code signing settings on Xcode project
         script: xcode-project use-profiles
-      - name: Build IPA with Flutter
+      - name: Build ipa for distribution
         script: | 
-          flutter build ios --release
+          xcode-project build-ipa \
+            --workspace "$CM_BUILD_DIR/$Runner.xcworkspace" \
+            --scheme "$Runner"
     artifacts:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
