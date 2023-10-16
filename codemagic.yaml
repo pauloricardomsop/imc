@@ -40,7 +40,7 @@ workflows:
       - build/**/outputs/**/*.aab
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
-      - build/ios/ipa/*.ipa
+      - build/ios/iphoneos/Runner.ipa
     publishing:
       slack:
         channel: '#svr'
