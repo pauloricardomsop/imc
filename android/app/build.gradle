@@ -41,8 +41,8 @@ android {
         applicationId "com.ldcapps.svr"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 503
-        versionName "5.0.3"
+        versionCode 505
+        versionName "5.0.5"
         multiDexEnabled true
     }
 
