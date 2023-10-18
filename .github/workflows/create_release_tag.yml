@@ -3,7 +3,7 @@ name: Auto Tag and Update Gradle Version
 on:
   push:
     branches:
-      - re_design
+      - main
 
 jobs:
   tag_and_update_version:
