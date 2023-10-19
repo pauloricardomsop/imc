@@ -1,7 +1,7 @@
 workflows:
   stores-delivery:
     name: Stores Delivery
-    integrations:
+    # integrations:
       # app_store_connect: code_magic
     max_build_duration: 120
     triggering:
