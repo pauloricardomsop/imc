@@ -30,8 +30,8 @@ class ConsultaCPFController {
       throw Exception('Data inválida');
     }
     FocusScope.of(_).unfocus();
-    final response =
-        await ConsultaCPFAdapter.getConsultaCPF(consulta.cpfEC.value.text, consulta.dateFormatted);
+    final response = await ConsultaCPFAdapter.getConsultaCPF(
+        consulta.cpfEC.text, consulta.dataNascimentoEC.text);
     if (response.hasData) {
       AdManager.showRewarded(
           onDispose: () => push(_, ConsultaCPFSuccessPage(response.data)));
@@ -39,4 +39,4 @@ class ConsultaCPFController {
       NotificationService.negative(response.error.toString());
     }
   }
-} 
+}
