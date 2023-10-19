@@ -1,6 +1,0 @@
-framework module kochava_tracker {
-  umbrella header "kochava_tracker-umbrella.h"
-
-  export *
-  module * { export * }
-}
