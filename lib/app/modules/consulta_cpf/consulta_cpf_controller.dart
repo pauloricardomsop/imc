@@ -39,4 +39,4 @@ class ConsultaCPFController {
       NotificationService.negative(response.error.toString());
     }
   }
-}
+} 
