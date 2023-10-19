@@ -1,11 +1,10 @@
 import 'package:ad_manager/ad_manager.dart';
 import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/services/notification_service.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_view_model.dart';
-import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_captcha_bottom.dart';
-import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_network_error_page.dart';
 import 'package:svr/app/modules/consulta_cpf/ui/consulta_cpf_success_page.dart';
 import 'package:validators/validators.dart';
 
@@ -16,64 +15,28 @@ class ConsultaCPFController {
 
   factory ConsultaCPFController() => _instance;
 
-
   AppStream<ConsultaCPFViewModel> consultaStream =
       AppStream<ConsultaCPFViewModel>.seed(ConsultaCPFViewModel());
   ConsultaCPFViewModel get consulta => consultaStream.value;
 
-  void init() {
-    getCaptcha();
-  }
-
-  Future<void> getCaptcha() async {
-    consulta.captchaEC.clear();
-    consultaStream.update();
-  }
-
-  Future<void> onClickProximo(_) async {
-    try {
-      if (!CPFValidator.isValid(consulta.cpfEC.text)) {
-        consulta.cpfFC.requestFocus();
-        throw Exception('CPF inválido');
-      }
-
-      if (!isDate(consulta.dateFormatted)) {
-        consulta.dataNascimentoFC.requestFocus();
-        throw Exception('Data inválida');
-      }
-      FocusScope.of(_).unfocus();
-      final responseSituacao = await showConsultaCPFCaptchaBottom(_);
-      if (responseSituacao == null) return;
-      if (responseSituacao.hasError) {
-        push(_, ConsultaCPFNetworkErrorPage());
-        return;
-      }
-      AdManager.showRewarded(
-          onDispose: () =>
-              push(_, ConsultaCPFSuccessPage(responseSituacao.data)));
-      getCaptcha();
-    } catch (e) {
-      NotificationService.negative(e.toString());
-    }
-  }
-
   Future<void> onClickConsultar(_) async {
-    // final situacaoResponse = await cpfAdapter.getSituacao(consulta.cpfEC.text,
-    //     consulta.dataNascimentoEC.text, consultaStream.value.captchaEC.text);
-    // // final situacaoResponse = await cpfAdapter.getSituacao(
-    // //     '057.693.353-86', '15/06/1993', consultaStream.value.captchaEC.text);
-    // if (situacaoResponse.hasError && !situacaoResponse.isDioException) {
-    //   if (situacaoResponse.error
-    //       .toString()
-    //       .contains('Data de Nascimento Incorreta')) {
-    //     await getCaptcha();
-    //     Navigator.pop(_);
-    //     await push(_, ConsultaCPFDataInvalidaPage());
-    //     consulta.dataNascimentoFC.requestFocus();
-    //     return;
-    //   }
-    //   NotificationService.negative(situacaoResponse.error.toString());
-    // }
-    // Navigator.pop(_, situacaoResponse);
+    if (!CPFValidator.isValid(consulta.cpfEC.text)) {
+      consulta.cpfFC.requestFocus();
+      throw Exception('CPF inválido');
+    }
+
+    if (!isDate(consulta.dateFormatted)) {
+      consulta.dataNascimentoFC.requestFocus();
+      throw Exception('Data inválida');
+    }
+    FocusScope.of(_).unfocus();
+    final response =
+        await ConsultaCPFAdapter.getConsultaCPF(consulta.cpfEC.value.text, consulta.dateFormatted);
+    if (response.hasData) {
+      AdManager.showRewarded(
+          onDispose: () => push(_, ConsultaCPFSuccessPage(response.data)));
+    } else {
+      NotificationService.negative(response.error.toString());
+    }
   }
 }

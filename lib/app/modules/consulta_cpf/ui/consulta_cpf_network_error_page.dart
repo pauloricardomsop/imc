@@ -48,7 +48,7 @@ class _ConsultaCPFNetworkHomePageState
         const H(24),
         AppButton(
           label: 'TENTAR NOVAMENTE',
-          onTap: () => ConsultaCPFController().onClickProximo(_),
+          onTap: () => ConsultaCPFController().onClickConsultar(_),
           icon: const AdIcon(),
         )
       ],

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Revenir à l\'accueil"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Revenir en haut de la page"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Autres options"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"OK"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Tout afficher"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Sélectionner une application"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"NON"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"OUI"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"supprimer"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"entrée"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Fonction+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Méta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Maj+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"espace"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Rechercher…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Effacer la requête"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Requête de recherche"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Rechercher"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Envoyer la requête"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Recherche vocale"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Partager avec"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Partager avec <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Réduire"</string>
+    <string name="applovin_agree_message">Cliquez sur \"Continuer\" afin d\'utiliser notre application.</string>
+    <string name="applovin_alt_privacy_policy_text"/>
+    <string name="applovin_continue_button_text">Continuer</string>
+    <string name="applovin_gdpr_advertising_partners_screen_message">Comme détaillé dans notre politique de confidentialité et avec votre accord nous pourrions partager ces données avec les partenaires suivant pour leur permettre de diffuser des publicités personnalisés:</string>
+    <string name="applovin_gdpr_advertising_partners_screen_title">Du contenu et des publicités personnalisé</string>
+    <string name="applovin_gdpr_analytics_partners_screen_message">Comme détaillé dans notre politique de confidentialité et avec votre accord nous pourrions partager ces données avec les partenaires suivant pour leur permettre de mesurer la performance et d\'améliorer nos produits et services:</string>
+    <string name="applovin_gdpr_analytics_partners_screen_title">Mesure de la performance et développement produit</string>
+    <string name="applovin_gdpr_are_you_sure_screen_message">En autorisant nous et nos partenaires d\'utiliser ces données pour adapter le contenu comme expliqué dans notre politique de confidentialité:\n\n\u2022 En vous donnant du contenu personnalisé\n\n\u2022 Contribue aux améliorations et développement produit\n\n\u2022 Vous permettant de participer à des évènements</string>
+    <string name="applovin_gdpr_are_you_sure_screen_title">Êtes-vous sûr ?</string>
+    <string name="applovin_gdpr_back_button_text">Précédent</string>
+    <string name="applovin_gdpr_learn_more_screen_bullet_1">Aidez à garder notre application gratuite!</string>
+    <string name="applovin_gdpr_learn_more_screen_bullet_2">L\'accès a des publicités et du contenu personnalisé</string>
+    <string name="applovin_gdpr_learn_more_screen_bullet_3">Contribue aux améliorations et développement produit</string>
+    <string name="applovin_gdpr_learn_more_screen_bullet_4">La possibilité de participer à des évènements</string>
+    <string name="applovin_gdpr_learn_more_screen_message_1">Merci d\'avoir téléchargé notre application! Autorisez-nous et nos partenaires d\'utiliser ces données nous permet de créer une expérience unique, incluant:</string>
+    <string name="applovin_gdpr_learn_more_screen_message_2">Vous avez la possibilité à tout moment de changer vos choix. Si vous décidez de ne pas partager votre data vous pourrez toujours accéder à l\'application en ayant des publicités. Cependant ces publicités pourraient être moins pertinente.</string>
+    <string name="applovin_gdpr_main_screen_analytics_purposes_switch_text">Mesure de la performance et développement produit</string>
+    <string name="applovin_gdpr_main_screen_learn_more_button_text">En savoir plus</string>
+    <string name="applovin_gdpr_main_screen_message">Comme expliqué dans notre politique de confidentialité, avec votre autorisation nous collectons certaines informations de votre téléphone telles que l\'adresse IP et les identifiants annonceurs. Ces données nous permettent ainsi qu\'à nos partenaires d\'afficher des contenus publicitaires plus pertinents.\n\nCi-dessous vous pouvez autoriser nous et nos partenaires a utiliser ces données pour les besoins suivants:</string>
+    <string name="applovin_gdpr_main_screen_personalized_advertising_purposes_switch_text">Contenus et publicités personnalisés</string>
+    <string name="applovin_gdpr_main_screen_pp_and_tos_switch_text">J\'ai plus de 16 ans, j\'accepte les termes et conditions, et je reconnais que la politique de confidentialité s\'applique.</string>
+    <string name="applovin_gdpr_main_screen_privacy_policy_switch_text">Je confirme être âgé de plus de seize ans ainsi qu\'avoir lu et compris la politique de confidentialité.</string>
+    <string name="applovin_gdpr_main_screen_title">Merci d\'avoir téléchargé \n%s!</string>
+    <string name="applovin_gdpr_understand_and_continue_button_text">J\'ai lu et j\'accepte</string>
+    <string name="applovin_learn_more_screen_title">Aidez-nous à garder %s gratuit et plus fun!</string>
+    <string name="applovin_pp_and_tos_title">Pour utiliser %s vous devez accepter les termes et conditions et confirmer avoir lu notre politique de confidentialité.</string>
+    <string name="applovin_pp_title">Pour utiliser %s vous devez confirmer avoir lu et accepté notre politique de confidentialité.</string>
+    <string name="applovin_privacy_policy_text">politique de confidentialité</string>
+    <string name="applovin_terms_of_service_text">termes et conditions</string>
+    <string name="applovin_terms_of_use_text">termes et conditions</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Répondre"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Vidéo"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Refuser"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Raccrocher"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Appel entrant"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Appel en cours"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Filtrage d\'un appel entrant"</string>
+    <string gender="unknown" name="com_facebook_device_auth_instructions">Consultez &lt;b>facebook.com/device&lt;/b> et entrez le code affiché ci-dessous.</string>
+    <string gender="unknown" name="com_facebook_image_download_unknown_error">Une erreur inattendue s’est produite lors du téléchargement d’une image.</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_message">La connexion à WebView nécessite une autorisation INTERNET</string>
+    <string gender="unknown" name="com_facebook_internet_permission_error_title">Erreur AndroidManifest</string>
+    <string gender="unknown" name="com_facebook_like_button_liked">J’aime déjà</string>
+    <string gender="unknown" name="com_facebook_like_button_not_liked">J’aime</string>
+    <string gender="unknown" name="com_facebook_loading">Chargement…</string>
+    <string gender="unknown" name="com_facebook_loginview_cancel_action">Annuler</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button">Connectez-vous</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_continue">Continuer avec Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_in_button_long">Se connecter avec Facebook</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_action">Déconnexion</string>
+    <string gender="unknown" name="com_facebook_loginview_log_out_button">Déconnexion</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_as">Connecté(e) en tant que : %1$s</string>
+    <string gender="unknown" name="com_facebook_loginview_logged_in_using_facebook">Connecté(e) avec Facebook</string>
+    <string gender="unknown" name="com_facebook_send_button_text">Envoyer</string>
+    <string gender="unknown" name="com_facebook_share_button_text">Partager</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions">Pour associer votre compte, ouvrez l’app Facebook sur votre appareil mobile et vérifiez les notifications.</string>
+    <string gender="unknown" name="com_facebook_smart_device_instructions_or">- OU -</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_cancel">Ce n’est pas vous ?</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_continue_as">Continuer en tant que %1$s</string>
+    <string gender="unknown" name="com_facebook_smart_login_confirmation_title">Confirmer la connexion</string>
+    <string gender="unknown" name="com_facebook_tooltip_default">Vous avez le contrôle - choisissez les informations que vous voulez partager avec les apps.</string>
+    <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Activer</string>
+    <string msgid="227660514972886228" name="common_google_play_services_enable_text">%1$s ne fonctionnera pas tant que vous n\'aurez pas activé les services Google Play.</string>
+    <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Activer les services Google Play</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Installer</string>
+    <string name="common_google_play_services_install_text">%1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas installés sur votre appareil.</string>
+    <string msgid="7215213145546190223" name="common_google_play_services_install_title">Installer les services Google Play</string>
+    <string name="common_google_play_services_notification_channel_name">Disponibilité des services Google Play</string>
+    <string name="common_google_play_services_notification_ticker">Erreur liée aux services Google Play</string>
+    <string name="common_google_play_services_unknown_issue">L\'application %1$s rencontre des problèmes avec les services Google Play. Veuillez réessayer.</string>
+    <string name="common_google_play_services_unsupported_text">%1$s ne fonctionnera pas sans les services Google Play, qui ne sont pas compatibles avec votre appareil.</string>
+    <string msgid="6556509956452265614" name="common_google_play_services_update_button">Mettre à jour</string>
+    <string msgid="9053896323427875356" name="common_google_play_services_update_text">%1$s ne fonctionnera pas tant que vous n\'aurez pas mis à jour les services Google Play.</string>
+    <string msgid="6006316683626838685" name="common_google_play_services_update_title">Mettre à jour les services Google Play</string>
+    <string name="common_google_play_services_updating_text">%1$s ne fonctionnera pas sans les services Google Play, qui sont en cours de mise à jour.</string>
+    <string name="common_google_play_services_wear_update_text">La nouvelle version des services Google Play est nécessaire. Elle sera bientôt installée automatiquement.</string>
+    <string name="common_open_on_phone">Ouvrir sur le téléphone</string>
+    <string name="common_signin_button_text">Se connecter</string>
+    <string name="common_signin_button_text_long">Se connecter avec Google</string>
+    <string msgid="3260749812566568062" name="copy_toast_msg">"Lien copié dans le presse-papiers"</string>
+    <string msgid="4566929209979330987" name="fallback_menu_item_copy_link">"Copier le lien"</string>
+    <string msgid="3413186855122069269" name="fallback_menu_item_open_in_browser">"Ouvrir dans un navigateur"</string>
+    <string msgid="7145444925855055364" name="fallback_menu_item_share_link">"Partager le lien"</string>
+    <string name="native_body">Corps</string>
+    <string name="native_headline">Titre</string>
+    <string name="native_media_view">Vue multimédia</string>
+    <string name="notifications_permission_confirm">Autoriser</string>
+    <string name="notifications_permission_decline">Ne pas autoriser</string>
+    <string name="notifications_permission_title">Autoriser l\'appli à vous envoyer des notifications ?</string>
+    <string name="offline_notification_text">Appuyez pour ouvrir l\'annonce</string>
+    <string name="offline_notification_title">Afficher l\'annonce que vous avez enregistrée lorsque vous n\'aviez pas accès à Internet</string>
+    <string name="offline_opt_in_confirm">OK</string>
+    <string name="offline_opt_in_confirmation">Vous recevrez une notification contenant le lien lorsque vous serez à nouveau connecté à Internet</string>
+    <string name="offline_opt_in_decline">Non, merci</string>
+    <string name="offline_opt_in_message">Nous vous enverrons une notification contenant un lien vers le site de l\'annonceur.</string>
+    <string name="offline_opt_in_title">Ouvrez l\'annonce lorsque vous serez à nouveau connecté à Internet.</string>
+    <string name="s1">Enregistrer l\'image</string>
+    <string name="s2">Autoriser l\'annonce à stocker l\'image dans la galerie d\'images ?</string>
+    <string name="s3">Accepter</string>
+    <string name="s4">Refuser</string>
+    <string name="s5">Créer un événement d\'agenda</string>
+    <string name="s6">Autoriser l\'annonce à créer un événement d\'agenda ?</string>
+    <string name="s7">Annonce test</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Rechercher"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="tt_00_00">00:00</string>
+    <string name="tt_ad">Annonce</string>
+    <string name="tt_ad_clicked_text">Publicité cliquée</string>
+    <string name="tt_ad_close_text">Publicité fermée</string>
+    <string name="tt_ad_data_error">Response data error</string>
+    <string name="tt_ad_is_closed">Annonces fermées</string>
+    <string name="tt_ad_logo_txt">AD</string>
+    <string name="tt_ad_showed_text">Publicité affichée</string>
+    <string name="tt_adslot_empty">No request ad slot</string>
+    <string name="tt_adslot_id_error">Illegal ad slot id</string>
+    <string name="tt_adslot_size_empty">Empty ad slot size</string>
+    <string name="tt_adtype_not_match_rit">Ad slot id error</string>
+    <string name="tt_app_empty">No request app</string>
+    <string name="tt_app_name">tt_open_ad_sdk</string>
+    <string name="tt_auto_play_cancel_text">Annuler</string>
+    <string name="tt_banner_ad_load_image_error">Banner loading failed</string>
+    <string name="tt_cancel">Annuler</string>
+    <string name="tt_choose_language">fr</string>
+    <string name="tt_click_to_replay">Appuyez pour relancer la vidéo</string>
+    <string name="tt_comment_num">%1$s évaluations</string>
+    <string name="tt_comment_num_backup">%1$s évaluations</string>
+    <string name="tt_comment_score">Évaluation</string>
+    <string name="tt_confirm_download">Vous n\'êtes pas connecté(e) à un réseau Wi-Fi. Voulez-vous vraiment lancer le téléchargement ?</string>
+    <string name="tt_confirm_download_have_app_name">Préparation en cours pour télécharger %s appli(s)</string>
+    <string name="tt_content_type">Http content type error</string>
+    <string name="tt_count_down_view">Passer</string>
+    <string name="tt_dislike_header_tv_back">Retour</string>
+    <string name="tt_dislike_header_tv_title">Sélectionner</string>
+    <string name="tt_error_access_method_pass">Illegal access method</string>
+    <string name="tt_error_ad_type">Illegal ad type</string>
+    <string name="tt_error_adtype_differ">Ad type error</string>
+    <string name="tt_error_apk_sign_check_error">Illegal apk sha1 value</string>
+    <string name="tt_error_code_adcount_error">Incorrect number of ad</string>
+    <string name="tt_error_code_click_event_error">Click event error</string>
+    <string name="tt_error_image_size">Illegal image size</string>
+    <string name="tt_error_media_id">Illegal media id</string>
+    <string name="tt_error_media_type">Illegal media type</string>
+    <string name="tt_error_new_register_limit">New ad slot exceeded daily request limit</string>
+    <string name="tt_error_origin_ad_error">Origin type error</string>
+    <string name="tt_error_package_name">Package name error</string>
+    <string name="tt_error_redirect">Redirect error</string>
+    <string name="tt_error_request_invalid">Invalid request</string>
+    <string name="tt_error_slot_id_app_id_differ">SlotId and AppId match error</string>
+    <string name="tt_error_splash_ad_type">Splash ad type error</string>
+    <string name="tt_error_union_os_error">Os type error</string>
+    <string name="tt_error_union_sdk_too_old">Sdk version too low</string>
+    <string name="tt_error_unknow">Unknown error</string>
+    <string name="tt_error_verify_reward">Reward verify error</string>
+    <string name="tt_feedback_experience_text">Nous allons continuer à améliorer notre service.</string>
+    <string name="tt_feedback_submit_text">Vos commentaires ont bien été envoyés ! Veuillez ne pas en renvoyer.</string>
+    <string name="tt_feedback_thank_text">Merci pour vos commentaires !</string>
+    <string name="tt_frequent_call_erroe">Ad requests are too frequent</string>
+    <string name="tt_full_screen_skip_tx">Passer</string>
+    <string name="tt_get_reward">Récompense distribuée</string>
+    <string name="tt_insert_ad_load_image_error">Interstitial loading failed</string>
+    <string name="tt_label_cancel">Annuler</string>
+    <string name="tt_label_ok">OK</string>
+    <string name="tt_load_creative_icon_error">Icon loading failed</string>
+    <string name="tt_load_creative_icon_response_error">Icon loading error</string>
+    <string name="tt_load_failed_text">Chargement de la publicité impossible</string>
+    <string name="tt_load_success_text">Chargement de la publicité terminé</string>
+    <string name="tt_msgPlayable">Terminez la lecture pour obtenir vos récompenses</string>
+    <string name="tt_negtiveBtnBtnText">Quitter</string>
+    <string name="tt_negtive_txt">Annuler</string>
+    <string name="tt_net_error">Network error</string>
+    <string name="tt_no_ad">No ad</string>
+    <string name="tt_no_ad_parse">Parsing data without ad</string>
+    <string name="tt_no_network">Aucune connexion au réseau, veuillez réessayer plus tard.</string>
+    <string name="tt_no_thank_you">Non merci</string>
+    <string name="tt_parse_fail">Parsing error</string>
+    <string name="tt_permission_denied">Vous avez désactivé les autorisations requises. Veuillez les activer.</string>
+    <string name="tt_postiveBtnText">Reprendre</string>
+    <string name="tt_postiveBtnTextPlayable">Poursuivre la lecture</string>
+    <string name="tt_postive_txt">OK</string>
+    <string name="tt_privacy_title">Politique de confidentialité</string>
+    <string name="tt_reder_ad_load_timeout">Template loading timeout</string>
+    <string name="tt_render_diff_template_invalid">Template diff invalid</string>
+    <string name="tt_render_fail_meta_invalid">Template invalid</string>
+    <string name="tt_render_fail_template_parse_error">Template parsing error</string>
+    <string name="tt_render_fail_timeout">Render timeout</string>
+    <string name="tt_render_fail_unknown">Render failed unknown</string>
+    <string name="tt_render_main_template_invalid">Main template invalid</string>
+    <string name="tt_render_render_parse_error">Render parsing failed</string>
+    <string name="tt_request_body_error">Request entity is empty</string>
+    <string name="tt_request_pb_error">Http request pb error</string>
+    <string name="tt_reward_feedback">Commentaires</string>
+    <string name="tt_reward_full_skip">Passer après %1$s secondes</string>
+    <string name="tt_reward_msg">Regardez la vidéo dans son intégralité pour obtenir votre récompense</string>
+    <string name="tt_reward_screen_skip_tx">Passer</string>
+    <string name="tt_reward_video_show_error">Erreur d\'affichage de la vidéo de récompense</string>
+    <string name="tt_ror_code_show_event_error">Show event error</string>
+    <string name="tt_skip_ad_time_text">Passer après %ds secondes</string>
+    <string name="tt_splash_ad_load_image_error">Splash loading failed</string>
+    <string name="tt_splash_cache_expired_error">Cache expired</string>
+    <string name="tt_splash_cache_parse_error">Cache parsing failed</string>
+    <string name="tt_splash_not_have_cache_error">No splash cache</string>
+    <string name="tt_splash_skip_tv">3 s | Passer</string>
+    <string name="tt_sys_error">System error</string>
+    <string name="tt_tip">Demander</string>
+    <string name="tt_toast_ad_on_rewarded">Ad on rewarded</string>
+    <string name="tt_toast_later_download">Download later</string>
+    <string name="tt_toast_no_ad">No Ad to Show, Please Load Ad</string>
+    <string name="tt_toast_start_loading">Start Loading</string>
+    <string name="tt_toast_tiktok_ad_failed">TikTok Ad Failed to load, error code is:</string>
+    <string name="tt_try_now">Essayez maintenant</string>
+    <string name="tt_txt_skip">Passer</string>
+    <string name="tt_unlike">Sans intérêt</string>
+    <string name="tt_video_bytesize">Données</string>
+    <string name="tt_video_bytesize_M">M</string>
+    <string name="tt_video_bytesize_MB">MB</string>
+    <string name="tt_video_continue_play">Poursuivre la lecture</string>
+    <string name="tt_video_dial_phone">Appeler</string>
+    <string name="tt_video_download_apk">Télécharger</string>
+    <string name="tt_video_mobile_go_detail">Consulter</string>
+    <string name="tt_video_retry_des">Téléchargement impossible. Cliquez pour réessayer</string>
+    <string name="tt_video_retry_des_txt">Téléchargement impossible. Veuillez réessayer</string>
+    <string name="tt_video_without_wifi_tips">%.2f Mo de données seront utilisés pour lire ce contenu</string>
+    <string name="tt_wap_empty">No request wap</string>
+    <string name="tt_web_title_default">Annonce</string>
+    <string name="tt_will_play">La vidéo va se lancer</string>
+    <string name="tt_yes_i_agree">Oui, d\'accord</string>
+    <string name="watermark_label_prefix">AdMob - </string>
+</resources>

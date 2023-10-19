@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">502689250513-kf3fipfti8u2rccehvj9cibn2mdf25g6.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">502689250513</string>
+    <string name="google_api_key" translatable="false">AIzaSyDILXgl_pFNqDGLrRHgxbomxTTHu5TXqII</string>
+    <string name="google_app_id" translatable="false">1:502689250513:android:70df4e4e2ccbc4dd8119f0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDILXgl_pFNqDGLrRHgxbomxTTHu5TXqII</string>
+    <string name="google_storage_bucket" translatable="false">ldv-svr.appspot.com</string>
+    <string name="project_id" translatable="false">ldv-svr</string>
+</resources>

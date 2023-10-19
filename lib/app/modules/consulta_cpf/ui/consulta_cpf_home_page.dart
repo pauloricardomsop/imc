@@ -46,8 +46,8 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
       bottom: Footer(
         AppButton(
           label: 'CONSULTAR',
-          onTap: () =>
-              ConsultaCPFAdapter.getConsultaCPF('082.900.263-40', '24/02/2001'),
+          onTap: () => _controller.onClickConsultar(context)
+              ,
           icon: Icons.arrow_forward,
         ),
       ),
@@ -79,7 +79,7 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
               type: const TextInputType.numberWithOptions(),
               icon: Symbols.calendar_month,
               action: TextInputAction.go,
-              onEditingComplete: () => _controller.onClickProximo(context),
+              onEditingComplete: () => _controller.onClickConsultar(context),
             ),
             const H(16),
             const CardAlert.info(
