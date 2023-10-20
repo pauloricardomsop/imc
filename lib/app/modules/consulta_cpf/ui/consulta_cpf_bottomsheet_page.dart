@@ -1,5 +1,6 @@
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
@@ -36,6 +37,7 @@ class ConsultaCPFBottomSheetPage extends StatelessWidget {
 
   Widget body(BuildContext context, ConsultaCPFViewModel consultaPagamento,
       ConsultaCPFController consultaPagamentoController) {
+        final now = DateTime.now();
     return Container(
       padding: const EdgeInsets.only(top: 10, left: 16, right: 16, bottom: 16),
       decoration: const BoxDecoration(color: Color(0xFFFFFFFF)),
@@ -53,29 +55,29 @@ class ConsultaCPFBottomSheetPage extends StatelessWidget {
             ),
           ),
           const H(8),
-          // camposUser('Nome completo', model.nome),
-          // const H(8),
-          // camposUser('Data de Nascimento', model.dataNascimento),
-          // const H(8),
-          // camposUser('CPF', model.cpf),
-          // const H(8),
-          // camposUser('Data de inscrição', model.dataInscricao),
-          // const H(8),
-          // camposUser('Código de verificação', model.codigoControleComprovante,
-          //     isCopy: true),
-          // const H(8),
-          // camposUser('Dígito Verificador', model.digitoVerificador),
+          camposUser('Nome completo', model.nome),
           const H(8),
-          // Text(
-          //   'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',
-          //   textAlign: TextAlign.center,
-          //   style: const TextStyle(color: Color(0xFF020617)).bodyMedium,
-          // ),
-          // Text(
-          //   'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',
-          //   textAlign: TextAlign.center,
-          //   style: const TextStyle(color: Color(0xFF020617)).bodyMedium,
-          // ),
+          camposUser('Data de Nascimento', model.dataNascimento),
+          const H(8),
+          camposUser('CPF', model.cpf),
+          const H(8),
+          camposUser('Data de inscrição', model.dataInscricao),
+          const H(8),
+          camposUser('Código de verificação', model.codigoControleComprovante,
+              isCopy: true),
+          const H(8),
+          camposUser('Dígito Verificador', model.digitoVerificador),
+          const H(8),
+          Text(
+            'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Color(0xFF020617)).bodyMedium,
+          ),
+          Text(
+            'Comprovante emitido às ${DateFormat('H:m:s', 'pt_BR').format(now)} do dia\n${DateFormat('d/MM/yyyy', 'pt_BR').format(now)} (hora e data de Brasília).',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Color(0xFF020617)).bodyMedium,
+          ),
           const H(8),
           AppButton.forward(
             label: 'ESCONDER DETALHES',

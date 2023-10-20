@@ -1,8 +1,8 @@
 import 'package:ad_manager/ad_manager.dart';
+import 'package:cpf_cnpj_validator/cpf_validator.dart';
 import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
 import 'package:svr/app/modules/consulta_cpf/consulta_cpf_controller.dart';
@@ -11,8 +11,7 @@ import 'package:svr/app/modules/consulta_svr/ui/consultar_svr_home_page.dart';
 import 'package:svr/app/modules/servicos_banco_central/servico_banco_central_home_page.dart';
 
 class ConsultaCPFHomePage extends AdStatefulWidget {
-  ConsultaCPFHomePage({Key? key})
-      : super(key: key, name: 'ConsultaCPFHomePage');
+  ConsultaCPFHomePage({Key? key}) : super(key: key, name: 'ConsultaCPFHomePage');
 
   @override
   State<ConsultaCPFHomePage> createState() => _ConsultaCPFHomePageState();
@@ -26,16 +25,15 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
           onTap: () => AdManager.showIntersticial(context,
-              flow: AdFlow.going,
-              onDispose: () => push(context, ServicoBancoCentralHomePage())),
+              flow: AdFlow.going, onDispose: () => push(context, ServicoBancoCentralHomePage())),
         ),
         CardFeature(
           label: 'Consultar Valores\na Receber',
           prefix: Symbols.payments,
           onTap: () => AdManager.showIntersticial(context,
               flow: AdFlow.going,
-              onDispose: () => push(context,
-                  ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
+              onDispose: () =>
+                  push(context, ConsultarSVRHomePage(ConsultaValoresPessoaEstado.vivo))),
         ),
       ];
 
@@ -46,8 +44,7 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
       bottom: Footer(
         AppButton(
           label: 'CONSULTAR',
-          onTap: () => _controller.onClickConsultar(context)
-              ,
+          onTap: () => _controller.onClickConsultar(context),
           icon: Icons.arrow_forward,
         ),
       ),
@@ -68,6 +65,11 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
               type: const TextInputType.numberWithOptions(),
               icon: Symbols.person_search,
               action: TextInputAction.next,
+              onChanged: (value) {
+                if (CPFValidator.isValid(value)) {
+                  AdManager.fetchRewarded();
+                }
+              },
               onEditingComplete: () => model.dataNascimentoFC.requestFocus(),
             ),
             const H(16),
@@ -82,8 +84,7 @@ class _ConsultaCPFHomePageState extends State<ConsultaCPFHomePage> {
               onEditingComplete: () => _controller.onClickConsultar(context),
             ),
             const H(16),
-            const CardAlert.info(
-                'Não armazenamos seus dados\nao fazer a consulta.'),
+            const CardAlert.info('Não armazenamos seus dados\nao fazer a consulta.'),
             const H(16),
             const AppTitle('Veja mais opções.'),
             const H(16),
