@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:request_manager/request_manager.dart';
 import 'package:svr/app/core/client/valores_receber/models/valores_receber_captcha_model.dart';
-import 'package:svr/app/core/models/api_response_model.dart';
 
 class ValoresReceberProvider {
   static Future<ApiResponse<ValoresReceberCaptcha>> getCaptcha() async {
