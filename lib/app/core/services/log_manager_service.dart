@@ -10,7 +10,7 @@ class LogManagerService implements Service {
     await FacebookAppEvents().setAutoLogAppEventsEnabled(true);
     await FacebookAppEvents().setAdvertiserTracking(enabled: true);
 
-    KochavaTracker.instance.registerAndroidAppGuid("komeu-auxilio-hqi");
+    KochavaTracker.instance.registerAndroidAppGuid("ko-1-svr-qbw");
     KochavaTracker.instance.start();
 
     LogManager.instance.initialize(
