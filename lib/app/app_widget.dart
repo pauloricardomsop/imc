@@ -22,7 +22,7 @@ class _AppState extends State<App> {
         color: const Color(0xFFF8FAFC),
         debugShowCheckedModeBanner: false,
         navigatorKey: _appController.key,
-        title: 'SVR - Valores a Receber',
+        title: 'Guia Valores Esquecidos 2023',
         theme: appTheme,
         home: ModulePage(
           home: HomePage(),

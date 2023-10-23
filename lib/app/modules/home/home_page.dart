@@ -63,13 +63,13 @@ class _HomePageState extends State<HomePage> {
                   ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
                       ConsultaValoresPessoa.fisica))),
         ),
-        CardFeature(
-          label: 'Saiba se seu CPF\nestá ativo',
-          prefix: Symbols.assured_workload,
-          onTap: () => AdManager.showIntersticial(context,
-              flow: AdFlow.going,
-              onDispose: () => push(context, ConsultaCPFHomePage())),
-        ),
+        // CardFeature(
+        //   label: 'Saiba se seu CPF\nestá ativo',
+        //   prefix: Symbols.assured_workload,
+        //   onTap: () => AdManager.showIntersticial(context,
+        //       flow: AdFlow.going,
+        //       onDispose: () => push(context, ConsultaCPFHomePage())),
+        // ),
         CardFeature(
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
