@@ -34,6 +34,7 @@ jobs:
           if echo "$COMMIT_MESSAGE" | grep -E -i "major|minor|patch"; then
             echo "Incremento de versão detectado."
           else
+            exit 1
             echo "Nenhum incremento de versão detectado."
           fi
 
@@ -79,6 +80,8 @@ jobs:
 
       - name: Criando Tag
         run: |
+          NEW_VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
           FLUTTER_VERSION_CODE=$(echo $NEW_VERSION | awk -F. '{print $1$2$3}')
 
            Atualize o versionCode
