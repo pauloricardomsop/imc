@@ -1,4 +1,4 @@
-name: Tager
+name: Release Checker
 
 on:
   push:
