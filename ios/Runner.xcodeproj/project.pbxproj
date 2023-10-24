@@ -12,6 +12,7 @@
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3AF312CF2AE823D900CCEC25 /* KochavaCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF312CE2AE823D900CCEC25 /* KochavaCore */; };
 		3AF312D22AE82EDC00CCEC25 /* KochavaTracker in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF312D12AE82EDC00CCEC25 /* KochavaTracker */; };
+		3AF312D52AE830BF00CCEC25 /* KochavaAdNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF312D42AE830BF00CCEC25 /* KochavaAdNetwork */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		509B40935F1C92C037F874CF /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61013398D50D4B8B93EBFBB2 /* Pods_RunnerTests.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -76,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF312D52AE830BF00CCEC25 /* KochavaAdNetwork in Frameworks */,
 				ED6F5E1B43B288AD5094796E /* Pods_Runner.framework in Frameworks */,
 				3AF312CF2AE823D900CCEC25 /* KochavaCore in Frameworks */,
 				3AF312D22AE82EDC00CCEC25 /* KochavaTracker in Frameworks */,
@@ -214,6 +216,7 @@
 			packageProductDependencies = (
 				3AF312CE2AE823D900CCEC25 /* KochavaCore */,
 				3AF312D12AE82EDC00CCEC25 /* KochavaTracker */,
+				3AF312D42AE830BF00CCEC25 /* KochavaAdNetwork */,
 			);
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
@@ -251,6 +254,7 @@
 			packageReferences = (
 				3AF312CD2AE823D900CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaCore" */,
 				3AF312D02AE82EDC00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracker" */,
+				3AF312D32AE830BF00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaAdNetwork" */,
 			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
@@ -762,6 +766,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		3AF312D32AE830BF00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaAdNetwork" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaAdNetwork";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -774,6 +786,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3AF312D02AE82EDC00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracker" */;
 			productName = KochavaTracker;
+		};
+		3AF312D42AE830BF00CCEC25 /* KochavaAdNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF312D32AE830BF00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaAdNetwork" */;
+			productName = KochavaAdNetwork;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
