@@ -22,22 +22,17 @@ jobs:
 
       - name: Checkando Incremento de Versäo
         run: |
-          # Obtém o SHA do commit atual
           COMMIT_SHA=$(git rev-parse HEAD)
-          # Obtém o SHA do commit anterior
           PREVIOUS_COMMIT_SHA=$(git rev-parse HEAD~1)
 
-          # Obtém a mensagem do commit atual
           COMMIT_MESSAGE=$(git log --format=%B -n 1 $COMMIT_SHA)
 
-          # Verifica se a mensagem do commit contém um incremento de versão
           if echo "$COMMIT_MESSAGE" | grep -E -i "major|minor|patch"; then
             echo "Incremento de versão detectado."
           else
             echo "Nenhum incremento de versão detectado."
           fi
 
-          # Compare o commit atual com o commit anterior para determinar o tipo de incremento
           if git diff $COMMIT_SHA $PREVIOUS_COMMIT_SHA -- pubspec.yaml | grep -E -q "\+\+\+ b/pubspec.yaml"; then
             echo "Alterações no pubspec.yaml, possivelmente um incremento de versão."
           else
