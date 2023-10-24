@@ -8,17 +8,67 @@ on:
 jobs:
   tag_and_update_version:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Extract version from pubspec.yaml
-        id: get_version
+      - name: Extract old and new versions from pubspec.yaml
+        id: get_versions
         run: |
-          NEW_VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          OLD_VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
+          NEW_VERSION=$OLD_VERSION  # Inicialmente, definimos a nova versão como a versão atual.
+          if [ "$NEW_VERSION" != "$OLD_VERSION" ]; then
+            echo "Nova versão detectada: $NEW_VERSION"
+            echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+          else
+            echo "Nenhuma mudança de versão detectada. Nada a fazer."
+            exit 0  # Sai do workflow se não houver alterações de versão.
+          fi
 
-      - name: Update android/app/build.gradle
+      - name: Verificação de applicationId, facebook_app_id, facebook_client_token, linha de código em log_manager_service.dart, metadata no AndroidManifest e JSON em ad_manager_service.dart
+        if: env.NEW_VERSION
+        run: |
+          applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
+          if [ "$applicationId" == "com.ldcapps.svr" ]; then
+            echo "applicationId está configurado corretamente."
+          else
+            echo "ERRO: applicationId não está configurado corretamente."
+            exit 1
+          fi
+
+          facebookAppId=$(grep '<string name="facebook_app_id">' android/app/src/main/res/values/strings.xml | awk -F'>' '{print $2}' | awk -F'<' '{print $1}')
+          if [ "$facebookAppId" == "211276778576583" ]; then
+            echo "facebook_app_id está configurado corretamente."
+          else
+            echo "ERRO: facebook_app_id não está configurado corretamente."
+            exit 1
+          fi
+
+          facebookClientToken=$(grep '<string name="facebook_client_token">' android/app/src/main/res/values/strings.xml | awk -F'>' '{print $2}' | awk -F'<' '{print $1}')
+          if [ "$facebookClientToken" == "e062eae9839775fd3987551aae1fb0de" ]; then
+            echo "facebook_client_token está configurado corretamente."
+          else
+            echo "ERRO: facebook_client_token não está configurado corretamente."
+            exit 1
+          fi
+
+          if grep -q "KochavaTracker.instance.registerAndroidAppGuid(\"ko-1-svr-qbw\");" lib/core/services/log_manager_service.dart; then
+            echo "A linha de código em log_manager_service.dart está configurada corretamente."
+          else
+            echo "ERRO: A linha de código em log_manager_service.dart não está configurada corretamente."
+            exit 1
+          fi
+
+          if grep -q "com.google.android.gms.ads.APPLICATION_ID" android/app/src/main/AndroidManifest.xml; then
+            echo "Metadata no AndroidManifest.xml está configurada corretamente."
+          else
+            echo "ERRO: Metadata no AndroidManifest.xml não está configurada corretamente."
+            exit 1
+          fi
+
+      - name: Update android/app/build.gradle and create a new tag
+        if: env.NEW_VERSION
         run: |
           FLUTTER_VERSION_CODE=$(echo $NEW_VERSION | awk -F. '{print $1$2$3}')
 
@@ -30,11 +80,6 @@ jobs:
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "paulo@ldcapps.com"
           git add android/app/build.gradle
-          git commit -m "release $NEW_VERSION"
-          git push
-
-      - name: Create a new tag
-        if: env.NEW_VERSION
-        run: |
+          git commit -m "Release $NEW_VERSION"
           git tag $NEW_VERSION
           git push origin $NEW_VERSION

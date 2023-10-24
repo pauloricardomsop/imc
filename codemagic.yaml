@@ -41,12 +41,12 @@ workflows:
       - build/ios/ipa/*.ipa
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
-      slack:
-        channel: '#svr'
-        notify_on_build_start: true
-        notify:
-          success: true
-          failure: true
+      # slack:
+      #   channel: '#svr'
+      #   notify_on_build_start: true
+      #   notify:
+      #     success: true
+      #     failure: true
       email:
         recipients:
           - ldc22@gmail.com
