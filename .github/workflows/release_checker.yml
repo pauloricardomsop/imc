@@ -30,7 +30,7 @@ jobs:
 
           if [ "$old_version" = "$new_version" ]; then
             echo "A versão do pubspec.yaml não foi alterada. Interrompendo o script."
-            exit 0
+            exit 1
           else
             echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
           fi
