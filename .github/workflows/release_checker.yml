@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  tag_and_update_version:
+  release_checker:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v2
 
       - name: Verificando versão
