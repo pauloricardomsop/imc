@@ -21,9 +21,9 @@ jobs:
           if [ "$old_version" = "$new_version" ]; then
             echo "A versão do pubspec.yaml não foi alterada. Interrompendo o script."
             exit 0
+          else
+            echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
           fi
-
-          echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
 
       - name: Verificação de applicationId, facebook_app_id, facebook_client_token, linha de código em log_manager_service.dart, metadata no AndroidManifest e JSON em ad_manager_service.dart
         run: |
