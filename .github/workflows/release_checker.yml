@@ -25,9 +25,8 @@ jobs:
           git log -n 2 --pretty=format:"%h" > commits.txt
           commit_array=($(cat commits.txt))
 
-          old_version=$(git show ${commit_array[1]}:pubspec.yaml | grep -o "version: [0-9.]*")
-          new_version=$(git show ${commit_array[0]}:pubspec.yaml | grep -o "version: [0-9.]*")
-          echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
+          old_version=$(git show ${commit_array[1]}:pubspec.yaml | grep -o 'version:[[:space:]]*[0-9.]*' | awk '{print $2}')
+          new_version=$(git show ${commit_array[0]}:pubspec.yaml | grep -o 'version:[[:space:]]*[0-9.]*' | awk '{print $2}')
 
           if [ "$old_version" = "$new_version" ]; then
             echo "A versão do pubspec.yaml não foi alterada. Interrompendo o script."
