@@ -32,54 +32,47 @@ jobs:
         run: |
           applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
           if [ "$applicationId" == "com.ldcapps.svr" ]; then
-            echo "applicationId está configurado corretamente."
           else
-            echo "ERRO: applicationId não está configurado corretamente."
+            echo "ERRO: Package Inválido."
             exit 1
           fi
 
           facebookAppId=$(grep '<string name="facebook_app_id">' android/app/src/main/res/values/strings.xml | awk -F'>' '{print $2}' | awk -F'<' '{print $1}')
           if [ "$facebookAppId" == "211276778576583" ]; then
-            echo "facebook_app_id está configurado corretamente."
           else
-            echo "ERRO: facebook_app_id não está configurado corretamente."
+            echo "ERRO: facebook_app_id Inválido"
             exit 1
           fi
 
           facebookClientToken=$(grep '<string name="facebook_client_token">' android/app/src/main/res/values/strings.xml | awk -F'>' '{print $2}' | awk -F'<' '{print $1}')
           if [ "$facebookClientToken" == "e062eae9839775fd3987551aae1fb0de" ]; then
-            echo "facebook_client_token está configurado corretamente."
           else
-            echo "ERRO: facebook_client_token não está configurado corretamente."
+            echo "ERRO: facebook_client_token Inválido"
             exit 1
           fi
 
           if grep -q "KochavaTracker.instance.registerAndroidAppGuid(\"ko-1-svr-qbw\");" lib/app/core/services/log_manager_service.dart; then
-            echo "A linha de código em log_manager_service.dart está configurada corretamente."
           else
-            echo "ERRO: A linha de código em log_manager_service.dart não está configurada corretamente."
+            echo "ERRO: Kochava ID Inválido"
             exit 1
           fi
 
           if grep -q "ca-app-pub-8419654969814276~6369933191" android/app/src/main/AndroidManifest.xml; then
-            echo "Metadata no AndroidManifest.xml está configurada corretamente."
           else
-            echo "ERRO: Metadata no AndroidManifest.xml não está configurada corretamente."
+            echo "ERRO: AdMob ID Inválido"
             exit 1
           fi
 
-      # - name: Update android/app/build.gradle and create a new tag
-      #   run: |
-      #     FLUTTER_VERSION_CODE=$(echo $NEW_VERSION | awk -F. '{print $1$2$3}')
+      - name: Criando Tag
+        run: |
+          FLUTTER_VERSION_CODE=$(echo $NEW_VERSION | awk -F. '{print $1$2$3}')
 
-      #     # Atualize o versionCode
-      #     sed -i "s/versionCode .*/versionCode $FLUTTER_VERSION_CODE/" android/app/build.gradle
-      #     # Atualize o versionName
-      #     sed -i "s/versionName \".*\"/versionName \"$NEW_VERSION\"/" android/app/build.gradle
+          sed -i "s/versionCode .*/versionCode $FLUTTER_VERSION_CODE/" android/app/build.gradle
+          sed -i "s/versionName \".*\"/versionName \"$NEW_VERSION\"/" android/app/build.gradle
 
-      #     git config --global user.name "GitHub Actions Bot"
-      #     git config --global user.email "paulo@ldcapps.com"
-      #     git add android/app/build.gradle
-      #     git commit -m "Release $NEW_VERSION"
-      #     git tag $NEW_VERSION
-      ##     git push origin $NEW_VERSION
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "paulo@ldcapps.com"
+          git add android/app/build.gradle
+          git commit -m "Release $NEW_VERSION"
+          git tag $NEW_VERSION
+          git push origin $NEW_VERSION
