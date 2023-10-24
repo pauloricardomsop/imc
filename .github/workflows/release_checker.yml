@@ -7,6 +7,13 @@ on:
 
 jobs:
   release_checker:
+    env:
+      ADMOB: ${{ secrets.ADMOB }}
+      BUNDLE: ${{ secrets.BUNDLE }}
+      FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
+      FACEBOOK_CLIENT_TOKEN: ${{ secrets.FACEBOOK_CLIENT_TOKEN }}
+      KOCHAVA: ${{ secrets.KOCHAVA }}
+      
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +38,7 @@ jobs:
       - name: Verificando ID's
         run: |
           applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
-          if [ "$applicationId" == "com.ldcapps.svr" ]; then
+          if [ "$applicationId" == "$BUNDLE" ]; then
             echo "applicationId está configurado corretamente."
           else
             echo "ERRO: applicationId não está configurado corretamente."
@@ -39,7 +46,7 @@ jobs:
           fi
 
           facebookAppId=$(grep '<string name="facebook_app_id">' android/app/src/main/res/values/strings.xml | awk -F'>' '{print $2}' | awk -F'<' '{print $1}')
-          if [ "$facebookAppId" == "211276778576583" ]; then
+          if [ "$facebookAppId" == "$FACEBOOK_APP_ID" ]; then
             echo "facebook_app_id está configurado corretamente."
           else
             echo "ERRO: facebook_app_id não está configurado corretamente."
@@ -47,21 +54,21 @@ jobs:
           fi
 
           facebookClientToken=$(grep '<string name="facebook_client_token">' android/app/src/main/res/values/strings.xml | awk -F'>' '{print $2}' | awk -F'<' '{print $1}')
-          if [ "$facebookClientToken" == "e062eae9839775fd3987551aae1fb0de" ]; then
+          if [ "$facebookClientToken" == "$FACEBOOK_CLIENT_TOKEN" ]; then
             echo "facebook_client_token está configurado corretamente."
           else
             echo "ERRO: facebook_client_token não está configurado corretamente."
             exit 1
           fi
 
-          if grep -q "KochavaTracker.instance.registerAndroidAppGuid(\"ko-1-svr-qbw\");" lib/app/core/services/log_manager_service.dart; then
+          if grep -q "KochavaTracker.instance.registerAndroidAppGuid(\"$KOCHAVA\");" lib/app/core/services/log_manager_service.dart; then
             echo "A linha de código em log_manager_service.dart está configurada corretamente."
           else
             echo "ERRO: A linha de código em log_manager_service.dart não está configurada corretamente."
             exit 1
           fi
 
-          if grep -q "ca-app-pub-8419654969814276~6369933191" android/app/src/main/AndroidManifest.xml; then
+          if grep -q "$ADMOB" android/app/src/main/AndroidManifest.xml; then
             echo "Metadata no AndroidManifest.xml está configurada corretamente."
           else
             echo "ERRO: Metadata no AndroidManifest.xml não está configurada corretamente."
