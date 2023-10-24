@@ -13,21 +13,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Extract old and new versions from pubspec.yaml
-        id: get_versions
+      - name: Verificar Mudanças na Versão do pubspec.yaml
         run: |
-          OLD_VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
-          NEW_VERSION=$OLD_VERSION  # Inicialmente, definimos a nova versão como a versão atual.
-          if [ "$NEW_VERSION" != "$OLD_VERSION" ]; then
-            echo "Nova versão detectada: $NEW_VERSION"
-            echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-          else
-            echo "Nenhuma mudança de versão detectada. Nada a fazer."
-            exit 0  # Sai do workflow se não houver alterações de versão.
+          git fetch --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+          old_version=$(git show -s --format="%s" $(git rev-parse refs/remotes/origin/main^) | grep -o "version: [0-9.]*")
+          new_version=$(git show -s --format="%s" $(git rev-parse refs/remotes/origin/main) | grep -o "version: [0-9.]*")
+
+          if [ "$old_version" = "$new_version" ]; then
+            echo "A versão do pubspec.yaml não foi alterada. Interrompendo o script."
+            exit 0
           fi
 
+          echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
+
       - name: Verificação de applicationId, facebook_app_id, facebook_client_token, linha de código em log_manager_service.dart, metadata no AndroidManifest e JSON em ad_manager_service.dart
-        if: env.NEW_VERSION
         run: |
           applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
           if [ "$applicationId" == "com.ldcapps.svr" ]; then
@@ -68,7 +67,6 @@ jobs:
           fi
 
       - name: Update android/app/build.gradle and create a new tag
-        if: env.NEW_VERSION
         run: |
           FLUTTER_VERSION_CODE=$(echo $NEW_VERSION | awk -F. '{print $1$2$3}')
 
