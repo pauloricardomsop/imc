@@ -3,5 +3,8 @@
     "dart.flutterSdkPaths": [
         "/Users/Paulo/fvm/versions"
     ],
-    "java.configuration.updateBuildConfiguration": "automatic"
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "github-actions.workflows.pinned.workflows": [
+        ".github/workflows/create_release_tag.yml"
+    ]
 }
