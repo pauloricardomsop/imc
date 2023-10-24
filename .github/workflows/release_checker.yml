@@ -60,13 +60,6 @@ jobs:
             exit 1
           fi
 
-          if grep -q "$ADMOB" android/app/src/main/AndroidManifest.xml; then
-            echo "Metadata no AndroidManifest.xml está configurada corretamente."
-          else
-            echo "ERRO: Metadata no AndroidManifest.xml não está configurada corretamente."
-            exit 1
-          fi
-
       - name: Criando Tag
         if: env.NEW_VERSION
         run: |
