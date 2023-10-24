@@ -1,4 +1,4 @@
-name: Auto Tag and Update Gradle Version
+name: Tager
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Verificar Mudanças na Versão do pubspec.yaml
+      - name: Verificando versão
         run: |
           git log -n 2 --pretty=format:"%h" > commits.txt
           commit_array=($(cat commits.txt))
@@ -28,7 +28,7 @@ jobs:
             echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
           fi
 
-      - name: Verificação de applicationId, facebook_app_id, facebook_client_token, linha de código em log_manager_service.dart, metadata no AndroidManifest e JSON em ad_manager_service.dart
+      - name: Verificando ID's
         run: |
           applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
           if [ "$applicationId" == "com.ldcapps.svr" ]; then
