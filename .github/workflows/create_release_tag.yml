@@ -27,7 +27,7 @@ jobs:
           else
             echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
           fi
-          
+
       - name: Verificação de applicationId, facebook_app_id, facebook_client_token, linha de código em log_manager_service.dart, metadata no AndroidManifest e JSON em ad_manager_service.dart
         run: |
           applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
@@ -54,7 +54,7 @@ jobs:
             exit 1
           fi
 
-          if grep -q "KochavaTracker.instance.registerAndroidAppGuid(\"ko-1-svr-qbw\");" lib/core/services/log_manager_service.dart; then
+          if grep -q "KochavaTracker.instance.registerAndroidAppGuid(\"ko-1-svr-qbw\");" lib/app/core/services/log_manager_service.dart; then
             echo "A linha de código em log_manager_service.dart está configurada corretamente."
           else
             echo "ERRO: A linha de código em log_manager_service.dart não está configurada corretamente."
