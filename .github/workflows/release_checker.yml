@@ -62,9 +62,9 @@ jobs:
           fi
 
           if grep -q "KochavaTracker.instance.registerAndroidAppGuid(\"$KOCHAVA\");" lib/app/core/services/log_manager_service.dart; then
-            echo "A linha de código em log_manager_service.dart está configurada corretamente."
+            echo "Kochava está configurado corretamento."
           else
-            echo "ERRO: A linha de código em log_manager_service.dart não está configurada corretamente."
+            echo "ERRO: Kochava não está configurada corretamente."
             exit 1
           fi
 
