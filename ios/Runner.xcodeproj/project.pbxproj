@@ -10,6 +10,8 @@
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		28D8581646FCEBE1807A01C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D1317DEDB59479089CBAB81 /* GoogleService-Info.plist */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
+		3AF312CF2AE823D900CCEC25 /* KochavaCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF312CE2AE823D900CCEC25 /* KochavaCore */; };
+		3AF312D22AE82EDC00CCEC25 /* KochavaTracker in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF312D12AE82EDC00CCEC25 /* KochavaTracker */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		509B40935F1C92C037F874CF /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61013398D50D4B8B93EBFBB2 /* Pods_RunnerTests.framework */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -75,6 +77,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED6F5E1B43B288AD5094796E /* Pods_Runner.framework in Frameworks */,
+				3AF312CF2AE823D900CCEC25 /* KochavaCore in Frameworks */,
+				3AF312D22AE82EDC00CCEC25 /* KochavaTracker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,14 +205,16 @@
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				66E88FF09899680891C36517 /* [firebase_crashlytics] Crashlytics Upload Symbols */,
-				74E29C818568C161B8287895 /* [CP] Embed Pods Frameworks */,
-				9DF47E0190F9BB095833BF9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Runner;
+			packageProductDependencies = (
+				3AF312CE2AE823D900CCEC25 /* KochavaCore */,
+				3AF312D12AE82EDC00CCEC25 /* KochavaTracker */,
+			);
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
@@ -242,6 +248,10 @@
 				Base,
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
+			packageReferences = (
+				3AF312CD2AE823D900CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaCore" */,
+				3AF312D02AE82EDC00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracker" */,
+			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -358,23 +368,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		74E29C818568C161B8287895 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -389,23 +382,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
-		};
-		9DF47E0190F9BB095833BF9D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -768,6 +744,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3AF312CD2AE823D900CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaCore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaCore";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		3AF312D02AE82EDC00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kochava/Apple-SwiftPackage-KochavaTracker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3AF312CE2AE823D900CCEC25 /* KochavaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF312CD2AE823D900CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaCore" */;
+			productName = KochavaCore;
+		};
+		3AF312D12AE82EDC00CCEC25 /* KochavaTracker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF312D02AE82EDC00CCEC25 /* XCRemoteSwiftPackageReference "Apple-SwiftPackage-KochavaTracker" */;
+			productName = KochavaTracker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 97C146E61CF9000F007C117D /* Project object */;
 }
