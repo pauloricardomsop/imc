@@ -25,8 +25,6 @@ jobs:
           git log -n 2 --pretty=format:"%h" > commits.txt
           commit_array=($(cat commits.txt))
 
-          curl -sL https://raw.githubusercontent.com/mikefarah/yq/master/install.sh | sh -s -- -y
-
           old_version=$(yq e '.version' ${commit_array[1]}/pubspec.yaml)
           new_version=$(yq e '.version' ${commit_array[0]}/pubspec.yaml)
 
