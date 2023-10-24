@@ -15,8 +15,11 @@ jobs:
 
       - name: Verificar Mudanças na Versão do pubspec.yaml
         run: |
-          old_version=$(git show HEAD^:pubspec.yaml | grep -o "version: [0-9.]*")
-          new_version=$(git show HEAD:pubspec.yaml | grep -o "version: [0-9.]*")
+          git log -n 2 --pretty=format:"%h" > commits.txt
+          commit_array=($(cat commits.txt))
+
+          old_version=$(git show ${commit_array[1]}:pubspec.yaml | grep -o "version: [0-9.]*")
+          new_version=$(git show ${commit_array[0]}:pubspec.yaml | grep -o "version: [0-9.]*")
 
           if [ "$old_version" = "$new_version" ]; then
             echo "A versão do pubspec.yaml não foi alterada. Interrompendo o script."
@@ -24,7 +27,7 @@ jobs:
           else
             echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
           fi
-
+          
       - name: Verificação de applicationId, facebook_app_id, facebook_client_token, linha de código em log_manager_service.dart, metadata no AndroidManifest e JSON em ad_manager_service.dart
         run: |
           applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
