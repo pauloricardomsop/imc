@@ -15,9 +15,8 @@ jobs:
 
       - name: Verificar Mudanças na Versão do pubspec.yaml
         run: |
-          git fetch --depth=1 origin +refs/heads/main:refs/remotes/origin/main
-          old_version=$(git show -s --format="%s" $(git rev-parse refs/remotes/origin/main^) | grep -o "version: [0-9.]*")
-          new_version=$(git show -s --format="%s" $(git rev-parse refs/remotes/origin/main) | grep -o "version: [0-9.]*")
+          old_version=$(git show -s --format="%s" $(git log --skip 1 -n 1 --pretty=format:%H) | grep -o "version: [0-9.]*")
+          new_version=$(git show -s --format="%s" $(git log -n 1 --pretty=format:%H) | grep -o "version: [0-9.]*")
 
           if [ "$old_version" = "$new_version" ]; then
             echo "A versão do pubspec.yaml não foi alterada. Interrompendo o script."
