@@ -61,7 +61,7 @@ jobs:
             exit 1
           fi
 
-          if grep -q "com.google.android.gms.ads.APPLICATION_ID" android/app/src/main/AndroidManifest.xml; then
+          if grep -q "ca-app-pub-8419654969814276~6369933191" android/app/src/main/AndroidManifest.xml; then
             echo "Metadata no AndroidManifest.xml está configurada corretamente."
           else
             echo "ERRO: Metadata no AndroidManifest.xml não está configurada corretamente."
