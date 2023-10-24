@@ -81,7 +81,9 @@ jobs:
         run: |
           FLUTTER_VERSION_CODE=$(echo $NEW_VERSION | awk -F. '{print $1$2$3}')
 
+           Atualize o versionCode
           sed -i "s/versionCode .*/versionCode $FLUTTER_VERSION_CODE/" android/app/build.gradle
+           Atualize o versionName
           sed -i "s/versionName \".*\"/versionName \"$NEW_VERSION\"/" android/app/build.gradle
 
           git config --global user.name "GitHub Actions Bot"
