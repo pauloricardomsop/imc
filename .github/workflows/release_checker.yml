@@ -20,22 +20,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Verificando versão
+      - name: Extraindo Versão
+        id: get_version
         run: |
-          git log -n 2 --pretty=format:"%h" > commits.txt
-          commit_array=($(cat commits.txt))
+          NEW_VERSION=$(grep 'version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
+          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
-          old_version=$(yq e '.version' ${commit_array[1]}/pubspec.yaml)
-          new_version=$(yq e '.version' ${commit_array[0]}/pubspec.yaml)
-
-          if [ "$old_version" = "$new_version" ]; then
-            echo "A versão do pubspec.yaml não foi alterada. Interrompendo o script."
-            exit 1
-          else
-            echo "A versão do pubspec.yaml mudou de $old_version para $new_version. Continuando o script."
-          fi
-          
       - name: Verificando ID's
+        if: env.NEW_VERSION
         run: |
           applicationId=$(grep "applicationId" android/app/build.gradle | awk '{print $2}' | tr -d '"')
           if [ "$applicationId" == "$BUNDLE" ]; then
@@ -76,6 +68,7 @@ jobs:
           fi
 
       - name: Criando Tag
+        if: env.NEW_VERSION
         run: |
           FLUTTER_VERSION_CODE=$(echo $NEW_VERSION | awk -F. '{print $1$2$3}')
 
