@@ -1,15 +1,14 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/paulo/fvm/versions/stable
-FLUTTER_APPLICATION_PATH=/Users/paulo/Documents/workspace/ldc/svr
+FLUTTER_ROOT=C:\Users\Paulo\fvm\versions\stable
+FLUTTER_APPLICATION_PATH=C:\Users\Paulo\Documents\workspace\ldc\svr
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=/Users/paulo/Documents/workspace/ldc/svr/lib/main.dart
+FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=5.2.5
-FLUTTER_BUILD_NUMBER=5.2.5
+FLUTTER_BUILD_NAME=5.3.0
+FLUTTER_BUILD_NUMBER=5.3.0
 EXCLUDED_ARCHS[sdk=iphonesimulator*]=i386
 EXCLUDED_ARCHS[sdk=iphoneos*]=armv7
-DART_DEFINES=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ==,RkxVVFRFUl9XRUJfQ0FOVkFTS0lUX1VSTD1odHRwczovL3d3dy5nc3RhdGljLmNvbS9mbHV0dGVyLWNhbnZhc2tpdC83NjdkOGM3NWU4OTgwOTFiOTI1NTE5ODAzODMwZmMyNzIxNjU4ZDA3Lw==
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false
-PACKAGE_CONFIG=/Users/paulo/Documents/workspace/ldc/svr/.dart_tool/package_config.json
+PACKAGE_CONFIG=.dart_tool/package_config.json
