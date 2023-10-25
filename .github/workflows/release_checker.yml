@@ -17,37 +17,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Get the current version
-        id: version
+      - name: Verificar Mudança na Versão
+        id: check
         run: |
-          echo "CURRENT_VERSION=$(grep 'version: ' pubspec.yaml | cut -d "'" -f 2)" >> $GITHUB_ENV
-        shell: bash
+          # Obtém a versão atual do pubspec.yaml
+          current_version=$(cat pubspec.yaml | grep 'version:' | awk '{print $2}' | tr -d '\r\n')
 
-      - name: Get the previous version
-        id: previous_version
-        run: |
-          if [ -f version.txt ]; then
-            echo "PREVIOUS_VERSION=$(cat version.txt)" >> $GITHUB_ENV
-          else
-            echo "PREVIOUS_VERSION=0.0.0" >> $GITHUB_ENV
+          # Verifica se houve mudanças na versão
+          git diff --exit-code -- pubspec.yaml
+          if [ $? -eq 0 ]; then
+            echo "Nenhuma mudança na versão do pubspec.yaml."
+            exit 0
           fi
+
+          echo "Mudança detectada na versão do pubspec.yaml."
+          echo "::set-output name=new_version::$current_version"
         shell: bash
 
-      - name: Check if version has changed
-        id: version_changed
+      - name: Usar a Nova Versão
+        if: steps.check.outputs.new_version
         run: |
-          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
-            echo "Version has changed. New version is $CURRENT_VERSION."
-            echo "$CURRENT_VERSION" > version.txt
-            echo "::set-output name=tag_created::true"
-          else
-            echo "No version change detected."
-            echo "::set-output name=tag_created::false"
-          fi
-        shell: bash
+          new_version=${{ steps.check.outputs.new_version }}
+          echo "Nova versão do pubspec.yaml: $new_version"
 
       - name: Verificando ID's
         run: |
