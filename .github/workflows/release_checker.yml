@@ -70,6 +70,12 @@ jobs:
 
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "paulo@ldcapps.com"
+          git fetch --prune --tags
+          git tag --list > tags.txt
+          if grep -q -x "$NEW_VERSION" tags.txt; then
+            echo "Tag $NEW_VERSION already exists. Skipping tag creation."
+            exit 1
+          fi
           git add android/app/build.gradle
           git commit -m "Release $NEW_VERSION"
           git tag $NEW_VERSION
