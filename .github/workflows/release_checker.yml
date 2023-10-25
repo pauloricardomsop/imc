@@ -20,37 +20,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Check for changes in pubspec.yaml
-        id: version-check
+      - name: Get the current version
+        id: version
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep pubspec.yaml
-          echo "::set-output name=changed::true"
-        continue-on-error: true
+          echo "CURRENT_VERSION=$(grep 'version: ' pubspec.yaml | cut -d "'" -f 2)" >> $GITHUB_ENV
+        shell: bash
 
-      - name: Get current version
-        id: get-version
+      - name: Get the previous version
+        id: previous_version
         run: |
-          if [[ -n "${{ steps.version-check.outputs.changed }}" ]]; then
-            current_version=$(awk -F': ' '/^version: / {print $2}' pubspec.yaml)
-            echo "::set-output name=current_version::$current_version"
+          if [ -f version.txt ]; then
+            echo "PREVIOUS_VERSION=$(cat version.txt)" >> $GITHUB_ENV
           else
-            echo "::set-output name=current_version::"
+            echo "PREVIOUS_VERSION=0.0.0" >> $GITHUB_ENV
           fi
+        shell: bash
 
-      - name: Compare versions
-        id: compare
+      - name: Check if version has changed
+        id: version_changed
         run: |
-          current_version="${{ steps.get-version.outputs.current_version }}"
-          old_version=$(cat .version || echo '0.0.0')
-
-          if [ "$current_version" != "$old_version" ]; then
-            echo "Version changed. Creating a new tag..."
-            echo "$current_version" > .version
+          if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+            echo "Version has changed. New version is $CURRENT_VERSION."
+            echo "$CURRENT_VERSION" > version.txt
             echo "::set-output name=tag_created::true"
           else
             echo "No version change detected."
             echo "::set-output name=tag_created::false"
           fi
+        shell: bash
 
       - name: Verificando ID's
         run: |
