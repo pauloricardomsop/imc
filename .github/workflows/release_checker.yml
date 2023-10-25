@@ -30,8 +30,8 @@ jobs:
           if echo "$COMMIT_MESSAGE" | grep -E -i "major|minor|patch"; then
             echo "Incremento de versão detectado."
           else
-            exit 1
             echo "Nenhum incremento de versão detectado."
+            exit 1
           fi
 
           if git diff $COMMIT_SHA $PREVIOUS_COMMIT_SHA -- pubspec.yaml | grep -E -q "\+\+\+ b/pubspec.yaml"; then
