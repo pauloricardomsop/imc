@@ -73,7 +73,7 @@ jobs:
           git fetch --prune --tags
           git tag --list > tags.txt
           if grep -q -x "$NEW_VERSION" tags.txt; then
-            echo "Tag $NEW_VERSION already exists. Skipping tag creation."
+            echo "Tag $NEW_VERSION já existe"
             exit 1
           fi
           git add android/app/build.gradle
