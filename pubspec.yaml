@@ -38,7 +38,7 @@ dependencies:
   design_kit:
     path: packages/design_kit/
   #   git:
-  #     url: git@github.com:ldc-apps/design_kit.git
+  ##     url: git@github.com:ldc-apps/design_kit.git
   ad_manager:
     path: packages/ad_manager/
   #   git:
