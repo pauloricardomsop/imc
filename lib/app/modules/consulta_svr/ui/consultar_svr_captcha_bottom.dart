@@ -91,6 +91,7 @@ class _ConsultarSVRCaptchaBottomState extends State<ConsultarSVRCaptchaBottom> {
               ),
               const H(16),
               AppField(
+                onTap: () => AdManager.fetchRewarded(),
                 controller: model.captcha,
                 label: 'Digite o texto da imagem acima',
                 icon: Symbols.dialpad,

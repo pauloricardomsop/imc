@@ -78,7 +78,7 @@ class ConsultaValoresReceberFormPageState extends State<ConsultarSVRFormPage> {
             AppField(
               controller: model.date,
               label: model.isPessoaFisica
-                  ? 'Data de nascimeno'
+                  ? 'Data de nascimento'
                   : 'Data de abertura',
               hint: model.isPessoaFisica ? '00/00/0000' : '00/00/0000',
               onChanged: (e) => _controller.consultaValoresStream.update(),

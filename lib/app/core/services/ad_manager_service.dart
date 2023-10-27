@@ -23,7 +23,7 @@ class AdManagerService implements Service {
   static final Map<String, dynamic> config = {
     "activeAll": true,
     "appOpen": {
-      "active": true,
+      "active": false,
       "idIOS": "ca-app-pub-8419654969814276/5311849118",
       "idsAndroid": [
         "ca-app-pub-8419654969814276/6331069701",
@@ -32,12 +32,12 @@ class AdManagerService implements Service {
       ],
     },
     "banner": {
-      "active": true,
+      "active": false,
       "idIOS": "ca-app-pub-8419654969814276/7291953690", 
       "idAndroid": "ca-app-pub-8419654969814276/6666047983",
     },
     "intersticial": {
-      "active": true,
+      "active": false,
       "idIOS": "ca-app-pub-8419654969814276/3520229645",
       "idAndroid": "ca-app-pub-8419654969814276/6721888307",
     },
