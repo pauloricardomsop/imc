@@ -10,7 +10,7 @@ class AdManagerService implements Service {
   @override
   Future<void> initialize() async {
     if (AdManager.instance.isInitialized) return;
-    await MobileAds.instance.initialize();
+    final status = await MobileAds.instance.initialize();
     await AdManager.instance.initialize(
       json: config,
       navigatorKey: AppController().key,
@@ -23,17 +23,21 @@ class AdManagerService implements Service {
   static final Map<String, dynamic> config = {
     "activeAll": true,
     "appOpen": {
-      "active": true,
+      "active": false,
       "idIOS": "ca-app-pub-8419654969814276/5311849118",
-      "idAndroid": "ca-app-pub-8419654969814276/6331069701",
+      "idsAndroid": [
+        "ca-app-pub-8419654969814276/6331069701",
+        "ca-app-pub-8419654969814276/2762668827",
+        "ca-app-pub-8419654969814276/3353657778"
+      ],
     },
     "banner": {
-      "active": true,
+      "active": false,
       "idIOS": "ca-app-pub-8419654969814276/7291953690", 
       "idAndroid": "ca-app-pub-8419654969814276/6666047983",
     },
     "intersticial": {
-      "active": true,
+      "active": false,
       "idIOS": "ca-app-pub-8419654969814276/3520229645",
       "idAndroid": "ca-app-pub-8419654969814276/6721888307",
     },
