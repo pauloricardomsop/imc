@@ -3,6 +3,7 @@ import 'package:design_kit/design_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:svr/app/core/components/exit_banner.dart';
 import 'package:svr/app/core/enums/consulta_valores_tipo.dart';
 import 'package:svr/app/core/utils/global_resource.dart';
@@ -17,6 +18,8 @@ import 'package:svr/app/modules/home/topics/como_receber_se_tenho_valores_page.d
 import 'package:svr/app/modules/home/topics/o_que_e_page.dart';
 import 'package:svr/app/modules/servicos_banco_central/servico_banco_central_home_page.dart';
 
+const bottomSheetShowKey = 'bottomSheetShown';
+
 class HomePage extends AdStatefulWidget {
   HomePage({Key? key}) : super(key: key, name: 'HomePage');
 
@@ -26,6 +29,7 @@ class HomePage extends AdStatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isEnable = true;
+  late String? urlPolicy = '';
   List<CardFeature> get cardFeatureHeaderItens => [
         CardFeature.hasBlur(
           label: 'Consultar Valores\na Receber',
@@ -63,13 +67,13 @@ class _HomePageState extends State<HomePage> {
                   ConsultarSVRFormPage(ConsultaValoresPessoaEstado.falecido,
                       ConsultaValoresPessoa.fisica))),
         ),
-        // CardFeature(
-        //   label: 'Saiba se seu CPF\nestá ativo',
-        //   prefix: Symbols.assured_workload,
-        //   onTap: () => AdManager.showIntersticial(context,
-        //       flow: AdFlow.going,
-        //       onDispose: () => push(context, ConsultaCPFHomePage())),
-        // ),
+        CardFeature(
+          label: 'Saiba se seu CPF\nestá ativo',
+          prefix: Symbols.assured_workload,
+          onTap: () => AdManager.showIntersticial(context,
+              flow: AdFlow.going,
+              onDispose: () => push(context, ConsultaCPFHomePage())),
+        ),
         CardFeature(
           label: 'Serviços do Banco\nCentral',
           prefix: Symbols.monitoring,
@@ -119,6 +123,15 @@ class _HomePageState extends State<HomePage> {
               onDispose: () => push(context, ComoReceberMeusValoresPage())),
         ),
       ];
+
+  
+  @override
+  void initState() {
+    super.initState();
+    ResolveNameService.searchPackageNameMap.then((value) => setState(() {urlPolicy = value;}));
+    _checkAndShowBottomSheet();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -183,5 +196,26 @@ class _HomePageState extends State<HomePage> {
             CardFeatures.full(cardFeatureFullItens),
           ],
         ));
+  }
+
+    void _checkAndShowBottomSheet() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool bottomSheetShown = prefs.getBool(bottomSheetShowKey) ?? false;
+    if (!bottomSheetShown) {
+      Future.delayed(
+        const Duration(milliseconds: 100),
+        () => showBootomSheet(
+          context,
+          HomeBottomSheetPolicy(
+            () async => execUrl('https://ldcapps.com/$urlPolicy/'),
+            () async {
+              Navigator.pop(context);
+              prefs.setBool(bottomSheetShowKey, true);
+            },
+          ),
+          onWillPop: () async => push(context, ExitBanner()),
+        ),
+      );
+    }
   }
 }
