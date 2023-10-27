@@ -10,7 +10,7 @@ class AdManagerService implements Service {
   @override
   Future<void> initialize() async {
     if (AdManager.instance.isInitialized) return;
-    await MobileAds.instance.initialize();
+    final status = await MobileAds.instance.initialize();
     await AdManager.instance.initialize(
       json: config,
       navigatorKey: AppController().key,
