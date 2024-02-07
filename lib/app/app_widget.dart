@@ -1,4 +1,4 @@
-import 'package:design_kit/design_kit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'package:svr/app/modules/home/home_page.dart';
@@ -16,18 +16,30 @@ class _AppState extends State<App> {
   final AppController _appController = AppController();
 
   @override
+  void initState() {
+    _appController.onInit();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return OverlaySupport(
-      child: MaterialApp(
-        color: const Color(0xFFF8FAFC),
-        debugShowCheckedModeBanner: false,
-        navigatorKey: _appController.key,
-        title: 'Guia Valores Esquecidos 2023',
-        theme: appTheme,
-        home: ModulePage(
-          home: HomePage(),
-          onInit: _appController.onInit(),
-        ),
+    return EasyLocalization(
+      path: 'assets/translations',
+      fallbackLocale: const Locale('en'),
+      supportedLocales: const [Locale('pt'), Locale('en'), Locale('es')],
+      child: OverlaySupport(
+        child: Builder(builder: (context) {
+          return MaterialApp(
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            color: const Color(0xFFF8FAFC),
+            debugShowCheckedModeBanner: false,
+            navigatorKey: _appController.key,
+            title: 'title'.tr(),
+            home: const HomePage(),
+          );
+        }),
       ),
     );
   }

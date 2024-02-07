@@ -1,8 +1,5 @@
-import 'package:svr/app/core/services/ad_manager_service.dart';
 import 'package:svr/app/core/services/date_service.dart';
 import 'package:svr/app/core/services/firebase_service.dart';
-import 'package:svr/app/core/services/log_manager_service.dart';
-import 'package:svr/app/core/services/remote_config_service.dart';
 import 'package:svr/app/core/services/shared_preferences_service.dart';
 
 abstract class Service {
@@ -14,9 +11,6 @@ abstract class Service {
     FirebaseService(),
     DateService(),
     SharedPreferencesService(),
-    RemoteConfigService(),
-    LogManagerService(),
-    AdManagerService(),
   ];
 
   static Future<void> initAplicationServices() async {

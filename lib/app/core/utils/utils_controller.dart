@@ -1,6 +1,6 @@
-import 'package:ad_manager/ad_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:svr/app/core/models/app_stream.dart';
 
 class UtilsController {
   static final UtilsController _utilsController = UtilsController._();

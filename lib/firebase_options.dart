@@ -50,20 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDILXgl_pFNqDGLrRHgxbomxTTHu5TXqII',
-    appId: '1:502689250513:android:70df4e4e2ccbc4dd8119f0',
-    messagingSenderId: '502689250513',
-    projectId: 'ldv-svr',
-    storageBucket: 'ldv-svr.appspot.com',
+    apiKey: 'AIzaSyAldUE2s6UJ2COUrssVanx4-YF1geMPd3k',
+    appId: '1:377329821782:android:10791124d10c1cb8d3b3f7',
+    messagingSenderId: '377329821782',
+    projectId: 'imc-243eb',
+    storageBucket: 'imc-243eb.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC4Ao1Ct6Zo05PeiMrX_tFVGQg7dIOqF-8',
-    appId: '1:502689250513:ios:ab4dd1f214915cf98119f0',
-    messagingSenderId: '502689250513',
-    projectId: 'ldv-svr',
-    storageBucket: 'ldv-svr.appspot.com',
-    iosClientId: '502689250513-csek955t406pe70qrmc0lsb87ttj2irs.apps.googleusercontent.com',
-    iosBundleId: 'com.ldcapps.svr',
+    apiKey: 'AIzaSyCn-dpWeq_5zgVALSIz9D1bl9wFIjEvIdE',
+    appId: '1:377329821782:ios:1056329cf9d4d1c9d3b3f7',
+    messagingSenderId: '377329821782',
+    projectId: 'imc-243eb',
+    storageBucket: 'imc-243eb.appspot.com',
+    iosBundleId: 'co.app.imc',
   );
 }

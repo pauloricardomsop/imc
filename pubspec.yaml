@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: "none"
 
-version: 5.3.7
+version: 0.0.1
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
@@ -18,54 +18,20 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_analytics: ^10.4.5
   firebase_crashlytics: ^3.0.15
-  firebase_remote_config: ^4.2.4
-  firebase_messaging: ^14.6.6
-
-  #LOG
-  kochava_tracker: ^2.4.0
-  facebook_app_events: ^0.19.0
 
   #UI
   overlay_support: ^2.0.1
-  extended_masked_text: ^2.3.1
-  material_symbols_icons: ^4.2661.1
-
-  #HTTP
-  dio: ^5.3.0
-  url_launcher: ^6.1.5
-
-  #PACKAGES
-  design_kit:
-    path: packages/design_kit/
-  #   git:
-  #     url: git@github.com:ldc-apps/design_kit.git
-  ad_manager:
-    path: packages/ad_manager/
-  #   git:
-  #     url: git@github.com:ldc-apps/ad_manager.git
-  log_manager:
-    path: packages/log_manager/
-  #   git:
-  #     url: git@github.com:ldc-apps/log_manager.git
-  request_manager:
-    path: packages/request_manager/
-  #   git:
-  #     url: git@github.com:ldc-apps/request_manager.git
+  carousel_slider: ^4.2.1
+  syncfusion_flutter_gauges: ^24.1.41
+  syncfusion_flutter_charts: ^24.1.41
 
   #OUTROS
-  google_mobile_ads: ^3.0.0
-  faker: ^2.1.0
   intl: ^0.18.0
   rxdart: ^0.27.4
-  flutter_local_notifications: ^9.7.0
-  cpf_cnpj_validator: ^2.0.0
-  share_plus: ^7.1.0
   shared_preferences: ^2.0.15
   flutter_native_splash: ^2.2.0+1
-  validators: ^3.0.0
-  html: ^0.15.4
-  http: ^1.1.0
-  uuid: ^3.0.7
+  isoweek: ^1.1.4
+  easy_localization: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -97,35 +63,5 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
     - assets/launcher/
-
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter/Inter-Black.ttf
-          weight: 900
-
-        - asset: assets/fonts/Inter/Inter-ExtraBold.ttf
-          weight: 800
-
-        - asset: assets/fonts/Inter/Inter-Bold.ttf
-          weight: 700
-
-        - asset: assets/fonts/Inter/Inter-SemiBold.ttf
-          weight: 600
-
-        - asset: assets/fonts/Inter/Inter-Medium.ttf
-          weight: 500
-
-        - asset: assets/fonts/Inter/Inter-Regular.ttf
-          weight: 400
-
-        - asset: assets/fonts/Inter/Inter-Light.ttf
-          weight: 300
-
-        - asset: assets/fonts/Inter/Inter-ExtraLight.ttf
-          weight: 200
-
-        - asset: assets/fonts/Inter/Inter-Thin.ttf
-          weight: 100
+    - assets/translations/

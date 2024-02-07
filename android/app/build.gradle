@@ -20,7 +20,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace "com.ldcapps.svr"
+    namespace "co.app.imc"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -38,11 +38,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.ldcapps.svr"
+        applicationId "co.app.imc"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
-        versionCode 537
-        versionName "5.3.7"
+        versionCode 001
+        versionName "0.0.1"
         multiDexEnabled true
     }
 
